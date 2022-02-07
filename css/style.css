@@ -162,8 +162,15 @@ p a:hover {
     
 
 }
-
 .categories .activecat img {
+    filter: brightness(0) invert(1);
+}
+.categories .cat:hover{
+    background-color: #393d45;
+    color: #fff;
+    cursor: pointer;
+}
+.categories .cat img:hover {
     filter: brightness(0) invert(1);
 }
 .categories img {
@@ -183,17 +190,18 @@ p a:hover {
 
 }
 .listeproduit .cardproduit {
-    width: 310px;
-    height: 400px;
+    width: 346px;
+    height: 461px;
     text-align: center;
+    position: relative;
 }
 .listeproduit .cardproduit:hover {
     transform: translateY(-3px);
     transition: 1s;
 }
 .listeproduit .cardproduit .image img {
-    width: 310px;
-    height: 350px;
+    width: 346px;
+    height: 361px;
 }
 .listeproduit .cardproduit .nouveau {
     background-color: #1ebe0c;
@@ -204,8 +212,23 @@ p a:hover {
     top: 10px;
     z-index: 3;
     padding: 0 10px;
-   
 }
+.listeproduit .cardproduit .solde {
+    background-color: red;
+    height: 63px;
+    width: 50px;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    z-index: 3;   
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
 
 .listeproduit .cardproduit .info .col , .listeproduit .cardproduit .info .col-6{
     margin: 0!important;

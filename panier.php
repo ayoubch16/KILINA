@@ -1,6 +1,9 @@
 <?php include 'header.php';?>
 <?php include 'navbar.php';?>
 <body>
+    <script>
+        document.title = 'Panier ';
+    </script>
     <style>
         p {
             margin: 0 !important;
@@ -113,21 +116,21 @@
             align-self: auto;
             }
     </style>
-<!-- <div class="panier bg-white container rounded p-4"> -->
+<div class="panier bg-white container rounded p-4">
     <!-- panier vide -->
-    <!-- <div id="panier1" class="flex-container">
+    <div id="panier1" class="flex-container">
         <div class="flex-item my-2"><img src="image/icone/panier.png" width="250" height="250" alt=""></div>
         <div class="flex-item my-2"> <h1>Votre panier est vide</h1></div>
         <div class="flex-item my-2"><button class="btnP rounded">RETOUR</button></div>
-    </div> -->
-    <!-- felicitation -->
-    <!-- <div id="panier2" class="flex-container">
+    </div>
+    <!-- felicitation-->
+    <div id="panier2" class="flex-container">
         <div class="flex-item my-2"><img src="image/icone/felicitation.png" width="200" height="200" alt=""></div>
         <div class="flex-item my-2"> <h1>Félicitation</h1></div>
         <div class="flex-item my-2"> <h5>votre demande sera <br>traite dans 24H</h5></div>
         <div class="flex-item my-2"><button class="btnP rounded">RETOUR</button></div>
-    </div> -->
-<!-- </div> -->
+    </div>
+</div>
     <!-- product -->
 <div class="panier  container">
         <div class="listeproduct">
@@ -247,13 +250,13 @@
                             <h1 style="font-size: 40px;">Payment</h1>
                             <p style="font-size: 14px;">Choisissez le mode de paiement ci-dessous</p>
                             <div class="row p-3 text-center">
-                                <div class="col mx-2 p-2">
+                                <div class="col-md col-sm mx-2 p-2">
                                     <button class="buttonPanier text-center p-2 bg-white">
                                         <img src="image/icone/carte.png" width="44" height="29" alt=""><br>
                                         <span style="font-size: 10px;">par carte bancaire</span>
                                     </button>
                                 </div>
-                                <div class="col mx-2 p-2">
+                                <div class="col-md col-sm mx-2 p-2">
                                     <button class="buttonPanier text-center p-2 bg-white">
                                         <img src="image/icone/liveraison.png" width="44" height="29" alt=""><br>
                                         <span style="font-size: 10px;">a la livraison</span>
