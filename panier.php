@@ -116,6 +116,7 @@
             align-self: auto;
             }
     </style>
+<div id="page">
 <div class="panier bg-white container rounded p-4">
     <!-- panier vide -->
     <div id="panier1" class="flex-container">
@@ -266,6 +267,7 @@
                 </div>
             </div>
         </div>
+</div>
 </div>
 
 <!-- <div id="infoPanier" class="bg-white position-absolute top-50 start-50 translate-middle">

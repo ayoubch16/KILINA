@@ -4,6 +4,7 @@
     <script>
         document.title = 'Avis ';
     </script>
+<div id="page">
 <h5 class="text-center m-3 p-3">Nous restons a votre ecoute afin de satisfaire</h5>
 <div class="avis bg-white container rounded p-4">
     
@@ -78,6 +79,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
     
 </body>

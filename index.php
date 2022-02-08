@@ -2,6 +2,7 @@
 
 <body>
     <style>
+
     input[type="radio"].demo {
         display: none;
     }
@@ -56,26 +57,15 @@
     #pro3 {
         display: none;
     }
+     /* **********Taille********* */
+   
     </style>
-    <!-- reduction -->
-    <div class="reduction ">
-        <p>Jusqu'à - 50 % de réduction</p>
-    </div>
-
-    <div class="container">
-        <!-- navbar -->
-        <div class="navbar row ">
-            <div class="bar"><a href=""><img src="image/bar.png" /></a></div>
-            <div class="logo"><a href=""><img src="image/logo.png" /></a></div>
-            <div class="divleft">
-                <a href=""><img src="image/like.png" /><span class="badge"> </span> </a>
-                <a href=""><img src="image/panier.png" /><span class="badge"> </span> </a>
-                <a href="">EN</a>|
-                <a href="">العربية</a>|
-                <a href="">FR</a>
-
-            </div>
-        </div>
+    <?php include 'navbar.php';?>
+    <div id="page">
+         <!-- navbar -->
+         
+    <div  class="container ">
+       
 
         <!-- newcollection -->
         <div class="newcollection bg-white container">
@@ -88,7 +78,7 @@
                 <ul>
                     <li><a href="">S’inscrire</a></li> |
                     <li><a href="">Recturment</a></li> |
-                    <li><a href="">Contacte</a></li>
+                    <li><a href="">Contact</a></li>
                 </ul>
             </div>
             <div id="pro1" class="row">
@@ -229,7 +219,7 @@
 
         <!-- categories -->
         <div class="text-right">
-            <a class="btnRech" href="">
+            <a class="btnRech" onclick="filter();">
                 <img src="image/filtericone.png" width="80" height="80" alt="">
             </a>
         </div>
@@ -250,7 +240,7 @@
                 <img src="image/icone/robe.png" width="80" height="80" alt="">
                 <h6>Robes</h6>
             </div>
-            <div class="p-3 px-4  cat">
+            <div class="p-3 px-4 cat">
                 <img src="image/icone/tshirt.png" width="80" height="80" alt="">
                 <h6>T'shirt</h6>
             </div>
@@ -454,10 +444,15 @@
 
         <!-- contact -->
 
-        <div class="col-4 col-sm" style="box-shadow:-1px -1px 14px 1px rgba(0,0,0,0.31);width: 450px;">
+        
+
+
+    </div>
+    </div>
+        <!-- <div id="filterbar" class="p-3 m-5 container animate__animated animate__backInLeft">
             <div class="row p-3" style="display: flex;justify-content: space-between;align-items: center;">
                 <div class="p-1" style="background-color: #393D45;"><img src="image/icone/filter.png" width="40" height="40" alt=""></div>
-                <a href=""><img src="image/icone/ferme.png" width="20" height="20" alt=""></a>
+                <a onclick="fermer();"><img src="image/icone/ferme.png" width="20" height="20" alt=""></a>
             </div> 
             <form action="">
                 <div class="p-3 m-3">
@@ -478,23 +473,25 @@
                 <hr>
                 <div class="p-3 m-3">
                     <h3>Filtre par Couleur</h3>
-                                <input type="radio" name="demo" class="demo demo1" id="demo1">
-                                <label for="demo1">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo2" id="demo2">
-                                <label for="demo2">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo3" id="demo3">
-                                <label for="demo3">&nbsp;</label>
+                                <input type="radio" name="demo" class="demo demo1" id="c1">
+                                <label for="c1">&nbsp;</label>
+                                <input type="radio" name="demo" class="demo demo2" id="c2">
+                                <label for="c2">&nbsp;</label>
+                                <input type="radio" name="demo" class="demo demo3" id="c3">
+                                <label for="c3">&nbsp;</label>
                 </div>
                 <hr>
                 <div class="p-3 m-3">
                     <h3>Filtre par Taille</h3>
-                    <input type="radio" class="demo" id="demo"><label for="demo"></label>
+                    <input type="radio" name="taille" id="demoT1" class="demoT demoT"/><label for="demoT1">S</label>
+                    <input type="radio" name="taille" id="demoT2" class="demoT demoT"/><label for="demoT2">M</label>
+                    <input type="radio" name="taille" id="demoT3" class="demoT demoT"/><label for="demoT3">L</label>
+                    <input type="radio" name="taille" id="demoT4" class="demoT demoT"/><label for="demoT4">XL</label>
+                    <input type="radio" name="taille" id="demoT5" class="demoT demoT"/><label for="demoT5">XXL</label>
+
                 </div>
             </form>
-        </div>
-
-
-    </div>
+        </div> -->
     <script>
     var cpt = 2;
         setInterval(function() {
@@ -530,6 +527,16 @@
         integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <script>
+            function filter(){
+                document.getElementById('filterbar').style.display='block';
+                document.getElementById('page').style.filter="blur(5px) grayscale(5%) ";
+            }
+            function fermer(){
+                document.getElementById('filterbar').style.display='none';
+                document.getElementById('page').style.filter="blur(0) grayscale(0)";
+            }
+        </script>
 
 </body>
 

@@ -29,6 +29,7 @@
     document.title = 'Information ';
     </script>
 
+    <div id="page">
     <div id="information" class=" bg-white container rounded p-4">
         <h2>Les information personnel</h2>
         <div class="row text-center m-3">
@@ -81,6 +82,7 @@
             </div>
 
         </div>
+    </div>
     </div>
 
 </body>

@@ -143,6 +143,9 @@ p a:hover {
     height: auto;
     padding: 20px;
 }
+.btnRech:hover {
+ cursor: pointer;
+}
 .btnRech img {
     width: auto;
     height: 60px;

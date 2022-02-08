@@ -35,5 +35,8 @@
                 </div>
             </div>
         </div>
+        <div class="reduction ">
+                <p>powered by <a href="">Trade Line Solution</a> </p>
+        </div>
 
     </footer>
