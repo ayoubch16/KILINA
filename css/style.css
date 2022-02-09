@@ -162,8 +162,10 @@ p a:hover {
 .categories .activecat{
     background-color: #393d45;
     color: #fff;
-    
-
+}
+.categories .activecat a h6{
+    color: #fff;
+   
 }
 .categories .activecat img {
     filter: brightness(0) invert(1);
@@ -180,9 +182,15 @@ p a:hover {
     width: 80px;
     width: 80px;
 }
-.categories h6 {
+.categories   a h6 {
     text-align: center;
+    color: #000 ;
 }
+.categories   a :hover {
+    color: #fff !important;
+    text-decoration: none;
+}
+
 
 /* listeproduit */
 
@@ -366,3 +374,5 @@ p a:hover {
     z-index: 99;
 
 }
+
+/* navbar */

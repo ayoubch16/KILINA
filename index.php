@@ -1,3 +1,6 @@
+<?php 
+$c=$_GET['c'];
+?>
 <?php include 'header.php';?>
 
 <body>
@@ -96,12 +99,13 @@
                         <div class="mx-4">
                             <p>Coleur</p>
                             <p>
-                                <input type="radio" name="demo" class="demo demo1" id="demo1">
+                                <input type="color" name="" id="">
+                                <!-- <input type="radio" name="demo" class="demo demo1" id="demo1">
                                 <label for="demo1">&nbsp;</label>
                                 <input type="radio" name="demo" class="demo demo2" id="demo2">
                                 <label for="demo2">&nbsp;</label>
                                 <input type="radio" name="demo" class="demo demo3" id="demo3">
-                                <label for="demo3">&nbsp;</label>
+                                <label for="demo3">&nbsp;</label> -->
 
                             </p>
                         </div>
@@ -224,33 +228,47 @@
             </a>
         </div>
         <div class="categories mb-3 row">
-            <div class="p-3 px-4 cat">
+            <div class="p-3 px-4 cat <?php if($c==1){echo 'activecat';} ?>">
+                <a href="index.php?c=1">
                 <img src="image/icone/manteau.png" width="80" height="80" alt="">
-                <h6>Manteaux</h6>
+                <h6 class="mt-2">Manteaux</h6>
+                </a>
             </div>
-            <div class="p-3 px-4 cat">
+            <div class="p-3 px-4 cat <?php if($c==2){echo 'activecat';} ?>">
+                <a href="index.php?c=2">
                 <img src="image/icone/sac-a-main.png" width="80" height="80" alt="">
-                <h6>Sac</h6>
+                <h6 class="mt-2">Sac</h6>
+                </a>
             </div>
-            <div class="p-3 px-4 cat">
+            <div class="p-3 px-4 cat <?php if($c==3){echo 'activecat';} ?>">
+                <a href="index.php?c=3">
                 <img src="image/icone/bottes-femme.png" width="80" height="80" alt="">
-                <h6>Chaussure</h6>
+                <h6 class="mt-2">Chaussure</h6>
+                </a>
             </div>
-            <div class="p-3 px-4 cat">
+            <div class="p-3 px-4 cat <?php if($c==4){echo 'activecat';} ?>">
+                <a href="index.php?c=4">
                 <img src="image/icone/robe.png" width="80" height="80" alt="">
-                <h6>Robes</h6>
+                <h6 class="mt-2">Robes</h6>
+                </a>
             </div>
-            <div class="p-3 px-4 cat">
+            <div class="p-3 px-4 cat <?php if($c==5){echo 'activecat';} ?>">
+                <a href="index.php?c=5">
                 <img src="image/icone/tshirt.png" width="80" height="80" alt="">
-                <h6>T'shirt</h6>
+                <h6 class="mt-2">T'shirt</h6>
+                </a>
             </div>
-            <div class="p-3 px-4 cat activecat">
+            <div class="p-3 px-4 cat <?php if($c==6){echo 'activecat';} ?>">
+                <a href="index.php?c=6">
                 <img src="image/icone/Tracé 209.png" width="80" height="80" alt="">
-                <h6>Pantalons</h6>
+                <h6 class="mt-2">Pantalons</h6>
+                </a>
             </div>
-            <div class="p-3 px-4 cat">
+            <div class="p-3 px-4 cat <?php if($c==7){echo 'activecat';} ?>">
+                <a href="index.php?c=7">
                 <img src="image/icone/accessoire.png" width="80" height="80" alt="">
-                <h6>ACCESSOIRES</h6>
+                <h6 class="mt-2">ACCESSOIRES</h6>
+                </a>
             </div>
 
 
