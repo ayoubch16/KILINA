@@ -26,7 +26,7 @@
 
 <body>
     <script>
-    document.title = 'Information ';
+    document.title = 'Information';
     </script>
 
     <div id="page">
