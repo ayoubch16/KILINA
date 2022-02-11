@@ -11,40 +11,39 @@
             <span class="align-middle"><img src="img/photos/logoyello.png" width="150" height="60" alt=""></span>
         </a>
 
-        <ul class="sidebar-nav">
-            <li class="sidebar-item active">
-                <a class="sidebar-link" href="index.html">
+        <ul class="sidebar-nav ">
+            <li class="sidebar-item ">
+                <a class="sidebar-link" href="Acceuil.php">
                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Acceuil</span>
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-profile.html">
+            <li class="sidebar-item active">
+                <a class="sidebar-link" href="Statistiques.php">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Statistiques</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-sign-in.html">
+                <a class="sidebar-link" href="Produits.php">
                     <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Produit</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-sign-up.html">
-                    <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Meuilleur
-                        Vente</span>
+                <a class="sidebar-link" href="MeuilleurVente.php">
+                    <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Meuilleur Vente</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-blank.html">
+                <a class="sidebar-link" href="DataBase.php">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">DataBase</span>
                 </a>
 
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-blank.html">
+                <a class="sidebar-link" href="Commande.php">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Commande</span>
                 </a>
 
@@ -61,3 +60,8 @@
 
     </div>
 </nav>
+<script>
+    function active(){
+        document.getElementsByName
+    }
+</script>
