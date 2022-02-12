@@ -1,17 +1,6 @@
 <?php include 'header.php';?>
 <body>
     <style>
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        .edit img{
-            filter: brightness(0%);
-        }
-        .edit img:hover{
-            filter: brightness(100%);
-        }
         .barRech {
             background-color: #fff;
             padding: 10px;
@@ -28,25 +17,9 @@
             height: 40px;
             margin-right: 10px;
         }
-        .barAjote {
-            background-color: #000;
-            padding: 10px;
-            color: #fff;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            margin-left: 20px;
-            width: 200px;
-            height: 60px;
-            box-shadow: -2px 11px 13px -15px #000000;
-        }
-        .barAjote:hover {
-            color: #000;
-            background-color: #fff;
-            text-decoration: none;
-        }
     </style>
     <script>
-    document.title = 'Produits';
+    document.title = 'Data Base';
     </script>
 <div class="wrapper">
         <?php include 'menu.php';?>
@@ -57,7 +30,7 @@
 
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3"><strong>Produits</strong></h1>
+					<h1 class="h3 mb-3"><strong>Data Base</strong></h1>
                     <div class="row">
                         <div class="barRech">
                             <form action="">

@@ -30,7 +30,7 @@
         }
     </style>
     <script>
-    document.title = 'Statistiques';
+    document.title = 'Meuilleur Vente';
     </script>
 <div class="wrapper">
         <?php include 'menu.php';?>
@@ -81,17 +81,17 @@
                                                                 <td class="text-left">20 %</td>
                                                                 <td class="text-left">
                                                                     <div class="row p-2">
-                                                                        <p class="dot mx-1 " style="background-color:aquamarine;"></p>
-                                                                        <p class="dot mx-1 " style="background-color:red;"></p>
-                                                                        <p class="dot mx-1 " style="background-color:green;"></p>
-                                                                        <p class="dot mx-1 " style="background-color:black;"></p>
+                                                                        <p class="dot mx-1" style="background-color:aquamarine;"></p>
+                                                                        <p class="dot mx-1" style="background-color:red;"></p>
+                                                                        <p class="dot mx-1" style="background-color:green;"></p>
+                                                                        <p class="dot mx-1" style="background-color:black;"></p>
                                                                     </div>
 
                                                                 </td>
                                                                 <td class="text-left edit">
-                                                                        <a href=""><img src="img/icons/trash.png" width="15" height="20" alt=""></a>
-                                                                        <a href=""><img src="img/icons/edit.png" width="20" height="20" alt=""></a>
-                                                                        <a href=""><img src="img/icons/star.png" width="20" height="20" alt=""></a>
+                                                                    <a href=""><img src="img/icons/trash.png" width="15" height="20" alt=""></a>
+                                                                    <a href=""><img src="img/icons/edit.png" width="20"  height="20" alt=""></a>
+                                                                    <a href=""><img src="img/icons/star.png" width="20"  height="20" alt=""></a>
                                                                 </td>
 
                                                             </tr>
