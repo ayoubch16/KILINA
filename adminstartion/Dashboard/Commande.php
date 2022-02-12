@@ -44,10 +44,21 @@
             justify-content: start;
             align-items: center;
         }
+        .statusF{
+            background-color: #313233;
+            border-radius: 10px;
+            padding: 5px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
         .bardelai input[type="date"] {
                 background-color: #f6f6f6;
                 border: 1px solid  #d9d9d9;
                 width: 250px;
+                height: 40px;
                 border-radius: 10px;
                 padding: 5px;
                 margin: 5px;
@@ -56,6 +67,7 @@
                 background-color: #fcea01;
                 border: 1px solid  #fcea01;
                 width: 250px;
+                height: 40px;
                 border-radius: 10px;
                 padding: 5px;
                 margin: 5px;
@@ -76,6 +88,7 @@
             justify-content: end;
             align-items: center;
         }
+
     </style>
     <script>
     document.title = 'Commandes';
@@ -107,6 +120,7 @@
                                     <span class="statusL mx-2">Livrée</span> 
                                     <span class="statusA mx-2">Annuler</span>
                                     <span class="statusE mx-2">En cours</span> 
+                                    <span class="statusF"><img src="img/icons/filtericone.png" width="40" height="40" alt=""></span>
 
                             </div>
 

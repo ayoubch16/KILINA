@@ -90,6 +90,39 @@
         input[type="checkbox"].pointure9:checked+label {
                     color: #000;background-color: #eed9ff;
         }
+        .barRech  input[type="text"] {
+           border: none;
+            background-color: #fff;
+            width: 400px;
+            height: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 6px 44px -20px #000000;
+            margin-bottom: 20px;
+            padding-left: 20px;
+
+        }
+        .btnE {
+            background-color: #fcea01;
+            border-radius: 10px;
+            border: none;
+            height: 50px;
+            width: 100px;
+        }
+        .btnE:hover {
+            color: #fcea01;
+            background-color: #000;
+        }
+        .btnA {
+            background-color: #fff;
+            border: 1px solid #fffcdd;
+            border-radius: 10px;
+            color: #000;
+            height: 50px;
+            width: 100px;
+        }
+        .btnA:hover{
+            border-color:#000 ;
+        }
     </style>
     <script>
     document.title = 'Ajouter Produits';
@@ -100,12 +133,18 @@
 
 		<div class="main">
           <?php include 'Top.php';?>
-
+        <form action="">
 			<main class="content">
 				<div class="container-fluid p-0">
 					<h1 class="h3 mb-3"><strong>Ajouter Produits</strong></h1>
                     <div class="row">
-                        <div class="col"><input type="text" name="" id=""></div>
+                        <div class="col barRech">
+                            <input class="" type="text" name="Ref" readonly  value="JHJ5556"/>
+                        </div>
+                        <div class="col-4 row" style="display: flex;justify-content: end;align-items: center;margin-bottom: 20px;">
+                            <div class="col"><input class="btnE" type="submit" value="Enregistrer" /></div>
+                            <div class="col"><input class="btnA" type="reset" value="Annuler" /></div>
+                        </div>
                     </div>
 					
 						<div class="col-xl col-xxl ">
@@ -211,9 +250,9 @@
 
 				</div>
 			</main>
-
+        </form>
 		</div>
-	</div>
+</div>
 
 	<?php include 'script.php';?>
 
