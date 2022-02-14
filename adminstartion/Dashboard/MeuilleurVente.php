@@ -65,7 +65,7 @@
                                                                 <th class="text-left">Taille</th>
                                                                 <th class="text-left">Prix</th>
                                                                 <th class="text-left">Remis</th>
-                                                                <th class="text-left">Couleur</th>
+                                                                <!-- <th class="text-left">Couleur</th> -->
                                                                 <th class="text-left"></th>
                                                             </tr>
                                                         </thead>
@@ -79,18 +79,17 @@
                                                                 <td class="text-left">S.M.L.X.XXL</td>
                                                                 <td class="text-left">120 DH</td>
                                                                 <td class="text-left">20 %</td>
-                                                                <td class="text-left">
+                                                                <!-- <td class="text-left">
                                                                     <div class="row p-2">
                                                                         <p class="dot mx-1" style="background-color:aquamarine;"></p>
                                                                         <p class="dot mx-1" style="background-color:red;"></p>
                                                                         <p class="dot mx-1" style="background-color:green;"></p>
                                                                         <p class="dot mx-1" style="background-color:black;"></p>
                                                                     </div>
-
-                                                                </td>
+                                                                </td> -->
                                                                 <td class="text-left edit">
-                                                                    <a href=""><img src="img/icons/trash.png" width="15" height="20" alt=""></a>
-                                                                    <a href=""><img src="img/icons/edit.png" width="20"  height="20" alt=""></a>
+                                                                    <!-- <a href=""><img src="img/icons/trash.png" width="15" height="20" alt=""></a>
+                                                                    <a href=""><img src="img/icons/edit.png" width="20"  height="20" alt=""></a> -->
                                                                     <a href=""><img src="img/icons/star.png" width="20"  height="20" alt=""></a>
                                                                 </td>
 

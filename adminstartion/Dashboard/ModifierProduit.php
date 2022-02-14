@@ -99,7 +99,6 @@
             box-shadow: 0px 6px 44px -20px #000000;
             margin-bottom: 20px;
             padding-left: 20px;
-
         }
         .btnE {
             background-color: #fcea01;
@@ -164,7 +163,7 @@
         <form action="">
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3"><strong>Ajouter Produits</strong></h1>
+					<h1 class="h3 mb-3"><strong>Modifier Produits</strong></h1>
                     <div class="row">
                         <div class="col barRech">
                             <input class="" type="text" name="Ref" placeholder="Ref" />
@@ -216,7 +215,7 @@
 
                                                         <div class="row">
                                                             <div class="col-sm">
-                                                            <h5 class="m-2">Ajouter Pointure</h5>
+                                                                <h5 class="m-2">Ajouter Pointure</h5>
                                                                 <input type="checkbox" name="pointure" value="S" class="pointure pointure1" id="pointure1">
                                                                 <label for="pointure1">35-36</label>
                                                                 <input type="checkbox" name="pointure" value="M" class="pointure pointure2" id="pointure2">
@@ -251,7 +250,7 @@
                                                                 <label for="taille5">XXL</label> 
                                                             </div>
                                                             <div class="col-sm">
-                                                            <h5 class="m-2">Ajouter Taille</h5>
+                                                                <h5>Ajouter Taille</h5>
                                                                 <input type="checkbox" name="tailleS" value="Petite" class="taille taille1" id="taille6">
                                                                 <label for="taille6">Petite</label>
                                                                 <input type="checkbox" name="tailleS" value="Moyenne" class="taille taille1" id="taille7">
@@ -259,17 +258,12 @@
                                                                 <input type="checkbox" name="tailleS" value="Grande" class="taille taille1" id="taille8">
                                                                 <label for="taille8">Grande</label>
                                                             </div>
-
                                                         </div>
-
-
-                                                        
                                                     </div>
                                                     <div class="col-sm">
                                                         <div class="row mb-3">
                                                             <div class="col-sm">
                                                                 <h5 class="m-2">Genre :</h5>
-                                                                <!-- <input type="text" name="genre" id="" /> -->
                                                                 <select name="genre" id="">
                                                                     <option value="Femme">Femme</option>
                                                                     <option value="Homme">Homme</option>

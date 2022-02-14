@@ -76,19 +76,13 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </main>
-
         </div>
     </div>
 
     <?php include 'script.php';?>
 
 </body>
-
 </html>
 

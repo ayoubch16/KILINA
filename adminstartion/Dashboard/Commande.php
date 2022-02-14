@@ -143,6 +143,7 @@
                                                                 <th class="text-left">Prix</th>
                                                                 <th class="text-left">Status</th>
                                                                 <th class="text-left">Paiment</th>
+                                                                <th class="text-left"></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -159,6 +160,7 @@
                                                                     <span class="statusE">En cours</span>     -->
                                                                 </td>
                                                                 <td class="text-left">à la livraison</td>
+                                                                <td><a href=""><img src="img/icons/edit.png" width="20" height="20" alt=""></a></td>
                                                             </tr>
                                                         <?php } ?>
                                                         </tbody>
