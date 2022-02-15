@@ -21,8 +21,8 @@
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
-													<div class="col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
-														<img src="./img/icons/shopping.png"  alt="" style="width: 3rem;height: 3rem;" />
+													<div class="col-sm col-4  mt-0" style="display: flex;justify-content: center;align-items: center;">
+														<img src="./img/photos/cmdImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
 													<div class="col-auto">
                                                         <h6>Commandes</h6>
@@ -36,8 +36,8 @@
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
-													<div class="col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
-														<img src="./img/icons/shopping.png"  alt="" style="width: 3rem;height: 3rem;" />
+													<div class="col-sm col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
+														<img src="./img/photos/venteImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
 													<div class="col-auto">
                                                         <h6>Ventes</h6>
@@ -51,8 +51,8 @@
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
-													<div class="col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
-														<img src="./img/icons/shopping.png"  alt="" style="width: 3rem;height: 3rem;" />
+													<div class="col-sm col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
+														<img src="./img/photos/clientImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
 													<div class="col-auto">
                                                         <h6>Clients</h6>
@@ -66,8 +66,8 @@
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
-													<div class="col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
-														<img src="./img/icons/shopping.png"  alt="" style="width: 3rem;height: 3rem;" />
+													<div class="col-sm col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
+														<img src="./img/photos/prodImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
 													<div class="col-auto">
                                                         <h6>Produits</h6>
@@ -86,7 +86,7 @@
                                             <h5 class="card-title mb-0">Statistiques</h5>
                                         </div>
                                             <div class="align-self-center chart chart-lg">
-                                                <canvas id="chartjs-dashboard-bar"></canvas>
+												<canvas id="myChart" ></canvas>
                                             </div>
 										</div>
 									</div>
@@ -125,6 +125,54 @@
 	</div>
 
 	<?php include 'script.php';?>
+<script>
+	const ctx = document.getElementById('myChart').getContext('2d');
+	const myChart = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+			datasets: [{
+				data: [100, 120, 80, 60, 40, 30,200, 180, 160, 140, 120, 30],
+				backgroundColor: [
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',     
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF'
+				],
+				borderColor: [
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF',
+					'#9583FF'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		}
+	});
+</script>
 
 </body>
 

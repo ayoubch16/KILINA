@@ -36,7 +36,8 @@
 												<h5 class="card-title mb-0">Statistiques</h5>
 											</div>
 											<div class="chart chart-sm">
-												<canvas id="chartjs-doughnut"></canvas>
+												<!-- <canvas id="chartjs-doughnut"></canvas> -->
+                                                <canvas id="myChart" ></canvas>
 											</div>
 										</div>
 									</div>
@@ -82,6 +83,33 @@
     </div>
 
     <?php include 'script.php';?>
+<script>
+	const ctx = document.getElementById('myChart').getContext('2d');
+	const myChart = new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+			labels: ['Vendu', 'En stock'],
+			datasets: [{
+				data: [1586, 50],
+				backgroundColor: [
+					'#9583FF',
+					'#D8CECE'
+				],
+				borderColor: [
+					'#9583FF',
+					'#D8CECE'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+            animation :{
+                animateScale:true
+            }
+			
+		}
+	});
+</script>
 
 </body>
 </html>

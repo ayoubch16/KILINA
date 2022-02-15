@@ -21,73 +21,73 @@
             padding: 10px;
             resize: none;
         }
-        input[type="checkbox"].taille {
+        input[type="radio"].taille {
              display: none;
         }
-        input[type="checkbox"].taille+label {
+        input[type="radio"].taille+label {
                     text-align: center;
                     color: gray;
                     width: 50px;
                     height: 20px;
         }
-        input[type="checkbox"].taille+label:hover {
+        input[type="radio"].taille+label:hover {
                     background-color: #fffcdd;
                     cursor: pointer;
         }
-        input[type="checkbox"].taille1:checked+label {
+        input[type="radio"].taille1:checked+label {
                     color: #000;background-color: #fffcdd;
         }
-        input[type="checkbox"].taille2:checked+label {
+        input[type="radio"].taille2:checked+label {
                     color: #000;background-color: #fffcdd;
         }
-        input[type="checkbox"].taille3:checked+label {
+        input[type="radio"].taille3:checked+label {
                     color: #000;background-color: #fffcdd;
         }
-        input[type="checkbox"].taille4:checked+label {
+        input[type="radio"].taille4:checked+label {
                     color: #000;background-color: #fffcdd;
         }
-        input[type="checkbox"].taille5:checked+label {
+        input[type="radio"].taille5:checked+label {
                     color: #000;background-color: #fffcdd;
         }
 
-        input[type="checkbox"].pointure {
+        input[type="radio"].pointure {
              display: none;
         }
-        input[type="checkbox"].pointure+label {
+        input[type="radio"].pointure+label {
                     text-align: center;
                     color: gray;
                     width: 50px;
                     height: 20px;
         }
-        input[type="checkbox"].pointure+label:hover {
+        input[type="radio"].pointure+label:hover {
                     background-color: #eed9ff;
                     cursor: pointer;
         }
-        input[type="checkbox"].pointure1:checked+label {
+        input[type="radio"].pointure1:checked+label {
                     color: #000;background-color: #eed9ff;
         }
-        input[type="checkbox"].pointure2:checked+label {
+        input[type="radio"].pointure2:checked+label {
                     color: #000;background-color: #eed9ff;
         }
-        input[type="checkbox"].pointure3:checked+label {
+        input[type="radio"].pointure3:checked+label {
                     color: #000;background-color: #eed9ff;
         }
-        input[type="checkbox"].pointure4:checked+label {
+        input[type="radio"].pointure4:checked+label {
                     color: #000;background-color: #eed9ff;
         }
-        input[type="checkbox"].pointure5:checked+label {
+        input[type="radio"].pointure5:checked+label {
                     color: #000;background-color: #eed9ff;
         }
-        input[type="checkbox"].pointure6:checked+label {
+        input[type="radio"].pointure6:checked+label {
                     color: #000;background-color: #eed9ff;
         }
-        input[type="checkbox"].pointure7:checked+label {
+        input[type="radio"].pointure7:checked+label {
                     color: #000;background-color: #eed9ff;
         }
-        input[type="checkbox"].pointure8:checked+label {
+        input[type="radio"].pointure8:checked+label {
                     color: #000;background-color: #eed9ff;
         }
-        input[type="checkbox"].pointure9:checked+label {
+        input[type="radio"].pointure9:checked+label {
                     color: #000;background-color: #eed9ff;
         }
         .barRech  input[type="text"] {
@@ -150,6 +150,9 @@
             cursor: pointer;
             border: 2px dashed #7456e7;
         }
+        #chaussure,#vetement,#sac {
+            display: none;
+        }
 
     </style>
     <script>
@@ -161,7 +164,7 @@
 
 		<div class="main">
           <?php include 'Top.php';?>
-        <form action="">
+        <form action="ajoute.php">
 			<main class="content">
 				<div class="container-fluid p-0">
 					<h1 class="h3 mb-3"><strong>Ajouter Produits</strong></h1>
@@ -185,19 +188,39 @@
                                                         <div class="row mb-3">
                                                             <div class="col-sm">
                                                                 <h5 class="m-2">Catégorie :</h5>
-                                                                <select name="categorie" id="">
-                                                                    <option value="Djean">Djean</option>
-                                                                    <option value="Chemise">Chemise</option>
-                                                                    <option value="Robe">Robe</option>
-                                                                    <option value="Survette">Survette</option>
-                                                                    <option value="Manteaux">Manteaux</option>
-                                                                    <option value="Pantalon">Pantalon</option>
-                                                                    <option value="Chaussure">Chaussure</option>
-                                                                    <option value="Sac">Sac</option>
-                                                                    <option value="Accessoires">Accessoires</option>
-                                                                    <option value="Bodie">Bodie</option>
-                                                                    <option value="Jupe">Jupe</option>
+                                                                <select name="categorie" id="categorie">
+                                                                    <option class="choix3" value="Djean">Djean</option>
+                                                                    <option class="choix3" value="Chemise">Chemise</option>
+                                                                    <option class="choix3" value="Robe">Robe</option>
+                                                                    <option class="choix3" value="Survette">Survette</option>
+                                                                    <option class="choix3" value="Manteaux">Manteaux</option>
+                                                                    <option class="choix3" value="Pantalon">Pantalon</option>
+                                                                    <option id="choix1" value="Chaussure">Chaussure</option>
+                                                                    <option id="choix2" value="Sac">Sac</option>
+                                                                    <option class="choix3" value="Accessoires">Accessoires</option>
+                                                                    <option class="choix3" value="Bodie">Bodie</option>
+                                                                    <option class="choix3" value="Jupe">Jupe</option>
                                                                 </select>
+                                                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                                    <script>
+                                                                        $(document).ready(function(){
+                                                                        $("#choix1").click(function(){
+                                                                            $("#chaussure").show();
+                                                                            $("#vetement").hide();
+                                                                            $("#sac").hide();
+                                                                        });
+                                                                        $("#choix2").click(function(){
+                                                                            $("#chaussure").hide();
+                                                                            $("#vetement").hide();
+                                                                            $("#sac").show();
+                                                                        });
+                                                                        $(".choix3").click(function(){
+                                                                            $("#chaussure").hide();
+                                                                            $("#vetement").show();
+                                                                            $("#sac").hide();
+                                                                        });
+                                                                        });
+                                                                    </script>
                                                             </div>
                                                             <div class="col-sm">
                                                                 <h5 class="m-2">Prix :</h5>
@@ -210,66 +233,57 @@
                                                         </div>
                                                         <h5 class="m-2">Description :</h5>
                                                         <textarea class="txtinput" name="description" id=""  rows="7"></textarea>
-
-                                                        <h5 class="m-2">Ajouter Couleur :</h5>
-                                                        <input type="color" name="color">
-
                                                         <div class="row">
-                                                            <div class="col-sm">
-                                                            <h5 class="m-2">Ajouter Pointure</h5>
-                                                                <input type="checkbox" name="pointure" value="S" class="pointure pointure1" id="pointure1">
+                                                            <div id="chaussure" class="col-sm">
+                                                                <h5 class="m-2">Ajouter Pointure</h5>
+                                                                <input type="radio" name="taille" value="S" class="pointure pointure1" id="pointure1">
                                                                 <label for="pointure1">35-36</label>
-                                                                <input type="checkbox" name="pointure" value="M" class="pointure pointure2" id="pointure2">
+                                                                <input type="radio" name="taille" value="M" class="pointure pointure2" id="pointure2">
                                                                 <label for="pointure2">36-37</label>
-                                                                <input type="checkbox" name="pointure" value="L" class="pointure pointure3" id="pointure3">
+                                                                <input type="radio" name="taille" value="L" class="pointure pointure3" id="pointure3">
                                                                 <label for="pointure3">37-38</label> <br>
-                                                                <input type="checkbox" name="pointure" value="XL" class="pointure pointure4" id="pointure4">
+                                                                <input type="radio" name="taille" value="XL" class="pointure pointure4" id="pointure4">
                                                                 <label for="pointure4">38-39</label> 
-                                                                <input type="checkbox" name="pointure" value="XXL" class="pointure pointure5" id="pointure5">
+                                                                <input type="radio" name="taille" value="XXL" class="pointure pointure5" id="pointure5">
                                                                 <label for="pointure5">39-40</label> 
-                                                                <input type="checkbox" name="pointure" value="XXL" class="pointure pointure6" id="pointure6">
+                                                                <input type="radio" name="taille" value="XXL" class="pointure pointure6" id="pointure6">
                                                                 <label for="pointure6">40-41</label> <br>
-                                                                <input type="checkbox" name="pointure" value="XXL" class="pointure pointure7" id="pointure7">
+                                                                <input type="radio" name="taille" value="XXL" class="pointure pointure7" id="pointure7">
                                                                 <label for="pointure7">41-42</label> 
-                                                                <input type="checkbox" name="pointure" value="XXL" class="pointure pointure8" id="pointure8">
+                                                                <input type="radio" name="taille" value="XXL" class="pointure pointure8" id="pointure8">
                                                                 <label for="pointure8">42-43</label> 
-                                                                <input type="checkbox" name="pointure" value="XXL" class="pointure pointure9" id="pointure9">
+                                                                <input type="radio" name="taille" value="XXL" class="pointure pointure9" id="pointure9">
                                                                 <label for="pointure9">43-44</label> 
 
                                                             </div>
-                                                            <div class="col-sm">
-                                                            <h5 class="m-2">Ajouter Taille</h5>
-                                                                <input type="checkbox" name="taille" value="S" class="taille taille1" id="taille1">
+                                                            <div id="vetement" class="col-sm">
+                                                                <h5 class="m-2">Ajouter Taille</h5>
+                                                                <input type="radio" name="taille" value="S" class="taille taille1" id="taille1">
                                                                 <label for="taille1">S</label>
-                                                                <input type="checkbox" name="taille" value="M" class="taille taille2" id="taille2">
+                                                                <input type="radio" name="taille" value="M" class="taille taille2" id="taille2">
                                                                 <label for="taille2">L</label>
-                                                                <input type="checkbox" name="taille" value="L" class="taille taille3" id="taille3">
+                                                                <input type="radio" name="taille" value="L" class="taille taille3" id="taille3">
                                                                 <label for="taille3">M</label> <br>
-                                                                <input type="checkbox" name="taille" value="XL" class="taille taille4" id="taille4">
+                                                                <input type="radio" name="taille" value="XL" class="taille taille4" id="taille4">
                                                                 <label for="taille4">XL</label> 
-                                                                <input type="checkbox" name="taille" value="XXL" class="taille taille5" id="taille5">
+                                                                <input type="radio" name="taille" value="XXL" class="taille taille5" id="taille5">
                                                                 <label for="taille5">XXL</label> 
                                                             </div>
-                                                            <div class="col-sm">
-                                                            <h5 class="m-2">Ajouter Taille</h5>
-                                                                <input type="checkbox" name="tailleS" value="Petite" class="taille taille1" id="taille6">
+                                                            <div id="sac" class="col-sm">
+                                                                <h5 class="m-2">Ajouter Taille</h5>
+                                                                <input type="radio" name="taille" value="Petite" class="taille taille1" id="taille6">
                                                                 <label for="taille6">Petite</label>
-                                                                <input type="checkbox" name="tailleS" value="Moyenne" class="taille taille1" id="taille7">
+                                                                <input type="radio" name="taille" value="Moyenne" class="taille taille1" id="taille7">
                                                                 <label for="taille7">Moyenne</label>
-                                                                <input type="checkbox" name="tailleS" value="Grande" class="taille taille1" id="taille8">
+                                                                <input type="radio" name="taille" value="Grande" class="taille taille1" id="taille8">
                                                                 <label for="taille8">Grande</label>
                                                             </div>
-
                                                         </div>
-
-
-                                                        
                                                     </div>
                                                     <div class="col-sm">
                                                         <div class="row mb-3">
                                                             <div class="col-sm">
                                                                 <h5 class="m-2">Genre :</h5>
-                                                                <!-- <input type="text" name="genre" id="" /> -->
                                                                 <select name="genre" id="">
                                                                     <option value="Femme">Femme</option>
                                                                     <option value="Homme">Homme</option>
@@ -284,27 +298,27 @@
                                                         <h5 class="m-2">Image de produit :</h5>
                                                         <div class="row">
                                                             <div class="col-sm">
-                                                                    <input type="file" accept="image" name="img1" id="inputImg1">
+                                                                    <input type="file" onchange="loadFile1(event)" accept="image/*" name="img1" id="inputImg1">
                                                                     <label class="inputfile" for="inputImg1">
-                                                                        <img src="img/icons/upload.png" width="55" height="50" alt="">
+                                                                        <img src="img/icons/upload.png" id="output1" width="55" height="50" alt="">
                                                                     </label>
                                                             </div>
-                                                            <div class="col-sm-4" >
-                                                                <input type="file" accept="image" name="img2" id="inputImg2">
+                                                            <div class="col-sm-4">
+                                                                <input type="file" onchange="loadFile2(event)" accept="image/*" name="img2" id="inputImg2">
                                                                 <label class="mb-2 inputfile1" for="inputImg2">
-                                                                    <img src="img/icons/upload.png" width="35" height="30" alt="">
+                                                                    <img src="img/icons/upload.png" id="output2" width="35" height="30" alt="">
                                                                 </label>
-                                                                <input type="file" accept="image" name="img3" id="inputImg3">
+                                                                <input type="file" onchange="loadFile3(event)" accept="image/*" name="img3" id="inputImg3">
                                                                 <label class="mb-2 inputfile1" for="inputImg3">
-                                                                    <img src="img/icons/upload.png" width="35" height="30" alt="">
+                                                                    <img src="img/icons/upload.png" id="output3" width="35" height="30" alt="">
                                                                 </label>
-                                                                <input type="file" accept="image" name="img4" id="inputImg4">
+                                                                <input type="file" onchange="loadFile4(event)" accept="image/*" name="img4" id="inputImg4">
                                                                 <label class="mb-2 inputfile1" for="inputImg4">
-                                                                    <img src="img/icons/upload.png" width="35" height="30" alt="">
+                                                                    <img src="img/icons/upload.png" id="output4" width="35" height="30" alt="">
                                                                 </label>
-                                                                <input type="file" accept="image" name="img5" id="inputImg5">
+                                                                <input type="file" onchange="loadFile5(event)" accept="image/*" name="img5" id="inputImg5">
                                                                 <label class=" inputfile1" for="inputImg5">
-                                                                    <img src="img/icons/upload.png" width="35" height="30" alt="">
+                                                                    <img src="img/icons/upload.png" id="output5" width="35" height="30" alt="">
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -327,6 +341,43 @@
 </div>
 
 	<?php include 'script.php';?>
+
+<script>
+    var loadFile1 = function(event) {
+    var image = document.getElementById('output1');
+        image.style.width = "100%"; 
+        image.style.height = "100%"; 
+        image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+    var loadFile2 = function(event) {
+    var image = document.getElementById('output2');
+        image.style.width = "100%"; 
+        image.style.height = "100%"; 
+        image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+    var loadFile3 = function(event) {
+    var image = document.getElementById('output3');
+        image.style.width = "100%"; 
+        image.style.height = "100%"; 
+        image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+    var loadFile4 = function(event) {
+    var image = document.getElementById('output4');
+        image.style.width = "100%"; 
+        image.style.height = "100%"; 
+        image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+    var loadFile5 = function(event) {
+    var image = document.getElementById('output5');
+        image.style.width = "100%"; 
+        image.style.height = "100%"; 
+        image.src = URL.createObjectURL(event.target.files[0]);
+        };
+</script>
 
 
 
