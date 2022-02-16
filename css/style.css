@@ -202,7 +202,7 @@ p a:hover {
 }
 .listeproduit .cardproduit {
     width: 346px;
-    height: 461px;
+    height: 470px !important;
     text-align: center;
     position: relative;
 }
@@ -212,7 +212,7 @@ p a:hover {
 }
 .listeproduit .cardproduit .image img {
     width: 346px;
-    height: 361px;
+    height: 430px !important;
 }
 .listeproduit .cardproduit .nouveau {
     background-color: #1ebe0c;
@@ -233,11 +233,12 @@ p a:hover {
     right: 10px;
     top: 0;
     z-index: 3;   
-   display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 15px;
     font-weight: bold;
+    border-radius: 0px 0px 0px 32px;
 }
 
 

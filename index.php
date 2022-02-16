@@ -6,63 +6,64 @@ $c=$_GET['c'];
 <body>
     <style>
 
-    input[type="radio"].demo {
-        display: none;
-    }
+        input[type="radio"].demo {
+            display: none;
+        }
 
-    input[type="radio"].demo+label {
-        position: relative;
-        padding-left: 1.3rem;
-    }
+        input[type="radio"].demo+label {
+            position: relative;
+            padding-left: 1.3rem;
+        }
 
-    input[type="radio"].demo+label::before,
-    input[type="radio"].demo+label::after {
-        display: block;
-        position: absolute;
-        box-sizing: border-box;
-        bottom: 0;
-        left: 0;
-        content: '';
-        width: 1rem;
-        height: 1rem;
-        border-radius: 1rem;
-    }
+        input[type="radio"].demo+label::before,
+        input[type="radio"].demo+label::after {
+            display: block;
+            position: absolute;
+            box-sizing: border-box;
+            bottom: 0;
+            left: 0;
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            border-radius: 1rem;
+        }
 
-    input[type="radio"].demo1+label::before {
-        border: 2px solid #640010;
-        background-color: #fff;
-    }
+        input[type="radio"].demo1+label::before {
+            border: 2px solid #640010;
+            background-color: #fff;
+        }
 
-    input[type="radio"].demo1:checked+label::after {
-        background-color: #640010;
-    }
+        input[type="radio"].demo1:checked+label::after {
+            background-color: #640010;
+        }
 
-    input[type="radio"].demo2+label::before {
-        border: 2px solid #D5CCC7;
-        background-color: #fff;
-        color: #fff;
-    }
+        input[type="radio"].demo2+label::before {
+            border: 2px solid #D5CCC7;
+            background-color: #fff;
+            color: #fff;
+        }
 
-    input[type="radio"].demo2:checked+label::after {
-        background-color: #D5CCC7;
-    }
+        input[type="radio"].demo2:checked+label::after {
+            background-color: #D5CCC7;
+        }
 
-    input[type="radio"].demo3+label::before {
-        border: 2px solid #110E0F;
-        background-color: #fff;
-    }
+        input[type="radio"].demo3+label::before {
+            border: 2px solid #110E0F;
+            background-color: #fff;
+        }
 
-    input[type="radio"].demo3:checked+label::after {
-        background-color: #110E0F;
-    }
+        input[type="radio"].demo3:checked+label::after {
+            background-color: #110E0F;
+        }
 
-    #pro2,
-    #pro3 {
-        display: none;
-    }
-     /* **********Taille********* */
+        #pro2,
+        #pro3 {
+            display: none;
+        }
+        /* **********Taille********* */
    
     </style>
+
     <?php include 'navbar.php';?>
     <div id="page">
          <!-- navbar -->
@@ -75,31 +76,34 @@ $c=$_GET['c'];
             <div class="menu row">
                 <ul>
                     <li><a href="">Femme</a></li>
-                    <li><a href="">Homme</a></li>
-                    <li><a href="">Enfant</a></li>
+                    <li style="color:gray">Homme</li>
+                    <li style="color:gray">Enfant</li>
                 </ul>
-                <ul>
+                <!-- <ul>
                     <li><a href="">S’inscrire</a></li> |
                     <li><a href="">Recturment</a></li> |
                     <li><a href="">Contact</a></li>
-                </ul>
+                </ul> -->
             </div>
             <div id="pro1" class="row">
+                    <?php 
+                            $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 1";
+                            $resultc = $cnx->query($sqlc);
+                            while ($rowc = $resultc->fetch_assoc()) {
+                    ?>
                 <div class="detailproduit col">
                     <h1>NEW</h1>
                     <h3>COLLECTION 1</h3>
-                    <p>Sac A Main Femme Fashion Elegance Chic Vernis
-                        Monogramme Luxury
-                    </p>
+                    <p><?php echo $rowc['titre'];?></p>
                     <div class="row ml-1">
                         <div class="mx-4">
                             <p>Prix</p>
-                            <h6 style="color:#000">230 dh</h6>
+                            <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
                         </div>
                         <div class="mx-4">
                             <p>Coleur</p>
                             <p>
-                                <input type="color" name="" id="">
+                                <!-- <input type="color" name="" id=""> -->
                                 <!-- <input type="radio" name="demo" class="demo demo1" id="demo1">
                                 <label for="demo1">&nbsp;</label>
                                 <input type="radio" name="demo" class="demo demo2" id="demo2">
@@ -112,11 +116,12 @@ $c=$_GET['c'];
                         <div class="mx-4">
                             <p>Taille</p>
                             <p style="color:#000">
-                                <a href="">S</a>
+                                <a href=""><?php echo $rowc['taille'];?></a>
+                                <!-- <a href="">S</a>
                                 <a href="">M</a>
                                 <a href="">L</a>
                                 <a href="">XL</a>
-                                <a href="">XXL</a>
+                                <a href="">XXL</a> -->
                             </p>
                         </div>
                     </div>
@@ -125,9 +130,11 @@ $c=$_GET['c'];
                         <img src="image/likerouge.png" />
                     </div>
                 </div>
+                
                 <div class=" col">
-                    <img src="image/newproduit.png" />
+                    <img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
                 </div>
+                <?php } ?>
             </div>
             <div id="pro2" class="row">
                 <div class="detailproduit col">
@@ -276,20 +283,34 @@ $c=$_GET['c'];
 
         <!-- listeproduit -->
         <div class="listeproduit mt-4 row">
+            <?php 
+            $sql="SELECT * FROM `produits` ORDER BY `date` DESC";
+            $result = $cnx->query($sql);
+            while ($row = $result->fetch_assoc()) {
+               
+                    $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
+                
+                ?>
             <div class="cardproduit m-3">
                 <div>
                     <span class="nouveau">Nouveautés</span>
-                    <span class="solde">-40%</span>
+                    <?php  if($row['remis']!= 0){?>
+                    <span class="solde">-<?php echo $row['remis'];?>%</span>
+                    <?php } ?>
                     <div class="image">
-                        <img src="image/pontalon.jpg" alt="" />
+                        <a href="product-details.php?id=<?php echo $row['id'];?>"><img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>" alt="" /></a>
                     </div>
                 </div>
                 <div class="titre text-left">
-                    Pantalon ample à cordon
+                    <?php echo strtoupper($row['titre']);?>
                 </div>
                 <div class="info row mx-1">
                     <div class="col text-left">
-                        <span><del>138.00 DH</del></span><span class="nvprix">99.00 DH</span>
+                    <?php  if($row['remis']!= 0){?>
+                        <span><del><?php echo $row['prix']; ?> DH</del></span><span class="nvprix"><?php echo $nvprix?> DH</span>
+                    <?php }else{?>    
+                        <span><?php echo $row['prix']; ?> DH</span>
+                    <?php } ?>
                     </div>
                     <div class="col">
                         <input name="colorp" type="radio">
@@ -301,114 +322,9 @@ $c=$_GET['c'];
                     </div>
                 </div>
             </div>
+            <?php }  ?>
 
-            <div class="cardproduit m-3">
-                <div class="image">
-                    <img src="image/pontalon.jpg" alt="" />
-                </div>
-                <div class="titre text-left">
-                    Pantalon ample à cordon
-                </div>
-                <div class="info row mx-1">
-                    <div class="col text-left">
-                        <span>138.00 DH</span><span class="nvprix">99.00 DH</span>
-                    </div>
-                    <div class="col">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                    </div>
-                    <div class="">
-                        <a href=""><img src="image/likerouge.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="cardproduit m-3">
-                <div class="image">
-                    <img src="image/pontalon.jpg" alt="" />
-                </div>
-                <div class="titre text-left">
-                    Pantalon ample à cordon
-                </div>
-                <div class="info row mx-1">
-                    <div class="col text-left">
-                        <span>138.00 DH</span><span class="nvprix">99.00 DH</span>
-                    </div>
-                    <div class="col">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                    </div>
-                    <div class="">
-                        <a href=""><img src="image/likerouge.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cardproduit m-3">
-                <div class="image">
-                    <img src="image/pontalon.jpg" alt="" />
-                </div>
-                <div class="titre text-left">
-                    Pantalon ample à cordon
-                </div>
-                <div class="info row mx-1">
-                    <div class="col text-left">
-                        <span>138.00 DH</span><span class="nvprix">99.00 DH</span>
-                    </div>
-                    <div class="col">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                    </div>
-                    <div class="">
-                        <a href=""><img src="image/likerouge.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="cardproduit m-3">
-                <div class="image">
-                    <img src="image/pontalon.jpg" alt="" />
-                </div>
-                <div class="titre text-left">
-                    Pantalon ample à cordon
-                </div>
-                <div class="info row mx-1">
-                    <div class="col text-left">
-                        <span>138.00 DH</span><span class="nvprix">99.00 DH</span>
-                    </div>
-                    <div class="col">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                    </div>
-                    <div class="">
-                        <a href=""><img src="image/likerouge.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="cardproduit m-3">
-                <div class="image">
-                    <img src="image/pontalon.jpg" alt="" />
-                </div>
-                <div class="titre text-left">
-                    Pantalon ample à cordon
-                </div>
-                <div class="info row mx-1">
-                    <div class="col text-left">
-                        <span>138.00 DH</span><span class="nvprix">99.00 DH</span>
-                    </div>
-                    <div class="col">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                    </div>
-                    <div class="">
-                        <a href=""><img src="image/likerouge.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
 
         </div>
 

@@ -36,13 +36,12 @@
 												<h5 class="card-title mb-0">Statistiques</h5>
 											</div>
 											<div class="chart chart-sm">
-												<!-- <canvas id="chartjs-doughnut"></canvas> -->
                                                 <canvas id="myChart" ></canvas>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="w-100 col-sm">
+								<!-- <div class="w-100 col-sm">
 									<div class="col-sm">
 										<div class="card flex-fill w-100">
 											<div class="card-body py-3">
@@ -51,30 +50,25 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
                         </div>
 
                         <div class="col-xl-4 col-xxl-7">
                             <h5 class="card-title mb-3">Produits Similaire</h5>
+                            <?php $sql="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 4";
+                                       $result = $cnx->query($sql);
+                                       while ($row = $result->fetch_assoc()) {
+                            ?>
+                                                           
                             <div class="card flex-fill w-100">
                                 <div class="card-body py-3">
-                                    <span style="position: absolute; top: 5px;left: 5px;">JK457R</span>
-                                    <img src="img/photos/produitSimilaire.png" width="200" height="200" alt="">
+                                    <span style="position: absolute; top: 5px;left: 5px;"><?php echo $row['Ref']?></span>
+                                    <img style="width: 100%;" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>"  alt="">
                                 </div>
                             </div>
-                            <div class="card flex-fill w-100">
-                                <div class="card-body py-3">
-                                    <span style="position: absolute; top: 5px;left: 5px;">JK457R</span>
-                                    <img src="img/photos/produitSimilaire.png" width="200" height="200" alt="">
-                                </div>
-                            </div>
-                            <div class="card flex-fill w-100">
-                                <div class="card-body py-3">
-                                    <span style="position: absolute; top: 5px;left: 5px;">JK457R</span>
-                                    <img src="img/photos/produitSimilaire.png" width="200" height="200" alt="">
-                                </div>
-                            </div>
+                            <?php } ?>
+
                         </div>
                     </div>
                 </div>

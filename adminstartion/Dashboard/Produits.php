@@ -1,4 +1,7 @@
-<?php include 'header.php';?>
+<?php   include 'db-conn.php';
+        include 'header.php';
+?>
+
 <body>
     <style>
         .dot {
@@ -85,30 +88,26 @@
                                                                 <th class="text-left">Taille</th>
                                                                 <th class="text-left">Prix</th>
                                                                 <th class="text-left">Remis</th>
-                                                                <!-- <th class="text-left">Couleur</th> -->
+                                                                
                                                                 <th class="text-left"></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <?php for ($x = 0; $x <= 20; $x++) {?>
+                                                        <?php $sql="SELECT * FROM `produits` ORDER BY `date` DESC ";
+                                                         $result = $cnx->query($sql);
+                                                         while ($row = $result->fetch_assoc()) {
+                                                       ?>
                                                             <tr>
-                                                                <td class="text-left">PN15D5D4</td>
-                                                                <td class="text-left">jean bleu</td>
-                                                                <td class="text-left">1252</td>
-                                                                <td class="text-left">S.M.L.X.XXL</td>
-                                                                <td class="text-left">120 DH</td>
-                                                                <td class="text-left">20 %</td>
-                                                                <!-- <td class="text-left">
-                                                                    <div class="row p-2">
-                                                                        <p class="dot mx-1 " style="background-color:aquamarine;"></p>
-                                                                        <p class="dot mx-1 " style="background-color:red;"></p>
-                                                                        <p class="dot mx-1 " style="background-color:green;"></p>
-                                                                        <p class="dot mx-1 " style="background-color:black;"></p>
-                                                                    </div>
-                                                                </td> -->
+                                                                <td class="text-left"><?php echo $row['Ref'];?></td>
+                                                                <td class="text-left"><?php echo $row['description'];?></td>
+                                                                <td class="text-left"><?php echo $row['quantite'];?></td>
+                                                                <td class="text-left"><?php echo $row['taille'];?></td>
+                                                                <td class="text-left"><?php echo $row['prix'];?></td>
+                                                                <td class="text-left"><?php echo $row['remis'];?></td>
+
                                                                 <td class="text-left edit">
                                                                         <a href=""><img src="img/icons/trash.png" width="15" height="20" alt=""></a>
-                                                                        <a href="ModifierProduit.php?id=12"><img src="img/icons/edit.png" width="20" height="20" alt=""></a>
+                                                                        <a href="ModifierProduit.php?id=<?php echo $row['id'];?>"><img src="img/icons/edit.png" width="20" height="20" alt=""></a>
                                                                         <a href=""><img src="img/icons/star.png" width="20" height="20" alt=""></a>
                                                                 </td>
 
