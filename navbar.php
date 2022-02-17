@@ -150,9 +150,10 @@
         <div class="divleft">
                 <a href="favor.php"><img src="image/like.png" /><span class="badge"> </span> </a>
                 <a href="panier.php"><img src="image/panier.png"/><span class="badge"> </span> </a>
-                <a class="mx-1" href="">EN</a>|
+                <!-- <a class="mx-1" href="">EN</a>|
                 <a class="mx-1" href="">العربية</a>|
-                <a class="mx-1" href="">FR</a>
+                <a class="mx-1" href="">FR</a> -->
+                <a href="connexion.php"></a>
            
         </div>
     </div>

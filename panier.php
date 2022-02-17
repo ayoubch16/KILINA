@@ -162,7 +162,7 @@
                             </div>
                             <div class="my-3">
                                 <p style="font-size: 20px;">Prix :</p>
-                                <h5 style="font-size: 37px;">75.00 DH</h5>
+                                <h5 id="prix1" style="font-size: 37px;">75.00 DH</h5>
                             </div>
                             <div class="flex-item mx-2"><button class="btnP rounded">SHOP NOW</button></div>
                         </div>
@@ -193,7 +193,7 @@
                             </div>
                             <div class="my-3">
                                 <p style="font-size: 20px;">Prix :</p>
-                                <h5 style="font-size: 37px;">75.00 DH</h5>
+                                <h5 id="prix1" style="font-size: 37px;">75.00 DH</h5>
                             </div>
                             <div class="flex-item mx-2"><button class="btnP rounded">SHOP NOW</button></div>
                         </div>
@@ -300,6 +300,9 @@
         </div>
     </form>
 </div> -->
+<script>
+    
+</script>
     
    
 

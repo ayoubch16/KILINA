@@ -139,6 +139,7 @@
                                                                 <th class="text-left">Commandes</th>
                                                                 <th class="text-left">Clients</th>
                                                                 <th class="text-left">Article</th>
+                                                                <th class="text-left">Ville</th>
                                                                 <th class="text-left">Date</th>
                                                                 <th class="text-left">Prix</th>
                                                                 <th class="text-left">Status</th>
@@ -152,6 +153,7 @@
                                                                 <td class="text-left">54585AR</td>
                                                                 <td class="text-left">Mouad SABER</td>
                                                                 <td class="text-left">T-Shirt</td>
+                                                                <td class="text-left">Rabat</td>
                                                                 <td class="text-left">09/02/2020</td>
                                                                 <td class="text-left">292</td>
                                                                 <td class="text-left">

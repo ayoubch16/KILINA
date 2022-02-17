@@ -61,6 +61,20 @@ $c=$_GET['c'];
             display: none;
         }
         /* **********Taille********* */
+        .carousel-indicators li {
+            background-color: #EDCA51 !important;
+        }
+
+        #carouselExampleIndicators {
+            height: 500px;
+            overflow: hidden;
+        }
+        .imgGrande {
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
    
     </style>
 
@@ -85,145 +99,110 @@ $c=$_GET['c'];
                     <li><a href="">Contact</a></li>
                 </ul> -->
             </div>
-            <div id="pro1" class="row">
-                    <?php 
-                            $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 1";
-                            $resultc = $cnx->query($sqlc);
-                            while ($rowc = $resultc->fetch_assoc()) {
-                    ?>
-                <div class="detailproduit col">
-                    <h1>NEW</h1>
-                    <h3>COLLECTION 1</h3>
-                    <p><?php echo $rowc['titre'];?></p>
-                    <div class="row ml-1">
-                        <div class="mx-4">
-                            <p>Prix</p>
-                            <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
-                        </div>
-                        <div class="mx-4">
-                            <p>Coleur</p>
-                            <p>
-                                <!-- <input type="color" name="" id=""> -->
-                                <!-- <input type="radio" name="demo" class="demo demo1" id="demo1">
-                                <label for="demo1">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo2" id="demo2">
-                                <label for="demo2">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo3" id="demo3">
-                                <label for="demo3">&nbsp;</label> -->
 
-                            </p>
-                        </div>
-                        <div class="mx-4">
-                            <p>Taille</p>
-                            <p style="color:#000">
-                                <a href=""><?php echo $rowc['taille'];?></a>
-                                <!-- <a href="">S</a>
-                                <a href="">M</a>
-                                <a href="">L</a>
-                                <a href="">XL</a>
-                                <a href="">XXL</a> -->
-                            </p>
-                        </div>
-                    </div>
-                    <div class=" shop m-4">
-                        <a class="px-5 mr-3" href="">SHOP NOW</a>
-                        <img src="image/likerouge.png" />
-                    </div>
-                </div>
-                
-                <div class=" col">
-                    <img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
-                </div>
-                <?php } ?>
-            </div>
-            <div id="pro2" class="row">
-                <div class="detailproduit col">
-                    <h1>NEW</h1>
-                    <h3>COLLECTION 2</h3>
-                    <p>Sac A Main Femme Fashion Elegance Chic Vernis
-                        Monogramme Luxury
-                    </p>
-                    <div class="row ml-1">
-                        <div class="mx-4">
-                            <p>Prix</p>
-                            <h6 style="color:#000">230 dh</h6>
-                        </div>
-                        <div class="mx-4">
-                            <p>Coleur</p>
-                            <p>
-                                <input type="radio" name="demo" class="demo demo1" id="demo1">
-                                <label for="demo1">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo2" id="demo2">
-                                <label for="demo2">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo3" id="demo3">
-                                <label for="demo3">&nbsp;</label>
+            <!-- test Slider -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <?php 
+                                $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 1";
+                                $resultc = $cnx->query($sqlc);
+                                while ($rowc = $resultc->fetch_assoc()) {
+                            ?>
+                            <div class="carousel-item active">
+                              <div class="row px-5">
+                                <div class="detailproduit col-sm">
+                                    <h1>NEW</h1>
+                                    <h3>COLLECTION 1</h3>
+                                    <p><?php echo $rowc['titre'];?></p>
+                                    <div class="row ml-1">
+                                        <div class="mx-4">
+                                            <p>Prix</p>
+                                            <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
+                                        </div>
+                                        <div class="mx-4">
+                                            <p>Coleur</p>
 
-                            </p>
-                        </div>
-                        <div class="mx-4">
-                            <p>Taille</p>
-                            <p style="color:#000">
-                                <a href="">S</a>
-                                <a href="">M</a>
-                                <a href="">L</a>
-                                <a href="">XL</a>
-                                <a href="">XXL</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class=" shop m-4">
-                        <a class="px-5 mr-3" href="">SHOP NOW</a>
-                        <img src="image/likerouge.png" />
-                    </div>
-                </div>
-                <div class=" col">
-                    <img src="image/newproduit.png" />
-                </div>
-            </div>
-            <div id="pro3" class="row">
-                <div class="detailproduit col">
-                    <h1>NEW</h1>
-                    <h3>COLLECTION 3</h3>
-                    <p>Sac A Main Femme Fashion Elegance Chic Vernis
-                        Monogramme Luxury
-                    </p>
-                    <div class="row ml-1">
-                        <div class="mx-4">
-                            <p>Prix</p>
-                            <h6 style="color:#000">230 dh</h6>
-                        </div>
-                        <div class="mx-4">
-                            <p>Coleur</p>
-                            <p>
-                                <input type="radio" name="demo" class="demo demo1" id="demo1">
-                                <label for="demo1">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo2" id="demo2">
-                                <label for="demo2">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo3" id="demo3">
-                                <label for="demo3">&nbsp;</label>
+                                        </div>
+                                        <div class="mx-4">
+                                            <p>Taille</p>
+                                            <p style="color:#000">
+                                                <a href=""><?php echo $rowc['taille'];?></a>
+                                                <!-- <a href="">S</a>
+                                                <a href="">M</a>
+                                                <a href="">L</a>
+                                                <a href="">XL</a>
+                                                <a href="">XXL</a> -->
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class=" shop m-4">
+                                        <a class="px-5 mr-3" href="">SHOP NOW</a>
+                                        <img src="image/likerouge.png" />
+                                    </div>
+                                </div>
+                                <div class="imgGrande col-sm">
+                                    <img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
+                                </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+                            <?php 
+                                $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 2,2";
+                                $resultc = $cnx->query($sqlc);
+                                while ($rowc = $resultc->fetch_assoc()) {
+                            ?>
+                            <div class="carousel-item ">
+                              <div class="row px-5">
+                                <div class="detailproduit col-sm">
+                                    <h1>NEW</h1>
+                                    <h3>COLLECTION 1</h3>
+                                    <p><?php echo $rowc['titre'];?></p>
+                                    <div class="row ml-1">
+                                        <div class="mx-4">
+                                            <p>Prix</p>
+                                            <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
+                                        </div>
+                                        <div class="mx-4">
+                                            <p>Coleur</p>
 
-                            </p>
+                                        </div>
+                                        <div class="mx-4">
+                                            <p>Taille</p>
+                                            <p style="color:#000">
+                                                <a href=""><?php echo $rowc['taille'];?></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class=" shop m-4">
+                                        <a class="px-5 mr-3" href="">SHOP NOW</a>
+                                        <img src="image/likerouge.png" />
+                                    </div>
+                                </div>
+                                <div class="imgGrande col-sm">
+                                    <img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
+                                </div>
+                                </div>
+                            </div>
+                            <?php } ?>
+
                         </div>
-                        <div class="mx-4">
-                            <p>Taille</p>
-                            <p style="color:#000">
-                                <a href="">S</a>
-                                <a href="">M</a>
-                                <a href="">L</a>
-                                <a href="">XL</a>
-                                <a href="">XXL</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div class=" shop m-4">
-                        <a class="px-5 mr-3" href="">SHOP NOW</a>
-                        <img src="image/likerouge.png" />
-                    </div>
-                </div>
-                <div class=" col">
-                    <img src="image/newproduit.png" />
-                </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
             </div>
+
+            <!-- test Slider -->
+
         </div>
 
         <h1 class="my-3 title">Nos Produits</h1>
@@ -289,11 +268,22 @@ $c=$_GET['c'];
             while ($row = $result->fetch_assoc()) {
                
                     $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
+                    $date = date_create($row['date']);
+                    $date1=date_format($date, 'Y-m-d');
+                    $date2 = date("Y-m-d");
+                    $diff = abs(strtotime( date("Y-m-d")) - strtotime($date1));
+                    $years = floor($diff / (365*60*60*24));
+                    $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+                    $delai = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                   
+
                 
                 ?>
             <div class="cardproduit m-3">
                 <div>
-                    <span class="nouveau">Nouveautés</span>
+                    <?php if($delai<7){ ?>
+                        <span class="nouveau">Nouveautés</span>
+                    <?php } ?>
                     <?php  if($row['remis']!= 0){?>
                     <span class="solde">-<?php echo $row['remis'];?>%</span>
                     <?php } ?>
@@ -471,6 +461,9 @@ $c=$_GET['c'];
                 document.getElementById('page').style.filter="blur(0) grayscale(0)";
             }
         </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 
