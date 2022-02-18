@@ -46,57 +46,53 @@
                 }
 
                 input[type="radio"].color {
-        display: none;
-    }
+                    display: none;
+                }
+                input[type="radio"].color+label {
+                    position: relative;
+                    padding-left: 1.3rem;
+                }
 
-    input[type="radio"].color+label {
-        position: relative;
-        padding-left: 1.3rem;
-    }
+                input[type="radio"].color+label::before,
+                input[type="radio"].color+label::after {
+                    display: block;
+                    position: absolute;
+                    box-sizing: border-box;
+                    bottom: 0;
+                    left: 0;
+                    content: '';
+                    width: 1rem;
+                    height: 1rem;
+                    border-radius: 1rem;
+                }
 
-    input[type="radio"].color+label::before,
-    input[type="radio"].color+label::after {
-        display: block;
-        position: absolute;
-        box-sizing: border-box;
-        bottom: 0;
-        left: 0;
-        content: '';
-        width: 1rem;
-        height: 1rem;
-        border-radius: 1rem;
-    }
+                input[type="radio"].color1+label::before {
+                    border: 2px solid #640010;
+                    background-color: #fff;
+                }
 
-    input[type="radio"].color1+label::before {
-        border: 2px solid #640010;
-        background-color: #fff;
-    }
+                input[type="radio"].color1:checked+label::after {
+                    background-color: #640010;
+                }
 
-    input[type="radio"].color1:checked+label::after {
-        background-color: #640010;
-    }
+                input[type="radio"].color2+label::before {
+                    border: 2px solid #D5CCC7;
+                    background-color: #fff;
+                    color: #fff;
+                }
 
-    input[type="radio"].color2+label::before {
-        border: 2px solid #D5CCC7;
-        background-color: #fff;
-        color: #fff;
-    }
+                input[type="radio"].color2:checked+label::after {
+                    background-color: #D5CCC7;
+                }
 
-    input[type="radio"].color2:checked+label::after {
-        background-color: #D5CCC7;
-    }
+                input[type="radio"].color3+label::before {
+                    border: 2px solid #110E0F;
+                    background-color: #fff;
+                }
 
-    input[type="radio"].color3+label::before {
-        border: 2px solid #110E0F;
-        background-color: #fff;
-    }
-
-    input[type="radio"].color3:checked+label::after {
-        background-color: #110E0F;
-    }
-
-
-
+                input[type="radio"].color3:checked+label::after {
+                    background-color: #110E0F;
+                }
                         .parent {
                             position: fixed;
                             top: 230px;
@@ -127,11 +123,19 @@
                             .div5 { grid-area: 5 / 1 / 6 / 2;
                                     text-align: center;
                             } 
-  </style><!-- reduction -->
+                    .compte:hover {
+                            text-decoration: none;
+                            color: #000;
+                    }
+  </style>
+  <!-- reduction -->
 <div class="reduction ">
         <p>Jusqu'à - 50 % de réduction</p>
 </div>
-
+<?php
+session_start();
+echo 'test'.isset($_SESSION ['id']);
+?>
 
 <div class="parent">
     <div class="div1 mb-4 pb-3"> <p>Follow us on</p> </div>
@@ -153,7 +157,11 @@
                 <!-- <a class="mx-1" href="">EN</a>|
                 <a class="mx-1" href="">العربية</a>|
                 <a class="mx-1" href="">FR</a> -->
-                <a href="connexion.php"></a>
+                <?php if($_SESSION["Reff"] != null) { ?>
+                <a class="compte" href=""><img src="image/icone/utilisateur.png" width="20" height="20" alt="">Ayoub CH</a>
+                <?php } else {?>
+                <a class="compte" href="connexion.php"><img src="image/icone/utilisateur.png" width="20" height="20" alt="">Compte</a>
+                <?php } ?>
            
         </div>
     </div>
@@ -210,7 +218,7 @@
 
                 </div>
             </form>
-        </div>
+</div>
 
         <script>
             function filter(){

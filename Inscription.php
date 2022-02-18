@@ -112,7 +112,7 @@
             -ms-flex-item-align: auto;
             align-self: auto;
             }
-        input[type="text"],input[type="password"],input[type="tele"],input[type="email"]{
+        input[type="text"],input[type="password"],input[type="tele"],input[type="email"],textarea {
             width: 300px;
             height: 40px;
             border-radius: 10px;
@@ -128,7 +128,6 @@
     <div id="panier1" class="flex-container">
         <div class="flex-item my-2"> <h1>Inscription</h1></div>
         <div id="infoPanier" class="bg-white">
-                
                     <div class="row">
                         <div class="col-sm text-left mx-2">
                             <p style="font-size: 15px;">Nom :</p>
@@ -136,6 +135,9 @@
 
                             <p style="font-size: 15px;">Tele :</p>
                             <input class="text-center" type="tele" name="tele">
+
+                            <p style="font-size: 15px;">Ville :</p>
+                            <input class="text-center" type="text" name="ville">
 
                             <p style="font-size: 15px;">Mot de passe :</p>
                             <input id="password" type="password" name="mdp" onkeyup='check();'>
@@ -151,15 +153,14 @@
                             <p style="font-size: 15px;">Adresse Email :</p>
                             <input class="text-center" type="email" name="email">
 
-                            <p style="font-size: 15px;">Ville :</p>
-                            <input class="text-center" type="text" name="ville">
-
+                            <p style="font-size: 15px;">Adresse :</p>
+                            <textarea style="height: 210px;resize: none;" name="adresse" ></textarea>
                         </div>
                     </div>
         </div> 
         <div class="flex-item my-2 row">
             <input class="btnP rounded" type="submit"  value="Inscrire" />
-            <button class="btnP1 rounded">Annuler</button>
+            <input class="btnP1 rounded" type="reset"  value="Inscrire" />
         </div>
     </div>
     </form>

@@ -50,21 +50,24 @@
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
+                                                                <th class="text-left">Reff</th>
                                                                 <th class="text-left">Clients</th>
-                                                                <th class="text-left">Mote passe</th>
                                                                 <th class="text-left">Tele</th>
                                                                 <th class="text-left">Ville</th>
                                                                 <th class="text-left">Email</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <?php for ($x = 0; $x <= 20; $x++) {?>
+                                                        <?php $sql="SELECT * FROM `clients` ";
+                                                         $result = $cnx->query($sql);
+                                                         while ($row = $result->fetch_assoc()) {
+                                                       ?>
                                                             <tr>
-                                                                <td class="text-left">Mouad SABER</td>
-                                                                <td class="text-left">*****</td>
-                                                                <td class="text-left">0611223344</td>
-                                                                <td class="text-left">SALE</td>
-                                                                <td class="text-left">MouadSaber@gmail.com</td>
+                                                                <td class="text-left"> <?php echo $row['Reff'];?></td>
+                                                                <td class="text-left"><?php echo $row['prenom'];?> <?php echo $row['nom'];?></td>
+                                                                <td class="text-left"><?php echo $row['tele'];?></td>
+                                                                <td class="text-left"><?php echo $row['ville'];?></td>
+                                                                <td class="text-left"><?php echo $row['email'];?></td>
                                                             </tr>
                                                         <?php } ?>
                                                         </tbody>

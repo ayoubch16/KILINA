@@ -2,7 +2,7 @@
 <?php include 'navbar.php';?>
 <body>
     <script>
-        document.title = 'Inscription ';
+        document.title = 'Connexion ';
     </script>
     <style>
         p {
@@ -124,9 +124,9 @@
 <div id="page">
 <div class="panier bg-white container rounded p-4">
     <!-- inscription -->
-    <form method="GET" action="insere.php">
+    <form method="POST" action="authen.php">
     <div id="panier1" class="flex-container">
-        <div class="flex-item my-2"> <h1>Inscription</h1></div>
+        <div class="flex-item my-2"> <h1>Connexion</h1></div>
         <div id="infoPanier" class="bg-white">
                     <div class="row">
                         <div class="col-sm text-left mx-2">
@@ -134,7 +134,7 @@
                             <input class="text-center" type="email" name="email">
 
                             <p style="font-size: 15px;">Mot de passe :</p>
-                            <input id="password" type="password" name="mdp" onkeyup='check();'>
+                            <input id="password" type="password" name="mdp" >
                         </div>
 
                     </div>
