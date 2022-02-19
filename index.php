@@ -1,6 +1,7 @@
 <?php 
 $c=$_GET['c'];
 ?>
+
 <?php include 'header.php';?>
 
 <body>

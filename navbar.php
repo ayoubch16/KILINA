@@ -132,11 +132,6 @@
 <div class="reduction ">
         <p>Jusqu'à - 50 % de réduction</p>
 </div>
-<?php
-session_start();
-echo 'test'.isset($_SESSION ['id']);
-?>
-
 <div class="parent">
     <div class="div1 mb-4 pb-3"> <p>Follow us on</p> </div>
     <div class="div2 mb-2"> <a href=""><img class=" " src="image/instagram.png" width="20" height="20" alt="" /></a></div>
@@ -158,7 +153,7 @@ echo 'test'.isset($_SESSION ['id']);
                 <a class="mx-1" href="">العربية</a>|
                 <a class="mx-1" href="">FR</a> -->
                 <?php if($_SESSION["Reff"] != null) { ?>
-                <a class="compte" href=""><img src="image/icone/utilisateur.png" width="20" height="20" alt="">Ayoub CH</a>
+                <a class="compte" href="deconnecter.php"><img src="image/icone/utilisateur.png" width="20" height="20" alt=""><?php echo $_SESSION['prenomuser'].' '.substr( $_SESSION['nomuser'], 0, 2);?></a>
                 <?php } else {?>
                 <a class="compte" href="connexion.php"><img src="image/icone/utilisateur.png" width="20" height="20" alt="">Compte</a>
                 <?php } ?>

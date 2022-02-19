@@ -17,6 +17,7 @@
 						<div class="col-xl col-xxl ">
 							<div class="w-100 d-flex">
 								<div class="row">
+
 									<div class="col-sm">
 										<div class="card">
 											<div class="card-body">
@@ -55,8 +56,14 @@
 														<img src="./img/photos/clientImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
 													<div class="col-auto">
+														<?php $sql="SELECT COUNT(*) FROM `clients` ";
+																$result = $cnx->query($sql);
+																if ($row = $result->fetch_assoc()) {
+																	$clients=$row['COUNT(*)'];
+																}
+															?>
                                                         <h6>Clients</h6>
-                                                        <h2>12505</h2>
+                                                        <h2><?php echo $clients;?></h2>
 													</div>
 												</div>
 											</div>
@@ -70,8 +77,14 @@
 														<img src="./img/photos/prodImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
 													<div class="col-auto">
+															<?php $sql="SELECT COUNT(*) FROM `produits` ";
+																$result = $cnx->query($sql);
+																if ($row = $result->fetch_assoc()) {
+																	$produits=$row['COUNT(*)'];
+																}
+															?>
                                                         <h6>Produits</h6>
-                                                        <h2>12505</h2>
+                                                        <h2><?php echo $produits?></h2>
 													</div>
 												</div>
 											</div>
@@ -104,10 +117,13 @@
                                                 <th>Reference</th>
                                                 <th style="text-align: right;">Prix</th>
                                             </tr>
-                                            <?php for ($x = 0; $x <= 20; $x++) {?>
+											<?php $sql="SELECT * FROM `produits` ";
+													$result = $cnx->query($sql);
+													 while($row = $result->fetch_assoc()) {
+											?>
                                             <tr>
-                                                <td>PA5425</td>
-                                                <td style="text-align: right;">125 DH</td>
+                                                <td><?php echo $row['Ref'];?></td>
+                                                <td style="text-align: right;"><?php echo $row['prix'];?> DH</td>
                                             </tr>
                                             <?php } ?>
                                         </table>

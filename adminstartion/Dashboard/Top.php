@@ -1,3 +1,13 @@
+<style>
+	  .compte {
+                            text-decoration: none;
+                            color: #000;
+                    } 
+	  .compte:hover {
+                            text-decoration: none;
+                            color: #000;
+                    }
+</style>
 <nav class="navbar navbar-expand navbar-light navbar-bg">
     <a class="sidebar-toggle js-sidebar-toggle">
         <i class="hamburger align-self-center"></i>
@@ -73,8 +83,14 @@
 
             <li class="nav-item ">
                 <a class="nav-link  d-none d-sm-inline-block" href="#" >
-                    <img src="img/avatars/user.png" class=" img-fluid rounded me-1" width="30" height="30" alt="ayoub choukri" /> <span
-                        class="text-dark">AYOUB CHOUKRI</span>
+                    <img src="img/avatars/user.png" class=" img-fluid rounded me-1" width="30" height="30" alt="ayoub choukri" /> 
+					<span class="text-dark">
+					<?php if($_SESSION["Reffuser"] != null) { ?>
+						<a class="compte" href="deconnecter.php"><?php echo $_SESSION['prenomuser'].' '.substr( $_SESSION['nomuser'], 0, 2);?> </a>
+						<?php } else {?>
+						<a class="compte" href="connexion.php">Compte</a>
+					<?php } ?>
+					</span>
                 </a>
 
             </li>
