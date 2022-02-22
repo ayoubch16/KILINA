@@ -88,7 +88,7 @@
 					<?php if($_SESSION["Reffuser"] != null) { ?>
 						<a class="compte" href="deconnecter.php"><?php echo $_SESSION['prenomuser'].' '.substr( $_SESSION['nomuser'], 0, 2);?> </a>
 						<?php } else {?>
-						<a class="compte" href="connexion.php">Compte</a>
+						<a class="compte" href="../sign.php">Compte</a>
 					<?php } ?>
 					</span>
                 </a>

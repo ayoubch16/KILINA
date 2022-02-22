@@ -76,6 +76,20 @@ $c=$_GET['c'];
             justify-content: center;
             align-items: center;
         }
+        .colorImg {
+        border-radius: 50%;
+        /* width: 40px;
+        height: 40px; */
+        overflow: hidden;
+        }
+        .colorImg img {
+            width: 30px;
+            height: 30px;
+        }
+        .colorImg img:hover {
+            transform: scale(1.1);
+            transition: 1s;
+        }
    
     </style>
 
@@ -127,6 +141,15 @@ $c=$_GET['c'];
                                         </div>
                                         <div class="mx-4">
                                             <p>Coleur</p>
+                                            <?php 
+                                                $categorie=$rowc['categorie'];
+                                                $sql1="SELECT * FROM `produits` WHERE `categorie`='$categorie' ORDER BY `date` DESC LIMIT 3";
+                                                $result1 =$cnx->query($sql1);
+                                                while($row1=$result1->fetch_assoc()){
+                                                $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
+                                            ?>
+                                            <a class="colorImg"  href="product-details.php?id=<?php echo $row1['id']; ?>"><img  src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>" alt=""></a>
+                                            <?php } ?>
 
                                         </div>
                                         <div class="mx-4">
@@ -170,6 +193,15 @@ $c=$_GET['c'];
                                         </div>
                                         <div class="mx-4">
                                             <p>Coleur</p>
+                                            <?php 
+                                                $categorie=$rowc['categorie'];
+                                                $sql1="SELECT * FROM `produits` WHERE `categorie`='$categorie' ORDER BY `date` DESC LIMIT 3";
+                                                $result1 =$cnx->query($sql1);
+                                                while($row1=$result1->fetch_assoc()){
+                                                $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
+                                            ?>
+                                            <a class="colorImg"  href="product-details.php?id=<?php echo $row1['id']; ?>"><img  src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>" alt=""></a>
+                                            <?php } ?>
 
                                         </div>
                                         <div class="mx-4">
@@ -303,11 +335,11 @@ $c=$_GET['c'];
                         <span><?php echo $row['prix']; ?> DH</span>
                     <?php } ?>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         <input name="colorp" type="radio">
                         <input name="colorp" type="radio">
                         <input name="colorp" type="radio">
-                    </div>
+                    </div> -->
                     <div class="">
                         <a href=""><img src="image/likerouge.png" alt=""></a>
                     </div>
@@ -323,8 +355,67 @@ $c=$_GET['c'];
 
         <!-- Meilleur vendu -->
         <div class="meilleurvendu">
-            <img class="img-fluid" src="image/Meilleur vendu.png" alt="">
-        </div>
+            <!-- <img class="img-fluid" src="image/Meilleur vendu.png" alt=""> -->
+        
+
+        <style>
+            .parent1 {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+                height: 500px;
+            }
+            .parent1 img {
+                width: 100%;
+                height: 100%;
+            }
+            .parent1 div {
+                overflow: hidden;
+            }
+            
+
+            .divp1 { grid-area: 1 / 1 / 3 / 2; }
+            .divp2 { grid-area: 1 / 2 / 2 / 3; }
+            .divp3 { grid-area: 2 / 2 / 3 / 3; }
+            .divp5 { grid-area: 2 / 3 / 3 / 4; }
+            .divp6 { grid-area: 1 / 4 / 2 / 5; }
+            .divp7 { grid-area: 2 / 4 / 3 / 5; }
+            .divp8 { grid-area: 1 / 5 / 3 / 6; } 
+            .divp4 { grid-area: 1 / 3 / 2 / 4;
+                     background-color: #fff;    
+                     position: relative;
+                     transform: scale(1.1);
+                     display: grid;
+                     align-items: flex-end;
+                    }
+        </style>     
+         <div class="parent1">
+             <script>
+             <?php
+            //     $sql2="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 8";
+            //     $result2 = $cnx->query($sql2);
+            //     $cpt=0;
+            //     while ($row2 = $result2->fetch_assoc()) {
+            //         $cpt++;
+            //     ?>
+            //     <div class="divp<?php echo $cpt;?>"> <a href=""><img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row2['img1']); ?>" alt=""></a> </div>
+            // <?php // } ?>
+            </script>
+            <div class="divp1"> <a href=""><img src="image/image1.png" alt=""></a> </div>
+            <div class="divp2"> <a href=""><img src="image/image2.png" alt=""></a> </div>
+            <div class="divp3"> <a href=""><img src="image/image3.png" alt=""></a> </div>
+            <div class="divp5"> <a href=""><img src="image/image4.png" alt=""></a> </div>
+            <div class="divp6"> <a href=""><img src="image/image5.png" alt=""></a> </div>
+            <div class="divp7"> <a href=""><img src="image/image6.png" alt=""></a> </div>
+            <div class="divp8"> <a href=""><img src="image/image1.png" alt=""></a> </div>
+            
+            <div class="divp4 text-center"> <h1>Best</h1><h1>KiLiNA</h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
+
+        </div>     
+        </div>   
+
 
         <!-- notreboutique -->
         <div class="notreboutique mt-5 text-center">
@@ -333,25 +424,25 @@ $c=$_GET['c'];
 
             <div class="row">
                 <div class="col">
-                    <div><img class="ville" src="image/rabat.jpg" alt=""></div>
+                    <div><img class="ville" src="image/casa.webp" alt=""></div>
                     <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
                     <h4>Casablanc</h4>
 
                 </div>
                 <div class="col">
-                    <div><img class="ville" src="image/rabat.jpg" alt=""></div>
+                    <div><img class="ville" src="image/Mékness.webp" alt=""></div>
                     <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
                     <h4>Mékness</h4>
                     <p>Comming soon</p>
                 </div>
                 <div class="col">
-                    <div><img class="ville" src="image/rabat.jpg" alt=""></div>
+                    <div><img class="ville" src="image/Sale.webp" alt=""></div>
                     <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
                     <h4>Sale</h4>
 
                 </div>
                 <div class="col">
-                    <div><img class="ville" src="image/rabat.jpg" alt=""></div>
+                    <div><img class="ville" src="image/marrakech.webp" alt=""></div>
                     <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
                     <h4>Marrakech</h4>
                     <p>Comming soon</p>
@@ -374,49 +465,7 @@ $c=$_GET['c'];
 
     </div>
     </div>
-        <!-- <div id="filterbar" class="p-3 m-5 container animate__animated animate__backInLeft">
-            <div class="row p-3" style="display: flex;justify-content: space-between;align-items: center;">
-                <div class="p-1" style="background-color: #393D45;"><img src="image/icone/filter.png" width="40" height="40" alt=""></div>
-                <a onclick="fermer();"><img src="image/icone/ferme.png" width="20" height="20" alt=""></a>
-            </div> 
-            <form action="">
-                <div class="p-3 m-3">
-                    <h3>Produit Catégorie</h3>
-                    <div class="m-2"><input class="mx-2" type="radio" name="categorie"><span>Pantalons</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" name="categorie"><span>Manteaux</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" name="categorie"><span>Chaussure</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" name="categorie"><span>Sac</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" name="categorie"><span>Robes</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" name="categorie"><span>T'shirt</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" name="categorie"><span>ACCESSOIRES</span></div>
-                </div>
-                <hr>
-                <div class="p-3 m-3">
-                    <h3>Filtre par Prix</h3>
-                    <input type="range">
-                </div>
-                <hr>
-                <div class="p-3 m-3">
-                    <h3>Filtre par Couleur</h3>
-                                <input type="radio" name="demo" class="demo demo1" id="c1">
-                                <label for="c1">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo2" id="c2">
-                                <label for="c2">&nbsp;</label>
-                                <input type="radio" name="demo" class="demo demo3" id="c3">
-                                <label for="c3">&nbsp;</label>
-                </div>
-                <hr>
-                <div class="p-3 m-3">
-                    <h3>Filtre par Taille</h3>
-                    <input type="radio" name="taille" id="demoT1" class="demoT demoT"/><label for="demoT1">S</label>
-                    <input type="radio" name="taille" id="demoT2" class="demoT demoT"/><label for="demoT2">M</label>
-                    <input type="radio" name="taille" id="demoT3" class="demoT demoT"/><label for="demoT3">L</label>
-                    <input type="radio" name="taille" id="demoT4" class="demoT demoT"/><label for="demoT4">XL</label>
-                    <input type="radio" name="taille" id="demoT5" class="demoT demoT"/><label for="demoT5">XXL</label>
-
-                </div>
-            </form>
-        </div> -->
+ 
     <script>
     var cpt = 2;
         setInterval(function() {

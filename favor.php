@@ -31,6 +31,17 @@
 <div id="page">
 <div class="  container">
         <div class="listeproduct">
+                <?php $refClient=$_SESSION["Reff"];
+                      $sql="SELECT * FROM `favor` WHERE `RefClient`='$refClient' AND `etat`='V'";
+                      $result = $cnx->query($sql);
+                      $cpt=0;
+                      while ($row = $result->fetch_assoc()) {
+                          $refProd=$row['RefProd'];
+                          $sql1="SELECT * FROM `produits` WHERE `Ref`='$refProd'";
+                          $result1 = $cnx->query($sql1);
+                      
+                ?>
+
             <div class="row">
                 <div class="col bg-white rounded p-4 my-1 mx-2">
                     <div class="row">
@@ -72,46 +83,10 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col bg-white rounded p-4 my-1 mx-2">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="image/img1.png" width="200" height="300" alt="">
-                        </div>
-                        <div class="col text-left">
-                            <h3 class="mb-3" style="font-size: 25px;">T-shirt ajusté unicolore à col montant</h3>
-                            <p style="font-size: 10px;">95% Polyester, 5% Élasthanne Lavage en machine ou nettoyage à
-                            </p>
-                            <p style="font-size: 10px;">Réfe : 8KKD8ZD6</p>
-                            <div class="row my-3">
-                                <div class="col">
-                                    <p style="font-size: 10px;">Couleur :</p>
-                                    <input type="radio">
-                                </div>
-                                <div class="col">
-                                    <p style="font-size: 10px;">Taille :</p>
-                                    <h6>S</h6>
-                                </div>
-                                <div class="col">
-                                    <p style="font-size: 10px;">Quantité(s) :</p>
-                                    <input type="number" style="width: 40px;" min="1">
-                                </div>
-                                <div class="col">
-                                    <p style="font-size: 10px;">Prix :</p>
-                                    <p style="font-size: 20px;">75.00 DH</p>
-                                </div>
-                            </div>
-                          
-                            <div class="text-center mx-2 my-3 row">
-                                <button class="btnP rounded mx-4">SHOP NOW</button>
-                               <a href=""> <img  src="image/icone/Heart-1.png" width="40" height="40" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
 
-                </div>
-            </div>
+            <?php } ?>
+
+         
         </div>
 </div>
 </div>

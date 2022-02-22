@@ -115,9 +115,12 @@
             -ms-flex-item-align: auto;
             align-self: auto;
             }
+            #panier1,#vide {
+                display: none;
+            }
     </style>
 <div id="page">
-<div class="panier bg-white container rounded p-4">
+<div id="vide" class="panier bg-white container rounded p-4">
     <!-- panier vide -->
     <div id="panier1" class="flex-container">
         <div class="flex-item my-2"><img src="image/icone/panier.png" width="250" height="250" alt=""></div>
@@ -125,7 +128,7 @@
         <div class="flex-item my-2"><button class="btnP rounded">RETOUR</button></div>
     </div>
     <!-- felicitation-->
-    <div id="panier2" class="flex-container">
+    <div id="felicitation" class="flex-container">
         <div class="flex-item my-2"><img src="image/icone/felicitation.png" width="200" height="200" alt=""></div>
         <div class="flex-item my-2"> <h1>Félicitation</h1></div>
         <div class="flex-item my-2"> <h5>votre demande sera <br>traite dans 24H</h5></div>
@@ -133,72 +136,57 @@
     </div>
 </div>
     <!-- product -->
-<div class="panier  container">
+    <form> 
+    <div class="panier  container">
         <div class="listeproduct">
             <div class="row">
-                <div class="col bg-white rounded p-4 my-1 mx-2">
+            <div class="col bg-white rounded p-4 my-1 mx-2">
+                <?php $refClient=$_SESSION["Reff"];
+                      $sql="SELECT * FROM `panier` WHERE `RefClient`='$refClient' AND `etat`='V'";
+                      $result = $cnx->query($sql);
+                      $cpt=0;
+                      while ($row = $result->fetch_assoc()) {
+                          $refProd=$row['RefProd'];
+                          $sql1="SELECT * FROM `produits` WHERE `Ref`='$refProd'";
+                          $result1 = $cnx->query($sql1);
+                      while ($row1 = $result1->fetch_assoc()) {
+                                $cpt++;
+                ?>
                     <div class="row">
                         <div class="col-4">
-                            <img src="image/img1.png" width="200" height="300" alt="">
+                            <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>" width="200" height="300" alt="">
                         </div>
                         <div class="col text-left">
-                            <h3 class="mb-3" style="font-size: 25px;">T-shirt ajusté unicolore à col montant</h3>
-                            <p style="font-size: 10px;">95% Polyester, 5% Élasthanne Lavage en machine ou nettoyage à
-                            </p>
-                            <p style="font-size: 10px;">Réfe : 8KKD8ZD6</p>
+                            <h3 class="mb-3" style="font-size: 25px;"><?php echo $row1['titre'];?></h3>
+                            <p style="font-size: 10px;"><?php echo $row1['description'];?> </p>
+                            <p style="font-size: 10px;">Réfe : <input style="border: none;" readonly type="text" value="<?php echo $row1['Ref'];?>" name="ref" id=""></p>
                             <div class="row my-3">
-                                <div class="col">
+                                <!-- <div class="col">
                                     <p style="font-size: 20px;">Couleur :</p>
                                     <input type="radio">
-                                </div>
+                                </div> -->
                                 <div class="col">
                                     <p style="font-size: 20px;">Taille :</p>
-                                    <h6>S</h6>
+                                    <!-- <h6>S</h6> -->
+                                    <input type="text" name="taille" value="<?php echo $row1['taille'];?>">
                                 </div>
                                 <div class="col">
                                     <p style="font-size: 20px;">Quantité(s) :</p>
-                                    <input type="number" style="width: 50px;" min="1">
+                                    <input type="number" name="Qnt" style="width: 50px;" value="<?php echo $row1['quantite'];?>" min="1" >
                                 </div>
                             </div>
                             <div class="my-3">
                                 <p style="font-size: 20px;">Prix :</p>
-                                <h5 id="prix1" style="font-size: 37px;">75.00 DH</h5>
+                                <!-- <input style="font-size: 37px;" type="text" name="prix" value="75.00 DH" id=""> -->
+                                <h5 id="prix<?php echo $cpt;?>" class="prixproduit" style="font-size: 37px;"><?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?> DH</h5>
                             </div>
                             <div class="flex-item mx-2"><button class="btnP rounded">SHOP NOW</button></div>
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="image/img1.png" width="200" height="300" alt="">
-                        </div>
-                        <div class="col text-left">
-                            <h3 class="mb-3" style="font-size: 25px;">T-shirt ajusté unicolore à col montant</h3>
-                            <p style="font-size: 10px;">95% Polyester, 5% Élasthanne Lavage en machine ou nettoyage à
-                            </p>
-                            <p style="font-size: 10px;">Réfe : 8KKD8ZD6</p>
-                            <div class="row my-3">
-                                <div class="col">
-                                    <p style="font-size: 20px;">Couleur :</p>
-                                    <input type="radio">
-                                </div>
-                                <div class="col">
-                                    <p style="font-size: 20px;">Taille :</p>
-                                    <h6>S</h6>
-                                </div>
-                                <div class="col">
-                                    <p style="font-size: 20px;">Quantité(s) :</p>
-                                    <input type="number" style="width: 50px;" min="1">
-                                </div>
-                            </div>
-                            <div class="my-3">
-                                <p style="font-size: 20px;">Prix :</p>
-                                <h5 id="prix1" style="font-size: 37px;">75.00 DH</h5>
-                            </div>
-                            <div class="flex-item mx-2"><button class="btnP rounded">SHOP NOW</button></div>
-                        </div>
-                    </div>
-                    <hr>
+                    <?php } } ?>
+                    
+                 
                 </div>
                 <div class="col-md-4 col-sm bg-white rounded p-4 my-1 mx-2">
                         <form>
@@ -211,42 +199,53 @@
                             <div class="col text-left">
                                 <h6>Code promo</h6>
                             </div>
-                            <div class="col-4 text-left">
-                                <h6 style="color: #19AA09;">5%</h6>
+                            <div class="col-4 text-left row">
+                                <h6 id="remis" style="color: #19AA09;">5 </h6><h6 style="color: #19AA09;"> %</h6>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col text-left">
                                 <h6>Livraison</h6>
                             </div>
-                            <div class="col-4 text-left">
-                                <h6>35 DH</h6>
+                            <div class="col-4 text-left row">
+                                <h6 id="prixlivr">20.00</h6><h6> DH</h6>
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col text-left">
                                 <h6>Montant</h6>
                             </div>
-                            <div class="col-4 text-left">
-                                <h6>12.34 DH</h6>
+                            <div class="col-4 text-left row">
+                                <h6 id="prixprod">0000.10</h6><h6> DH</h6>
                             </div>
                         </div>
+    
                         <div class="row mt-3">
-                            <div class="col text-left">
+                            <div class="col text-left row">
                                 <h6>Montant total</h6>
                             </div>
-                            <div class="col-4 text-left">
-                                <h6 style="color: #FF7878;"><del>102.34 DH</del> </h6>
+                            <div class="col-4 text-left row">
+                                <h6 id="prixtotale" style="color: #19AA09;">000.00 </h6><h6 style="color: #19AA09;"> DH</h6>
                             </div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="col text-left">
-                                <h6>Montant total</h6>
-                            </div>
-                            <div class="col-4 text-left">
-                                <h6 style="color: #19AA09;">101.34 DH</h6>
-                            </div>
-                        </div>
+                        <?php 
+                            echo "<script>document.getElementById('remis').innerHTML='15';</script>";
+                        ?>
+                        
+                        <script>
+                            let listeprix =document.getElementsByClassName('prixproduit');
+                            var somme=0;
+                            for (i = 0; i < listeprix.length; i++) {
+                                    somme =somme + parseFloat(listeprix[i].innerHTML);
+                                }
+                                document.getElementById('prixprod').innerHTML=somme.toFixed(2);
+                                var remis =parseFloat( document.getElementById('remis').innerHTML);
+                                var prixlivr =parseFloat( document.getElementById('prixlivr').innerHTML);
+                                var prixprod =parseFloat( document.getElementById('prixprod').innerHTML);
+                                prixtotale=prixprod-(prixprod*(remis/100))+prixlivr;
+                                document.getElementById('prixtotale').innerHTML=prixtotale.toFixed(2);
+                            
+                        </script>
                             <hr>
                             <h1 style="font-size: 40px;">Payment</h1>
                             <p style="font-size: 14px;">Choisissez le mode de paiement ci-dessous</p>
@@ -258,16 +257,18 @@
                                     </button>
                                 </div>
                                 <div class="col-md col-sm mx-2 p-2">
-                                    <button class="buttonPanier text-center p-2 bg-white">
+                                    <button type="submit" class="buttonPanier text-center p-2 bg-white">
                                         <img src="image/icone/liveraison.png" width="44" height="29" alt=""><br>
                                         <span style="font-size: 10px;">a la livraison</span>
                                     </button>
                                 </div>
                             </div>
                 </div>
+                
             </div>
         </div>
-</div>
+    </div>
+    </form>
 </div>
 
 <!-- <div id="infoPanier" class="bg-white position-absolute top-50 start-50 translate-middle">
@@ -300,9 +301,7 @@
         </div>
     </form>
 </div> -->
-<script>
-    
-</script>
+
     
    
 

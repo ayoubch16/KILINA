@@ -134,10 +134,10 @@
 </div>
 <div class="parent">
     <div class="div1 mb-4 pb-3"> <p>Follow us on</p> </div>
-    <div class="div2 mb-2"> <a href=""><img class=" " src="image/instagram.png" width="20" height="20" alt="" /></a></div>
-    <div class="div3 mb-2">  <a href=""><img class="" src="image/facebook.png" width="15" height="20" alt="" /></a> </div>
-    <div class="div4 mb-2"><a href=""><img class="" src="image/twitter.png" width="20" height="20" alt="" /></a></div>
-    <div class="div5 mb-2"> <a href=""><img class="" src="image/tik-tok.png" width="16" height="20" alt="" /></a> </div>
+    <div class="div2 mb-2"> <a target="blank" href="https://www.instagram.com/kilina.officiel/"><img class=" " src="image/instagram.png" width="20" height="20" alt="" /></a></div>
+    <div class="div3 mb-2">  <a target="blank" href="https://www.facebook.com/Kilina.ma.officiel"><img class="" src="image/facebook.png" width="15" height="20" alt="" /></a> </div>
+    <div class="div4 mb-2"><a target="blank" href="https://twitter.com/home"><img class="" src="image/twitter.png" width="20" height="20" alt="" /></a></div>
+    <div class="div5 mb-2"> <a target="blank" href="https://www.tiktok.com/@kilina.officiel"><img class="" src="image/tik-tok.png" width="16" height="20" alt="" /></a> </div>
 </div> 
 
 <div class="container">
@@ -153,7 +153,7 @@
                 <a class="mx-1" href="">العربية</a>|
                 <a class="mx-1" href="">FR</a> -->
                 <?php if($_SESSION["Reff"] != null) { ?>
-                <a class="compte" href="deconnecter.php"><img src="image/icone/utilisateur.png" width="20" height="20" alt=""><?php echo $_SESSION['prenomuser'].' '.substr( $_SESSION['nomuser'], 0, 2);?></a>
+                <a class="compte" href="deconnecter.php"><img src="image/icone/utilisateur.png" width="20" height="20" alt=""><?php echo $_SESSION['prenom'].' '.substr( $_SESSION['nom'], 0, 2);?></a>
                 <?php } else {?>
                 <a class="compte" href="connexion.php"><img src="image/icone/utilisateur.png" width="20" height="20" alt="">Compte</a>
                 <?php } ?>
