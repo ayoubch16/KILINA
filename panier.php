@@ -1,4 +1,7 @@
 <?php include 'header.php';?>
+<?php if($_SESSION["Reff"] == null) { 
+    header("Location: connexion.php");
+} ?>
 <?php include 'navbar.php';?>
 <body>
     <script>

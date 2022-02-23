@@ -4,7 +4,7 @@ $ref=$_GET['ref'];
 $refclient=$_GET['refclient'];
 
 
-$sql="INSERT INTO `panier`(`RefClient`, `RefProd`, `date`) VALUES ('$refclient','$ref',SYSDATE())";
+$sql="INSERT INTO `favor`(`RefClient`, `RefProd`, `date`) VALUES ('$refclient','$ref',SYSDATE())";
 // echo $sql;
 
 if ($cnx->query($sql) === TRUE) { 
@@ -18,6 +18,6 @@ if ($cnx->query($sql) === TRUE) {
                 function Rto1(){
                     window.location=history.go(-1);
                 }
-        </script>'; 
+        </script>';
 }
 ?>

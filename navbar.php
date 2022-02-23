@@ -147,8 +147,28 @@
 
         <div class="logo"><a href="index.php"><img src="image/logo.png" /></a></div>
         <div class="divleft">
-                <a href="favor.php"><img src="image/like.png" /><span class="badge"> </span> </a>
-                <a href="panier.php"><img src="image/panier.png"/><span class="badge"> </span> </a>
+                <a href="favor.php"><img src="image/like.png" />
+                <?php $sql1="SELECT count(*) FROM `favor` ";
+                      $result1 = $cnx->query($sql1);
+                       if ($row1 = $result1->fetch_assoc()) { 
+                           $nbrfavor=$row1['count(*)'];
+                       }
+                       if($nbrfavor!=0){
+                ?>
+                    <span class="badge"> </span>
+                <?php } ?> 
+                </a>
+                <a href="panier.php"><img src="image/panier.png"/>
+                <?php $sql1="SELECT count(*) FROM `panier` ";
+                      $result1 = $cnx->query($sql1);
+                       if ($row1 = $result1->fetch_assoc()) { 
+                           $nbrfavor=$row1['count(*)'];
+                       }
+                       if($nbrfavor!=0){
+                ?>
+                    <span class="badge"> </span>
+                <?php } ?> 
+                </a>
                 <!-- <a class="mx-1" href="">EN</a>|
                 <a class="mx-1" href="">العربية</a>|
                 <a class="mx-1" href="">FR</a> -->

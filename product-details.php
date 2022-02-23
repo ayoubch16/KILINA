@@ -42,6 +42,9 @@ if ($row = $result->fetch_assoc()) {
         color: #e1d106;
 
     }
+     .fa {
+            color: red;
+        }
 </style>
 <body>
 <!-- product-details -->
@@ -91,38 +94,40 @@ if ($row = $result->fetch_assoc()) {
                                     <p>Taille</p>
                                     <p>
                                         <a href=""><?php echo $row['taille'];?> </a>
-                                        <!-- <a href="">S</a>
-                                        <a href="">M</a>
-                                        <a href="">L</a>
-                                        <a href="">XL</a>
-                                        <a href="">XXL</a> -->
+
                                     </p>
                                 </div>
-                                <!-- <div class="mx-4">
-                                    <p>Quantité :</p>
-                                    
-                                    <h5><?php echo $row['quantite'];?> </h5>
-                                </div> -->
+   
                 </div>
                 <div>
                     <p>Prix :</p>
                     <!-- <h1><?php echo $row['prix'];?> DH</h1> -->
                     <div class="row">
                         <?php  if($row['remis']!= 0){?>
-                            <h1 style="color: gray;"><del><?php echo $row['prix']; ?> DH</del></h1>
-                            <h1 style="color: red;"><?php echo $nvprix?> DH</h1>
-                            <h1 class="" style="background-color: red;color: #fff;"><?php echo $row['remis'] ;?> %</h1>
+                            <h3 style="color: gray;"><del><?php echo $row['prix']; ?> DH</del></h3>
+                            <h3 style="color: red;"><?php echo $nvprix?> DH</h3>
+                            <h3 class="" style="background-color: red;color: #fff;border-radius: 10px;padding: 2px;"><?php echo $row['remis'] ;?> %</h3>
                         <?php }else{?>    
-                            <h1><?php echo $row['prix']; ?> DH</h1>
+                            <h3><?php echo $row['prix']; ?> DH</h3>
                         <?php } ?>
                     </div>
                 </div>
                 
                 
-                <div class=" shop my-4">
+                <div class="  my-4">
                             <!-- <a class="px-5 mr-3" href="">SHOP NOW</a> -->
                             <input type="submit" class="shopnow" value="SHOP NOW" name="" id="">
-                            <a href="" style="background-color: #fff;"><img src="image/likerouge.png"/></a>
+                
+                            <?php 
+                                $reff=$row['Ref'];
+                                $sqlF="SELECT * FROM `favor` WHERE `RefProd` ='$reff'";
+                                $resultF = $cnx->query($sqlF);      
+                                if ($rowF = $resultF->fetch_assoc()) {
+                            ?>
+                                <a class="lienfav p-1" href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i class="fa fa-heart" aria-hidden="true"></i></a>
+                            <?php }else{ ?>
+                                <a class="lienfav p-1" href="ajouterfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                            <?php } ?>
                 </div>
                 <div class="p-3" style="background-color: #F5F7FB;">
                     <img class="mx-2" src="image/icone/livraison.png" width="15" height="10" alt=""><span name="" style="font-weight: bold;">livraison</span>

@@ -90,6 +90,25 @@ $c=$_GET['c'];
             transform: scale(1.1);
             transition: 1s;
         }
+        .favor .fa {
+            color: red;
+        }
+        .btnDetail  {       
+            width: auto;
+            height: 40px;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #E1D106;
+            text-align: center;
+            font-size: 20px;
+        }
+        .btnDetail:hover {
+            text-decoration: none;
+            background-color: #000;
+            color: #E1D106;
+        }
    
     </style>
 
@@ -152,21 +171,10 @@ $c=$_GET['c'];
                                             <?php } ?>
 
                                         </div>
-                                        <div class="mx-4">
-                                            <p>Taille</p>
-                                            <p style="color:#000">
-                                                <a href=""><?php echo $rowc['taille'];?></a>
-                                                <!-- <a href="">S</a>
-                                                <a href="">M</a>
-                                                <a href="">L</a>
-                                                <a href="">XL</a>
-                                                <a href="">XXL</a> -->
-                                            </p>
-                                        </div>
+
                                     </div>
                                     <div class=" shop m-4">
-                                        <a class="px-5 mr-3" href="">SHOP NOW</a>
-                                        <img src="image/likerouge.png" />
+                                        <a class="btnDetail px-5 mr-3" href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
                                     </div>
                                 </div>
                                 <div class="imgGrande col-sm">
@@ -204,16 +212,11 @@ $c=$_GET['c'];
                                             <?php } ?>
 
                                         </div>
-                                        <div class="mx-4">
-                                            <p>Taille</p>
-                                            <p style="color:#000">
-                                                <a href=""><?php echo $rowc['taille'];?></a>
-                                            </p>
-                                        </div>
+
                                     </div>
-                                    <div class=" shop m-4">
-                                        <a class="px-5 mr-3" href="">SHOP NOW</a>
-                                        <img src="image/likerouge.png" />
+                                    <div class="  m-4">
+                                    <a class="btnDetail px-5 mr-3" href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
+
                                     </div>
                                 </div>
                                 <div class="imgGrande col-sm">
@@ -335,13 +338,18 @@ $c=$_GET['c'];
                         <span><?php echo $row['prix']; ?> DH</span>
                     <?php } ?>
                     </div>
-                    <!-- <div class="col">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                        <input name="colorp" type="radio">
-                    </div> -->
-                    <div class="">
-                        <a href=""><img src="image/likerouge.png" alt=""></a>
+                    <div class="favor">
+                        <?php 
+                            $reff=$row['Ref'];
+                            $sqlF="SELECT * FROM `favor` WHERE `RefProd` ='$reff'";
+                            $result1 = $cnx->query($sqlF);
+                            
+                            if ($row1 = $result1->fetch_assoc()) {
+                        ?>
+                                <a class="lienfav p-1" href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <?php }else{ ?>
+                               <a class="lienfav p-1" href="ajouterfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

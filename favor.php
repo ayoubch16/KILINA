@@ -1,5 +1,8 @@
 
 <?php include 'header.php';?>
+<?php if($_SESSION["Reff"] == null) { 
+    header("Location: connexion.php");
+} ?>
 <?php include 'navbar.php';?>
 <body>
     <script>
@@ -25,6 +28,76 @@
             background-color: #000;
             color: #E1D106;
         }
+        .fa {
+            color: red;
+        }
+        .flex-container {
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex-wrap: nowrap;
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-align-content: center;
+            -ms-flex-line-pack: center;
+            align-content: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            }
+
+        .flex-item:nth-child(1) {
+            -webkit-order: 0;
+            -ms-flex-order: 0;
+            order: 0;
+            -webkit-flex: 0 1 auto;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            -webkit-align-self: auto;
+            -ms-flex-item-align: auto;
+            align-self: auto;
+            }
+
+        .flex-item:nth-child(2) {
+            -webkit-order: 0;
+            -ms-flex-order: 0;
+            order: 0;
+            -webkit-flex: 0 1 auto;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            -webkit-align-self: auto;
+            -ms-flex-item-align: auto;
+            align-self: auto;
+        }
+
+        .flex-item:nth-child(3) {
+            -webkit-order: 0;
+            -ms-flex-order: 0;
+            order: 0;
+            -webkit-flex: 0 1 auto;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            -webkit-align-self: auto;
+            -ms-flex-item-align: auto;
+            align-self: auto;
+            }
+            .flex-item:nth-child(4) {
+            -webkit-order: 0;
+            -ms-flex-order: 0;
+            order: 0;
+            -webkit-flex: 0 1 auto;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            -webkit-align-self: auto;
+            -ms-flex-item-align: auto;
+            align-self: auto;
+            }
 
 
     </style>
@@ -34,47 +107,50 @@
                 <?php $refClient=$_SESSION["Reff"];
                       $sql="SELECT * FROM `favor` WHERE `RefClient`='$refClient' AND `etat`='V'";
                       $result = $cnx->query($sql);
-                      $cpt=0;
+                      $cpt=1;
                       while ($row = $result->fetch_assoc()) {
                           $refProd=$row['RefProd'];
                           $sql1="SELECT * FROM `produits` WHERE `Ref`='$refProd'";
                           $result1 = $cnx->query($sql1);
+                          $cpt++;
+                          while ($row1 = $result1->fetch_assoc()) {
+                              
                       
                 ?>
-
             <div class="row">
                 <div class="col bg-white rounded p-4 my-1 mx-2">
                     <div class="row">
                         <div class="col-4">
-                            <img src="image/img1.png" width="200" height="300" alt="">
+                            <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>" width="200" height="300" alt="">
                         </div>
                         <div class="col text-left">
-                            <h3 class="mb-3" style="font-size: 25px;">T-shirt ajusté unicolore à col montant</h3>
-                            <p style="font-size: 10px;">95% Polyester, 5% Élasthanne Lavage en machine ou nettoyage à
+                            <h3 class="mb-3" style="font-size: 25px;"><?php  echo $row1['titre']; ?></h3>
+                            <p style="font-size: 10px;"><?php  echo $row1['description']; ?>
                             </p>
-                            <p style="font-size: 10px;">Réfe : 8KKD8ZD6</p>
+                            <p style="font-size: 10px;">Réfe : <?php  echo $row1['Ref']; ?></p>
                             <div class="row my-3">
-                                <div class="col">
+                                <!-- <div class="col">
                                     <p style="font-size: 10px;">Couleur :</p>
                                     <input type="radio">
-                                </div>
+                                </div> -->
                                 <div class="col">
                                     <p style="font-size: 10px;">Taille :</p>
-                                    <h6>S</h6>
+                                    <h6><?php  echo $row1['taille']; ?></h6>
                                 </div>
-                                <div class="col">
-                                    <p style="font-size: 10px;">Quantité(s) :</p>
-                                    <input type="number" style="width: 40px;" min="1">
-                                </div>
+
                                 <div class="col">
                                     <p style="font-size: 10px;">Prix :</p>
-                                    <p style="font-size: 20px;">75.00 DH</p>
+                                    <p style="font-size: 20px;"><?php  echo $row1['prix']; ?> DH</p>
                                 </div>
                             </div>
                           
                             <div class="text-center mx-2 my-3 row">
                                 <button class="btnP rounded mx-4">SHOP NOW</button>
-                               <a class="p-1" href=""> <img  src="image/icone/Heart.png" width="40" height="40" alt=""></a>
+                                
+                                    
+                                
+                                   
+                               <!-- <a class="p-1" href=""> <img  src="image/icone/Heart.png" width="40" height="40" alt=""></a> -->
                             </div>
                         </div>
                     </div>
@@ -84,7 +160,17 @@
             </div>
 
 
-            <?php } ?>
+            <?php } } ?>
+<?php if($cpt==1){?>
+<div id="vide" class="panier bg-white container rounded p-4">
+    <!-- panier vide -->
+    <div id="panier1" class="flex-container">
+        <div class="flex-item my-2"><img src="image/icone/panier.png" width="250" height="250" alt=""></div>
+        <div class="flex-item my-2"> <h1>Votre panier est vide</h1></div>
+        <div class="flex-item my-2"><button class="btnP rounded">RETOUR</button></div>
+    </div>
+</div>
+<?php }  ?>        
 
          
         </div>
