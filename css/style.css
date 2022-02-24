@@ -160,19 +160,40 @@ p a:hover {
 
 }
 
-
 .categories .activecat{
     background-color: #393d45;
-    color: #fff;
 }
-.categories .activecat a h6{
-    color: #fff;
+.categories .activecat a {
+    color: #fff !important;
+    text-decoration: none;
    
 }
-.categories .activecat img {
+.categories .activecat a img {
     filter: brightness(0) invert(1);
 }
-.categories .cat:hover{
+.categories .cat {
+    text-align: center;
+}
+.categories .cat a {
+    color: #393d45;
+    text-decoration: none;
+}
+.categories .cat img {
+    filter: invert(22%) sepia(15%) saturate(406%) hue-rotate(182deg) brightness(96%) contrast(91%);
+}
+
+.categories .cat:hover {
+    background-color: #393d45;
+}
+.categories .cat:hover > a img  {
+    filter: brightness(0) invert(1);
+}
+.categories .cat:hover > a {
+    color: #fff;
+}
+ 
+
+/* .categories .cat:hover{
     background-color: #393d45;
     color: #fff;
     cursor: pointer;
@@ -191,7 +212,7 @@ p a:hover {
 .categories   a :hover {
     color: #fff !important;
     text-decoration: none;
-}
+} */
 
 
 /* listeproduit */
@@ -364,7 +385,7 @@ p a:hover {
     padding: 5px;
 }
 .buttonPanier{
-    width: 300px;
+    width: 100%;
 }
 .buttonPanier:hover{
     background-color: #000;

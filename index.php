@@ -252,44 +252,44 @@ $c=$_GET['c'];
         <div class="categories mb-3 row">
             <div class="p-3 px-4 cat <?php if($c==1){echo 'activecat';} ?>">
                 <a href="index.php?c=1">
-                <img src="image/icone/manteau.png" width="80" height="80" alt="">
-                <h6 class="mt-2">Manteaux</h6>
+                <img src="image/icone/manteau.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Manteaux</span>
                 </a>
             </div>
             <div class="p-3 px-4 cat <?php if($c==2){echo 'activecat';} ?>">
                 <a href="index.php?c=2">
-                <img src="image/icone/sac-a-main.png" width="80" height="80" alt="">
-                <h6 class="mt-2">Sac</h6>
+                <img src="image/icone/sac-a-main.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Sac</span>
                 </a>
             </div>
             <div class="p-3 px-4 cat <?php if($c==3){echo 'activecat';} ?>">
                 <a href="index.php?c=3">
-                <img src="image/icone/bottes-femme.png" width="80" height="80" alt="">
-                <h6 class="mt-2">Chaussure</h6>
+                <img src="image/icone/bottes-femme.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Chaussure</span>
                 </a>
             </div>
             <div class="p-3 px-4 cat <?php if($c==4){echo 'activecat';} ?>">
                 <a href="index.php?c=4">
-                <img src="image/icone/robe.png" width="80" height="80" alt="">
-                <h6 class="mt-2">Robes</h6>
+                <img src="image/icone/robe.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Robes</span>
                 </a>
             </div>
             <div class="p-3 px-4 cat <?php if($c==5){echo 'activecat';} ?>">
                 <a href="index.php?c=5">
-                <img src="image/icone/tshirt.png" width="80" height="80" alt="">
-                <h6 class="mt-2">T'shirt</h6>
+                <img src="image/icone/tshirt.png" width="80" height="80" alt=""><br>
+                <span class="text-center">T'shirt</span>
                 </a>
             </div>
             <div class="p-3 px-4 cat <?php if($c==6){echo 'activecat';} ?>">
                 <a href="index.php?c=6">
-                <img src="image/icone/Tracé 209.png" width="80" height="80" alt="">
-                <h6 class="mt-2">Pantalons</h6>
+                <img src="image/icone/Tracé 209.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Pantalons</span>
                 </a>
             </div>
             <div class="p-3 px-4 cat <?php if($c==7){echo 'activecat';} ?>">
                 <a href="index.php?c=7">
-                <img src="image/icone/accessoire.png" width="80" height="80" alt="">
-                <h6 class="mt-2">ACCESSOIRES</h6>
+                <img src="image/icone/accessoire.png" width="80" height="80" alt=""><br>
+                <span class="text-center">ACCESSOIRES</span>
                 </a>
             </div>
 

@@ -116,7 +116,7 @@ if ($row = $result->fetch_assoc()) {
                 
                 <div class="  my-4">
                             <!-- <a class="px-5 mr-3" href="">SHOP NOW</a> -->
-                            <input type="submit" class="shopnow" value="SHOP NOW" name="" id="">
+                            <input type="submit" onclick="confirm('Voulez-vous ajouter ce produit au panier ?');" class="shopnow" value="SHOP NOW" name="" id="">
                 
                             <?php 
                                 $reff=$row['Ref'];

@@ -157,9 +157,9 @@
                                                                 <td class="text-left">09/02/2020</td>
                                                                 <td class="text-left">292</td>
                                                                 <td class="text-left">
-                                                                    <span class="statusL">Livrée</span>    
-                                                                    <!-- <span class="statusA">Annuler</span>    
-                                                                    <span class="statusE">En cours</span>     -->
+                                                                    <!-- <span class="statusL">Livrée</span>     -->
+                                                                    <!-- <span class="statusA">Annuler</span>     -->
+                                                                    <span class="statusE">En cours</span>    
                                                                 </td>
                                                                 <td class="text-left">à la livraison</td>
                                                                 <td><a href=""><img src="img/icons/edit.png" width="20" height="20" alt=""></a></td>
@@ -191,3 +191,4 @@
 </body>
 
 </html>
+
