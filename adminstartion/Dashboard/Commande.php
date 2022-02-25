@@ -138,7 +138,7 @@
                                                             <tr>
                                                                 <th class="text-left">Commandes</th>
                                                                 <th class="text-left">Clients</th>
-                                                                <th class="text-left">Article</th>
+                                                                <th class="text-left">Articles</th>
                                                                 <th class="text-left">Ville</th>
                                                                 <th class="text-left">Date</th>
                                                                 <th class="text-left">Prix</th>
@@ -148,20 +148,29 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <?php for ($x = 0; $x <= 20; $x++) {?>
+                                                            <?php $sql="SELECT * FROM `commandes` ORDER BY `dateCmd`,`ReffCmd` DESC ";
+                                                                  $result = $cnx->query($sql);
+                                                                  while ($row = $result->fetch_assoc()) {
+                                                            ?>
                                                             <tr>
-                                                                <td class="text-left">54585AR</td>
-                                                                <td class="text-left">Mouad SABER</td>
-                                                                <td class="text-left">T-Shirt</td>
-                                                                <td class="text-left">Rabat</td>
-                                                                <td class="text-left">09/02/2020</td>
-                                                                <td class="text-left">292</td>
+                                                                <td class="text-left"><?php echo $row['ReffCmd'] ;?></td>
+                                                                <td class="text-left"><?php echo $row['ReffClient'] ;?></td>
+                                                                <td class="text-left"><?php echo str_replace("-","<br>",$row['ReffProd'] );?></td>
+                                                                <td class="text-left"><?php echo $row['villeCmd'] ;?></td>
+                                                                <td class="text-left"><?php echo $row['dateCmd'] ;?></td>
+                                                                <td class="text-left"><?php echo $row['prixCmd'] ;?></td>
                                                                 <td class="text-left">
-                                                                    <!-- <span class="statusL">Livrée</span>     -->
-                                                                    <!-- <span class="statusA">Annuler</span>     -->
-                                                                    <span class="statusE">En cours</span>    
+                                                                    <?php if($row['statusCmd']=='En cours'){?>
+                                                                        <span class="statusE">En cours</span>    
+                                                                    <?php } ?>
+                                                                    <?php if($row['statusCmd']=='Annuler'){?>
+                                                                        <span class="statusA">Annuler</span>    
+                                                                    <?php } ?>
+                                                                    <?php if($row['statusCmd']=='Livrée'){?>
+                                                                        <span class="statusL">Livrée</span>    
+                                                                    <?php } ?>
                                                                 </td>
-                                                                <td class="text-left">à la livraison</td>
+                                                                <td class="text-left"><?php echo $row['PaimentCmd'] ;?></td>
                                                                 <td><a href=""><img src="img/icons/edit.png" width="20" height="20" alt=""></a></td>
                                                             </tr>
                                                         <?php } ?>
