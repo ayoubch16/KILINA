@@ -6,7 +6,6 @@
 <div class="wrapper">
         <?php include 'menu.php';?>
 		
-
 		<div class="main">
           <?php include 'Top.php';?>
 
@@ -26,8 +25,14 @@
 														<img src="./img/photos/cmdImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
 													<div class="col-auto">
+													<?php $sql="SELECT COUNT(*) FROM `commandes` ";
+																$result = $cnx->query($sql);
+																if ($row = $result->fetch_assoc()) {
+																	$commandes=$row['COUNT(*)'];
+																}
+															?>
                                                         <h6>Commandes</h6>
-                                                        <h2>12505</h2>
+                                                        <h2><?php echo $commandes;?></h2>
 													</div>
 												</div>
 											</div>
@@ -42,7 +47,7 @@
 													</div>
 													<div class="col-auto">
                                                         <h6>Ventes</h6>
-                                                        <h2>12505</h2>
+                                                        <h2>0</h2>
 													</div>
 												</div>
 											</div>

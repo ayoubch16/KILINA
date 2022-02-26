@@ -51,6 +51,16 @@
     <script>
     document.title = 'Produits';
     </script>
+    <script>
+            $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            });
+    </script>
 <div class="wrapper">
         <?php include 'menu.php';?>
 		
@@ -63,10 +73,9 @@
 					<h1 class="h3 mb-3"><strong>Produits</strong></h1>
                     <div class="row">
                         <div class="barRech">
-                            <form action="">
-                                    <input type="text" name="motcle" id=""><span><img src="img/icons/search.png" width="20" height="20" alt=""></span>
-                                <!-- <input type="submit"  > -->
-                            </form>
+                            
+                                    <input type="text"  id="myInput"><span><img src="img/icons/search.png" width="20" height="20" alt=""></span>
+                               
                         </div>
                         <a class="barAjote" style="font-size: 1rem;display: flex;justify-content: center;align-items: center;" href="AjouterProduit.php">
                             Ajouter un produit &#43;
@@ -92,7 +101,7 @@
                                                                 <th class="text-left"></th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody id="myTable">
                                                         <?php $sql="SELECT * FROM `produits` ORDER BY `date` DESC ";
                                                          $result = $cnx->query($sql);
                                                          while ($row = $result->fetch_assoc()) {

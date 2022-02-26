@@ -1,8 +1,6 @@
 
 <?php include 'header.php';?>
-<?php if($_SESSION["Reff"] == null) { 
-    header("Location: connexion.php");
-} ?>
+
 <?php include 'navbar.php';?>
 <body>
     <script>
@@ -129,13 +127,16 @@
                             </p>
                             <p style="font-size: 10px;">Réfe : <?php  echo $row1['Ref']; ?></p>
                             <div class="row my-3">
-                                <!-- <div class="col">
-                                    <p style="font-size: 10px;">Couleur :</p>
-                                    <input type="radio">
-                                </div> -->
+
                                 <div class="col">
                                     <p style="font-size: 10px;">Taille :</p>
-                                    <h6><?php  echo $row1['taille']; ?></h6>
+                                    <h6>
+                                    <?php 
+                                            $taille = explode("-", $row1['taille']);
+                                            for ($x = 0; $x <= count($taille)-2; $x++) {
+                                                echo ' '.$taille[$x].' ';
+                                            }?>
+                                    </h6>
                                 </div>
 
                                 <div class="col">
@@ -145,12 +146,13 @@
                             </div>
                           
                             <div class="text-center mx-2 my-3 row">
-                                <button class="btnP rounded mx-4">SHOP NOW</button>
-                                
+                                <!-- <button class="btnP rounded mx-4">SHOP NOW</button> -->
+                               <a class="btnP rounded mx-4" href="ajouterPannier.php?ref=<?php echo $row1['Ref'];?>&refclient=<?php echo $_SESSION["Reff"];?>">SHOP NOW</a>
+                               <a class="btnP rounded mx-4" style="width: 40px;" href="deletfavor.php?ref=<?php echo $row1['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"><img width="20" height="20" src="image/icone/trash.png" alt=""> </a>                 
                                     
                                 
                                    
-                               <!-- <a class="p-1" href=""> <img  src="image/icone/Heart.png" width="40" height="40" alt=""></a> -->
+                               
                             </div>
                         </div>
                     </div>

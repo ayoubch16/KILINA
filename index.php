@@ -7,55 +7,6 @@ $c=$_GET['c'];
 <body>
     <style>
 
-        input[type="radio"].demo {
-            display: none;
-        }
-
-        input[type="radio"].demo+label {
-            position: relative;
-            padding-left: 1.3rem;
-        }
-
-        input[type="radio"].demo+label::before,
-        input[type="radio"].demo+label::after {
-            display: block;
-            position: absolute;
-            box-sizing: border-box;
-            bottom: 0;
-            left: 0;
-            content: '';
-            width: 1rem;
-            height: 1rem;
-            border-radius: 1rem;
-        }
-
-        input[type="radio"].demo1+label::before {
-            border: 2px solid #640010;
-            background-color: #fff;
-        }
-
-        input[type="radio"].demo1:checked+label::after {
-            background-color: #640010;
-        }
-
-        input[type="radio"].demo2+label::before {
-            border: 2px solid #D5CCC7;
-            background-color: #fff;
-            color: #fff;
-        }
-
-        input[type="radio"].demo2:checked+label::after {
-            background-color: #D5CCC7;
-        }
-
-        input[type="radio"].demo3+label::before {
-            border: 2px solid #110E0F;
-            background-color: #fff;
-        }
-
-        input[type="radio"].demo3:checked+label::after {
-            background-color: #110E0F;
-        }
 
         #pro2,
         #pro3 {
@@ -117,8 +68,6 @@ $c=$_GET['c'];
          <!-- navbar -->
          
     <div  class="container ">
-       
-
         <!-- newcollection -->
         <div class="newcollection bg-white container">
             <div class="menu row">
@@ -135,7 +84,7 @@ $c=$_GET['c'];
             </div>
 
             <!-- test Slider -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div style="min-height: 500px ;" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -151,8 +100,7 @@ $c=$_GET['c'];
                               <div class="row px-5">
                                 <div class="detailproduit col-sm">
                                     <h1>NEW</h1>
-                                    <h3>COLLECTION 1</h3>
-                                    <p><?php echo $rowc['titre'];?></p>
+                                    <h2><?php echo $rowc['titre'];?></h2>
                                     <div class="row ml-1">
                                         <div class="mx-4">
                                             <p>Prix</p>
@@ -184,7 +132,7 @@ $c=$_GET['c'];
                             </div>
                             <?php } ?>
                             <?php 
-                                $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 2,2";
+                                $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 1,2";
                                 $resultc = $cnx->query($sqlc);
                                 while ($rowc = $resultc->fetch_assoc()) {
                             ?>
@@ -192,8 +140,7 @@ $c=$_GET['c'];
                               <div class="row px-5">
                                 <div class="detailproduit col-sm">
                                     <h1>NEW</h1>
-                                    <h3>COLLECTION 1</h3>
-                                    <p><?php echo $rowc['titre'];?></p>
+                                    <h2><?php echo $rowc['titre'];?></h2>
                                     <div class="row ml-1">
                                         <div class="mx-4">
                                             <p>Prix</p>
@@ -250,44 +197,44 @@ $c=$_GET['c'];
             </a>
         </div>
         <div class="categories mb-3 row">
-            <div class="p-3 px-4 cat <?php if($c==1){echo 'activecat';} ?>">
-                <a href="index.php?c=1">
-                <img src="image/icone/manteau.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Manteaux</span>
+            <div class="p-3 px-4 cat <?php if($c=='Pantalons'){echo 'activecat';} ?>">
+                <a href="index.php?c=Pantalons">
+                <img src="image/icone/Tracé 209.png" width="60" height="80" alt=""><br>
+                <span class="text-center">Pantalons</span>
                 </a>
             </div>
-            <div class="p-3 px-4 cat <?php if($c==2){echo 'activecat';} ?>">
-                <a href="index.php?c=2">
-                <img src="image/icone/sac-a-main.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Sac</span>
+            <div class="p-3 px-4 cat <?php if($c=='Survette'){echo 'activecat';} ?>">
+                <a href="index.php?c=Survette">
+                <img src="image/icone/tshirt.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Survette</span>
                 </a>
             </div>
-            <div class="p-3 px-4 cat <?php if($c==3){echo 'activecat';} ?>">
-                <a href="index.php?c=3">
-                <img src="image/icone/bottes-femme.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Chaussure</span>
-                </a>
-            </div>
-            <div class="p-3 px-4 cat <?php if($c==4){echo 'activecat';} ?>">
-                <a href="index.php?c=4">
+            <div class="p-3 px-4 cat <?php if($c=='Robes'){echo 'activecat';} ?>">
+                <a href="index.php?c=Robes">
                 <img src="image/icone/robe.png" width="80" height="80" alt=""><br>
                 <span class="text-center">Robes</span>
                 </a>
             </div>
-            <div class="p-3 px-4 cat <?php if($c==5){echo 'activecat';} ?>">
-                <a href="index.php?c=5">
-                <img src="image/icone/tshirt.png" width="80" height="80" alt=""><br>
-                <span class="text-center">T'shirt</span>
+            <div class="p-3 px-4 cat <?php if($c=='Manteaux'){echo 'activecat';} ?>">
+                <a href="index.php?c=Manteaux">
+                <img src="image/icone/manteau.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Manteaux</span>
                 </a>
             </div>
-            <div class="p-3 px-4 cat <?php if($c==6){echo 'activecat';} ?>">
-                <a href="index.php?c=6">
-                <img src="image/icone/Tracé 209.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Pantalons</span>
+            <div class="p-3 px-4 cat <?php if($c=='Sac'){echo 'activecat';} ?>">
+                <a href="index.php?c=Sac">
+                <img src="image/icone/sac-a-main.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Sac</span>
                 </a>
             </div>
-            <div class="p-3 px-4 cat <?php if($c==7){echo 'activecat';} ?>">
-                <a href="index.php?c=7">
+            <div class="p-3 px-4 cat <?php if($c=='Chaussure'){echo 'activecat';} ?>">
+                <a href="index.php?c=Chaussure">
+                <img src="image/icone/bottes-femme.png" width="80" height="80" alt=""><br>
+                <span class="text-center">Chaussure</span>
+                </a>
+            </div>
+            <div class="p-3 px-4 cat <?php if($c=='ACCESSOIRES'){echo 'activecat';} ?>">
+                <a href="index.php?c=ACCESSOIRES">
                 <img src="image/icone/accessoire.png" width="80" height="80" alt=""><br>
                 <span class="text-center">ACCESSOIRES</span>
                 </a>
@@ -299,7 +246,9 @@ $c=$_GET['c'];
         <!-- listeproduit -->
         <div class="listeproduit mt-4 row">
             <?php 
-            $sql="SELECT * FROM `produits` ORDER BY `date` DESC";
+            $cat=$_GET['c'];
+            $cat=empty($cat)? " ":"   WHERE `categorie`='$cat' ";
+            $sql="SELECT * FROM `produits` $cat ORDER BY `date` DESC";
             $result = $cnx->query($sql);
             while ($row = $result->fetch_assoc()) {
                
@@ -315,7 +264,7 @@ $c=$_GET['c'];
 
                 
                 ?>
-            <div class="cardproduit m-3">
+            <div class="cardproduit m-3 mt-5">
                 <div>
                     <?php if($delai<7){ ?>
                         <span class="nouveau">Nouveautés</span>
@@ -323,7 +272,7 @@ $c=$_GET['c'];
                     <?php  if($row['remis']!= 0){?>
                     <span class="solde">-<?php echo $row['remis'];?>%</span>
                     <?php } ?>
-                    <div class="image">
+                    <div class="image bg-white">
                         <a href="product-details.php?id=<?php echo $row['id'];?>"><img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>" alt="" /></a>
                     </div>
                 </div>
@@ -366,62 +315,63 @@ $c=$_GET['c'];
             <!-- <img class="img-fluid" src="image/Meilleur vendu.png" alt=""> -->
         
 
-        <style>
-            .parent1 {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-                grid-column-gap: 0px;
-                grid-row-gap: 0px;
-                height: 500px;
-            }
-            .parent1 img {
-                width: 100%;
-                height: 100%;
-            }
-            .parent1 div {
-                overflow: hidden;
-            }
-            
+            <style>
+                .parent1 {
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    grid-template-rows: repeat(2, 1fr);
+                    grid-column-gap: 0px;
+                    grid-row-gap: 0px;
+                    height: 500px;
+                }
+                .parent1 img {
+                    width: 100%;
+                    height: 100%;
+                }
+                .parent1 div {
+                    overflow: hidden;
+                }
+                
 
-            .divp1 { grid-area: 1 / 1 / 3 / 2; }
-            .divp2 { grid-area: 1 / 2 / 2 / 3; }
-            .divp3 { grid-area: 2 / 2 / 3 / 3; }
-            .divp5 { grid-area: 2 / 3 / 3 / 4; }
-            .divp6 { grid-area: 1 / 4 / 2 / 5; }
-            .divp7 { grid-area: 2 / 4 / 3 / 5; }
-            .divp8 { grid-area: 1 / 5 / 3 / 6; } 
-            .divp4 { grid-area: 1 / 3 / 2 / 4;
-                     background-color: #fff;    
-                     position: relative;
-                     transform: scale(1.1);
-                     display: grid;
-                     align-items: flex-end;
-                    }
-        </style>     
-         <div class="parent1">
-             <script>
-             <?php
-            //     $sql2="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 8";
-            //     $result2 = $cnx->query($sql2);
-            //     $cpt=0;
-            //     while ($row2 = $result2->fetch_assoc()) {
-            //         $cpt++;
-            //     ?>
-            //     <div class="divp<?php echo $cpt;?>"> <a href=""><img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row2['img1']); ?>" alt=""></a> </div>
-            // <?php // } ?>
-            </script>
-            <div class="divp1"> <a href=""><img src="image/image1.png" alt=""></a> </div>
-            <div class="divp2"> <a href=""><img src="image/image2.png" alt=""></a> </div>
-            <div class="divp3"> <a href=""><img src="image/image3.png" alt=""></a> </div>
-            <div class="divp5"> <a href=""><img src="image/image4.png" alt=""></a> </div>
-            <div class="divp6"> <a href=""><img src="image/image5.png" alt=""></a> </div>
-            <div class="divp7"> <a href=""><img src="image/image6.png" alt=""></a> </div>
-            <div class="divp8"> <a href=""><img src="image/image1.png" alt=""></a> </div>
-            
-            <div class="divp4 text-center"> <h1>Best</h1><h1>KiLiNA</h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
+                .divp1 { grid-area: 1 / 1 / 3 / 2;border: 1px solid  #F8F8F8;background-color: #fff; }
+                .divp2 { grid-area: 1 / 2 / 2 / 3;border: 1px solid  #F8F8F8;background-color: #fff; }
+                .divp3 { grid-area: 2 / 2 / 3 / 3;border: 1px solid  #F8F8F8;background-color: #fff; }
+                .divp5 { grid-area: 2 / 3 / 3 / 4;border: 1px solid  #F8F8F8;background-color: #fff; }
+                .divp6 { grid-area: 1 / 4 / 2 / 5;border: 1px solid  #F8F8F8;background-color: #fff; }
+                .divp7 { grid-area: 2 / 4 / 3 / 5;border: 1px solid  #F8F8F8;background-color: #fff; }
+                .divp8 { grid-area: 1 / 5 / 3 / 6;border: 1px solid  #F8F8F8;background-color: #fff; } 
+                .divp4 { grid-area: 1 / 3 / 2 / 4;
+                        background-color: #fff;    
+                        position: relative;
+                        transform: scale(1.1);
+                        display: grid;
+                        align-items: flex-end;
+                        border: 1px solid #000;
+                        }
+            </style>     
+            <div class="parent1">
+                
+                <?php
+                    $sql2="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 8";
+                    $result2 = $cnx->query($sql2);
+                    $cpt=0;
+                    while ($row2 = $result2->fetch_assoc()) {
+                        $cpt++;
+                    ?>
+                    <div class="divp<?php echo $cpt;?>"> <a href="product-details.php?id=<?php echo $row2['id']; ?>"><img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row2['img1']); ?>" alt=""></a> </div>
+                <?php } ?>
+                
+                <!-- <div class="divp1"> <a href=""><img src="image/image1.png" alt=""></a> </div>
+                <div class="divp2"> <a href=""><img src="image/image2.png" alt=""></a> </div>
+                <div class="divp3"> <a href=""><img src="image/image3.png" alt=""></a> </div>
+                <div class="divp5"> <a href=""><img src="image/image4.png" alt=""></a> </div>
+                <div class="divp6"> <a href=""><img src="image/image5.png" alt=""></a> </div>
+                <div class="divp7"> <a href=""><img src="image/image6.png" alt=""></a> </div>
+                <div class="divp8"> <a href=""><img src="image/image1.png" alt=""></a> </div> -->
+                
+                <div class="divp4 text-center"> <h1>Best</h1><h1>KiLiNA</h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
 
-        </div>     
+            </div>     
         </div>   
 
 
@@ -474,33 +424,7 @@ $c=$_GET['c'];
     </div>
     </div>
  
-    <script>
-    var cpt = 2;
-        setInterval(function() {
-            if (cpt == 1) {
-                document.getElementById('pro1').style.display = 'none';
-                document.getElementById('pro2').style.display = 'flex';
-                document.getElementById('pro3').style.display = 'none';
-                cpt++;
-            }
-            if (cpt == 2) {
-                document.getElementById('pro1').style.display = 'none';
-                document.getElementById('pro2').style.display = 'none';
-                document.getElementById('pro3').style.display = 'flex';
-                cpt++;
-            }
-            if (cpt == 3) {
-                document.getElementById('pro1').style.display = 'flex';
-                document.getElementById('pro2').style.display = 'none';
-                document.getElementById('pro3').style.display = 'none';
-                cpt++;
-            }
-            // if(cpt==4){
-            //     cpt=1;
-            // }
-
-        }, 5000)
-    </script>
+   
     <!-- footer  -->
     <?php include 'footer.php';?>
 

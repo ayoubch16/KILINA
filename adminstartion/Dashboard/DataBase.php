@@ -21,6 +21,16 @@
     <script>
     document.title = 'Data Base';
     </script>
+    <script>
+            $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            });
+    </script>
 <div class="wrapper">
         <?php include 'menu.php';?>
 		
@@ -33,10 +43,7 @@
 					<h1 class="h3 mb-3"><strong>Data Base</strong></h1>
                     <div class="row">
                         <div class="barRech">
-                            <form action="">
-                                    <input type="text" name="motcle" id=""><span><img src="img/icons/search.png" width="20" height="20" alt=""></span>
-                                <!-- <input type="submit"  > -->
-                            </form>
+                                    <input type="text"  id="myInput"><span><img src="img/icons/search.png" width="20" height="20" alt=""></span>
                         </div>
 
                     </div>
@@ -57,7 +64,7 @@
                                                                 <th class="text-left">Email</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody id="myTable">
                                                         <?php $sql="SELECT * FROM `clients` ";
                                                          $result = $cnx->query($sql);
                                                          while ($row = $result->fetch_assoc()) {

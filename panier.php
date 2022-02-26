@@ -1,7 +1,5 @@
 <?php include 'header.php';?>
-<?php if($_SESSION["Reff"] == null) { 
-    header("Location: connexion.php");
-} ?>
+
 <?php include 'navbar.php';?>
 
 <body>
@@ -198,7 +196,6 @@
                                 $result1 = $cnx->query($sql1);
                                     while ($row1 = $result1->fetch_assoc()) {
                                                 $cpt++;
-                                                echo $cpt ;
                             ?>
 
                             <div class="row">
@@ -311,7 +308,7 @@
                             <div class="row p-3 text-center">
 
                                 <div class="col-md col-sm mx-2 p-2">
-                                    <button type="submit" class="buttonPanier text-center p-2 bg-white">
+                                    <button onclick="confirm('voulez vous confirmer l\'opération?');" type="submit" class="buttonPanier text-center p-2 bg-white">
                                         <img src="image/icone/liveraison.png" width="44" height="29" alt=""><br>
                                         <span style="font-size: 10px;">a la livraison</span>
                                     </button>

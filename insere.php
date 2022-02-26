@@ -1,4 +1,7 @@
 <?php 
+ if($_SESSION["Reff"] == null) { 
+    header("Location: connexion.php");
+} 
     include 'dbconnect.php';
     $Reff=uniqid('client_'); 
     $nom=$_GET['nom'];

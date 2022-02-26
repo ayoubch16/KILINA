@@ -147,6 +147,7 @@
 
         <div class="logo"><a href="index.php"><img src="image/logo.png" /></a></div>
         <div class="divleft">
+        <?php if($_SESSION["Reff"] != null) { ?>
                 <a href="favor.php"><img src="image/like.png" />
                 <?php $sql1="SELECT count(*) FROM `favor` ";
                       $result1 = $cnx->query($sql1);
@@ -172,11 +173,10 @@
                 <!-- <a class="mx-1" href="">EN</a>|
                 <a class="mx-1" href="">العربية</a>|
                 <a class="mx-1" href="">FR</a> -->
-                <?php if($_SESSION["Reff"] != null) { ?>
                 <a class="compte" href="deconnecter.php"><img src="image/icone/utilisateur.png" width="20" height="20" alt=""><?php echo $_SESSION['prenom'].' '.substr( $_SESSION['nom'], 0, 2);?></a>
-                <?php } else {?>
+        <?php } else {?>
                 <a class="compte" href="connexion.php"><img src="image/icone/utilisateur.png" width="20" height="20" alt="">Compte</a>
-                <?php } ?>
+        <?php } ?>
            
         </div>
     </div>

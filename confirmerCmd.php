@@ -1,4 +1,7 @@
 <?php 
+ if($_SESSION["Reff"] == null) { 
+  header("Location: connexion.php");
+} 
 include 'dbconnect.php';
   $cpt=$_GET['cpt'];
   $ref = array($_GET['ref1'],$_GET['ref2'],$_GET['ref3'],$_GET['ref4'],$_GET['ref5'],$_GET['ref6'],$_GET['ref7'],$_GET['ref8'],$_GET['ref9'],$_GET['ref10']);
@@ -16,16 +19,17 @@ include 'dbconnect.php';
     $QntProd.=$Qnt[$x].'-';
  
   } 
-  echo '<br>'.$ReffProd;
+  // echo '<br>'.$ReffProd;
   $sql="INSERT INTO `commandes`( `ReffCmd`, `ReffClient`, `ReffProd`, `tailleProd`, `QntProd`, `villeCmd`, `AdresseCMD`, `dateCmd`, `statusCmd`, `PaimentCmd`, `prixCmd`) 
   VALUES ('$ReffCmd','$ReffClient','$ReffProd','$tailleProd','$QntProd','$villeCmd','$AdresseCMD',SYSDATE(),'En cours','à la livraison','$prixtotale')";
-  echo '<br>'.$sql;
+  // echo '<br>'.$sql;
+  if ($cnx->query($sql) === TRUE) { 
   $sqlpanier="UPDATE `panier` SET `etat`='NV' WHERE `RefClient`='$ReffClient'";
-  echo '<br>'.$sqlpanier;
-  // if ($cnx->query($sqlpanier) === TRUE) { 
+  // echo '<br>'.$sqlpanier;
+  if ($cnx->query($sqlpanier) === TRUE) { 
 
-  //  header("Location: panier.php");
-  // }
+   header("Location: panier.php?c=1");
+  }
   
- 
+  }
 ?>
