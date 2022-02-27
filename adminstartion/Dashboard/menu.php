@@ -9,13 +9,13 @@
 
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
-        <a class="sidebar-brand" href="Acceuil.php">
-            <span class="align-middle"><img src="img/photos/logoyello.png" width="150" height="60" alt=""></span>
+        <a class="sidebar-brand" href="index.php">
+            <span class="align-middle"><img src="img/icons/logoy.png" width="200" height="80" alt=""></span>
         </a>
 
         <ul class="sidebar-nav">
             <li class="sidebar-item" onclick="active()">
-                <a class="sidebar-link " href="Acceuil.php">
+                <a class="sidebar-link " href="index.php">
                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Acceuil</span>
                 </a>
             </li>
@@ -51,7 +51,7 @@
 
             </li>
             <li class="sidebar-item" onclick="active()">
-                <a class="sidebar-link" href="pages-blank.html">
+                <a class="sidebar-link" href="deconnecter.php">
                     <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Log
                         out</span>
                 </a>

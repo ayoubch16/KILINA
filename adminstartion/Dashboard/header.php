@@ -15,3 +15,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap" rel="stylesheet"> 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+<?php 
+ if($_SESSION["Reffuser"] == null) { 
+    header("Location: sign.php");
+ } 
+?>

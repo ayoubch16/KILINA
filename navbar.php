@@ -10,6 +10,16 @@
                         box-shadow:-1px -1px 14px 1px rgba(0,0,0,0.31);
                         width: 350px;
                  }
+                 #fermer:hover {
+                     cursor: pointer;
+                 }
+                 .cat input[type="radio"]{
+                     background-color: #000;
+                 }
+                 #prix1{
+                     border: none;
+                     width: 40px;
+                 }
                  input[type="radio"].taille {
                     display: none;
                 }
@@ -45,54 +55,6 @@
                     color: #000;
                 }
 
-                input[type="radio"].color {
-                    display: none;
-                }
-                input[type="radio"].color+label {
-                    position: relative;
-                    padding-left: 1.3rem;
-                }
-
-                input[type="radio"].color+label::before,
-                input[type="radio"].color+label::after {
-                    display: block;
-                    position: absolute;
-                    box-sizing: border-box;
-                    bottom: 0;
-                    left: 0;
-                    content: '';
-                    width: 1rem;
-                    height: 1rem;
-                    border-radius: 1rem;
-                }
-
-                input[type="radio"].color1+label::before {
-                    border: 2px solid #640010;
-                    background-color: #fff;
-                }
-
-                input[type="radio"].color1:checked+label::after {
-                    background-color: #640010;
-                }
-
-                input[type="radio"].color2+label::before {
-                    border: 2px solid #D5CCC7;
-                    background-color: #fff;
-                    color: #fff;
-                }
-
-                input[type="radio"].color2:checked+label::after {
-                    background-color: #D5CCC7;
-                }
-
-                input[type="radio"].color3+label::before {
-                    border: 2px solid #110E0F;
-                    background-color: #fff;
-                }
-
-                input[type="radio"].color3:checked+label::after {
-                    background-color: #110E0F;
-                }
                         .parent {
                             position: fixed;
                             top: 230px;
@@ -127,12 +89,26 @@
                             text-decoration: none;
                             color: #000;
                     }
+                    .btnfilter{
+                        width: 150px;
+                        border-radius: 10px;
+                        border: 1px solid #393d45;
+                        color: #fff;
+                        font-size: 2rem;
+                        padding: 5px;
+                        text-align: center;
+                        background-color: #393d45;
+                    }
+                    .btnfilter:hover{
+                        color: #393d45;
+                        background-color: #fff;
+                    }
   </style>
   <!-- reduction -->
-<div class="reduction ">
+<div class="reduction animate__animated animate__fadeInDownBig">
         <p>Jusqu'à - 50 % de réduction</p>
 </div>
-<div class="parent">
+<div class="parent animate__animated animate__fadeInLeftBig">
     <div class="div1 mb-4 pb-3"> <p>Follow us on</p> </div>
     <div class="div2 mb-2"> <a target="blank" href="https://www.instagram.com/kilina.officiel/"><img class=" " src="image/instagram.png" width="20" height="20" alt="" /></a></div>
     <div class="div3 mb-2">  <a target="blank" href="https://www.facebook.com/Kilina.ma.officiel"><img class="" src="image/facebook.png" width="15" height="20" alt="" /></a> </div>
@@ -143,10 +119,10 @@
 <div class="container">
         <!-- navbar -->
     <div class="navbar row ">
-        <div class=""><a  onclick="filter()"><img src="image/bar.png" width="50" height="50"/></a></div>
+        <div class="animate__animated animate__jackInTheBox"><a  onclick="filter()"><img src="image/bar.png" width="50" height="50"/></a></div>
 
-        <div class="logo"><a href="index.php"><img src="image/logo.png" /></a></div>
-        <div class="divleft">
+        <div class="logo animate__animated animate__jackInTheBox"><a href="index.php"><img src="image/logo.png" /></a></div>
+        <div class="divleft animate__animated animate__jackInTheBox">
         <?php if($_SESSION["Reff"] != null) { ?>
                 <a href="favor.php"><img src="image/like.png" />
                 <?php $sql1="SELECT count(*) FROM `favor` ";
@@ -185,51 +161,44 @@
 <div id="filterbar" class="p-3 m-5 container animate__animated animate__backInLeft">
             <div class="row p-3" style="display: flex;justify-content: space-between;align-items: center;">
                 <div class="p-1" style="background-color: #393D45;"><img src="image/icone/filter.png" width="40" height="40" alt=""></div>
-                <a onclick="fermer();"><img src="image/icone/ferme.png" width="20" height="20" alt=""></a>
+                <a id="fermer" onclick="fermer();"><img src="image/icone/ferme.png" width="20" height="20" alt=""></a>
             </div> 
             <form action="">
                 <div class="p-3 m-3">
                     <h3>Produit Catégorie</h3>
-                    <div class="m-2"><input class="mx-2" type="radio" value="Pantalons" name="categorie"><span>Pantalons</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" value="Manteaux" name="categorie"><span>Manteaux</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" value="Chaussure" name="categorie"><span>Chaussure</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" value="Sac" name="categorie"><span>Sac</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" value="Robes" name="categorie"><span>Robes</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" value="Tshirt" name="categorie"><span>T'shirt</span></div>
-                    <div class="m-2"><input class="mx-2" type="radio" value="ACCESSOIRES" name="categorie"><span>ACCESSOIRES</span></div>
+                    <div class="m-2 cat"><input class="mx-2" type="radio" value="Pantalons" name="c"><span>Pantalons</span></div>
+                    <div class="m-2 cat"><input class="mx-2" type="radio" value="Manteaux" name="c"><span>Survette</span></div>
+                    <div class="m-2 cat"><input class="mx-2" type="radio" value="Chaussure" name="c"><span>Robes</span></div>
+                    <div class="m-2 cat"><input class="mx-2" type="radio" value="Sac" name="c"><span>Monteaux</span></div>
+                    <div class="m-2 cat"><input class="mx-2" type="radio" value="Robes" name="c"><span>Sac</span></div>
+                    <div class="m-2 cat"><input class="mx-2" type="radio" value="Tshirt" name="c"><span>Chaussure</span></div>
+                    <div class="m-2 cat"><input class="mx-2" type="radio" value="ACCESSOIRES" name="c"><span>Accessoires</span></div>
                 </div>
                 <hr>
                 <div class="p-3 m-3">
                     <h3>Filtre par Prix</h3>
-                    <input type="range" name="prix">
+                    <input type="range" id="myInput" max="1000" value="1000" name="p"><br>
+                    <span>Prix :</span><input class="text-center" type="text" value="1000" id="prix1"><span>DH</span>
                 </div>
                 <hr>
-                <div class="p-3 m-3">
-                    <h3>Filtre par Couleur</h3>
-                                <input type="radio" name="color" value="#640010"  class="color color1" id="c1">
-                                <label for="c1">&nbsp;</label>
-                                <input type="radio" name="color" value="#D5CCC7"  class="color color2" id="c2">
-                                <label for="c2">&nbsp;</label>
-                                <input type="radio" name="color" value="#110E0F"  class="color color3" id="c3">
-                                <label for="c3">&nbsp;</label>
-                </div>
-                <hr>
+
+
                 <div class="p-3 m-3">
                     <h3>Filtre par Taille</h3>
-                                <input type="radio" name="taille" value="S" class="taille taille1" id="taille1">
-                                <label for="taille1">S</label>
-                                <input type="radio" name="taille" value="M" class="taille taille2" id="taille2">
-                                <label for="taille2">L</label>
-                                <input type="radio" name="taille" value="L" class="taille taille3" id="taille3">
-                                <label for="taille3">M</label> 
-                                <input type="radio" name="taille" value="XL" class="taille taille4" id="taille4">
-                                <label for="taille4">XL</label> 
-                                <input type="radio" name="taille" value="XXL" class="taille taille5" id="taille5">
-                                <label for="taille5">XXL</label> 
+                                <input type="radio" name="t" value="S" class="  taille taille1" id="taille1">
+                                <label class="mx-2" for="taille1">S</label>
+                                <input type="radio" name="t" value="M" class="  taille taille2" id="taille2">
+                                <label class="mx-2" for="taille2">L</label>
+                                <input type="radio" name="t" value="L" class="  taille taille3" id="taille3">
+                                <label class="mx-2" for="taille3">M</label> 
+                                <input type="radio" name="t" value="XL" class="  taille taille4" id="taille4">
+                                <label class="mx-2" for="taille4">XL</label> 
+                                <input type="radio" name="t" value="XXL" class="  taille taille5" id="taille5">
+                                <label class="mx-2" for="taille5">XXL</label> 
                 </div>
                 <hr>
                 <div class="p-3 text-center">
-                        <input type="submit" value="filter" class="btn">
+                        <input class="btnfilter" type="submit" value="filter" class="btn">
 
                 </div>
             </form>
@@ -244,4 +213,14 @@
                 document.getElementById('filterbar').style.display='none';
                 document.getElementById('page').style.filter="blur(0) grayscale(0)";
             }
+        </script>
+        <script>
+                    $('#myInput').on("change", function() {
+                        $('#prix').text($(this).val());
+                        $('#prix1').val($(this).val());
+                    });
+                    $('#prix1').on("change", function() {
+                        $('#prix').text($(this).val());
+                        $('#myInput').val($(this).val());
+                    });
         </script>

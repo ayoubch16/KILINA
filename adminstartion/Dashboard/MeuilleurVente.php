@@ -8,12 +8,19 @@
             border-radius: 50%;
         }
 
-        .edit img {
+        .edit .img1 {
             filter: brightness(0%);
         }
 
-        .edit img:hover {
+        .edit .img1:hover {
             filter: brightness(100%);
+        }
+        .edit .img2 {
+            filter: brightness(100%);
+        }
+
+        .edit .img2:hover {
+            filter: brightness(0%);
         }
 
         .barRech {
@@ -32,6 +39,12 @@
             width: 300px;
             height: 40px;
             margin-right: 10px;
+        }
+        .btnAjoute {
+             background-color: #FCEA01;
+             color: #000;
+             padding: 10px;
+             min-width: 150px;
         }
     </style>
     <script>
@@ -58,10 +71,11 @@
                 <div class="container-fluid p-0">
                     <h1 class="h3 mb-3"><strong>Meuilleur Vente</strong></h1>
                     <div class="barRech">
-                            <input id="myInput" type="text" ><span><img src="img/icons/search.png" width="20"
-                                    height="20" alt=""></span>
-                            <!-- <input type="submit" value="OK"> -->
+                        <input id="myInput" type="text" ><span><img src="img/icons/search.png" width="20"
+                                        height="20" alt=""></span>
                     </div>
+                    
+                    
                     <div class="row">
                         <div class="col-xl col-xxl ">
                             <div class="w-100">
@@ -76,7 +90,6 @@
                                                             <th class="text-left">Reference</th>
                                                             <th class="text-left">Description</th>
                                                             <th class="text-left">Quantite</th>
-                                                            <th class="text-left">Taille</th>
                                                             <th class="text-left">Prix</th>
                                                             <th class="text-left">Remis</th>
                                                             <!-- <th class="text-left">Couleur</th> -->
@@ -84,10 +97,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody id="myTable">
-                                                        <?php   
+                                                        <?php   $cpt=0;
                                                                 $sql="SELECT * FROM `produits` ORDER BY `date` DESC ";
                                                                 $result = $cnx->query($sql);
                                                                 while ($row = $result->fetch_assoc()) {
+                                                                    $cpt++;
                                                        ?>
                                                         <tr>
                                                             <td class="text-left"><img width="30" height="30"
@@ -96,12 +110,16 @@
                                                             <td class="text-left"><?php echo $row['Ref'];?></td>
                                                             <td class="text-left"><?php echo $row['titre'];?></td>
                                                             <td class="text-left"><?php echo $row['quantite'];?></td>
-                                                            <td class="text-left"><?php echo $row[''];?></td>
                                                             <td class="text-left"><?php echo $row['prix'].'DH';?></td>
                                                             <td class="text-left"><?php echo $row['remis'];?> %</td>
                                                             <td class="text-left edit">
-                                                                
-                                                                <a href=""><input type="checkbox" name="" id="" <?php if($row['meilleurV']=='MV'){echo 'checked';}?>> </a>
+                                                                <?php 
+                                                                    if($row['meilleurV']=='NMV'){
+                                                                ?>
+                                                                <a href="updateMV.php?ref=<?php echo $row['Ref'];?>&mv=<?php echo $row['meilleurV'];?>"><img class="img1" src="img/icons/star.png" width="20" height="20" alt=""></a>
+                                                                <?php }else{?>
+                                                                <a href="updateMV.php?ref=<?php echo $row['Ref'];?>&mv=<?php echo $row['meilleurV'];?>"><img class="img2" src="img/icons/star.png" width="20" height="20" alt=""></a>
+                                                                <?php } ?>
                                                             </td>
                                                         </tr>
                                                         <?php } ?>
@@ -124,8 +142,8 @@
         </div>
     </div>
 
-    <?php include 'script.php';?>
 
+	<?php include 'script.php';?>
 
 
 </body>

@@ -1,5 +1,7 @@
 <?php 
 $c=$_GET['c'];
+$p=$_GET['p'];
+$t=$_GET['t'];
 ?>
 
 <?php include 'header.php';?>
@@ -69,7 +71,7 @@ $c=$_GET['c'];
          
     <div  class="container ">
         <!-- newcollection -->
-        <div class="newcollection bg-white container">
+        <div class="newcollection bg-white container animate__animated animate__fadeIn">
             <div class="menu row">
                 <ul>
                     <li><a href="">Femme</a></li>
@@ -244,14 +246,19 @@ $c=$_GET['c'];
         </div>
 
         <!-- listeproduit -->
-        <div class="listeproduit mt-4 row">
+        <div class="listeproduit mt-4 row animate__animated animate__fadeIn">
             <?php 
-            $cat=$_GET['c'];
-            $cat=empty($cat)? " ":"   WHERE `categorie`='$cat' ";
-            $sql="SELECT * FROM `produits` $cat ORDER BY `date` DESC";
+            // $cat=$_GET['c'];
+            $c=$_GET['c'];
+            $p=$_GET['p']; 
+            $t=$_GET['t'];
+            // $cat=empty($cat)? " ":"   WHERE `categorie`='$cat' ";
+            $c=empty($c)? " ":"    `categorie`='$c' AND ";
+            $p=empty($p)? " ":"    `prix`<'$p' AND ";
+            $t=empty($t)? " ":"    `taille`='$t' AND ";
+            $sql="SELECT * FROM `produits`  WHERE  $c   $p  $t  etatdel='ND' ORDER BY `date` DESC";
             $result = $cnx->query($sql);
             while ($row = $result->fetch_assoc()) {
-               
                     $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
                     $date = date_create($row['date']);
                     $date1=date_format($date, 'Y-m-d');
@@ -260,9 +267,6 @@ $c=$_GET['c'];
                     $years = floor($diff / (365*60*60*24));
                     $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
                     $delai = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-                   
-
-                
                 ?>
             <div class="cardproduit m-3 mt-5">
                 <div>
@@ -311,7 +315,7 @@ $c=$_GET['c'];
         <h1 class="my-3 mb-5 title">Meilleur vendu</h1>
 
         <!-- Meilleur vendu -->
-        <div class="meilleurvendu">
+        <div class="meilleurvendu animate__animated animate__fadeIn">
             <!-- <img class="img-fluid" src="image/Meilleur vendu.png" alt=""> -->
         
 
@@ -352,7 +356,7 @@ $c=$_GET['c'];
             <div class="parent1">
                 
                 <?php
-                    $sql2="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 8";
+                    $sql2="SELECT * FROM `produits` WHERE `meilleurV`='MV' ORDER BY `date` DESC LIMIT 8";
                     $result2 = $cnx->query($sql2);
                     $cpt=0;
                     while ($row2 = $result2->fetch_assoc()) {
@@ -361,13 +365,7 @@ $c=$_GET['c'];
                     <div class="divp<?php echo $cpt;?>"> <a href="product-details.php?id=<?php echo $row2['id']; ?>"><img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row2['img1']); ?>" alt=""></a> </div>
                 <?php } ?>
                 
-                <!-- <div class="divp1"> <a href=""><img src="image/image1.png" alt=""></a> </div>
-                <div class="divp2"> <a href=""><img src="image/image2.png" alt=""></a> </div>
-                <div class="divp3"> <a href=""><img src="image/image3.png" alt=""></a> </div>
-                <div class="divp5"> <a href=""><img src="image/image4.png" alt=""></a> </div>
-                <div class="divp6"> <a href=""><img src="image/image5.png" alt=""></a> </div>
-                <div class="divp7"> <a href=""><img src="image/image6.png" alt=""></a> </div>
-                <div class="divp8"> <a href=""><img src="image/image1.png" alt=""></a> </div> -->
+             
                 
                 <div class="divp4 text-center"> <h1>Best</h1><h1>KiLiNA</h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
 
@@ -376,7 +374,7 @@ $c=$_GET['c'];
 
 
         <!-- notreboutique -->
-        <div class="notreboutique mt-5 text-center">
+        <div class="notreboutique mt-5 text-center animate__animated animate__fadeIn">
             <img src="image/logo.png" alt="">
             <h3>Trouvez votre boutique</h3>
 

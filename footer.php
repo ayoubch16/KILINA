@@ -1,5 +1,11 @@
  <!-- footer  -->
- <footer>
+ <style>
+     .reduction a:hover {
+         color: #fff;
+
+     }
+ </style>
+ <footer class=" animate__animated animate__fadeInUpBig">
         <div class="container">
             <div class="row">
                 <div class="section1 col">
@@ -25,18 +31,18 @@
                 <div class="section4 col">
                     <h4>NOUS CONTACTER</h4>
                     <div class="p-3">
-                        <img src="image/emailb.png" alt="">
-                        <img src="image/facebookb.png" alt="">
-                        <img src="image/instagramb.png" alt="">
-                        <img src="image/linkdeinb.png" alt="">
-                        <img src="image/telegramb.png" alt="">
+                        <a href="mailto: kilinaparis@gmail.com"><img src="image/emailb.png" alt=""></a>
+                        <a href="https://www.facebook.com/Kilina.ma.officiel"><img src="image/facebookb.png" alt=""></a>
+                        <a href="https://www.instagram.com/kilina.officiel/"><img src="image/instagramb.png" alt=""></a>
+                        <a href=""><img src="image/linkdeinb.png" alt=""></a>
+                        <a href=""><img src="image/telegramb.png" alt=""></a>
                     </div>
-                    <h6>Téle : 05 55 55 55</h6>
+                    <h6>Téle : 05 55 55 55 55</h6>
                 </div>
             </div>
         </div>
         <div class="reduction ">
-                <p>powered by <a href="">Trade Line Solution</a> </p>
+                <p>powered by <a target="blanck" href="https://www.tradeline-solutions.com/TradeLS/">Trade Line Solution</a> </p>
         </div>
 
     </footer>
