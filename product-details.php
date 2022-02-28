@@ -33,7 +33,8 @@ if ($row = $result->fetch_assoc()) {
     text-align: center;
     font-size: 1rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
+    width: 200px;
 }
 
 .shopnow:hover {
@@ -44,6 +45,7 @@ if ($row = $result->fetch_assoc()) {
 
 .fa {
     color: red;
+    font-size: 30px;
 }
 </style>
 
@@ -126,9 +128,7 @@ if ($row = $result->fetch_assoc()) {
                                 <?php  if($row['remis']!= 0){?>
                                 <h3 class="mx-2" style="color: gray;"><del><?php echo $row['prix']; ?> DH</del></h3>
                                 <h3 class="mx-2" style="color: red;"><?php echo $nvprix?> DH</h3>
-                                <h3 class="mx-2"
-                                    style="background-color: red;color: #fff;border-radius: 10px;padding: 2px;">
-                                    <?php echo $row['remis'] ;?> %</h3>
+                                
                                 <?php }else{?>
                                 <h3 class="mx-2"><?php echo $row['prix']; ?> DH</h3>
                                 <?php } ?>
@@ -149,7 +149,7 @@ if ($row = $result->fetch_assoc()) {
                             ?>
                             <a class="lienfav p-1"
                                 href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>">
-                                <i class="fa fa-heart" aria-hidden="true"></i></a>
+                                <i  class="fa fa-heart" aria-hidden="true"></i></a>
                             <?php }else{ ?>
                             <a class="lienfav p-1"
                                 href="ajouterfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>">

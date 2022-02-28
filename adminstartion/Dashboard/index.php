@@ -25,14 +25,14 @@
 													<div class="col-sm col-4  mt-0" style="display: flex;justify-content: center;align-items: center;">
 														<img src="./img/photos/cmdImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
-													<div class="col-auto">
+													<div class="col-sm">
 													<?php $sql="SELECT COUNT(*) FROM `commandes` ";
 																$result = $cnx->query($sql);
 																if ($row = $result->fetch_assoc()) {
 																	$commandes=$row['COUNT(*)'];
 																}
 															?>
-                                                        <h6>Commandes</h6>
+                                                        <h6>Commande</h6>
                                                         <h2><?php echo $commandes;?></h2>
 													</div>
 												</div>
@@ -46,7 +46,7 @@
 													<div class="col-sm col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
 														<img src="./img/photos/venteImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
-													<div class="col-auto">
+													<div class="col-sm">
                                                         <h6>Ventes</h6>
                                                         <h2>0</h2>
 													</div>
@@ -61,7 +61,7 @@
 													<div class="col-sm col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
 														<img src="./img/photos/clientImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
-													<div class="col-auto">
+													<div class="col-sm">
 														<?php $sql="SELECT COUNT(*) FROM `clients` ";
 																$result = $cnx->query($sql);
 																if ($row = $result->fetch_assoc()) {
@@ -82,7 +82,7 @@
 													<div class="col-sm col-4 mt-0" style="display: flex;justify-content: center;align-items: center;">
 														<img src="./img/photos/prodImg.png"  alt="" style="width: 3rem;height: 3rem;border-radius: 10px;" />
 													</div>
-													<div class="col-auto">
+													<div class="col-sm">
 															<?php $sql="SELECT COUNT(*) FROM `produits` ";
 																$result = $cnx->query($sql);
 																if ($row = $result->fetch_assoc()) {

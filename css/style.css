@@ -2,6 +2,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -246,12 +247,15 @@ p a:hover {
     top: 10px;
     z-index: 3;
     padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .listeproduit .cardproduit .solde {
-    background-color: red;
-    height: 63px;
+    background-color: #FCEA01;
+    height: 45px;
     width: 50px;
-    color: #fff;
+    color: #000;
     position: absolute;
     right: 10px;
     top: 0;
@@ -261,7 +265,7 @@ p a:hover {
     align-items: center;
     font-size: 15px;
     font-weight: bold;
-    border-radius: 0px 0px 0px 32px;
+    border-radius: 0px 0px 4px 4px;
 }
 
 
@@ -279,8 +283,8 @@ p a:hover {
 }
 
 .listeproduit .cardproduit .info img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 /* meilleurvendu */
 

@@ -17,9 +17,10 @@
         $_SESSION["emailuser"]=$row['emailuser'];
         $_SESSION["villeuser"]=$row['villeuser'];
         $_SESSION["CINuser"]=$row['CINuser'];
-        echo '<script>
-                    window.location=history.go(-2);
-        </script>';
+        header("Location: index.php");
+        // echo '<script>
+        //             window.location=history.go(-2);
+        // </script>';
 
     }else{
         echo 'Error';

@@ -1,6 +1,6 @@
  <!-- footer  -->
  <style>
-     .reduction a:hover {
+      .footer-footer a:hover {
          color: #fff;
 
      }
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="reduction ">
+        <div  class="footer-footer text-center ">
                 <p>powered by <a target="blanck" href="https://www.tradeline-solutions.com/TradeLS/">Trade Line Solution</a> </p>
         </div>
 

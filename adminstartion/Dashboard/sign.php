@@ -149,7 +149,7 @@
         <div class="flex-item "> <h5>-Administrateur-</h5></div>
         <div class="flex-item my-2 "> <p style="font-size: 10px; text-align: left;">Adresse Email</p><input class="form-input" type="email" required name="email" placeholder=""></div>
         <div class="flex-item my-2 "> <p style="font-size: 10px; text-align: left;">Mot de passe</p><input class="form-input" type="password" required name="mdp" placeholder=""></div>
-        <div class="flex-item text-right"> <a style="font-size: 10px;color:#000" href="motpasseout.php">mot de passe oublie</a></div>
+        <!-- <div class="flex-item text-right"> <a style="font-size: 10px;color:#000" href="motpasseout.php">mot de passe oublie</a></div> -->
         <div class="flex-item text-right"> <a style="font-size: 10px;color:#000" href="inscriptionadmin.php">Creer un nouvelle compte</a></div>
         <div class="flex-item my-2"><input type="submit" class="btnP rounded" value="Se connecter"  name="" id=""></div>
 </form>

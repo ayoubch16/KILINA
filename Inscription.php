@@ -131,30 +131,30 @@
                     <div class="row">
                         <div class="col-sm text-left mx-2">
                             <p style="font-size: 15px;">Nom :</p>
-                            <input class="text-center" type="text" name="nom">
+                            <input class="text-center" required type="text" name="nom">
 
                             <p style="font-size: 15px;">Tele :</p>
-                            <input class="text-center" type="tele" name="tele">
+                            <input class="text-center" required type="tele" name="tele">
 
                             <p style="font-size: 15px;">Ville :</p>
-                            <input class="text-center" type="text" name="ville">
+                            <input class="text-center" required type="text" name="ville">
 
                             <p style="font-size: 15px;">Mot de passe :</p>
-                            <input id="password" type="password" name="mdp" onkeyup='check();'>
+                            <input id="password" type="password" required name="mdp" onkeyup='check();'>
 
                             <p style="font-size: 15px;">Confirmer Mot de passe :</p>
-                            <input id="confirm_password" type="password" name="" onkeyup='check();'> <br>
+                            <input id="confirm_password" type="password" required name="" onkeyup='check();'> <br>
                             <span id='message'></span>
                         </div>
                         <div class="col-sm text-left mx-2">
                             <p style="font-size: 15px;">Prenom :</p>
-                            <input class="text-center" type="text" name="prenom">
+                            <input class="text-center" required type="text" name="prenom">
 
                             <p style="font-size: 15px;">Adresse Email :</p>
-                            <input class="text-center" type="email" name="email">
+                            <input class="text-center" required type="email" name="email">
 
                             <p style="font-size: 15px;">Adresse :</p>
-                            <textarea style="height: 210px;resize: none;" name="adresse" ></textarea>
+                            <textarea style="height: 210px;resize: none;" required name="adresse" ></textarea>
                         </div>
                     </div>
         </div> 

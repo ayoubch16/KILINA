@@ -163,9 +163,9 @@
         <div class="panier bg-white container rounded p-4">
             <!-- panier vide -->
             <div id="vide" class="flex-container">
-                <div class="flex-item my-2"><img src="image/icone/panier.png" width="250" height="250" alt=""></div>
+                <div class="flex-item my-2"><img src="image/icone/panier.png" width="200" height="200" alt=""></div>
                 <div class="flex-item my-2">
-                    <h1>Votre panier est vide</h1>
+                    <h3>Votre panier est vide</h3>
                 </div>
             </div>
             <!-- felicitation-->

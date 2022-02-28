@@ -14,7 +14,7 @@
 
             .barRech input[type="text"] {
                 border: none;
-                border-bottom: 1px solid gray;
+                border-bottom: 1px solid #f2f2f2;
                 width: 300px;
                 height: 40px;
                 margin-right: 10px;

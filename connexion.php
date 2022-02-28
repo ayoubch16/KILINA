@@ -10,8 +10,8 @@
         }
         .btnP{
             width: 150px;
-            height: 35px;
             color: #000;
+            padding: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -139,6 +139,9 @@
 
                     </div>
         </div> 
+        <div  class="flex-item my-1">
+            <a style="color: #000;" href="Inscription.php">créer votre compte</a>
+        </div>
         <div class="flex-item my-2 row">
             <input class="btnP rounded" type="submit"  value="Connexion" />
         </div>

@@ -20,6 +20,7 @@
             background-color: #E1D106;
             text-align: center;
             font-size: 20px;
+            border-radius: 4px;
         }
         .btnP:hover {
             text-decoration: none;
@@ -167,9 +168,9 @@
 <div id="vide" class="panier bg-white container rounded p-4">
     <!-- panier vide -->
     <div id="panier1" class="flex-container">
-        <div class="flex-item my-2"><img src="image/icone/panier.png" width="250" height="250" alt=""></div>
-        <div class="flex-item my-2"> <h1>Votre panier est vide</h1></div>
-        <div class="flex-item my-2"><button class="btnP rounded">RETOUR</button></div>
+        <div class="flex-item my-2"><img src="image/icone/panier.png" width="150" height="150" alt=""></div>
+        <div class="flex-item my-2"> <h3>Votre panier est vide</h3></div>
+        <div class="flex-item my-2"><button style="border: none;" class="btnP ">RETOUR</button></div>
     </div>
 </div>
 <?php }  ?>        

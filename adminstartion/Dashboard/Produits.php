@@ -26,7 +26,7 @@
         }
         .barRech  input[type="text"] {
             border: none;
-            border-bottom: 1px solid gray;
+            border-bottom: 1px solid #f2f2f2;
             width: 300px;
             height: 40px;
             margin-right: 10px;
@@ -91,6 +91,7 @@
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
+                                                                <th></th>
                                                                 <th class="text-left">Reference</th>
                                                                 <th class="text-left">Description</th>
                                                                 <th class="text-left">Quantite</th>
@@ -107,17 +108,18 @@
                                                          while ($row = $result->fetch_assoc()) {
                                                        ?>
                                                             <tr>
+                                                                <td class="text-left"><img width="30" height="30"
+                                                                    src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>"
+                                                                    alt=""></td>
                                                                 <td class="text-left"><?php echo $row['Ref'];?></td>
-                                                                <td class="text-left"><?php echo $row['description'];?></td>
+                                                                <td class="text-left"><?php echo $row['description'];?></t d>
                                                                 <td class="text-left"><?php echo $row['quantite'];?></td>
                                                                 <td class="text-left"><?php echo $row['taille'];?></td>
                                                                 <td class="text-left"><?php echo $row['prix'];?></td>
                                                                 <td class="text-left"><?php echo $row['remis'];?></td>
-
                                                                 <td class="text-left edit">
                                                                         <a href=""><img src="img/icons/trash.png" width="15" height="20" alt=""></a>
                                                                         <a href="ModifierProduit.php?id=<?php echo $row['id'];?>"><img src="img/icons/edit.png" width="20" height="20" alt=""></a>
-                                                                        <a href=""><img src="img/icons/star.png" width="20" height="20" alt=""></a>
                                                                 </td>
 
                                                             </tr>

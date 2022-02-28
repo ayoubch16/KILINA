@@ -8,7 +8,14 @@ $t=$_GET['t'];
 
 <body>
     <style>
+      
+        @media screen and (max-width: 500px) {
+            #carouselExampleIndicators{
+                min-height: 900px;
+            }
 
+        }
+   
 
         #pro2,
         #pro3 {
@@ -86,7 +93,7 @@ $t=$_GET['t'];
             </div>
 
             <!-- test Slider -->
-            <div style="min-height: 500px ;" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div  id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -105,11 +112,11 @@ $t=$_GET['t'];
                                     <h2><?php echo $rowc['titre'];?></h2>
                                     <div class="row ml-1">
                                         <div class="mx-4">
-                                            <p>Prix</p>
+                                            <h6 style="color:gray">Prix</h6>
                                             <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
                                         </div>
                                         <div class="mx-4">
-                                            <p>Coleur</p>
+                                            <h6 style="color:gray">Coleur</h6>
                                             <?php 
                                                 $categorie=$rowc['categorie'];
                                                 $sql1="SELECT * FROM `produits` WHERE `categorie`='$categorie' ORDER BY `date` DESC LIMIT 3";
@@ -145,11 +152,11 @@ $t=$_GET['t'];
                                     <h2><?php echo $rowc['titre'];?></h2>
                                     <div class="row ml-1">
                                         <div class="mx-4">
-                                            <p>Prix</p>
+                                            <h6 style="color:gray">Prix</h6>
                                             <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
                                         </div>
                                         <div class="mx-4">
-                                            <p>Coleur</p>
+                                            <h6 style="color:gray">Coleur</h6>
                                             <?php 
                                                 $categorie=$rowc['categorie'];
                                                 $sql1="SELECT * FROM `produits` WHERE `categorie`='$categorie' ORDER BY `date` DESC LIMIT 3";
@@ -176,21 +183,21 @@ $t=$_GET['t'];
                             <?php } ?>
 
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        </a> -->
+                        <!-- <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
-                        </a>
+                        </a> -->
             </div>
 
             <!-- test Slider -->
 
         </div>
 
-        <h1 class="my-3 title">Nos Produits</h1>
+        <h3 class="my-3 title">Nos Produits</h3>
 
         <!-- categories -->
         <div class="text-right">
@@ -284,19 +291,34 @@ $t=$_GET['t'];
                     <?php echo strtoupper($row['titre']);?>
                 </div>
                 <div class="info row mx-1">
-                    <div class="col text-left">
-                    <?php  if($row['remis']!= 0){?>
-                        <span><del><?php echo $row['prix']; ?> DH</del></span><span class="nvprix"><?php echo $nvprix?> DH</span>
-                    <?php }else{?>    
-                        <span><?php echo $row['prix']; ?> DH</span>
-                    <?php } ?>
+                    <div class="col text-left row">
+                        <!-- <?php  if($row['remis']!= 0){?>
+                            <span class="mx-2"><del><?php echo $row['prix']; ?> DH</del></span><span class="nvprix mx-2"><?php echo $nvprix?> DH</span>
+                        <?php }else{?>    
+                            <span class="mx-2"><?php echo $row['prix']; ?> DH</span>
+                        <?php } ?> -->
+                        <?php  if($row['remis']!= 0){?>
+                            <h6 class="mr-2"><del><?php echo $row['prix']; ?> DH</del></h6><h6 class="nvprix mx-2"><?php echo $nvprix?> DH</h6>
+                        <?php }else{?>    
+                            <h6 class="mr-2"><?php echo $row['prix']; ?> DH</h6>
+                        <?php } ?>
+                    </div>
+                    <div class="col  text-center">
+                        <?php  $cate=$row['categorie'];
+                             $sqlcolor="SELECT * FROM `produits` WHERE `categorie`='$cate'  ORDER BY `date` DESC LIMIT 3";
+                             $resultcolor = $cnx->query($sqlcolor);
+                              while ($rowcolor = $resultcolor->fetch_assoc()) {
+                             ?>
+                                <a href="roduct-details.php?id=<?php echo $rowcolor['id'];?>">
+                                <img style="border-radius: 50%;" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowcolor['img1']); ?>"  alt=""></a>
+                            <?php } ?>
+
                     </div>
                     <div class="favor">
                         <?php 
                             $reff=$row['Ref'];
                             $sqlF="SELECT * FROM `favor` WHERE `RefProd` ='$reff'";
                             $result1 = $cnx->query($sqlF);
-                            
                             if ($row1 = $result1->fetch_assoc()) {
                         ?>
                                 <a class="lienfav p-1" href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i class="fa fa-heart" aria-hidden="true"></i></a>
@@ -345,12 +367,12 @@ $t=$_GET['t'];
                 .divp7 { grid-area: 2 / 4 / 3 / 5;border: 1px solid  #F8F8F8;background-color: #fff; }
                 .divp8 { grid-area: 1 / 5 / 3 / 6;border: 1px solid  #F8F8F8;background-color: #fff; } 
                 .divp4 { grid-area: 1 / 3 / 2 / 4;
-                        background-color: #fff;    
+                        background-color: #FCEA01;    
                         position: relative;
                         transform: scale(1.1);
                         display: grid;
                         align-items: flex-end;
-                        border: 1px solid #000;
+                        border: 1px solid #FCEA01;
                         }
             </style>     
             <div class="parent1">
@@ -367,7 +389,7 @@ $t=$_GET['t'];
                 
              
                 
-                <div class="divp4 text-center"> <h1>Best</h1><h1>KiLiNA</h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
+                <div class="divp4 text-center"> <h1>Best</h1><h1><img style="filter: brightness(0%);" src="image/logo.png" width="150" height="60" alt=""></h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
 
             </div>     
         </div>   

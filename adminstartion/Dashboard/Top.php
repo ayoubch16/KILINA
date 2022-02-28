@@ -28,7 +28,7 @@
 								</div>
 								<div class="list-group">
 									<?php 
-									$sql1="SELECT * FROM `commandes` ";
+									$sql1="SELECT * FROM `commandes` LIMIT 10 ";
 									$result1 = $cnx->query($sql1);
                                     while ($row1 = $result1->fetch_assoc()) {
 										$refclient=$row1['ReffClient'];
@@ -37,8 +37,6 @@
                                         if ($rownom = $resultnom->fetch_assoc()) {
 											$txtnom=$rownom['nom'].' '.$rownom['prenom'].' |  Prix:'.$row1['prixCmd'].'DH';
 										}
-										
-										
 									?>
 									<a href="Commande.php" class="list-group-item">
 										<div class="row g-0 align-items-center">
@@ -47,7 +45,7 @@
 											</div>
 											<div class="col-10">
 												<div class="text-dark"><?php echo $row1['ReffCmd']?></div>
-												<div class="text-muted small mt-1"><?php echo $txtnom ;?></div>
+												<div class="text-muted small mt-1"><?php echo $txtnom;?></div>
 												<div class="text-muted small mt-1">30m ago</div>
 											</div>
 										</div>
