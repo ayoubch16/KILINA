@@ -114,7 +114,7 @@
                                                                 <td class="text-left"><?php echo $row['Ref'];?></td>
                                                                 <td class="text-left"><?php echo $row['description'];?></t d>
                                                                 <td class="text-left"><?php echo $row['quantite'];?></td>
-                                                                <td class="text-left"><?php echo $row['taille'];?></td>
+                                                                <td class="text-left"><?php echo str_replace('-',' ',$row['taille']);?></td>
                                                                 <td class="text-left"><?php echo $row['prix'];?></td>
                                                                 <td class="text-left"><?php echo $row['remis'];?></td>
                                                                 <td class="text-left edit">

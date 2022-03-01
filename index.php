@@ -38,8 +38,6 @@ $t=$_GET['t'];
         }
         .colorImg {
         border-radius: 50%;
-        /* width: 40px;
-        height: 40px; */
         overflow: hidden;
         }
         .colorImg img {
@@ -309,8 +307,8 @@ $t=$_GET['t'];
                              $resultcolor = $cnx->query($sqlcolor);
                               while ($rowcolor = $resultcolor->fetch_assoc()) {
                              ?>
-                                <a href="roduct-details.php?id=<?php echo $rowcolor['id'];?>">
-                                <img style="border-radius: 50%;" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowcolor['img1']); ?>"  alt=""></a>
+                                <a class="colorImg" href="roduct-details.php?id=<?php echo $rowcolor['id'];?>">
+                                <img style="border-radius: 50%;box-shadow: 2px 5px 13px -3px rgba(0,0,0,0.66);"  src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowcolor['img1']); ?>"  alt=""></a>
                             <?php } ?>
 
                     </div>

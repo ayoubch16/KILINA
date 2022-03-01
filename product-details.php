@@ -109,9 +109,9 @@ if ($row = $result->fetch_assoc()) {
 
                                 <?php } ?>
                             </div>
-                            <div class="mx-4">
+                            <div style="margin-left: 100px !important;" class="mx-4">
                                 <p>Taille</p>
-                                <p>
+                                <p style="margin-bottom: 0 !important;display: flex;justify-content: center;align-items: center;">
                                     <?php 
                                             $taille = explode("-", $row['taille']);
                                             for ($x = 0; $x <= count($taille)-2; $x++) {

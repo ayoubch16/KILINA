@@ -104,8 +104,8 @@
                                         <div class="card-header">
                                             <h5 class="card-title mb-0">Statistiques</h5>
                                         </div>
-                                            <div class="align-self-center chart chart-lg">
-												<canvas id="myChart" ></canvas>
+                                            <div class="align-self-center chart chart-lg p-3">
+												<canvas id="myChart2" ></canvas>
                                             </div>
 										</div>
 									</div>
@@ -147,55 +147,55 @@
 	</div>
 
 	<?php include 'script.php';?>
-<script>
-	const ctx = document.getElementById('myChart').getContext('2d');
-	const myChart = new Chart(ctx, {
-		type: 'bar',
-		data: {
-			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-			datasets: [{
-				data: [100, 120, 80, 60, 40, 30,200, 180, 160, 140, 120, 30],
-				backgroundColor: [
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',     
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF'
-				],
-				borderColor: [
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF',
-					'#9583FF'
-				],
-				borderWidth: 1
-			}]
-		},
-		options: {
-			scales: {
-				y: {
-					beginAtZero: true
-				}
+    <?php 
+		$nbr=array();
+		for($i=1;$i<=12;$i++){
+			if($i<10){
+				$sql2="SELECT  COUNT(*) FROM commandes WHERE DATE_FORMAT(dateCmd,'%m') ='0$i' ";
+			}else{
+				$sql2="SELECT  COUNT(*) FROM commandes WHERE DATE_FORMAT(dateCmd,'%m') ='$i' ";
 			}
+			$result2 = $cnx->query($sql2);
+			if ($row2 = $result2->fetch_assoc()) { 
+				$nbr[$i]=$row2["COUNT(*)"]; }
 		}
-	});
-</script>
 
+    ?>
+<script>
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        const myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+                label: 'nombre des article vendu',
+                data: [<?php echo $nbr[1];?>, <?php echo $nbr[2];?>, <?php echo $nbr[3];?>, <?php echo $nbr[4];?>, <?php echo $nbr[5];?>, <?php echo $nbr[6];?>,<?php echo $nbr[7];?>, <?php echo $nbr[8];?>, <?php echo $nbr[9];?>, <?php echo $nbr[10];?>, <?php echo $nbr[11];?>, <?php echo $nbr[12];?>],
+                backgroundColor: [
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02',
+                    '#FDEB02'
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }   
+        });
+</script>
+   
 </body>
 
 </html>
