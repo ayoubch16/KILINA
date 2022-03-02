@@ -183,7 +183,7 @@
         <?php include 'menu.php';?>
 		<div class="main">
           <?php include 'Top.php';?>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="modifier.php" method="POST" enctype="multipart/form-data">
 			<main class="content">
 				<div class="container-fluid p-0">
 					<h1 class="h3 mb-3"><strong>Modifier Produits</strong></h1>
@@ -192,7 +192,7 @@
                             <input class="" type="text" name="Ref" placeholder="Ref" readonly value="<?php echo $row['Ref'];?>" />
                         </div>
                         <div class="col-4 row" style="display: flex;justify-content: end;align-items: center;margin-bottom: 20px;">
-                            <div class="col"><input class="btnE" type="submit" value="Enregistrer" /></div>
+                            <div class="col"><input class="btnE" type="submit" onclick="confirm('Voulez-vous confirmer les modifications!');" value="Modifier" /></div>
                             <div class="col"><input class="btnA" type="reset" value="Annuler" /></div>
                         </div>
                     </div>
@@ -219,7 +219,6 @@
                                                                     <option class="choix3" value="Bodie" <?php if($row['categorie'] =='Bodie'){ echo 'selected';} ?>>Bodie</option>
                                                                     <option class="choix3"  value="Jupe" <?php if($row['categorie'] =='Jupe'){ echo 'selected';} ?>>Jupe</option>
                                                                 </select>
-
                                                             </div>
                                                             <div class="col-sm">
                                                                 <h5 class="m-2">Prix :</h5>
@@ -241,24 +240,24 @@
                                                             <?php if($row['categorie']=='Chaussure'){?>
                                                             <div id="chaussure" class="col-sm">
                                                                 <h5 class="m-2">Ajouter Pointure</h5>
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '35-36')) echo ' checked="checked"';?> value="35-36" class="pointure pointure1" id="pointure1">
-                                                                <label for="pointure1">35-36</label>
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '36-37')) echo ' checked="checked"';?> value="36-37" class="pointure pointure2" id="pointure2">
-                                                                <label for="pointure2">36-37</label>
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '37-38')) echo ' checked="checked"';?> value="37-38" class="pointure pointure3" id="pointure3">
-                                                                <label for="pointure3">37-38</label> 
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '38-39')) echo ' checked="checked"';?> value="38-39" class="pointure pointure4" id="pointure4">
-                                                                <label for="pointure4">38-39</label> 
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '39-40')) echo ' checked="checked"';?> value="39-40" class="pointure pointure5" id="pointure5">
-                                                                <label for="pointure5">39-40</label> 
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '40-41')) echo ' checked="checked"';?> value="40-41" class="pointure pointure6" id="pointure6">
-                                                                <label for="pointure6">40-41</label> 
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '41-42')) echo ' checked="checked"';?> value="41-42" class="pointure pointure7" id="pointure7">
-                                                                <label for="pointure7">41-42</label> 
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '42-43')) echo ' checked="checked"';?> value="42-43" class="pointure pointure8" id="pointure8">
-                                                                <label for="pointure8">42-43</label> 
-                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '43-44')) echo ' checked="checked"';?> value="43-44" class="pointure pointure9" id="pointure9">
-                                                                <label for="pointure9">43-44</label> 
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '35/36')) echo ' checked="checked"';?> value="35/36" class="pointure pointure1" id="pointure1">
+                                                                <label for="pointure1">35/36</label>
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '36/37')) echo ' checked="checked"';?> value="36/37" class="pointure pointure2" id="pointure2">
+                                                                <label for="pointure2">36/37</label>
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '37/38')) echo ' checked="checked"';?> value="37/38" class="pointure pointure3" id="pointure3">
+                                                                <label for="pointure3">37/38</label> 
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '38/39')) echo ' checked="checked"';?> value="38/39" class="pointure pointure4" id="pointure4">
+                                                                <label for="pointure4">38/39</label> 
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '39/40')) echo ' checked="checked"';?> value="39/40" class="pointure pointure5" id="pointure5">
+                                                                <label for="pointure5">39/40</label> 
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '40/41')) echo ' checked="checked"';?> value="40/41" class="pointure pointure6" id="pointure6">
+                                                                <label for="pointure6">40/41</label> 
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '41/42')) echo ' checked="checked"';?> value="41/42" class="pointure pointure7" id="pointure7">
+                                                                <label for="pointure7">41/42</label> 
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '42/43')) echo ' checked="checked"';?> value="42/43" class="pointure pointure8" id="pointure8">
+                                                                <label for="pointure8">42/43</label> 
+                                                                <input type="checkbox" name="chkl[ ]" <?php  if(stristr($row['taille'], '43/44')) echo ' checked="checked"';?> value="43/44" class="pointure pointure9" id="pointure9">
+                                                                <label for="pointure9">43/44</label> 
                                                             </div>
                                                             <?php }  ?>
                                                             <?php if($row['categorie']=='Sac'){?>
@@ -394,25 +393,7 @@
         };
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    //    $(document).ready(function(){
-    //        $("#choix1").click(function(){
-    //             $("#chaussure").show();
-    //             $("#vetement").hide();
-    //             $("#sac").hide();
-    //         });
-    //    $("#choix2").click(function(){
-    //        $("#chaussure").hide();
-    //        $("#vetement").hide();
-    //        $("#sac").show();
-    //     });
-    //    $(".choix3").click(function(){
-    //        $("#chaussure").hide();
-    //        $("#vetement").show();
-    //        $("#sac").hide();
-    //     });
-    //     });
-</script>   
+  
 
 
 </body>

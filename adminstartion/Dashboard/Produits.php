@@ -73,9 +73,7 @@
 					<h1 class="h3 mb-3"><strong>Produits</strong></h1>
                     <div class="row">
                         <div class="barRech">
-                            
                                     <input type="text"  id="myInput"><span><img src="img/icons/search.png" width="20" height="20" alt=""></span>
-                               
                         </div>
                         <a class="barAjote" style="font-size: 1rem;display: flex;justify-content: center;align-items: center;" href="AjouterProduit.php">
                             Ajouter un produit &#43;
@@ -106,7 +104,7 @@
                                                         <?php $sql="SELECT * FROM `produits` ORDER BY `date` DESC ";
                                                          $result = $cnx->query($sql);
                                                          while ($row = $result->fetch_assoc()) {
-                                                       ?>
+                                                            ?>
                                                             <tr>
                                                                 <td class="text-left"><img width="30" height="30"
                                                                     src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>"
@@ -118,7 +116,7 @@
                                                                 <td class="text-left"><?php echo $row['prix'];?></td>
                                                                 <td class="text-left"><?php echo $row['remis'];?></td>
                                                                 <td class="text-left edit">
-                                                                        <a href=""><img src="img/icons/trash.png" width="15" height="20" alt=""></a>
+                                                                        <a href="removeproduit.php?id=<?php echo $row['id'];?>"><img src="img/icons/trash.png" width="15" height="20" alt=""></a>
                                                                         <a href="ModifierProduit.php?id=<?php echo $row['id'];?>"><img src="img/icons/edit.png" width="20" height="20" alt=""></a>
                                                                 </td>
 
