@@ -119,7 +119,7 @@
 <div class="container">
         <!-- navbar -->
     <div class="navbar row ">
-        <div class="animate__animated animate__jackInTheBox"><a  onclick="filter()"><img src="image/bar.png" width="50" height="50"/></a></div>
+        <div class="animate__animated animate__jackInTheBox"><a  onclick="filter()"><img src="image/bar.png" width="40" height="40"/></a></div>
 
         <div class="logo animate__animated animate__jackInTheBox"><a href="index.php"><img src="image/logo.png" /></a></div>
         <div class="divleft animate__animated animate__jackInTheBox">

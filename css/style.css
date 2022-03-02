@@ -29,7 +29,7 @@ padding: 2px;
 }
 .reduction  p {
     margin-bottom: 0!important;
-    font-size: 20px;
+    font-size: 1rem;
 }
 /* navbar */
 .bar img {
@@ -73,7 +73,7 @@ padding: 2px;
  text-decoration: none;
  margin: 10px;
  padding: 10px;
- font-size: 20px
+ font-size: 1rem;
 }
 .newcollection .menu ul li a {
     text-decoration: none;
@@ -194,26 +194,6 @@ p a:hover {
 }
  
 
-/* .categories .cat:hover{
-    background-color: #393d45;
-    color: #fff;
-    cursor: pointer;
-}
-.categories .cat img:hover {
-    filter: brightness(0) invert(1);
-}
-.categories img {
-    width: 80px;
-    width: 80px;
-}
-.categories   a h6 {
-    text-align: center;
-    color: #000 ;
-}
-.categories   a :hover {
-    color: #fff !important;
-    text-decoration: none;
-} */
 
 
 /* listeproduit */
@@ -302,7 +282,7 @@ p a:hover {
 
 }
 .notreboutique .row {
-    margin-top: 100px;
+    margin-top: 50px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -403,4 +383,60 @@ p a:hover {
 
 }
 
-/* navbar */
+/* mobile version */
+@media screen and (max-width: 500px) {
+   
+    .logo img {
+        width: 100px;
+        height: 40px;
+      }
+      .divleft img {
+        width: 15px;
+        height: 15px;
+      }
+      .newcollection .menu {
+        justify-content: center;
+      }
+      .detailproduit h1 {
+        font-size: 3rem;
+      }
+      .detailproduit h2 {
+        font-size: 1rem;
+      }
+ 
+      .btnDetail {
+        font-size: 1rem;
+      }
+      #carouselExampleIndicators {
+        min-height: 550px;
+      }
+      .meilleurvendu .parent1 {
+        height: 300px;
+      }
+      .meilleurvendu .parent1 h1{
+        font-size: 1.5rem;
+      }
+      .meilleurvendu .parent1 h6{
+        font-size: 0.8rem;
+      }
+      .notreboutique img {
+        width: 150px;
+      }
+      .notreboutique .ville {
+        width: 50px;
+        height: 50px;
+      }
+      .notreboutique .local {
+        display: none;
+      }
+      .notreboutique h4 {
+        font-size: 0.7rem;
+      }
+      .notreboutique p {
+        font-size: 0.5rem;
+      }
+      .notreboutique .row {
+        margin-top: 0px;
+    }
+
+}

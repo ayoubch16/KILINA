@@ -9,12 +9,9 @@ $t=$_GET['t'];
 <body>
     <style>
       
-        @media screen and (max-width: 500px) {
-            #carouselExampleIndicators{
-                min-height: 900px;
-            }
-
-        }
+      #carouselExampleIndicators{
+        /* min-height: 900px; */
+    }
    
 
         #pro2,
@@ -203,7 +200,7 @@ $t=$_GET['t'];
                 <img src="image/filtericone.png" width="80" height="80" alt="">
             </a>
         </div>
-        <div class="categories mb-3 row">
+        <div class="categories mb-3 row" style="justify-content: space-around;">
             <div class="p-3 px-4 cat <?php if($c=='Pantalons'){echo 'activecat';} ?>">
                 <a href="index.php?c=Pantalons">
                 <img src="image/icone/Tracé 209.png" width="60" height="80" alt=""><br>
@@ -319,9 +316,9 @@ $t=$_GET['t'];
                             $result1 = $cnx->query($sqlF);
                             if ($row1 = $result1->fetch_assoc()) {
                         ?>
-                                <a class="lienfav p-1" href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i class="fa fa-heart" aria-hidden="true"></i></a>
+                                <a class="lienfav p-1" href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i style="font-size: 1.5rem;" class="fa fa-heart" aria-hidden="true"></i></a>
                         <?php }else{ ?>
-                               <a class="lienfav p-1" href="ajouterfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                               <a class="lienfav p-1" href="ajouterfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i style="font-size: 1.5rem;" class="fa fa-heart-o" aria-hidden="true"></i></a>
                         <?php } ?>
                     </div>
                 </div>
@@ -332,7 +329,7 @@ $t=$_GET['t'];
 
         </div>
 
-        <h1 class="my-3 mb-5 title">Meilleur vendu</h1>
+        <h3 class="my-3 mb-5 title">Meilleur vendu</h3>
 
         <!-- Meilleur vendu -->
         <div class="meilleurvendu animate__animated animate__fadeIn">
