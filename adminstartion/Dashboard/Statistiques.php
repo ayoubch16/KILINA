@@ -146,7 +146,7 @@ $c=$_GET['c'];
         const myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['Vendu', 'En stock'],
+                labels: [ 'En stock','Vendu'],
                 datasets: [{
                     data: [<?php echo $qnt ;?>, <?php echo $qntvendu ;?>],
                     backgroundColor: [
@@ -176,7 +176,7 @@ $c=$_GET['c'];
         data: {
             labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [{
-                label: 'nombre des article vendu',
+                label: 'nombre des commandes',
                 data: [<?php echo $nbr[1];?>, <?php echo $nbr[2];?>, <?php echo $nbr[3];?>, <?php echo $nbr[4];?>, <?php echo $nbr[5];?>, <?php echo $nbr[6];?>,<?php echo $nbr[7];?>, <?php echo $nbr[8];?>, <?php echo $nbr[9];?>, <?php echo $nbr[10];?>, <?php echo $nbr[11];?>, <?php echo $nbr[12];?>],
                 backgroundColor: [
                     '#FDEB02',

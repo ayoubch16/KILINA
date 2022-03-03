@@ -28,7 +28,7 @@
 								</div>
 								<div class="list-group">
 									<?php 
-									$sql1="SELECT *,DATEDIFF(SYSDATE(),`dateCmd`) as per FROM `commandes` LIMIT 10 ";
+									$sql1="SELECT *,DATEDIFF(SYSDATE(),`dateCmd`) as per FROM `commandes` ORDER BY `dateCmd` DESC LIMIT 9";
 									$result1 = $cnx->query($sql1);
                                     while ($row1 = $result1->fetch_assoc()) {
 										$refclient=$row1['ReffClient'];
@@ -46,7 +46,7 @@
 											<div class="col-10">
 												<div class="text-dark">Ref : <?php echo $row1['ReffCmd']?></div>
 												<div class="text-muted small mt-1"><?php echo $txtnom;?></div>
-												<div class="text-muted small mt-1"><?php echo $row1['per']?> ago</div>
+												<div class="text-muted small mt-1"><?php echo $row1['per']?>d ago</div>
 											</div>
 										</div>
 									</a>

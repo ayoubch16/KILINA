@@ -235,8 +235,8 @@
                                         <input style="display: none;" type="text" name="prix<?php echo $cpt;?>"
                                             value="<?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?>"
                                             id="">
-                                        <h5 id="prix<?php echo $cpt;?>" class="prixproduit" style="font-size: 37px;">
-                                            <?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?> DH</h5>
+                                        <h5 id="prix<?php echo $cpt;?>" class="prixproduit" style="font-size: 1rem;width: auto;">
+                                            <?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?>DH</h5>
                                     </div>
                                     <div class="flex-item mx-2 row">
                                         <!-- <button class="mx-1 btnP rounded">SHOP NOW</button> -->

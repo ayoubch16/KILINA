@@ -20,21 +20,21 @@
                 margin-right: 10px;
             }
 
-            .statusL {
+            .statusL a {
                 color: #08cf07;
                 background-color: #e5fbe5;
                 padding: 5px;
                 border-radius: 5px;
             }
 
-            .statusA {
+            .statusA a {
                 color: #fc4b4b;
                 background-color: #ffecec;
                 padding: 5px;
                 border-radius: 5px;
             }
 
-            .statusE {
+            .statusE a {
                 color: #c2c800;
                 background-color: #feffe2;
                 padding: 5px;
@@ -130,22 +130,25 @@
                                         height="20" alt=""></span>
                                
                         </div>
+                        <form action="importdata.php">
                         <div class="row mb-3" style="display: flex; justify-content: space-between;">
                             <div class="bardelai col-5">
-                                <input type="date" name="datedebut">
-                                <input type="date" name="datefin">
-                                <input type="submit" value="Import/Export">
+                                    <input type="date" name="datedebut">
+                                    <input type="date" name="datefin">
+                                    <input type="submit" value="Import/Export">
                             </div>
+                            
                             <div class="barfilter col-4">
-                                <span class="statusL mx-2">Livrée</span>
-                                <span class="statusA mx-2">Annuler</span>
-                                <span class="statusE mx-2">En cours</span>
+                                <span class="statusL mx-2"><a href="Commande.php?c=1">Livrée</a></span>
+                                <span class="statusA mx-2"><a href="Commande.php?c=2">Annuler</a></span>
+                                <span class="statusE mx-2"><a href="Commande.php?c=3">En cours</a></span>
                                 <span class="statusF"><img src="img/icons/filtericone.png" width="40" height="40"
                                         alt=""></span>
 
                             </div>
 
                         </div>
+                        </form>
                     </div>
                     <div class="row">
                         <div class="col-xl col-xxl ">
@@ -160,6 +163,8 @@
                                                             <th class="text-left">Commandes</th>
                                                             <th class="text-left">Clients</th>
                                                             <th class="text-left">Articles</th>
+                                                            <th class="text-left"></th>
+                                                            <th class="text-left"></th>
                                                             <th class="text-left">Ville</th>
                                                             <th class="text-left">Date</th>
                                                             <th class="text-left">Prix</th>
@@ -169,15 +174,32 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody id="myTable">
-                                                        <?php $sql="SELECT * FROM `commandes` ORDER BY `dateCmd`,`ReffCmd` DESC ";
-                                                                  $result = $cnx->query($sql);
+                                                        <?php      $c=$_GET['c'];
+                                                                    $txt=" ";
+                                                            if($c==1){
+                                                                $txt=" WHERE `statusCmd`='Livrée' ";       
+                                                            }
+                                                            if($c==2){
+                                                                $txt=" WHERE `statusCmd`='Annuler' ";       
+                                                            }
+                                                            if($c==3){
+                                                                $txt="  WHERE `statusCmd`='En cours' ";       
+                                                            }
+                                                              $sql="SELECT * FROM `commandes` $txt  ORDER BY `dateCmd`,`ReffCmd` DESC ";
+                                                              $result = $cnx->query($sql);
                                                                   while ($row = $result->fetch_assoc()) {
                                                             ?>
                                                         <tr>
                                                             <td class="text-left"><?php echo $row['ReffCmd'] ;?></td>
                                                             <td class="text-left"><?php echo $row['ReffClient'] ;?></td>
                                                             <td class="text-left">
-                                                                <?php echo str_replace("-","<br>",$row['ReffProd'] );?>
+                                                                <?php echo str_replace("-","<br>",$row['ReffProd']);?>
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo str_replace("-","<br>",$row['tailleProd']);?>
+                                                            </td>
+                                                            <td class="text-left">
+                                                                <?php echo str_replace("-","<br>",$row['QntProd']);?>
                                                             </td>
                                                             <td class="text-left"><?php echo $row['villeCmd'] ;?></td>
                                                             <td class="text-left"><?php echo $row['dateCmd'] ;?></td>

@@ -57,7 +57,7 @@ $t=$_GET['t'];
             align-items: center;
             background-color: #E1D106;
             text-align: center;
-            font-size: 20px;
+            font-size: 1rem;
         }
         .btnDetail:hover {
             text-decoration: none;
@@ -125,8 +125,8 @@ $t=$_GET['t'];
                                         </div>
 
                                     </div>
-                                    <div class=" shop m-4">
-                                        <a class="btnDetail px-5 mr-3" href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
+                                    <div class="  m-4">
+                                        <a class="btnDetail" href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
                                     </div>
                                 </div>
                                 <div class="imgGrande col-sm">
@@ -166,7 +166,7 @@ $t=$_GET['t'];
 
                                     </div>
                                     <div class="  m-4">
-                                    <a class="btnDetail px-5 mr-3" href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
+                                    <a class="btnDetail " href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
 
                                     </div>
                                 </div>

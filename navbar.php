@@ -125,7 +125,7 @@
         <div class="divleft animate__animated animate__jackInTheBox">
         <?php if($_SESSION["Reff"] != null) { ?>
                 <a href="favor.php"><img src="image/like.png" />
-                <?php $sql1="SELECT count(*) FROM `favor` ";
+                <?php $sql1="SELECT count(*) FROM `favor` WHERE `etat`='V' ";
                       $result1 = $cnx->query($sql1);
                        if ($row1 = $result1->fetch_assoc()) { 
                            $nbrfavor=$row1['count(*)'];
@@ -136,7 +136,7 @@
                 <?php } ?> 
                 </a>
                 <a href="panier.php"><img src="image/panier.png"/>
-                <?php $sql1="SELECT count(*) FROM `panier` ";
+                <?php $sql1="SELECT count(*) FROM `panier` WHERE `etat`='V' ";
                       $result1 = $cnx->query($sql1);
                        if ($row1 = $result1->fetch_assoc()) { 
                            $nbrfavor=$row1['count(*)'];

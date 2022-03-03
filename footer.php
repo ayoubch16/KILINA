@@ -8,7 +8,7 @@
  <footer class=" animate__animated animate__fadeInUpBig">
         <div class="container">
             <div class="row">
-                <div class="section1 col">
+                <div style="display: grid;" class="section1 col">
                     <h3>Kilina</br>Collection</h3>
                     <p>
                         ltima Syriarum est Palaestina per
@@ -18,7 +18,7 @@
                         nulli cedentem sed sibi vicissim
                     </p>
                 </div>
-                <div class="section2 col">
+                <div style="display: grid;" class="section2 col">
                     <h6>Your equipment</h6>
                     <ul>
                         <li><a href="">Journal</a></li>
@@ -28,7 +28,7 @@
                         <li><a href="">Archives</a></li>
                     </ul>
                 </div>
-                <div class="section4 col">
+                <div style="display: grid;" class="section4 col">
                     <h4>NOUS CONTACTER</h4>
                     <div class="p-3">
                         <a href="mailto: kilinaparis@gmail.com"><img src="image/emailb.png" alt=""></a>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div  class="footer-footer text-center ">
-                <p>powered by <a target="blanck" href="https://www.tradeline-solutions.com/TradeLS/">Trade Line Solution</a> </p>
+                <p style="text-align: center;">powered by <a target="blanck" href="https://www.tradeline-solutions.com/TradeLS/">Trade Line Solution</a> </p>
         </div>
 
     </footer>
