@@ -66,12 +66,16 @@ if ($row = $result->fetch_assoc()) {
                             <img onclick="change3()" class="choiximage" id="img3"
                                 src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img3']); ?>" width="91"
                                 height="119" alt="">
+                            <?php if(!empty($row['img4'])) {?>
                             <img onclick="change4()" class="choiximage" id="img4"
                                 src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img4']); ?>" width="91"
                                 height="119" alt="">
+                            <?php } ?>
+                            <?php if(!empty($row['img5'])) {?>
                             <img onclick="change5()" class="choiximage" id="img5"
                                 src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img5']); ?>" width="91"
                                 height="119" alt="">
+                            <?php } ?>
                         </div>
                         <div class="col">
                             <img id="grandImg"

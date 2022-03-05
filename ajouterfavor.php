@@ -1,6 +1,11 @@
 <?php 
 
 include 'dbconnect.php';
+    
+       
+            
+         
+
 
 $ref=$_GET['ref'];
 $refclient=$_GET['refclient'];
@@ -22,4 +27,5 @@ if ($cnx->query($sql) === TRUE) {
                 }
         </script>';
 }
+
 ?>

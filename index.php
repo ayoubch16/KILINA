@@ -178,14 +178,7 @@ $t=$_GET['t'];
                             <?php } ?>
 
                         </div>
-                        <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a> -->
-                        <!-- <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a> -->
+                 
             </div>
 
             <!-- test Slider -->
@@ -256,7 +249,7 @@ $t=$_GET['t'];
             $t=$_GET['t'];
             // $cat=empty($cat)? " ":"   WHERE `categorie`='$cat' ";
             $c=empty($c)? " ":"    `categorie`='$c' AND ";
-            $p=empty($p)? " ":"    `prix`<'$p' AND ";
+            $p=empty($p)? " ":"    `prix`< $p AND ";
             $t=empty($t)? " ":"    `taille`='$t' AND ";
             $sql="SELECT * FROM `produits`  WHERE  $c   $p  $t  etatdel='ND' ORDER BY `date` DESC";
             $result = $cnx->query($sql);
@@ -309,6 +302,7 @@ $t=$_GET['t'];
                             <?php } ?>
 
                     </div>
+                    <?php  if($_SESSION["Reff"] != null) { ?>
                     <div class="favor">
                         <?php 
                             $reff=$row['Ref'];
@@ -321,6 +315,7 @@ $t=$_GET['t'];
                                <a class="lienfav p-1" href="ajouterfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"> <i style="font-size: 1.5rem;" class="fa fa-heart-o" aria-hidden="true"></i></a>
                         <?php } ?>
                     </div>
+                    <?php   } ?>
                 </div>
             </div>
             <?php }  ?>

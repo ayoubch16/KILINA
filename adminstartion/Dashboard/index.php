@@ -123,7 +123,7 @@
                                                 <th>Reference</th>
                                                 <th style="text-align: right;">Prix</th>
                                             </tr>
-											<?php $sql="SELECT * FROM `produits` ";
+											<?php $sql="SELECT * FROM `produits` ORDER BY `quantitevendu` DESC ";
 													$result = $cnx->query($sql);
 													 while($row = $result->fetch_assoc()) {
 											?>
