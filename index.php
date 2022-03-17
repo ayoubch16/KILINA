@@ -412,41 +412,21 @@ $t=$_GET['t'];
             <h3>Trouvez votre boutique</h3>
 
             <div class="row">
-                <div class="col">
-                    <div><button onclick="casa()"  type="button" class="btnBoutique" data-toggle="modal" data-target="#exampleModal1">
-                        <img class="ville" src="image/casa.webp" alt="">
+               
+                <?php $sql="SELECT * FROM `boutiques1` ";
+                   $result = $cnx->query($sql);
+                   while ($row = $result->fetch_assoc()) {
+                ?>
+                 <div class="col">
+                    <div><button onclick="ville('<?php echo $row['ville'];?>'),'<?php echo $row['adresse'];?>','<?php echo $row['tele'];?>','<?php echo $row['lien'];?>'"  
+                                type="button" class="btnBoutique" data-toggle="modal" data-target="#exampleModal1">
+                        <img class="ville" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['image']); ?>" alt="">
                         </button></div>
                     <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
-                    <h4>Casablanc</h4>
+                    <h4><?php echo $row['ville'];?></h4>
+                    
                 </div>
-                <div class="col">
-                    <!-- <div><img class="ville" src="image/Mékness.webp" alt=""></div> -->
-                    <div>
-                        <button onclick="mekness()"  type="button" class="btnBoutique" data-toggle="modal" data-target="#exampleModal2">
-                            <img  class="ville" src="image/Mékness.webp" alt="">
-                        </button>
-                    </div>
-                    <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
-                    <h4>Mékness</h4>
-                    <p>Comming soon</p>
-                </div>
-                <div class="col">
-                    <div><img class="ville" src="image/Sale.webp" alt=""></div>
-                    <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
-                    <h4>Sale</h4>
-
-                </div>
-                <div class="col">
-                    <div><img class="ville" src="image/marrakech.webp" alt=""></div>
-                    <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
-                    <h4>Marrakech</h4>
-                    <p>Comming soon</p>
-                </div>
-                <div class="col">
-                    <div><img class="ville" src="image/rabat.jpg" alt=""></div>
-                    <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
-                    <h4>Rabat</h4>
-                </div>
+                <?php } ?>
             </div>
 
 <h1 id="test"></h1>
@@ -457,7 +437,8 @@ $t=$_GET['t'];
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center"  id="exampleModalLabel villeboutique">casa</h5>
+                    <!-- <h5 class="modal-title text-center"  id="exampleModalLabel villeboutique">casa</h5> -->
+                    <h2 class="text-center" id="villeboutique"></h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -493,76 +474,23 @@ $t=$_GET['t'];
                 </div>
             </div>
         </div>
-        <!-- Modal11 -->
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center"  id="exampleModalLabel villeboutique">casa</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <img id="imageville" src="image/Mékness.webp" class="img-fluid" alt="">
-                    <div class="row">
-                        <div class="col">
-                            Adresse :
-                        </div>
-                        <div  class="col">
-                            <p id="adresse">Mékness</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Telephone :
-                        </div>
-                        <div  class="col">
-                        <p id="tele">02222222222</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Localisation :
-                        </div>
-                        <div class="col">
-                            <a id="lien" href="">maps</a>
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-            </div>
-        </div>
+    
 
         <!-- contact -->
         <script>
-           
+           function ville(ville,adresse,tele,lien){
+            //    alert(ville);
+               document.getElementById('villeboutique').innerHTML=ville;
+               document.getElementById('adresse').innerHTML=adresse;
+               document.getElementById('tele').innerHTML=tele;
+               document.getElementById('lien').innerHTML=lien;
+           }
 
-            let info=[
-                {
-                    ville:'Rabat'
-                    ,adresse:'adresse Rabat'
-                    ,telephone:'011111111'
-                    ,lien:'lienrabat'
-                },
-                {
-                    ville:'Sale'
-                    ,adresse:'adresse Sale'
-                    ,telephone:'022222222'
-                    ,lien:'lienSale'
-                },
-                {
-                    ville:'Casa'
-                    ,adresse:'adresse Casa'
-                    ,telephone:'0333333'
-                    ,lien:'lienCasa'
-                }
-            ];
+        
             
         </script>
 
-        
+
 
 
     </div>
