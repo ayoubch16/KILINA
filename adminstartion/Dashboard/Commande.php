@@ -210,13 +210,13 @@
                                                             <td class="text-left"><?php echo $row['prixCmd'] ;?></td>
                                                             <td class="text-left">
                                                                 <?php if($row['statusCmd']=='En cours'){?>
-                                                                <span class="statusE">En cours</span>
+                                                                <span class="statusE"><a>En cours</a></span>
                                                                 <?php } ?>
                                                                 <?php if($row['statusCmd']=='Annuler'){?>
-                                                                <span class="statusA">Annuler</span>
+                                                                <span class="statusA"><a>Annuler</a></span>
                                                                 <?php } ?>
                                                                 <?php if($row['statusCmd']=='Livrée'){?>
-                                                                <span class="statusL">Livrée</span>
+                                                                <span class="statusL"><a>Livrée</a></span>
                                                                 <?php } ?>
                                                             </td>
                                                             <td class="text-left"><?php echo $row['PaimentCmd'] ;?></td>
@@ -266,7 +266,7 @@
             text-decoration: none;
         }
     </style>
-
+    
     <div id="info" style="position: fixed;left: 30%;right: 30%;top:10%;bottom: 10%;" class="col-6 card text-center border">
         <form action="">    
         <div style="display: flex;justify-content: space-between;" class="card-header bg-light">
@@ -275,36 +275,49 @@
              
         </div>
         <div class="card-body border" style="background-color: #fff;">
+        <?php 
+        $sqlc="SELECT * FROM Commandes WHERE `ReffCmd`='cmd_6218eaea12cb5' ";
+        $resultc=$cnx->query($sqlc);
+        if($rowc=$resultc->fetch_assoc()){
+            $ref=$rowc['ReffClient'];
+            $sqln="SELECT * FROM `clients` WHERE `Reff` ='$ref' ";
+            $resultn=$cnx->query($sqln);
+            if($rown=$resultn->fetch_assoc()){
+
+            }
+
+        }
+                ?>
             <div class="row">
                 <div class="col">
                     <h5>Nom</h5>
-                    <input type="text" >
+                    <input type="text" class="text-center" readonly value="<?php echo $rown['nom'];?>" >
                 </div>
                 <div class="col">
                     <h5>Prenom</h5>
-                    <input type="text" >
+                    <input type="text" class="text-center" readonly value="<?php echo $rown['prenom'];?>">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <h5>Adresse</h5>
-                    <input type="text" >
+                    <input type="text" class="text-center" readonly value="<?php echo $rowc['AdresseCMD'];?>" >
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <h5>Article</h5>
-                    <input type="text" >
+                    <input type="text" class="text-center" readonly value="<?php echo $rowc['ReffCmd'];?>">
                 </div>
                 <div class="col">
                     <h5>Prix</h5>
-                    <input type="text" >
+                    <input type="text" class="text-center" readonly value="<?php echo $rowc['prixCmd'];?>">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <h5>Ville</h5>
-                    <input type="text" >
+                    <input type="text" class="text-center" readonly value="<?php echo $rowc['villeCmd'];?>" >
                 </div>
                 <div class="col">
                     <h5>Status</h5>

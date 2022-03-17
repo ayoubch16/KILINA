@@ -64,6 +64,15 @@ $t=$_GET['t'];
             background-color: #000;
             color: #E1D106;
         }
+        .btnBoutique{
+            border: none;
+            background: transparent;
+        }
+        .btnBoutique:hover{
+            border: none;
+            background: transparent;
+        }
+    
    
     </style>
 
@@ -80,11 +89,11 @@ $t=$_GET['t'];
                     <li style="color:gray">Homme</li>
                     <li style="color:gray">Enfant</li>
                 </ul>
-                <!-- <ul>
-                    <li><a href="">S’inscrire</a></li> |
-                    <li><a href="">Recturment</a></li> |
-                    <li><a href="">Contact</a></li>
-                </ul> -->
+                <ul class="reclamation">
+                    <li><a href="">Reclamation</a></li> |
+                    <li><a href="">Recturment</a></li> 
+                    <!-- <li><a href="">Contact</a></li> -->
+                </ul>
             </div>
 
             <!-- test Slider -->
@@ -93,6 +102,7 @@ $t=$_GET['t'];
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                         </ol>
                         <div class="carousel-inner">
                             <?php 
@@ -136,7 +146,7 @@ $t=$_GET['t'];
                             </div>
                             <?php } ?>
                             <?php 
-                                $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 1,2";
+                                $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 1,3";
                                 $resultc = $cnx->query($sqlc);
                                 while ($rowc = $resultc->fetch_assoc()) {
                             ?>
@@ -178,6 +188,14 @@ $t=$_GET['t'];
                             <?php } ?>
 
                         </div>
+                        <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a> -->
+                        <a   class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span style="filter: invert(30%) sepia(74%) saturate(809%) hue-rotate(356deg) brightness(200%) contrast(80%);" class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                  
             </div>
 
@@ -359,8 +377,10 @@ $t=$_GET['t'];
                 .divp4 { grid-area: 1 / 3 / 2 / 4;
                         background-color: #FCEA01;    
                         position: relative;
-                        transform: scale(1.1);
+                        transform: scale(1.2);
                         display: grid;
+                        padding: 10px;
+                        border-radius: 50%;
                         align-items: flex-end;
                         border: 1px solid #FCEA01;
                         }
@@ -386,19 +406,26 @@ $t=$_GET['t'];
 
 
         <!-- notreboutique -->
+        
         <div class="notreboutique mt-5 text-center animate__animated animate__fadeIn">
             <img src="image/logo.png" alt="">
             <h3>Trouvez votre boutique</h3>
 
             <div class="row">
                 <div class="col">
-                    <div><img class="ville" src="image/casa.webp" alt=""></div>
+                    <div><button onclick="casa()"  type="button" class="btnBoutique" data-toggle="modal" data-target="#exampleModal1">
+                        <img class="ville" src="image/casa.webp" alt="">
+                        </button></div>
                     <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
                     <h4>Casablanc</h4>
-
                 </div>
                 <div class="col">
-                    <div><img class="ville" src="image/Mékness.webp" alt=""></div>
+                    <!-- <div><img class="ville" src="image/Mékness.webp" alt=""></div> -->
+                    <div>
+                        <button onclick="mekness()"  type="button" class="btnBoutique" data-toggle="modal" data-target="#exampleModal2">
+                            <img  class="ville" src="image/Mékness.webp" alt="">
+                        </button>
+                    </div>
                     <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
                     <h4>Mékness</h4>
                     <p>Comming soon</p>
@@ -422,11 +449,118 @@ $t=$_GET['t'];
                 </div>
             </div>
 
+<h1 id="test"></h1>
 
+        </div>
+        <!-- Modal11 -->
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center"  id="exampleModalLabel villeboutique">casa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="imageville" src="image/casa.webp" class="img-fluid" alt="">
+                    <div class="row">
+                        <div class="col">
+                            Adresse :
+                        </div>
+                        <div  class="col">
+                            <p id="adresse"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Telephone :
+                        </div>
+                        <div  class="col">
+                        <p id="tele"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Localisation :
+                        </div>
+                        <div class="col">
+                            <a id="lien" href="">maps</a>
+                        </div>
+                    </div>
+                </div>
 
+                </div>
+            </div>
+        </div>
+        <!-- Modal11 -->
+        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center"  id="exampleModalLabel villeboutique">casa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="imageville" src="image/Mékness.webp" class="img-fluid" alt="">
+                    <div class="row">
+                        <div class="col">
+                            Adresse :
+                        </div>
+                        <div  class="col">
+                            <p id="adresse">Mékness</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Telephone :
+                        </div>
+                        <div  class="col">
+                        <p id="tele">02222222222</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Localisation :
+                        </div>
+                        <div class="col">
+                            <a id="lien" href="">maps</a>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
         </div>
 
         <!-- contact -->
+        <script>
+           
+
+            let info=[
+                {
+                    ville:'Rabat'
+                    ,adresse:'adresse Rabat'
+                    ,telephone:'011111111'
+                    ,lien:'lienrabat'
+                },
+                {
+                    ville:'Sale'
+                    ,adresse:'adresse Sale'
+                    ,telephone:'022222222'
+                    ,lien:'lienSale'
+                },
+                {
+                    ville:'Casa'
+                    ,adresse:'adresse Casa'
+                    ,telephone:'0333333'
+                    ,lien:'lienCasa'
+                }
+            ];
+            
+        </script>
 
         
 
@@ -438,24 +572,23 @@ $t=$_GET['t'];
     <!-- footer  -->
     <?php include 'footer.php';?>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"
-        integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            integrity="sha512-8qmis31OQi6hIRgvkht0s6mCOittjMa9GMqtK9hes5iEQBQE/Ca6yGE5FsW36vyipGoWQswBj/QBm2JR086Rkw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-        <script>
-            function filter(){
-                document.getElementById('filterbar').style.display='block';
-                document.getElementById('page').style.filter="blur(5px) grayscale(5%) ";
-            }
-            function fermer(){
-                document.getElementById('filterbar').style.display='none';
-                document.getElementById('page').style.filter="blur(0) grayscale(0)";
-            }
-        </script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            <script>
+                function filter(){
+                    document.getElementById('filterbar').style.display='block';
+                    document.getElementById('page').style.filter="blur(5px) grayscale(5%) ";
+                }
+                function fermer(){
+                    document.getElementById('filterbar').style.display='none';
+                    document.getElementById('page').style.filter="blur(0) grayscale(0)";
+                }
+            </script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 

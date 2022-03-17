@@ -48,7 +48,11 @@
                 <a class="sidebar-link" href="Commande.php">
                     <i class="align-middle" data-feather="list"></i> <span class="align-middle">Commande</span>
                 </a>
-
+            </li>
+            <li class="sidebar-item" onclick="active()">
+                <a class="sidebar-link" href="Magasins.php">
+                    <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Nos Magasins</span>
+                </a>
             </li>
             <li class="sidebar-item" onclick="active()">
                 <a class="sidebar-link" href="deconnecter.php">

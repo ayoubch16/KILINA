@@ -1,9 +1,11 @@
 <?php 
-
 include 'dbconnect.php';
+
 $ref=$_GET['ref'];
 $refclient=$_GET['refclient'];
-
+if($_SESSION["Reff"] == null) {
+    header('Location: connexion.php');
+}
 
 $sql="INSERT INTO `panier`(`RefClient`, `RefProd`, `date`) VALUES ('$refclient','$ref',SYSDATE())";
 // echo $sql;

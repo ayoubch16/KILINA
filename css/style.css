@@ -399,7 +399,10 @@ p a:hover {
     .logo img {
         width: 100px;
         height: 40px;
-      }
+    }
+    .reclamation {
+        display: none;
+    }
       .divleft img {
         width: 15px;
         height: 15px;
