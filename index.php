@@ -72,7 +72,7 @@ $t=$_GET['t'];
             border: none;
             background: transparent;
         }
-    
+   
    
     </style>
 
@@ -212,51 +212,151 @@ $t=$_GET['t'];
             </a>
         </div>
         <div class="categories mb-3 row" style="justify-content: space-around;">
-            <div class="p-3 px-4 cat <?php if($c=='Pantalons'){echo 'activecat';} ?>">
-                <a href="index.php?c=Pantalons">
-                <img src="image/icone/Tracé 209.png" width="60" height="80" alt=""><br>
-                <span class="text-center">Pantalons</span>
-                </a>
+            <div id="cat1" onclick="cat('1')" class="col  text-center p-3 px-4 cat ">
+                <button>
+                    <img src="image/icone/sac-a-main.png" width="80" height="80" alt=""><br>
+                    <span class="text-center">Sacs</span>
+                </button>
             </div>
-            <div class="p-3 px-4 cat <?php if($c=='Survette'){echo 'activecat';} ?>">
-                <a href="index.php?c=Survette">
-                <img src="image/icone/tshirt.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Survette</span>
-                </a>
+            <div id="cat2" onclick="cat('2')" class="col  text-center p-3 px-4 cat ">
+                <button  >
+                    <img src="image/icone/bottes-femme.png" width="80" height="80" alt=""><br>
+                    <span class="text-center">Chaussures</span>
+                </button>
             </div>
-            <div class="p-3 px-4 cat <?php if($c=='Robes'){echo 'activecat';} ?>">
-                <a href="index.php?c=Robes">
-                <img src="image/icone/robe.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Robes</span>
-                </a>
+            <div id="cat3" onclick="cat('3')" class="col  text-center p-3 px-4  cat">
+                <button  >
+                    <img src="image/icone/3081851.png" width="80" height="80" alt=""><br>
+                    <span class="text-center">Vetements</span>
+                </button>
             </div>
-            <div class="p-3 px-4 cat <?php if($c=='Manteaux'){echo 'activecat';} ?>">
-                <a href="index.php?c=Manteaux">
-                <img src="image/icone/manteau.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Manteaux</span>
-                </a>
+            <div id="cat4" onclick="cat('4')" class="col  text-center p-3 px-4  cat">
+                <button  >
+                    <img src="image/icone/jewelry.png" width="80" height="80" alt=""><br>
+                    <span class="text-center">Accessoires</span>
+                </button>
             </div>
-            <div class="p-3 px-4 cat <?php if($c=='Sac'){echo 'activecat';} ?>">
-                <a href="index.php?c=Sac">
-                <img src="image/icone/sac-a-main.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Sac</span>
-                </a>
+            <div class="sousgroup container bg-light rounded ">
+                <div class="group">
+                <ul id="group1">
+                    <li><a href="">Cartables</a></li>
+                    <li><a href="">Sacs à Dos</a></li>
+                    <li><a href="">Portefeuilles</a></li>
+                    <li><a href="">Sacs à main</a></li>
+                    <li><a href="">Sacs de soirée</a></li>
+                    <li><a href="">Pochettes</a></li>
+                </ul>   
+                <ul  id="group2">
+                    <li><a href="">T-Shirts</a></li>
+                    <li><a href="">Escarpins</a></li>
+                    <li><a href="">Mocassins</a></li>
+                    <li><a href="">Sandales</a></li>
+                    <li><a href="">Ballerines</a></li>
+                    <li><a href="">Espadrilles</a></li>
+                    <li><a href="">Bottines</a></li>
+                    <li><a href="">Pantoufles</a></li>
+                    <li><a href="">Sabots</a></li>
+                    <li><a href="">Sabots</a></li>
+                    <li><a href="">T-Shirts</a></li>
+                    <li><a href="">Escarpins</a></li>
+                    <li><a href="">Mocassins</a></li>
+                    <li><a href="">Sandales</a></li>
+                    <li><a href="">Ballerines</a></li>
+                    <li><a href="">Espadrilles</a></li>
+                    <li><a href="">Bottines</a></li>
+                    <li><a href="">Pantoufles</a></li>
+                    <li><a href="">Sabots</a></li>
+                    <li><a href="">Sabots</a></li>
+                    <li><a href="">T-Shirts</a></li>
+                    <li><a href="">Escarpins</a></li>
+                    <li><a href="">Mocassins</a></li>
+                    <li><a href="">Sandales</a></li>
+                    <li><a href="">Ballerines</a></li>
+                    <li><a href="">Espadrilles</a></li>
+                    <li><a href="">Bottines</a></li>
+                    <li><a href="">Pantoufles</a></li>
+                    <li><a href="">Sabots</a></li>
+                    <li><a href="">Sabots</a></li>
+                </ul>  
+                <ul  id="group3">
+                    <li><a href="">Cartables</a></li>
+                    <li><a href="">Sacs à Dos</a></li>
+                    <li><a href="">Portefeuilles</a></li>
+                    <li><a href="">Sacs à main</a></li>
+                    <li><a href="">Sacs de soirée</a></li>
+                    <li><a href="">Pochettes</a></li>
+                </ul>     
+                <ul  id="group4">
+                    <li><a href="">Ceintures</a></li>
+                    <li><a href="">Echarpes</a></li>
+                    <li><a href="">Portes clés</a></li>
+                    <li><a href="">Casquettes</a></li>
+                    <li><a href="">Chapeaux</a></li>
+                </ul>     
+                </div>
+                                    
             </div>
-            <div class="p-3 px-4 cat <?php if($c=='Chaussure'){echo 'activecat';} ?>">
-                <a href="index.php?c=Chaussure">
-                <img src="image/icone/bottes-femme.png" width="80" height="80" alt=""><br>
-                <span class="text-center">Chaussure</span>
-                </a>
-            </div>
-            <div class="p-3 px-4 cat <?php if($c=='ACCESSOIRES'){echo 'activecat';} ?>">
-                <a href="index.php?c=ACCESSOIRES">
-                <img src="image/icone/accessoire.png" width="80" height="80" alt=""><br>
-                <span class="text-center">ACCESSOIRES</span>
-                </a>
-            </div>
-
-
         </div>
+        <script>
+            function cat(param) { 
+                    if(param=='1'){
+                        document.getElementById('cat1').classList.remove("cat");
+                        document.getElementById('cat1').classList.add("activecat");
+                        document.getElementById('cat2').classList.remove("activecat");
+                        document.getElementById('cat3').classList.remove("activecat");
+                        document.getElementById('cat4').classList.remove("activecat");
+                        document.getElementById('cat2').classList.add("cat");
+                        document.getElementById('cat3').classList.add("cat");
+                        document.getElementById('cat4').classList.add("cat");
+                        document.getElementById('group1').style.display='flex';
+                        document.getElementById('group2').style.display='none';
+                        document.getElementById('group3').style.display='none';
+                        document.getElementById('group4').style.display='none';
+                    }
+                    if(param=='2'){
+                        document.getElementById('cat2').classList.remove("cat");
+                        document.getElementById('cat2').classList.add("activecat");
+                        document.getElementById('cat1').classList.remove("activecat");
+                        document.getElementById('cat3').classList.remove("activecat");
+                        document.getElementById('cat4').classList.remove("activecat");
+                        document.getElementById('cat1').classList.add("cat");
+                        document.getElementById('cat3').classList.add("cat");
+                        document.getElementById('cat4').classList.add("cat");
+                        document.getElementById('group1').style.display='none';
+                        document.getElementById('group2').style.display='flex';
+                        document.getElementById('group3').style.display='none';
+                        document.getElementById('group4').style.display='none';
+                    }
+                    if(param=='3'){
+                        document.getElementById('cat3').classList.remove("cat");
+                        document.getElementById('cat3').classList.add("activecat");
+                        document.getElementById('cat1').classList.remove("activecat");
+                        document.getElementById('cat2').classList.remove("activecat");
+                        document.getElementById('cat4').classList.remove("activecat");
+                        document.getElementById('cat1').classList.add("cat");
+                        document.getElementById('cat2').classList.add("cat");
+                        document.getElementById('cat4').classList.add("cat");
+                        document.getElementById('group1').style.display='none';
+                        document.getElementById('group2').style.display='none';
+                        document.getElementById('group3').style.display='flex';
+                        document.getElementById('group4').style.display='none';
+                    }
+                    if(param=='4'){
+                        document.getElementById('cat4').classList.remove("cat");
+                        document.getElementById('cat4').classList.add("activecat");
+                        document.getElementById('cat1').classList.remove("activecat");
+                        document.getElementById('cat2').classList.remove("activecat");
+                        document.getElementById('cat3').classList.remove("activecat");
+                        document.getElementById('cat1').classList.add("cat");
+                        document.getElementById('cat2').classList.add("cat");
+                        document.getElementById('cat3').classList.add("cat");
+                        document.getElementById('group1').style.display='none';
+                        document.getElementById('group2').style.display='none';
+                        document.getElementById('group3').style.display='none';
+                        document.getElementById('group4').style.display='flex';
+                    }
+             }
+        </script>
 
         <!-- listeproduit -->
         <div class="listeproduit mt-4 row animate__animated animate__fadeIn">
@@ -357,6 +457,7 @@ $t=$_GET['t'];
                     grid-column-gap: 0px;
                     grid-row-gap: 0px;
                     height: 500px;
+                    background-color: #fff;
                 }
                 .parent1 img {
                     width: 100%;
@@ -367,14 +468,14 @@ $t=$_GET['t'];
                 }
                 
 
-                .divp1 { grid-area: 1 / 1 / 3 / 2;border: 1px solid  #F8F8F8;background-color: #fff; }
-                .divp2 { grid-area: 1 / 2 / 2 / 3;border: 1px solid  #F8F8F8;background-color: #fff; }
-                .divp3 { grid-area: 2 / 2 / 3 / 3;border: 1px solid  #F8F8F8;background-color: #fff; }
-                .divp5 { grid-area: 2 / 3 / 3 / 4;border: 1px solid  #F8F8F8;background-color: #fff; }
-                .divp6 { grid-area: 1 / 4 / 2 / 5;border: 1px solid  #F8F8F8;background-color: #fff; }
-                .divp7 { grid-area: 2 / 4 / 3 / 5;border: 1px solid  #F8F8F8;background-color: #fff; }
-                .divp8 { grid-area: 1 / 5 / 3 / 6;border: 1px solid  #F8F8F8;background-color: #fff; } 
-                .divp4 { grid-area: 1 / 3 / 2 / 4;
+                .divp1 { grid-area: 1 / 1 / 3 / 2;border: 1px  solid   #fdfdfd;background-color: #fff; }
+                .divp2 { grid-area: 1 / 2 / 2 / 3;border: 1px  solid   #fdfdfd;background-color: #fff; }
+                .divp3 { grid-area: 2 / 2 / 3 / 3;border: 1px  solid   #fdfdfd;background-color: #fff; }
+                .divp4 { grid-area: 2 / 3 / 3 / 4;border: 1px  solid   #fdfdfd;background-color: #fff; }
+                .divp5 { grid-area: 1 / 4 / 2 / 5;border: 1px  solid   #fdfdfd;background-color: #fff; }
+                .divp6 { grid-area: 2 / 4 / 3 / 5;border: 1px  solid   #fdfdfd;background-color: #fff; }
+                .divp7 { grid-area: 1 / 5 / 3 / 6;border: 1px  solid   #fdfdfd;background-color: #fff; } 
+                .divp8 { grid-area: 1 / 3 / 2 / 4;
                         background-color: #FCEA01;    
                         position: relative;
                         transform: scale(1.2);
@@ -388,7 +489,7 @@ $t=$_GET['t'];
             <div class="parent1">
                 
                 <?php
-                    $sql2="SELECT * FROM `produits` WHERE `meilleurV`='MV' ORDER BY `date` DESC LIMIT 8";
+                    $sql2="SELECT * FROM `produits` WHERE `meilleurV`='MV' ORDER BY `date` DESC LIMIT 7";
                     $result2 = $cnx->query($sql2);
                     $cpt=0;
                     while ($row2 = $result2->fetch_assoc()) {
@@ -399,7 +500,7 @@ $t=$_GET['t'];
                 
              
                 
-                <div class="divp4 text-center"> <h1>Best</h1><h1><img style="filter: brightness(0%);" src="image/logo.png" width="150" height="60" alt=""></h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
+                <div class="divp8 text-center"> <h1>Best</h1><h1><img style="filter: brightness(0%);" src="image/logo.png" width="150" height="60" alt=""></h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
 
             </div>     
         </div>   
@@ -409,27 +510,30 @@ $t=$_GET['t'];
         
         <div class="notreboutique mt-5 text-center animate__animated animate__fadeIn">
             <img src="image/logo.png" alt="">
-            <h3>Trouvez votre boutique</h3>
+            <h3>Trouvez Votre Magasin</h3>
 
             <div class="row">
                
                 <?php $sql="SELECT * FROM `boutiques1` ";
                    $result = $cnx->query($sql);
+                   $cpt=0;
                    while ($row = $result->fetch_assoc()) {
+                       $cpt++;
                 ?>
                  <div class="col">
-                    <div><button onclick="ville('<?php echo $row['ville'];?>'),'<?php echo $row['adresse'];?>','<?php echo $row['tele'];?>','<?php echo $row['lien'];?>'"  
+                    <div>
+                        <button onclick="ville('<?php echo $row['ville'];?>','<?php echo $row['adresse'];?>','<?php echo $row['tele'];?>','<?php echo $row['localisation'];?>','image<?php echo $cpt;?>') "  
                                 type="button" class="btnBoutique" data-toggle="modal" data-target="#exampleModal1">
-                        <img class="ville" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['image']); ?>" alt="">
-                        </button></div>
-                    <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
+                        <img id="image<?php echo $cpt;?>" class="ville" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['image']); ?>" alt="">
+                        </button>
+                    </div>
+                    <div class="m-3"><img  class="local" src="image/maps-and-flags.png" alt=""></div>
                     <h4><?php echo $row['ville'];?></h4>
                     
                 </div>
                 <?php } ?>
             </div>
 
-<h1 id="test"></h1>
 
         </div>
         <!-- Modal11 -->
@@ -437,16 +541,15 @@ $t=$_GET['t'];
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <!-- <h5 class="modal-title text-center"  id="exampleModalLabel villeboutique">casa</h5> -->
                     <h2 class="text-center" id="villeboutique"></h2>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img id="imageville" src="image/casa.webp" class="img-fluid" alt="">
+                    <img id="imageville2" src="image/casa.webp" class="img-fluid m-2" alt="">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-3">
                             Adresse :
                         </div>
                         <div  class="col">
@@ -454,7 +557,7 @@ $t=$_GET['t'];
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-3">
                             Telephone :
                         </div>
                         <div  class="col">
@@ -462,11 +565,11 @@ $t=$_GET['t'];
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-3">
                             Localisation :
                         </div>
                         <div class="col">
-                            <a id="lien" href="">maps</a>
+                            <a id="lien" href="">Localisation</a>
                         </div>
                     </div>
                 </div>
@@ -478,12 +581,13 @@ $t=$_GET['t'];
 
         <!-- contact -->
         <script>
-           function ville(ville,adresse,tele,lien){
+           function ville(ville,adresse,tele,lien,imageville){
             //    alert(ville);
                document.getElementById('villeboutique').innerHTML=ville;
                document.getElementById('adresse').innerHTML=adresse;
                document.getElementById('tele').innerHTML=tele;
-               document.getElementById('lien').innerHTML=lien;
+               document.getElementById('lien').href=lien;
+               document.getElementById('imageville2').src=document.getElementById(imageville).src;               
            }
 
         

@@ -160,42 +160,64 @@ p a:hover {
     box-shadow: -1px -1px 14px 1px rgba(0,0,0,0.31);
 
 }
-
 .categories .activecat{
     background-color: #393d45;
 }
-.categories .activecat a {
+.categories .activecat button {
     color: #fff !important;
     text-decoration: none;
-   
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
-.categories .activecat a img {
+.categories .activecat button img {
     filter: brightness(0) invert(1);
 }
-.categories .cat {
-    text-align: center;
+.categories .cat{
+    background-color: #fff;
 }
-.categories .cat a {
-    color: #393d45;
+.categories .cat button {
+    color: #393d45 !important;
     text-decoration: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
-.categories .cat img {
+.categories .cat button img {
     filter: invert(22%) sepia(15%) saturate(406%) hue-rotate(182deg) brightness(96%) contrast(91%);
 }
-
 .categories .cat:hover {
     background-color: #393d45;
+    cursor: pointer;
 }
-.categories .cat:hover > a img  {
+.categories .cat:hover > button img  {
     filter: brightness(0) invert(1);
 }
-.categories .cat:hover > a {
+.categories .cat:hover > button span {
     color: #fff;
 }
- 
+.sousgroup .group ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    align-content: center;
+    overflow: auto;
+    flex-direction: row;
+    margin-top: 5px;
+}
 
-
-
+.sousgroup .group ul li{
+    list-style: none;
+    margin: 1px 5px;
+    font-size: 1vw;
+}
+.sousgroup .group ul li a {
+    color: #000;
+}
+#group1 , #group2 , #group3 , #group4 {
+    display: none;
+}
 /* listeproduit */
 
 .listeproduit  {
@@ -450,6 +472,9 @@ p a:hover {
       }
       .notreboutique .row {
         margin-top: 0px;
+    }
+    .sousgroup .group ul li{
+        font-size: 1.8vw;
     }
 
 }
