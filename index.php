@@ -90,8 +90,8 @@ $t=$_GET['t'];
                     <li style="color:gray">Enfant</li>
                 </ul>
                 <ul class="reclamation">
-                    <li><a href="">Reclamation</a></li> |
-                    <li><a href="">Recturment</a></li> 
+                    <li><a href="information.php?c=2">Reclamation</a></li> |
+                    <li><a href="information.php?c=1">Recturment</a></li> 
                     <!-- <li><a href="">Contact</a></li> -->
                 </ul>
             </div>
@@ -236,7 +236,7 @@ $t=$_GET['t'];
                     <span class="text-center">Accessoires</span>
                 </button>
             </div>
-            <div class="sousgroup container bg-light rounded ">
+            <div class="sousgroup container  rounded ">
                 <div class="group">
                 <ul id="group1">
                     <li><a href="">Cartables</a></li>
@@ -356,6 +356,7 @@ $t=$_GET['t'];
                         document.getElementById('group4').style.display='flex';
                     }
              }
+             
         </script>
 
         <!-- listeproduit -->
