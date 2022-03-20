@@ -187,12 +187,16 @@
                                 <div class="col-sm">
                                         <div class="card">
                                             <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-sm">
-                                                        <div class="row mb-3">
+                                            <div class="row mb-3">
                                                             <div class="col-sm">
                                                                 <h5 class="m-2">Catégorie :</h5>
                                                                 <select name="categorie" id="categorie">
+                                                                    <option class="sac" value="Cartables">Cartables</option>
+                                                                    <option class="sac" value="Sacs à Dos">Sacs à Dos</option>
+                                                                    <option class="sac" value="Portefeuilles">Portefeuilles</option>
+                                                                    <option class="sac" value="Sacs à main">Sacs à main</option>
+                                                                    <option class="sac" value="Sacs de soirée ">Sacs de soirée </option>
+                                                                    <option class="sac" value="Pochettes">Pochettes</option>
                                                                     <option class="choix3" value="Djean">Djean</option>
                                                                     <option class="choix3" value="Chemise">Chemise</option>
                                                                     <option class="choix3" value="Robe">Robe</option>
@@ -227,7 +231,11 @@
                                                                     </script>
                                                             </div>
                                                             <div class="col-sm">
-                                                                <h5 class="m-2">Prix :</h5>
+                                                                <h5 class="m-2">Prix d'achat :</h5>
+                                                                <input type="text" name="prix" id="" />
+                                                            </div>
+                                                            <div class="col-sm">
+                                                                <h5 class="m-2">Prix de Vente:</h5>
                                                                 <input type="text" name="prix" id="" />
                                                             </div>
                                                             <div class="col-sm">
@@ -235,6 +243,9 @@
                                                                 <input type="text" name="remis" id="" />
                                                             </div>
                                                         </div>
+                                                <div class="row">
+                                                    <div class="col-sm">
+
                                                         <h5 class="m-2">Titre :</h5>
                                                         <input type="text" name="titre">
 
