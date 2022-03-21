@@ -55,6 +55,16 @@
                 </a>
             </li>
             <li class="sidebar-item" onclick="active()">
+                <a class="sidebar-link" href="Users.php">
+                    <i class="align-middle" data-feather="users"></i> <span class="align-middle">Gestion des Utilisateurs </span>
+                </a>
+            </li>
+            <li class="sidebar-item" onclick="active()">
+                <a class="sidebar-link" href="Modules.php">
+                    <i class="align-middle" data-feather="activity"></i> <span class="align-middle">Gestion des Modules </span>
+                </a>
+            </li>
+            <li class="sidebar-item" onclick="active()">
                 <a class="sidebar-link" href="deconnecter.php">
                     <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Log
                         out</span>

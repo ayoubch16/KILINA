@@ -13,8 +13,8 @@
     
 
 
-    $sql="INSERT INTO `users`( `Reffuser`, `nomuser`, `prenomuser`, `teleuser`, `CINuser`, `emailuser`, `passeuser`, `etatuser`, `etatCompte`) 
-            VALUES ('$Reff','$nom','$prenom','$tele','$cin','$email','$mdp','user','NV')";
+    $sql="INSERT INTO `users`( `Reffuser`, `nomuser`, `prenomuser`, `teleuser`, `CINuser`, `emailuser`, `ville` , `passeuser`, `etatuser`, `etatCompte`) 
+            VALUES ('$Reff','$nom','$prenom','$tele','$cin','$email','$ville','$mdp','user','NV')";
 
     echo $sql;
     if ($cnx->query($sql) === TRUE) {
