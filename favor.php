@@ -128,26 +128,23 @@
                             </p>
                             <p style="font-size: 10px;">Réfe : <?php  echo $row1['Ref']; ?></p>
                             <div class="row my-3">
-
                                 <div class="col">
                                     <p style="font-size: 10px;">Taille :</p>
                                     <h6>
-                                    <?php 
-                                            $taille = explode("-", $row1['taille']);
-                                            for ($x = 0; $x <= count($taille)-2; $x++) {
-                                                echo ' '.$taille[$x].' ';
-                                            }?>
+                                        <?php 
+                                                $taille = explode("-", $row1['taille']);
+                                                for ($x = 0; $x <= count($taille)-2; $x++) {
+                                                    echo ' '.$taille[$x].' ';
+                                        }?>
                                     </h6>
                                 </div>
-
                                 <div class="col">
                                     <p style="font-size: 10px;">Prix :</p>
                                     <p style="font-size: 20px;"><?php  echo $row1['prix']; ?> DH</p>
                                 </div>
                             </div>
-                          
                             <div class="text-center mx-2 my-3 row">
-                                <!-- <button class="btnP rounded mx-4">SHOP NOW</button> -->
+                                
                                <a class="btnP rounded mx-4" href="ajouterPannier.php?ref=<?php echo $row1['Ref'];?>&refclient=<?php echo $_SESSION["Reff"];?>">SHOP NOW</a>
                                <a class="btnP rounded mx-4" style="width: 40px;" href="deletfavor.php?ref=<?php echo $row1['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>"><img width="20" height="20" src="image/icone/trash.png" alt=""> </a>                 
                                     
@@ -170,7 +167,6 @@
     <div id="panier1" class="flex-container">
         <div class="flex-item my-2"><img src="image/icone/panier.png" width="150" height="150" alt=""></div>
         <div class="flex-item my-2"> <h3>Votre panier est vide</h3></div>
-        <div class="flex-item my-2"><button style="border: none;" class="btnP ">RETOUR</button></div>
     </div>
 </div>
 <?php }  ?>        

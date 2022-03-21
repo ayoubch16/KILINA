@@ -1,6 +1,10 @@
 <?php 
 
 include 'dbconnect.php';
+session_start();
+    if($_SESSION["id"] =='') {
+        header('Location: connexion.php');
+    }else{
 $ref=$_GET['ref'];
 $refclient=$_GET['refclient'];
 
@@ -21,4 +25,5 @@ if ($cnx->query($sql) === TRUE) {
                 }
         </script>';
 }
+    }
 ?>

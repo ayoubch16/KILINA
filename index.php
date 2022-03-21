@@ -570,7 +570,7 @@ $t=$_GET['t'];
                             Localisation :
                         </div>
                         <div class="col">
-                            <a id="lien" href="">Localisation</a>
+                            <a id="lien" target="blanc" href="">Localisation</a>
                         </div>
                     </div>
                 </div>

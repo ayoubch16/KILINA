@@ -191,20 +191,20 @@
                                                             <div class="col-sm">
                                                                 <h5 class="m-2">Catégorie :</h5>
                                                                 <select name="categorie" id="categorie">
-                                                                    <option class="sac" value="Cartables">Cartables</option>
-                                                                    <option class="sac" value="Sacs à Dos">Sacs à Dos</option>
-                                                                    <option class="sac" value="Portefeuilles">Portefeuilles</option>
-                                                                    <option class="sac" value="Sacs à main">Sacs à main</option>
-                                                                    <option class="sac" value="Sacs de soirée ">Sacs de soirée </option>
-                                                                    <option class="sac" value="Pochettes">Pochettes</option>
+                                                                    <option class="sac"    value="Cartables">Cartables</option>
+                                                                    <option class="sac"    value="Sacs à Dos">Sacs à Dos</option>
+                                                                    <option class="sac"    value="Portefeuilles">Portefeuilles</option>
+                                                                    <option class="sac"    value="Sacs à main">Sacs à main</option>
+                                                                    <option class="sac"    value="Sacs de soirée ">Sacs de soirée </option>
+                                                                    <option class="sac"    value="Pochettes">Pochettes</option>
                                                                     <option class="choix3" value="Djean">Djean</option>
                                                                     <option class="choix3" value="Chemise">Chemise</option>
                                                                     <option class="choix3" value="Robe">Robe</option>
                                                                     <option class="choix3" value="Survette">Survette</option>
                                                                     <option class="choix3" value="Manteaux">Manteaux</option>
                                                                     <option class="choix3" value="Pantalon">Pantalon</option>
-                                                                    <option id="choix1" value="Chaussure">Chaussure</option>
-                                                                    <option id="choix2" value="Sac">Sac</option>
+                                                                    <option id="choix1"    value="Chaussure">Chaussure</option>
+                                                                    <option id="choix2"    value="Sac">Sac</option>
                                                                     <option class="choix3" value="Accessoires">Accessoires</option>
                                                                     <option class="choix3" value="Bodie">Bodie</option>
                                                                     <option class="choix3" value="Jupe">Jupe</option>
