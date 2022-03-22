@@ -357,14 +357,13 @@
                         </div>
                         <div class="col-md-4 col-sm bg-white rounded p-4 my-1 mx-2">
 
-                            <div class="row text-center">
+                            <!-- <div class="row text-center">
                                 <input class="mx-2 rounded col" type="text"
                                     style="background-color: #EEECF5; color: #19AA09;">
-                                <!-- <button class="btnP1 rounded">Appliquer</button> -->
                                 <input type="button" class="btnP1 rounded" value="Appliquer">
-                            </div>
+                            </div> -->
 
-                            <div class="row mt-3">
+                            <!-- <div class="row mt-3">
                                 <div class="col text-left">
                                     <h6>Code promo</h6>
                                 </div>
@@ -372,13 +371,13 @@
                                     <h6 id="remis" style="color: #19AA09;">5 </h6>
                                     <h6 style="color: #19AA09;"> %</h6>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row mt-3">
                                 <div class="col text-left">
                                     <h6>Livraison</h6>
                                 </div>
                                 <div class="col-4 text-left row">
-                                    <h6 id="prixlivr">20.00</h6>
+                                    <h6 id="prixlivr">30.00</h6>
                                     <h6> DH</h6>
                                 </div>
                             </div>
@@ -453,10 +452,11 @@
             somme = somme + parseFloat(listeprix[i].innerHTML) * listqnt[i].value;
         }
         document.getElementById('prixprod').innerHTML = somme.toFixed(2);
-        var remis = parseFloat(document.getElementById('remis').innerHTML);
+        // var remis = parseFloat(document.getElementById('remis').innerHTML);
         var prixlivr = parseFloat(document.getElementById('prixlivr').innerHTML);
         var prixprod = parseFloat(document.getElementById('prixprod').innerHTML);
-        prixtotale = prixprod - (prixprod * (remis / 100)) + prixlivr;
+        // prixtotale = prixprod - (prixprod * (remis / 100)) + prixlivr;
+        prixtotale = prixprod  + prixlivr;
         document.getElementById('prixtotale').innerHTML = prixtotale.toFixed(2);
         document.getElementById('inputprix').value = prixtotale.toFixed(2);
 
@@ -467,10 +467,11 @@
                 somme = somme + parseFloat(listeprix[i].innerHTML) * listqnt[i].value;
             }
             document.getElementById('prixprod').innerHTML = somme.toFixed(2);
-            var remis = parseFloat(document.getElementById('remis').innerHTML);
+            // var remis = parseFloat(document.getElementById('remis').innerHTML);
             var prixlivr = parseFloat(document.getElementById('prixlivr').innerHTML);
             var prixprod = parseFloat(document.getElementById('prixprod').innerHTML);
-            prixtotale = prixprod - (prixprod * (remis / 100)) + prixlivr;
+            // prixtotale = prixprod - (prixprod * (remis / 100)) + prixlivr;
+            prixtotale = prixprod  + prixlivr;
             document.getElementById('prixtotale').innerHTML = prixtotale.toFixed(2);
             document.getElementById('inputprix').value = prixtotale.toFixed(2);
         }

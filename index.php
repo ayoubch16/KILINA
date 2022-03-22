@@ -7,11 +7,11 @@ $t=$_GET['t'];
 <?php include 'header.php';?>
 
 <body>
-    <style>
+<style>
       
       #carouselExampleIndicators{
         /* min-height: 900px; */
-    }
+         }
    
 
         #pro2,
@@ -74,7 +74,7 @@ $t=$_GET['t'];
         }
    
    
-    </style>
+</style>
 
     <?php include 'navbar.php';?>
     <div id="page">
@@ -501,14 +501,26 @@ $t=$_GET['t'];
                 
              
                 
-                <div class="divp8 text-center"> <h1>Best</h1><h1><img style="filter: brightness(0%);" src="image/logo.png" width="150" height="60" alt=""></h1><h6>Collection Printemps</h6><h6>- 2022 -</h6></div>
+                <div class="divp8 text-center"> 
+                    <h1>Best</h1>
+                    <img style="filter: brightness(0%);" src="image/logo.png" width="150" height="60" alt="">
+                    <h6>
+                    <?php 
+                        include 'dbconnect.php';
+                        $sql="SELECT * FROM `module` WHERE id=1";
+                        $result = $cnx->query($sql);
+                        if ($row = $result->fetch_assoc()) {
+                            echo $row['textMV'];
+                        }
+                    ?>
+                    </h6>
+                    <h6>- <?php echo date("Y"); ?> -</h6></div>
 
             </div>     
         </div>   
 
 
-        <!-- notreboutique -->
-        
+        <!-- notreboutique -->     
         <div class="notreboutique mt-5 text-center animate__animated animate__fadeIn">
             <img src="image/logo.png" alt="">
             <h3>Trouvez Votre Magasin</h3>

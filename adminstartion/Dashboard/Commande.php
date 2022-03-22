@@ -170,6 +170,7 @@
                                                             <th class="text-left"></th>
                                                             <th class="text-left"></th>
                                                             <th class="text-left">Ville</th>
+                                                            <th class="text-left">Tele</th>
                                                             <th class="text-left">Date</th>
                                                             <th class="text-left">Prix</th>
                                                             <th class="text-left">Status</th>
@@ -192,10 +193,16 @@
                                                               $sql="SELECT * FROM `commandes` $txt  ORDER BY `dateCmd`,`ReffCmd` DESC ";
                                                               $result = $cnx->query($sql);
                                                                   while ($row = $result->fetch_assoc()) {
+                                                                    $reffid= $row['ReffClient'];
+                                                                    $sql1="SELECT * FROM `clients` WHERE `Reff`='$reffid' ";
+                                                                        $result1 = $cnx->query($sql1);
+                                                                    if ($row1 = $result1->fetch_assoc()) {
+                                                                  }
+
                                                             ?>
                                                         <tr>
                                                             <td class="text-left"><?php echo $row['ReffCmd'] ;?></td>
-                                                            <td class="text-left"><?php echo $row['ReffClient'] ;?></td>
+                                                            <td class="text-left"><?php echo $row1['nom'].' '.$row1['prenom'] ;?></td>
                                                             <td class="text-left">
                                                                 <?php echo str_replace("-","<br>",$row['ReffProd']);?>
                                                             </td>
@@ -206,6 +213,7 @@
                                                                 <?php echo str_replace("-","<br>",$row['QntProd']);?>
                                                             </td>
                                                             <td class="text-left"><?php echo $row['villeCmd'] ;?></td>
+                                                            <td class="text-left"><?php echo $row1['tele'] ;?></td>
                                                             <td class="text-left"><?php echo $row['dateCmd'] ;?></td>
                                                             <td class="text-left"><?php echo $row['prixCmd'] ;?></td>
                                                             <td class="text-left">
@@ -220,8 +228,6 @@
                                                                 <?php } ?>
                                                             </td>
                                                             <td class="text-left"><?php echo $row['PaimentCmd'] ;?></td>
-                                                            <!-- <td><button onclick="afficher()"><img src="img/icons/edit.png" width="20"
-                                                                        height="20" alt=""></button></td> -->
                                                              <td><img style="cursor: pointer;" onclick="afficher('<?php echo $row['ReffCmd'] ;?>')" src="img/icons/edit.png" width="20"
                                                                         height="20" alt=""></td>
                                                         </tr>
@@ -290,12 +296,12 @@
                 ?>
             <div class="row">
                 <div class="col">
-                    <h5>Nom</h5>
-                    <input type="text" class="text-center" readonly value="<?php echo $rown['nom'];?>" >
+                    <h5>Nom et Prenom</h5>
+                    <input type="text" class="text-center" readonly value="<?php echo $rown['nom'].' '.$rown['prenom'];?>" >
                 </div>
                 <div class="col">
-                    <h5>Prenom</h5>
-                    <input type="text" class="text-center" readonly value="<?php echo $rown['prenom'];?>">
+                    <h5>Tele</h5>
+                    <input type="text" class="text-center" readonly value="<?php echo $rown['tele'];?>">
                 </div>
             </div>
             <div class="row">
@@ -306,7 +312,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <h5>Article</h5>
+                    <h5>Reff Cmd</h5>
                     <input type="text" class="text-center" readonly value="<?php echo $rowc['ReffCmd'];?>">
                 </div>
                 <div class="col">

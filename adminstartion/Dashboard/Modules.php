@@ -1,5 +1,19 @@
 <?php   include 'db-conn.php';
         include 'header.php';
+
+        if($_GET['edit']=='Modifier'){
+            $textTop=$_GET['textTop'];
+            $text1=str_replace("'","\'",$textTop);
+            $textMV=$_GET['textMV'];
+            $text2=str_replace("'","\'",$textMV);
+            $sql="UPDATE `module` SET `textTop`='$text1',`textMV`='$text2'";
+            if ($cnx->query($sql) == TRUE) { 
+                
+            } else {
+                echo ' error !';  
+            }  
+             
+        }
 ?>
 
 <body>
@@ -12,12 +26,18 @@
             border: 1px solid #9d9d9d;
             border-radius: 5px;
             width: 100%;
+            height: 50px;
         }
     </style>
 
 <div class="wrapper">
         <?php include 'menu.php';?>
-		
+		<?php 
+        $sql="SELECT * FROM `module` WHERE id=1";
+        $result = $cnx->query($sql);
+        if ($row = $result->fetch_assoc()) {
+        }
+        ?>
 
 		<div class="main">
           <?php include 'Top.php';?>
@@ -28,18 +48,18 @@
                     <form>
 
                         <div class="row">
-                            <div class="col-md-3"><h3>Texte de Top :</h3></div>
-                            <div class="col-md-6"><input type="text" name="textTop" /> </div>
-                        </div><br>
+                            <div class="col-md-3"><h6>Texte de Top :</h6></div>
+                            <div class="col-md-6"><input class="text-center" type="text" value="<?php echo $row['textTop'];?>" name="textTop" required/> </div>
+                        </div><br><br>
 
                         <div class="row">
-                            <div class="col-md-3"><h3>Texte Meilleur vendu :</h3></div>
-                            <div class="col-md-6"><input type="text" name="textMV" /> </div>
-                        </div><br>
+                            <div class="col-md-3"><h6>Texte Meilleur vendu :</h6></div>
+                            <div class="col-md-6"><input class="text-center" type="text" value="<?php echo $row['textMV'];?>" name="textMV" required /> </div>
+                        </div><br><br>
 
                         <div class="row text-end">
                             
-                            <div class="col-md-6"> <input type="submit" value="Modifier"> </div>
+                            <div class="col-md-6"> <input type="submit" name="edit" value="Modifier"> </div>
                         </div><br>
 
 

@@ -43,7 +43,15 @@
 
 </style>
 <div class="reduction ">
-        <p>Jusqu'à - 50 % de réduction</p>
+        <?php 
+            include 'dbconnect.php';
+            $sql="SELECT * FROM `module` WHERE id=1";
+            $result = $cnx->query($sql);
+            if ($row = $result->fetch_assoc()) {
+            }
+        ?>
+        <p><?php echo $row['textTop'];?></p>
+        
 </div>
 <div class="parent">
     <div class="div1 mb-4 pb-3"> <p>Follow us on</p> </div>
