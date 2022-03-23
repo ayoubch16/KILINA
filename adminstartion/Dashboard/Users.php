@@ -93,6 +93,7 @@
                                                                 <th class="text-left">Adresse Email</th>
                                                                 <th class="text-left">Ville</th>
                                                                 <th class="text-left">Etat de compte</th>
+                                                                <th class="text-left">Type user</th>
                                                                 <th></th>
                                                             </tr>
                                                         </thead>
@@ -108,14 +109,22 @@
                                                                 <td class="text-left"><?php echo $row['teleuser'];?></td>
                                                                 <td class="text-left"><?php echo $row['emailuser'];?></td>
                                                                 <td class="text-left"><?php echo $row['ville'];?></td>
-                                                                <!-- <td class="text-left"><?php echo $row['etatCompte'];?></td> -->
                                                                 <th>
                                                                     <?php if( $row['etatCompte']=='NV'){?>
-                                                                                <a href="">Activer</a>
+                                                                                <a href="updateUser.php?a=1&c=<?php echo $row['iduser'];?>">Activer</a>
                                                                     <?php }else{?>
-                                                                                 <a href="">Desactiver</a>
+                                                                                 <a href="updateUser.php?a=2&c=<?php echo $row['iduser'];?>">Desactiver</a>
                                                                     <?php }  ?>
                                                                 </th>
+                                                                <th>
+                                                                    <?php echo $row['etatuser'];?>
+                                                                    <?php if( $row['etatuser']=='admin'){?>
+                                                                        <a class="mx-1" href="updateUser.php?a=3&c=<?php echo $row['iduser'];?>"><i class="align-middle" data-feather="refresh-ccw"></i></a> 
+                                                                    <?php }else{?>
+                                                                        <a class="mx-1" href="updateUser.php?a=4&c=<?php echo $row['iduser'];?>"><i class="align-middle" data-feather="refresh-ccw"></i></a> 
+                                                                    <?php }  ?>
+                                                                </th>
+                                                                <!-- <th><?php echo $row['etatuser'];?> <a class="mx-1" href="updateUser.php?a=3&c=<?php echo $row['iduser'];?>"><i class="align-middle" data-feather="refresh-ccw"></i></a> </th> -->
                                                             </tr>
                                                         <?php } ?>
                                                         </tbody>

@@ -8,14 +8,14 @@
         }
         input[type="text"],select{
                 border: none;
-                background-color: #f6f6f6;
+                background-color: #e6e6e6;
                 border-radius: 10px;
                 width: 100%;
                 height: 50px;
         }
         .txtinput{
             width: 100%;
-            background-color: #f6f6f6;
+            background-color: #e6e6e6;
             border-radius: 10px;
             border: none;
             padding: 10px;
@@ -191,23 +191,65 @@
                                                             <div class="col-sm">
                                                                 <h5 class="m-2">Catégorie :</h5>
                                                                 <select name="categorie" id="categorie">
-                                                                    <option class="sac"    value="Cartables">Cartables</option>
-                                                                    <option class="sac"    value="Sacs à Dos">Sacs à Dos</option>
-                                                                    <option class="sac"    value="Portefeuilles">Portefeuilles</option>
-                                                                    <option class="sac"    value="Sacs à main">Sacs à main</option>
-                                                                    <option class="sac"    value="Sacs de soirée ">Sacs de soirée </option>
-                                                                    <option class="sac"    value="Pochettes">Pochettes</option>
-                                                                    <option class="choix3" value="Djean">Djean</option>
-                                                                    <option class="choix3" value="Chemise">Chemise</option>
-                                                                    <option class="choix3" value="Robe">Robe</option>
-                                                                    <option class="choix3" value="Survette">Survette</option>
-                                                                    <option class="choix3" value="Manteaux">Manteaux</option>
-                                                                    <option class="choix3" value="Pantalon">Pantalon</option>
-                                                                    <option id="choix1"    value="Chaussure">Chaussure</option>
-                                                                    <option id="choix2"    value="Sac">Sac</option>
-                                                                    <option class="choix3" value="Accessoires">Accessoires</option>
-                                                                    <option class="choix3" value="Bodie">Bodie</option>
-                                                                    <option class="choix3" value="Jupe">Jupe</option>
+                                                                    <optgroup label="Sac">
+                                                                        <option class="sac"    value="Cartables">Cartables</option>
+                                                                        <option class="sac"    value="Sacs à Dos">Sacs à Dos</option>
+                                                                        <option class="sac"    value="Portefeuilles">Portefeuilles</option>
+                                                                        <option class="sac"    value="Sacs à main">Sacs à main</option>
+                                                                        <option class="sac"    value="Sacs de soirée ">Sacs de soirée </option>
+                                                                        <option class="sac"    value="Pochettes">Pochettes</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="chaussure">
+                                                                        <option class="chaussure" value="Baskets" >Baskets</option>
+                                                                        <option class="chaussure" value="Escarpins" >Escarpins</option>
+                                                                        <option class="chaussure" value="Mocassins" >Mocassins</option>
+                                                                        <option class="chaussure" value="Sandales" >Sandales</option>
+                                                                        <option class="chaussure" value="Ballerines" >Ballerines</option>
+                                                                        <option class="chaussure" value="Espadrilles" >Espadrilles</option>
+                                                                        <option class="chaussure" value="Bottines" >Bottines</option>
+                                                                        <option class="chaussure" value="Pantoufles" >Pantoufles</option>
+                                                                        <option class="chaussure" value="Sabots" >Sabots</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="accessoires">
+                                                                        <option class="accessoires" value="Ceintures">Ceintures</option>
+                                                                        <option class="accessoires" value="Echarpes">Echarpes</option>
+                                                                        <option class="accessoires" value="Portes clés ">Portes clés </option>
+                                                                        <option class="accessoires" value="Casquettes">Casquettes</option>
+                                                                        <option class="accessoires" value="Chapeaux">Chapeaux</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="vetement">
+                                                                        <option class="vetement" value="T-Shirts">T-Shirts</option>
+                                                                        <option class="vetement" value="Monteaux">Monteaux</option>
+                                                                        <option class="vetement" value="Vestes">Vestes</option>
+                                                                        <option class="vetement" value="Robes">Robes</option>
+                                                                        <option class="vetement" value="Chemise">Chemise</option>
+                                                                        <option class="vetement" value="Tops">Tops</option>
+                                                                        <option class="vetement" value="Débardeurs">Débardeurs</option>
+                                                                        <option class="vetement" value="Costumes">Costumes</option>
+                                                                        <option class="vetement" value="Tricot">Tricot</option>
+                                                                        <option class="vetement" value="Sweat">Sweat</option>
+                                                                        <option class="vetement" value="Bodys">Bodys</option>
+                                                                        <option class="vetement" value="Ensembles 2 piéces ">Ensembles 2 piéces </option>
+                                                                        <option class="vetement" value="Ensembles 3 piéces ">Ensembles 3 piéces </option>
+                                                                        <option class="vetement" value="Combinaisons">Combinaisons</option>
+                                                                        <option class="vetement" value="Jupes">Jupes</option>
+                                                                        <option class="vetement" value="Shorts">Shorts</option>
+                                                                        <option class="vetement" value="Pantalons">Pantalons</option>
+                                                                        <option class="vetement" value="Jeans">Jeans</option>
+                                                                        <option class="vetement" value="Leggings">Leggings</option>
+                                                                        <option class="vetement" value="Collants sport">Collants sport</option>
+                                                                        <option class="vetement" value="Maillots de Bain">Maillots de Bain</option>
+                                                                        <option class="vetement" value="Cap">Cap</option>
+                                                                        <option class="vetement" value="Borkinis">Borkinis</option>
+                                                                        <option class="vetement" value="Survettes">Survettes</option>
+                                                                        <option class="vetement" value="Capuchon">Capuchon</option>
+                                                                        <option class="vetement" value="CALECON">CALECON</option>
+                                                                        <option class="vetement" value="DOUDOUNE">DOUDOUNE</option>
+                                                                        <option class="vetement" value="DJELLABA">DJELLABA</option>
+                                                                        <option class="vetement" value="Jaket">Jaket</option>
+                                                                        <option class="vetement" value="SALOPETTE">SALOPETTE</option>
+                                                                    </optgroup>
+                                                                    
                                                                 </select>
                                                                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                                                                     <script>

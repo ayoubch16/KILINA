@@ -117,22 +117,17 @@
         });
     });
     </script>
-    <div class="wrapper">
+    <div id="wrapper" class="wrapper">
         <?php include 'menu.php';?>
-
-
         <div class="main">
             <?php include 'Top.php';?>
-
             <main class="content">
                 <div class="container-fluid p-0">
                     <h1 class="h3 mb-3"><strong>Commandes</strong></h1>
                     <div class="row">
                         <div class="barRech">
-
                             <input type="text" id="myInput"><span><img src="img/icons/search.png" width="20" height="20"
                                     alt=""></span>
-
                         </div>
                         <form action="importdata.php">
                             <div class="row mb-3" style="display: flex; justify-content: space-between;">
@@ -141,16 +136,13 @@
                                     <input type="date" name="datefin">
                                     <input type="submit" value="Import/Export">
                                 </div>
-
                                 <div class="barfilter col-4">
                                     <span class="statusL mx-2"><a href="Commande.php?c=1">Livrée</a></span>
                                     <span class="statusA mx-2"><a href="Commande.php?c=2">Annuler</a></span>
                                     <span class="statusE mx-2"><a href="Commande.php?c=3">En cours</a></span>
                                     <span class="statusF"><img src="img/icons/filtericone.png" width="40" height="40"
                                             alt=""></span>
-
                                 </div>
-
                             </div>
                         </form>
                     </div>
@@ -190,7 +182,7 @@
                                                             if($c==3){
                                                                 $txt="  WHERE `statusCmd`='En cours' ";       
                                                             }
-                                                              $sql="SELECT * FROM `commandes` $txt  ORDER BY `dateCmd`,`ReffCmd` DESC ";
+                                                              $sql="SELECT * FROM `commandes` $txt  ORDER BY `dateCmd` DESC ";
                                                               $result = $cnx->query($sql);
                                                                   while ($row = $result->fetch_assoc()) {
                                                                     $reffid= $row['ReffClient'];
@@ -228,7 +220,16 @@
                                                                 <?php } ?>
                                                             </td>
                                                             <td class="text-left"><?php echo $row['PaimentCmd'] ;?></td>
-                                                             <td><img style="cursor: pointer;" onclick="afficher('<?php echo $row['ReffCmd'] ;?>')" src="img/icons/edit.png" width="20"
+                                                             <td><img style="cursor: pointer;" 
+                                                             onclick="afficher( '<?php echo $row1['nom'].' '.$row1['prenom'] ;?>'
+                                                                               ,'<?php echo $row1['tele'] ;?>'
+                                                                               ,'<?php echo $row1['Adresse'] ;?>'
+                                                                               ,'<?php echo $row['ReffCmd'] ;?>'
+                                                                               ,'<?php echo $row['prixCmd'] ;?>'
+                                                                               ,'<?php echo $row['villeCmd'] ;?>'
+                                                                               ,'<?php echo $row['villeCmd'] ;?>')" 
+                                                                               
+                                                             src="img/icons/edit.png" width="20"
                                                                         height="20" alt=""></td>
                                                         </tr>
                                                         <?php } ?>
@@ -241,12 +242,9 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </main>
+            
 
         </div>
     </div>
@@ -274,80 +272,87 @@
     </style>
     
     <div id="info" style="position: fixed;left: 30%;right: 30%;top:10%;bottom: 10%;" class="col-6 card text-center border">
-        <form action="">    
-        <div style="display: flex;justify-content: space-between;" class="card-header bg-light">
-             <h3 id="txtRef" class="col text-center">544568A</h3>
-             <h3 class="col-2 text-end" style="color: red;cursor: pointer;" onclick="fermer()">X</h3>
-             
-        </div>
-        <div class="card-body border" style="background-color: #fff;">
-        <?php 
-        $sqlc="SELECT * FROM Commandes WHERE `ReffCmd`='cmd_6218eaea12cb5' ";
-        $resultc=$cnx->query($sqlc);
-        if($rowc=$resultc->fetch_assoc()){
-            $ref=$rowc['ReffClient'];
-            $sqln="SELECT * FROM `clients` WHERE `Reff` ='$ref' ";
-            $resultn=$cnx->query($sqln);
-            if($rown=$resultn->fetch_assoc()){
-
-            }
-
-        }
-                ?>
+        <form action="updateCmd.php">    
+            <div style="display: flex;justify-content: space-between;" class="card-header bg-light">
+                <h3  class="col text-center">Info Commande</h3>
+                <h3 class="col-2 text-end" style="color: red;cursor: pointer;" onclick="fermer()">X</h3>
+            </div>
+            <div class="card-body border" style="background-color: #fff;">
             <div class="row">
                 <div class="col">
                     <h5>Nom et Prenom</h5>
-                    <input type="text" class="text-center" readonly value="<?php echo $rown['nom'].' '.$rown['prenom'];?>" >
+                    <input id="nom" type="text" class="text-center" readonly value="" >
                 </div>
                 <div class="col">
                     <h5>Tele</h5>
-                    <input type="text" class="text-center" readonly value="<?php echo $rown['tele'];?>">
+                    <input id="tele" type="text" class="text-center" readonly value="">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <h5>Adresse</h5>
-                    <input type="text" class="text-center" readonly value="<?php echo $rowc['AdresseCMD'];?>" >
+                    <input id="adresse" type="text" class="text-center" readonly value="" >
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <h5>Reff Cmd</h5>
-                    <input type="text" class="text-center" readonly value="<?php echo $rowc['ReffCmd'];?>">
+                    <input id="ref" type="text" name="Reff" class="text-center" readonly value="">
                 </div>
                 <div class="col">
                     <h5>Prix</h5>
-                    <input type="text" class="text-center" readonly value="<?php echo $rowc['prixCmd'];?>">
+                    <input id="prix" type="text" class="text-center" readonly value="">
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <h5>Ville</h5>
-                    <input type="text" class="text-center" readonly value="<?php echo $rowc['villeCmd'];?>" >
+                    <input id="ville" type="text" class="text-center" readonly value="" >
                 </div>
                 <div class="col">
                     <h5>Status</h5>
-                    <select name="status" id="">
-                        <option>Livrée</option>
-                        <option>Annuler</option>
-                        <option>En cours</option>
+                    <select name="status" required id="status">
+                        <option selected disabled>Status ...</option>
+                        <option value="En cours" class="opt">En cours</option>
+                        <option value="Livrée" class="opt">Livrée</option>
+                        <option value="Annuler" class="opt">Annuler</option>
+
                     </select>
                 </div>
             </div>
-            
-        </div>
-        <div class="card-footer bg-light border">
-            <input class="btnM" type="submit" value="Modifier">
-        </div>
+            </div>
+            <div class="card-footer bg-light border">
+                <input class="btnM" type="submit" value="Modifier">
+            </div>
         </form>
     </div>
         <script>
-            function afficher(id){
+            function afficher(nom,tele,adresse,ref,prix,ville,status){
                 document.getElementById('info').style.display='block';
-                document.getElementById('txtRef').innerHTML=id;
+                document.getElementById('wrapper').style.filter='grayscale(49%) sepia(27%) blur(4px) brightness(47%) saturate(71%)';
+                document.getElementById('nom').value=nom;
+                document.getElementById('tele').value=tele;
+                document.getElementById('adresse').value=adresse;
+                document.getElementById('ref').value=ref;
+                document.getElementById('prix').value=prix;
+                document.getElementById('ville').value=ville;
+                // if(status=='En cours'){
+                //     // document.getElementsByClassName('opt').value='En cours';
+                //     document.querySelector('#status').querySelectorAll('.opt')[3].selected = 'selected'
+                // }
+                // if(status=='Annuler'){
+                //     // document.getElementsByClassName('opt').value='Annuler';
+                //     document.querySelector('#status').querySelectorAll('.opt')[2].selected = 'selected'
+                // }
+                // if(status=='Livrée'){
+                //     // document.getElementsByClassName('opt').value='Livrée';
+                //     document.querySelector('#status').querySelectorAll('.opt')[1].selected = 'selected'
+                // }
             }
             function fermer(){
                 document.getElementById('info').style.display='none';
+                document.getElementById('wrapper').style.filter='none';
+
             }
         </script>
 

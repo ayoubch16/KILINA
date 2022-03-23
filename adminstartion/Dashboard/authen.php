@@ -6,7 +6,7 @@
     $mdp=md5($_POST['mdp']);
     
 
-    $sql="SELECT * FROM `users` WHERE `emailuser`='$email' and `passeuser`='$mdp' ";
+    $sql="SELECT * FROM `users` WHERE `emailuser`='$email' and `passeuser`='$mdp' and `etatCompte`='V' ";
      $result = $cnx->query($sql);
     if ($row = $result->fetch_assoc()) {
         $_SESSION["id"]=$row['iduser'];
@@ -17,6 +17,7 @@
         $_SESSION["emailuser"]=$row['emailuser'];
         $_SESSION["villeuser"]=$row['villeuser'];
         $_SESSION["CINuser"]=$row['CINuser'];
+        $_SESSION["etatuser"]=$row['etatuser'];
         header("Location: index.php");
         // echo '<script>
         //             window.location=history.go(-2);

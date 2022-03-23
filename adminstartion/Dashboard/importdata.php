@@ -34,9 +34,17 @@
             </thead>
             <tbody>
                 <?php  
-                    $sql="SELECT * FROM `commandes` WHERE (`dateCmd` BETWEEN '2022-03-01' AND '2022-03-11') ";
+                    $date11=$_GET['datedebut'];
+                    $date22=$_GET['datefin'];
+                    $date1 = new DateTime($date11);
+                    $date2 = new DateTime($date22);
+                    $date1=date_format($date1, 'Y-m-d');
+                    $date2=date_format($date2, 'Y-m-d');
+                     
+                    $sql="SELECT * FROM `commandes` WHERE (`dateCmd` BETWEEN '$date1' AND '$date2') ";
                     $result = $cnx->query($sql);
                     $cpt=0;
+                    // echo $sql;
                     while ($row = $result->fetch_assoc()) {
                         
                 ?>

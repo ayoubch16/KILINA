@@ -63,9 +63,7 @@ include 'header.php';?>
                                                                         width="20" height="20" alt=""></a>
                                                             </td>
                                                             <td class="text-left edit">
-                                                                <a href=""><img src="img/icons/trash.png" width="15"
-                                                                        height="20" alt=""></a>
-                                                                <a href=""><img src="img/icons/edit.png" width="20"
+                                                                <a href="removeboutique.php?id=<?php echo $row['id'];?>"><img src="img/icons/trash.png" width="15"
                                                                         height="20" alt=""></a>
                                                             </td>
                                                         </tr>
