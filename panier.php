@@ -169,12 +169,7 @@
                 </div>
             </div>
             <!-- felicitation-->
-            <!-- <div id="felicitation" class="flex-container">
-            <div class="flex-item my-2"><img src="image/icone/felicitation.png" width="200" height="200" alt=""></div>
-            <div class="flex-item my-2"> <h1>Félicitation</h1></div>
-            <div class="flex-item my-2"> <h5>votre demande sera <br>traite dans 24H</h5></div>
-            <div class="flex-item my-2"><button class="btnP rounded">RETOUR</button></div>
-        </div> -->
+
         </div>
         <?php }else{ ?>
 
@@ -357,21 +352,7 @@
                         </div>
                         <div class="col-md-4 col-sm bg-white rounded p-4 my-1 mx-2">
 
-                            <!-- <div class="row text-center">
-                                <input class="mx-2 rounded col" type="text"
-                                    style="background-color: #EEECF5; color: #19AA09;">
-                                <input type="button" class="btnP1 rounded" value="Appliquer">
-                            </div> -->
 
-                            <!-- <div class="row mt-3">
-                                <div class="col text-left">
-                                    <h6>Code promo</h6>
-                                </div>
-                                <div class="col-4 text-left row">
-                                    <h6 id="remis" style="color: #19AA09;">5 </h6>
-                                    <h6 style="color: #19AA09;"> %</h6>
-                                </div>
-                            </div> -->
                             <div class="row mt-3">
                                 <div class="col text-left">
                                     <h6>Livraison</h6>

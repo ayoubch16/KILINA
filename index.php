@@ -239,59 +239,63 @@ $t=$_GET['t'];
             <div class="sousgroup container  rounded ">
                 <div class="group">
                 <ul id="group1">
-                    <li><a href="">Cartables</a></li>
-                    <li><a href="">Sacs à Dos</a></li>
-                    <li><a href="">Portefeuilles</a></li>
-                    <li><a href="">Sacs à main</a></li>
-                    <li><a href="">Sacs de soirée</a></li>
-                    <li><a href="">Pochettes</a></li>
+                    <li><a href="index.php?c=Cartables">Cartables</a></li>
+                    <li><a href="index.php?c=Sacs à Dos">Sacs à Dos</a></li>
+                    <li><a href="index.php?c=Portefeuilles">Portefeuilles</a></li>
+                    <li><a href="index.php?c=Sacs à main">Sacs à main</a></li>
+                    <li><a href="index.php?c=Sacs de soirée">Sacs de soirée</a></li>
+                    <li><a href="index.php?c=Pochettes">Pochettes</a></li>
                 </ul>   
                 <ul  id="group2">
-                    <li><a href="">T-Shirts</a></li>
-                    <li><a href="">Escarpins</a></li>
-                    <li><a href="">Mocassins</a></li>
-                    <li><a href="">Sandales</a></li>
-                    <li><a href="">Ballerines</a></li>
-                    <li><a href="">Espadrilles</a></li>
-                    <li><a href="">Bottines</a></li>
-                    <li><a href="">Pantoufles</a></li>
-                    <li><a href="">Sabots</a></li>
-                    <li><a href="">Sabots</a></li>
-                    <li><a href="">T-Shirts</a></li>
-                    <li><a href="">Escarpins</a></li>
-                    <li><a href="">Mocassins</a></li>
-                    <li><a href="">Sandales</a></li>
-                    <li><a href="">Ballerines</a></li>
-                    <li><a href="">Espadrilles</a></li>
-                    <li><a href="">Bottines</a></li>
-                    <li><a href="">Pantoufles</a></li>
-                    <li><a href="">Sabots</a></li>
-                    <li><a href="">Sabots</a></li>
-                    <li><a href="">T-Shirts</a></li>
-                    <li><a href="">Escarpins</a></li>
-                    <li><a href="">Mocassins</a></li>
-                    <li><a href="">Sandales</a></li>
-                    <li><a href="">Ballerines</a></li>
-                    <li><a href="">Espadrilles</a></li>
-                    <li><a href="">Bottines</a></li>
-                    <li><a href="">Pantoufles</a></li>
-                    <li><a href="">Sabots</a></li>
-                    <li><a href="">Sabots</a></li>
+                    <li><a href="index.php?c=Baskets">Baskets</a></li>
+                    <li><a href="index.php?c=Escarpins">Escarpins</a></li>
+                    <li><a href="index.php?c=Mocassins">Mocassins</a></li>
+                    <li><a href="index.php?c=Sandales">Sandales</a></li>
+                    <li><a href="index.php?c=Ballerines">Ballerines</a></li>
+                    <li><a href="index.php?c=Espadrilles">Espadrilles</a></li>
+                    <li><a href="index.php?c=Bottines">Bottines</a></li>
+                    <li><a href="index.php?c=Pantoufles">Pantoufles</a></li>
+                    <li><a href="index.php?c=Sabots">Sabots</a></li>
                 </ul>  
                 <ul  id="group3">
-                    <li><a href="">Cartables</a></li>
-                    <li><a href="">Sacs à Dos</a></li>
-                    <li><a href="">Portefeuilles</a></li>
-                    <li><a href="">Sacs à main</a></li>
-                    <li><a href="">Sacs de soirée</a></li>
-                    <li><a href="">Pochettes</a></li>
+                    <li><a href="index.php?c=T-Shirts">T-Shirts</a></li>
+                    <li><a href="index.php?c=Monteaux">Monteaux</a></li>
+                    <li><a href="index.php?c=Vestes">Vestes</a></li>
+                    <li><a href="index.php?c=Robes">Robes</a></li>
+                    <li><a href="index.php?c=Chemise">Chemise</a></li>
+                    <li><a href="index.php?c=Tops">Tops</a></li>
+                    <li><a href="index.php?c=Débardeurs">Débardeurs</a></li>
+                    <li><a href="index.php?c=Costumes">Costumes</a></li>
+                    <li><a href="index.php?c=Tricot">Tricot</a></li>
+                    <li><a href="index.php?c=Sweat">Sweat</a></li>
+                    <li><a href="index.php?c=Bodys">Bodys</a></li>
+                    <li><a href="index.php?c=Ensembles 2 piéces">Ensembles 2 piéces</a></li>
+                    <li><a href="index.php?c=Ensembles 3 piéces">Ensembles 3 piéces</a></li>
+                    <li><a href="index.php?c=Combinaisons">Combinaisons</a></li>
+                    <li><a href="index.php?c=Jupes">Jupes</a></li>
+                    <li><a href="index.php?c=Shorts">Shorts</a></li>
+                    <li><a href="index.php?c=Pantalons">Pantalons</a></li>
+                    <li><a href="index.php?c=Jeans">Jeans</a></li>
+                    <li><a href="index.php?c=Leggings">Leggings</a></li>
+                    <li><a href="index.php?c=Collants sport">Collants sport</a></li>
+                    <li><a href="index.php?c=Maillots de Bain">Maillots de Bain</a></li>
+                    <li><a href="index.php?c=Cap">Cap</a></li>
+                    <li><a href="index.php?c=Borkinis">Borkinis</a></li>
+                    <li><a href="index.php?c=Survettes">Survettes</a></li>
+                    <li><a href="index.php?c=Capuchon">Capuchon</a></li>
+                    <li><a href="index.php?c=CALECON">CALECON</a></li>
+                    <li><a href="index.php?c=DOUDOUNE">DOUDOUNE</a></li>
+                    <li><a href="index.php?c=DJELLABA">DJELLABA</a></li>
+                    <li><a href="index.php?c=Jaket">Jaket</a></li>
+                    <li><a href="index.php?c=SALOPETTE">SALOPETTE</a></li>
+
                 </ul>     
                 <ul  id="group4">
-                    <li><a href="">Ceintures</a></li>
-                    <li><a href="">Echarpes</a></li>
-                    <li><a href="">Portes clés</a></li>
-                    <li><a href="">Casquettes</a></li>
-                    <li><a href="">Chapeaux</a></li>
+                    <li><a href="index.php?c=Ceintures"></a>Ceintures</li>
+                    <li><a href="index.php?c=Echarpes"></a>Echarpes</li>
+                    <li><a href="index.php?c=Portes clés"></a>Portes clés</li>
+                    <li><a href="index.php?c=Casquettes"></a>Casquettes</li>
+                    <li><a href="index.php?c=Chapeaux"></a>Chapeaux</li>
                 </ul>     
                 </div>
                                     

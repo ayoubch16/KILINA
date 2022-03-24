@@ -48,6 +48,13 @@ if ($row = $result->fetch_assoc()) {
     font-size: 30px;
 }
 </style>
+<?php 
+$titreProd=$row['titre'];
+    echo "   <script>
+    document.title = '$titreProd';
+    </script>";
+  
+?>
 
 <body>
     <!-- product-details -->
