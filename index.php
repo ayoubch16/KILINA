@@ -91,7 +91,7 @@ $t=$_GET['t'];
                 </ul>
                 <ul class="reclamation">
                     <li><a href="information.php?c=2">Reclamation</a></li> |
-                    <li><a href="information.php?c=1">Recturment</a></li> 
+                    <li><a href="information.php?c=1">Recrutement</a></li> 
                     <!-- <li><a href="">Contact</a></li> -->
                 </ul>
             </div>

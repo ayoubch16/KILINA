@@ -8,6 +8,8 @@ $titre=$_POST['titre'];
 
 $categorie=$_POST['categorie'];
 
+$prixa=$_POST['prixa'];
+
 $prix=$_POST['prix'];
 
 $remis=$_POST['remis'];
@@ -45,7 +47,7 @@ if( $imgData5 != null ){  $txtimg5=" `img5`='$imgData5'  ";}
 
 // echo $imgData2;
 
-$sql="UPDATE `produits` SET `titre`='$titre',`categorie`='$categorie',`prix`='$prix',`remis`='$remis',
+$sql="UPDATE `produits` SET `titre`='$titre',`categorie`='$categorie',`prixa`='$prixa',`prix`='$prix',`remis`='$remis',
 `genre`='$genre',`quantite`='$quantite',`description`='$description',
 ".$txtimg1."  ".$txtimg2."  ".$txtimg3."  ".$txtimg4."  ".$txtimg5." `taille`='$taille' WHERE `Ref`='$Ref'";
 
