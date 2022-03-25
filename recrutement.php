@@ -3,9 +3,14 @@
   $prenom=$_GET['prenom'];
   $email=$_GET['email'];
   $telephone=$_GET['tele'];
-  $message=$_GET['message'];
+  $cv=$_GET['cv'];
+  $source=fil_get_contents()
+//   $fichier='';
+
+  
 
   $subject = 'Nouveau Reclamation';
+
   $emailT='
   <h1 style="color: #000;font-size: 60px;text-align: center;">KILINA</h1>
 
@@ -19,7 +24,6 @@
 
   Email           :     '.$email.'
 
-  Message         :     '.$message.' 
   </pre>
   </div>
   <h4>
@@ -30,23 +34,23 @@
       </pre>
   </h4>
   ';
+ echo $emailT;
+//   $headers  = 'MIME-Version: 1.0' . "\r\n";
+//   $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
-  $headers  = 'MIME-Version: 1.0' . "\r\n";
-  $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
-
-  $headers .= 'From: notif.immo@tradeline-solutions.com' . "\r\n" .
-              'Reply-To: notif.immo@tradeline-solutions.com' . "\r\n" .
-              'X-Mailer: PHP/' . phpversion();
-  // mail('ayoubchoukri16@gmail.com', $subject, $emailT, $headers);
-  if (mail('ayoubchoukri16@gmail.com', $subject, $emailT, $headers))
-  {
-      echo "-->Message accepted";
-  }
-  else
-  {
-      echo "-->Error: Message not accepted";
-  }
+//   $headers .= 'From: notif.immo@tradeline-solutions.com' . "\r\n" .
+//               'Reply-To: notif.immo@tradeline-solutions.com' . "\r\n" .
+//               'X-Mailer: PHP/' . phpversion();
+//   // mail('ayoubchoukri16@gmail.com', $subject, $emailT, $headers);
+//   if (mail('ayoubchoukri16@gmail.com', $subject, $emailT, $headers))
+//   {
+//       echo "-->Message accepted";
+//   }
+//   else
+//   {
+//       echo "-->Error: Message not accepted";
+//   }
 
 ?>
 
