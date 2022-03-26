@@ -64,6 +64,12 @@
                     <i class="align-middle" data-feather="activity"></i> <span class="align-middle">Gestion des Modules </span>
                 </a>
             </li>
+            <!-- <li class="sidebar-item" onclick="active()">
+                <a class="sidebar-link" href="gestionRH.php">
+                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Les Demandes de Recurutement </span>
+                </a>
+            </li> -->
+            
             <?php } ?>
             <li class="sidebar-item" onclick="active()">
                 <a class="sidebar-link" href="deconnecter.php">

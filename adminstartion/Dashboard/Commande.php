@@ -20,24 +20,24 @@
         margin-right: 10px;
     }
 
-    .statusL a {
+    .statusL , .statusL a {
         color: #08cf07;
-        background-color: #e5fbe5;
-        padding: 5px;
+        background-color: #9dfb9d;
+        padding: 4px;
         border-radius: 5px;
     }
 
-    .statusA a {
+    .statusA , .statusA a {
         color: #fc4b4b;
-        background-color: #ffecec;
-        padding: 5px;
+        background-color: #fd9b9b;
+        padding: 4px;
         border-radius: 5px;
     }
 
-    .statusE a {
+    .statusE , .statusE a {
         color: #c2c800;
-        background-color: #feffe2;
-        padding: 5px;
+        background-color: #fcff99;
+        padding: 3px;
         border-radius: 5px;
     }
 
@@ -216,7 +216,7 @@
                                                                 <span class="statusA"><a>Annuler</a></span>
                                                                 <?php } ?>
                                                                 <?php if($row['statusCmd']=='Livrée'){?>
-                                                                <span class="statusL"><a>Livrée</a></span>
+                                                                    <span class="statusL mx-2"><a href="Commande.php?c=1">Livrée</a></span>
                                                                 <?php } ?>
                                                             </td>
                                                             <td class="text-left"><?php echo $row['PaimentCmd'] ;?></td>
