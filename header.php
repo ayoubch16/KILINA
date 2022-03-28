@@ -16,5 +16,12 @@ session_start();
     <meta name="author" content="Ayoub Choukri">
     <link rel="shortcut icon" href="image/logo.ico" type="image/x-icon">
     <title>KILINA</title>
+    <meta name="title" content="KILINA">
+    <meta name="description" content="une marque Marocaine de prêt-à-porter.Nos vêtements ne sont pas limités à un certain âge, taille ou gamme de prix. La mode est pour tout le monde.">
+    <meta name="keywords" content="vetement,tement,mode,fashion,style,shopping,model,vetements,clothes,tendance,robe,boutique,b,vetementfemme,femme,france,shop,chemise,instagood,love,fashionblogger,black,abidjan,blogueusemode,woman,beautiful,tements,fashionista,femme,woman,love,fashion,women,homme,mode,art,girl,beauty,france,photography,style,amour,lesbian,portrait,lgbt,instagood,lgbtq,paris,beautiful,queer,e,model,beaut,femmes,photo,instagram,makeup,habillement,tenue,outfitaddict,vetement,tunique,ideelook,tenuedujour,tendance,pretaporterfemme,modefemme ,zara,casualmode,outfits,outfitinspiration,mode,lookoftoday,look,ootdfashion,outfit,goodmood ,fashionstyle,fashionaddict,instafashion,workinggirl,avignon,blogger,influencer,bloggermode,fashionblogger,zarawoman ,style,basket,ootd,tatoogirl,closetinspo,womenstyle,goodvibes,outfitoftheday,zaraoutfit,whitevous ">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="French">
 
 </head>
+

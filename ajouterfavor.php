@@ -1,5 +1,4 @@
 <?php 
-
 include 'dbconnect.php';
 session_start();
     if($_SESSION["id"] =='') {

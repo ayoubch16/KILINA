@@ -8,9 +8,6 @@
     }else{
         $sql="UPDATE `produits` SET `meilleurV`='MV' WHERE `Ref`='$ref'";
     }
-
-    // echo $sql;
-    
     if ($cnx->query($sql) === TRUE) { 
         echo '<script>
             window.location=history.go(-1);

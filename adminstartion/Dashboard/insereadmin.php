@@ -9,13 +9,8 @@
     $mdp=md5($mdp);
     $ville=$_GET['ville'];
     $cin=$_GET['cin'];
-
-    
-
-
     $sql="INSERT INTO `users`( `Reffuser`, `nomuser`, `prenomuser`, `teleuser`, `CINuser`, `emailuser`, `ville` , `passeuser`, `etatuser`, `etatCompte`) 
             VALUES ('$Reff','$nom','$prenom','$tele','$cin','$email','$ville','$mdp','user','NV')";
-
     echo $sql;
     if ($cnx->query($sql) === TRUE) {
         echo '
@@ -33,6 +28,5 @@
       </script>';
        
      }
-
 
 ?>

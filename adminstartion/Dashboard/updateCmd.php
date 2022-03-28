@@ -2,10 +2,9 @@
 include 'db-conn.php';
 $status=$_GET['status'];
 $Reff=$_GET['Reff'];
-// echo $status.'<br>';
-// echo $Reff;
+
 $sql="UPDATE `commandes` SET `statusCmd`='$status' WHERE `ReffCmd`='$Reff' ";
-// echo '<br>'.$sql
+
 if ($cnx->query($sql) === TRUE) { 
     echo '<script>alert("la commende a ete modifier avec succès")</script>';
     echo '<script>

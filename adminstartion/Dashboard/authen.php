@@ -1,11 +1,8 @@
 <?php 
     include 'db-conn.php';
     session_start();
-    
     $email=$_POST['email'];
     $mdp=md5($_POST['mdp']);
-    
-
     $sql="SELECT * FROM `users` WHERE `emailuser`='$email' and `passeuser`='$mdp' and `etatCompte`='V' ";
      $result = $cnx->query($sql);
     if ($row = $result->fetch_assoc()) {
@@ -19,10 +16,6 @@
         $_SESSION["CINuser"]=$row['CINuser'];
         $_SESSION["etatuser"]=$row['etatuser'];
         header("Location: index.php");
-        // echo '<script>
-        //             window.location=history.go(-2);
-        // </script>';
-
     }else{
         echo 'Error';
         echo '<br><button onclick="Rto1()">Retour À La Page De Connexion</button>

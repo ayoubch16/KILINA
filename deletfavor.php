@@ -10,7 +10,6 @@ $refclient=$_GET['refclient'];
 
 
 $sql="DELETE FROM `favor` WHERE `RefProd`='$ref' ";
-// echo $sql;
 
 if ($cnx->query($sql) === TRUE) { 
     echo '<script>
