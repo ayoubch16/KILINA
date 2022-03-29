@@ -13,11 +13,6 @@
 </a>
 </li>
 <li class="sidebar-item" onclick="active()">
-<a class="sidebar-link" href="Produits.php">
-<i class="align-middle" data-feather="copy"></i> <span class="align-middle">Produit</span>
-</a>
-</li>
-<li class="sidebar-item" onclick="active()">
 <a class="sidebar-link" href="MeuilleurVente.php">
 <i class="align-middle" data-feather="star"></i> <span class="align-middle">Meuilleur Vente</span>
 </a>
@@ -28,6 +23,11 @@
 </a>
 </li>
 <?php if($_SESSION["etatuser"]=='admin'){?>
+<li class="sidebar-item" onclick="active()">
+<a class="sidebar-link" href="Produits.php">
+<i class="align-middle" data-feather="copy"></i> <span class="align-middle">Produit</span>
+</a>
+</li>
 <li class="sidebar-item" onclick="active()">
 <a class="sidebar-link" href="Statistiques.php">
 <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Statistiques</span>

@@ -1,5 +1,7 @@
 <?php
 include 'db-conn.php';
+session_start();
+
 $Ref=$_POST['Ref'];
 $titre=$_POST['titre'];
 $categorie=$_POST['categorie'];
@@ -25,6 +27,9 @@ $sql="INSERT INTO `produits`( `Ref`,`titre`,`categorie`, `prixa`,`prix`,`remis`,
          VALUES ('$Ref','$titre','$categorie','$prixa','$prix','$remis','$genre','$quantite',DATE_FORMAT(SYSDATE(), '%Y-%m-%d- %H-%i-%s') ,'$description','$taille','$imgData1','$imgData2','$imgData3','$imgData4','$imgData5')"; 
           // echo $sql;
 if ($cnx->query($sql) === TRUE) { 
+    $Reffuser=$_SESSION["Reffuser"];
+    $action='Ajouter un article';
+    $sqluser="INSERT INTO `history`( `Reffuser`, `Action`, `Product`) VALUES ('','','')";
     echo '<script>alert("le bien a ete ajoute avec succès")</script>';
     echo '<script>window.location.href = "Produits.php";</script>';
   } else {

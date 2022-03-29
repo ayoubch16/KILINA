@@ -12,13 +12,17 @@ if($a==2){
     
 }
 if($a==3){
-    $sql="UPDATE `users` SET `etatuser`='user' WHERE `iduser`=$c";
+    $sql="UPDATE `users` SET `etatuser`='manager' WHERE `iduser`=$c";
     
 }
 if($a==4){
-    $sql="UPDATE `users` SET `etatuser`='admin' WHERE `iduser`=$c";
+    $sql="UPDATE `users` SET `etatuser`='user' WHERE `iduser`=$c";
     
 }
+// if($a==5){
+//     $sql="UPDATE `users` SET `etatuser`='admin' WHERE `iduser`=$c";
+    
+// }
 if ($cnx->query($sql) === TRUE) { 
     echo '<script>alert("le compte a ete modifier avec succès")</script>';
     echo '<script>

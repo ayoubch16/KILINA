@@ -40,9 +40,9 @@
 </thead>
 <tbody id="myTable">
 <?php $sql="SELECT * FROM `users` ";
-                                                         $result = $cnx->query($sql);
-                                                         while ($row = $result->fetch_assoc()) {
-                                                            ?>
+        $result = $cnx->query($sql);
+        while ($row = $result->fetch_assoc()) {
+?>
 <tr>
 <td class="text-left"></td>
 <td class="text-left"><?php echo $row['CINuser'];?></td>
@@ -57,13 +57,21 @@
 <a href="updateUser.php?a=2&c=<?php echo $row['iduser'];?>">Desactiver</a>
 <?php }  ?>
 </th>
-<th>
+<!-- <th>
 <?php echo $row['etatuser'];?>
 <?php if( $row['etatuser']=='admin'){?>
 <a class="mx-1" href="updateUser.php?a=3&c=<?php echo $row['iduser'];?>"><i class="align-middle" data-feather="refresh-ccw"></i></a>
 <?php }else{?>
 <a class="mx-1" href="updateUser.php?a=4&c=<?php echo $row['iduser'];?>"><i class="align-middle" data-feather="refresh-ccw"></i></a>
 <?php }  ?>
+</th> -->
+<th>
+<?php echo $row['etatuser'];?>
+<?php if( $row['etatuser']=='manager'){?>
+        <a class="mx-1" href="updateUser.php?a=3&c=<?php echo $row['iduser'];?>"><i class="align-middle" data-feather="refresh-ccw"></i></a>
+<?php } if( $row['etatuser']=='user'){?>
+        <a class="mx-1" href="updateUser.php?a=3&c=<?php echo $row['iduser'];?>"><i class="align-middle" data-feather="refresh-ccw"></i></a>
+<?php } ?>
 </th>
 </tr>
 <?php } ?>

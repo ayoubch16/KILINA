@@ -180,7 +180,8 @@
 </div>
 <div class="my-3">
 <p style="font-size:20px">Prix :</p>
-<input style="display:none" type="text" name="prix<?php echo $cpt;?>" value="<?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?>" id="">
+<input  type="text" name="prixachate<?php echo $cpt;?>" value="<?php echo $row1['prixa'];?>" id="">
+<input  type="text" name="prixvente<?php echo $cpt;?>" value="<?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?>" id="">
 <h5 id="prix<?php echo $cpt;?>" class="prixproduit" style="font-size:1rem;width:auto">
 <?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?>DH</h5>
 </div>
@@ -199,7 +200,14 @@
 <h6>Livraison</h6>
 </div>
 <div class="col-4 text-left row">
-<h6 id="prixlivr">30.00</h6>
+<h6 id="prixlivr">
+<?php 
+    $sqlprixL="SELECT * FROM `module` WHERE id=1";
+    $resultprixL = $cnx->query($sqlprixL);
+    if ($rowprixL = $resultprixL->fetch_assoc()) {
+    }
+    echo $rowprixL['prixLivraison'] ;
+?>.00</h6>
 <h6> DH</h6>
 </div>
 </div>

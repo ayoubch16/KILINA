@@ -106,7 +106,7 @@
 </td>
 <td class="text-left"><?php echo $row['PaimentCmd'] ;?></td>
 <td><img style="cursor:pointer" onclick="afficher('<?php echo $row1['nom'].' '.$row1['prenom'] ;?>','<?php echo $row1['tele'] ;?>','<?php echo $row1['Adresse'] ;?>','<?php echo $row['ReffCmd'] ;?>','<?php echo $row['prixCmd'] ;?>','<?php echo $row['villeCmd'] ;?>','<?php echo $row['villeCmd'] ;?>')" src="img/icons/edit.png" width="20" height="20" alt=""></td>
-<td><a href="ticket.php?name=<?php echo $row1['nom'].' '.$row1['prenom'] ;?>&Ref=<?php echo $row['ReffCmd'] ;?>&tele=<?php echo $row1['tele'] ;?>&adresse=<?php echo $row1['Adresse'] ;?>" ><i class="align-middle" data-feather="printer"></i></a></td>
+<td><a target="blanc" href="ticket.php?name=<?php echo $row1['nom'].' '.$row1['prenom'] ;?>&Ref=<?php echo $row['ReffCmd'] ;?>&tele=<?php echo $row1['tele'] ;?>&adresse=<?php echo $row1['Adresse'] ;?>&prix=<?php echo $row['prixCmd'] ;?>" ><i class="align-middle" data-feather="printer"></i></a></td>
 </tr>
 <?php } ?>
 </tbody>

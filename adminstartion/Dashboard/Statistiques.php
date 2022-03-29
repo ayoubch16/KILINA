@@ -31,6 +31,14 @@ $c=$_GET['c'];
 <canvas id="myChart2"></canvas>
 </div>
 </div>
+<div class="card">
+<div class="card-header">
+<h5 class="card-title mb-0">Marche Benificaire</h5>
+</div>
+<div class="align-self-center chart chart-lg p-2">
+<canvas id="myChart3"></canvas>
+</div>
+</div>
 </div>
 </div>
 <div class="row">
@@ -71,7 +79,7 @@ $c=$_GET['c'];
 <?php 
     $ref=empty($c)? " ":"  WHERE `Ref`='$c' ";
       $sql1="SELECT SUM(`quantite`),SUM(`quantitevendu`) FROM `produits` $ref ";
-      echo $sql1;
+    //   echo $sql1;
       $result1 = $cnx->query($sql1);
       if ($row1 = $result1->fetch_assoc()) { 
           $qnt=$row1["SUM(`quantite`)"];
@@ -82,17 +90,73 @@ $c=$_GET['c'];
     $nbr=array();
     for($i=1;$i<=12;$i++){
         if($i<10){
-            $sql2="SELECT  COUNT(*) FROM commandes WHERE DATE_FORMAT(dateCmd,'%m') ='0$i' ";
+            $sql2="SELECT  COUNT(*),SUM(prixachat) as prixa,SUM(prixvente) as prixb FROM commandes WHERE DATE_FORMAT(dateCmd,'%m') ='0$i' ";
         }else{
             $sql2="SELECT  COUNT(*) FROM commandes WHERE DATE_FORMAT(dateCmd,'%m') ='$i' ";
         }
         $result2 = $cnx->query($sql2);
         if ($row2 = $result2->fetch_assoc()) { 
-            $nbr[$i]=$row2["COUNT(*)"]; }
+            $nbr[$i]=$row2["COUNT(*)"]; 
+            $prixa[$i]=$row2["prixa"]; 
+            $prixb[$i]=$row2["prixb"]; 
+            $prixa[$i]=number_format($row2["prixa"], 2, '.', '');
+            $prixb[$i]=number_format($row2["prixb"], 2, '.', '');
+        }
     }
 
     ?>
 <script>/*<![CDATA[*/const ctx=document.getElementById("myChart").getContext("2d");const myChart=new Chart(ctx,{type:"doughnut",data:{labels:["En stock","Vendu"],datasets:[{data:[<?php echo $qnt ;?>,<?php echo $qntvendu ;?>],backgroundColor:["#FDEB02","#495057"],borderColor:["#FDEB02","#495057"],borderWidth:1}]},options:{animation:{animateScale:true}}});/*]]>*/</script>
 <script>/*<![CDATA[*/const ctx2=document.getElementById("myChart2").getContext("2d");const myChart2=new Chart(ctx2,{type:"bar",data:{labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],datasets:[{label:"nombre des commandes",data:[<?php echo $nbr[1];?>,<?php echo $nbr[2];?>,<?php echo $nbr[3];?>,<?php echo $nbr[4];?>,<?php echo $nbr[5];?>,<?php echo $nbr[6];?>,<?php echo $nbr[7];?>,<?php echo $nbr[8];?>,<?php echo $nbr[9];?>,<?php echo $nbr[10];?>,<?php echo $nbr[11];?>,<?php echo $nbr[12];?>],backgroundColor:["#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02"]}]},options:{scales:{y:{beginAtZero:true}}}});/*]]>*/</script>
+<script>/*<![CDATA[*/const ctx3=document.getElementById("myChart3").getContext("2d");const myChart3=new Chart(ctx3,{type:"bar",data:{labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+            ,datasets:[
+                {
+                label:"Somme 1"
+                ,data:[<?php echo $prixa[1];?>
+                ,<?php echo $prixa[2];?>
+                ,<?php echo $prixa[3];?>
+                ,<?php echo $prixa[4];?>
+                ,<?php echo $prixa[5];?>
+                ,<?php echo $prixa[6];?>
+                ,<?php echo $prixa[7];?>
+                ,<?php echo $prixa[8];?>
+                ,<?php echo $prixa[9];?>
+                ,<?php echo $prixa[10];?>
+                ,<?php echo $prixa[11];?>
+                ,<?php echo $prixa[12];?>]
+                ,backgroundColor:["#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02"]
+            },
+            {
+                label:"Somme 1"
+                ,data:[<?php echo $prixb[1]-$prixa[1];?>
+                ,<?php echo $prixb[2]-$prixa[2];?>
+                ,<?php echo $prixb[3]-$prixa[3];?>
+                ,<?php echo $prixb[4]-$prixa[4];?>
+                ,<?php echo $prixb[5]-$prixa[5];?>
+                ,<?php echo $prixb[6]-$prixa[6];?>
+                ,<?php echo $prixb[7]-$prixa[7];?>
+                ,<?php echo $prixb[8]-$prixa[8];?>
+                ,<?php echo $prixb[9]-$prixa[9];?>
+                ,<?php echo $prixb[10]-$prixa[10];?>
+                ,<?php echo $prixb[11]-$prixa[11];?>
+                ,<?php echo $prixb[12]-$prixa[12];?>]
+                ,backgroundColor:["#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02"]
+            },
+            {
+                label:"Somme 1"
+                ,data:[<?php echo $prixb[1];?>
+                ,<?php echo $prixb[2];?>
+                ,<?php echo $prixb[3];?>
+                ,<?php echo $prixb[4];?>
+                ,<?php echo $prixb[5];?>
+                ,<?php echo $prixb[6];?>
+                ,<?php echo $prixb[7];?>
+                ,<?php echo $prixb[8];?>
+                ,<?php echo $prixb[9];?>
+                ,<?php echo $prixb[10];?>
+                ,<?php echo $prixb[11];?>
+                ,<?php echo $prixb[12];?>]
+                ,backgroundColor:["#000","#000","#000","#000","#000","#000","#000","#000","#000","#000","#000","#000"]
+            }
+                ]},options:{indexAxis: 'y',}});/*]]>*/</script>
 </body>
 </html>

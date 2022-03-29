@@ -1,6 +1,6 @@
 <?php 
     include 'db-conn.php';
-    $Reff=uniqid('user_'); 
+    // $Reff=uniqid('user_'); 
     $nom=$_GET['nom'];
     $prenom=$_GET['prenom'];
     $tele=$_GET['tele'];
@@ -9,6 +9,7 @@
     $mdp=md5($mdp);
     $ville=$_GET['ville'];
     $cin=$_GET['cin'];
+    $Reff=$nom.rand(1,9999);
     $sql="INSERT INTO `users`( `Reffuser`, `nomuser`, `prenomuser`, `teleuser`, `CINuser`, `emailuser`, `ville` , `passeuser`, `etatuser`, `etatCompte`) 
             VALUES ('$Reff','$nom','$prenom','$tele','$cin','$email','$ville','$mdp','user','NV')";
     echo $sql;

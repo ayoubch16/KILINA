@@ -3,6 +3,7 @@ $name=$_GET['name'];
 $Ref=$_GET['Ref'];
 $tele=$_GET['tele'];
 $adresse=$_GET['adresse'];
+$prix=$_GET['prix'];
 
 
 ?>
@@ -27,10 +28,13 @@ $adresse=$_GET['adresse'];
 <h1>Ref :</h1>
 <h2><?php echo $Ref ;?></h2>
 </div>
-<div class=time>
+<div style="background-color: yellow;" class="time px-2">
+<p>Prix : <?php echo $prix ;?> </p>
+</div>
+<div class="time">
 <p>Tele : <?php echo $tele ;?> </p>
 </div>
-<div class=time>
+<div class="time">
 <p>Adresse : <br> <?php echo $adresse ;?> </p>
 </div>
 </div>
