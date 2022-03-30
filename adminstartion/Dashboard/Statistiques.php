@@ -3,7 +3,8 @@ $c=$_GET['c'];
 
 
 ?>
-<style>.barRech{background-color:#fff;padding:10px;border-radius:10px;margin-bottom:20px;width:350px;height:60px;box-shadow:-2px 11px 13px -15px #000}.barRech input[type="text"]{border:0;border-bottom:1px solid #f2f2f2;width:100%;height:40px;margin-right:10px}.barRech button{border:0;width:auto;height:40px;padding:5px;display:flex;justify-content:center;align-items:center;background-color:#fff}</style>
+<style>.barRech{background-color:#fff;padding:10px;border-radius:10px;margin-bottom:20px;width:350px;height:60px;box-shadow:-2px 11px 13px -15px #000}.barRech input[type="text"]{border:0;border-bottom:1px solid #f2f2f2;width:100%;height:40px;margin-right:10px}.barRech button{border:0;width:auto;height:40px;padding:5px;display:flex;justify-content:center;align-items:center;background-color:#fff}
+.bardelai input[type="date"]{background-color:#f6f6f6;border:1px solid #d9d9d9;width:250px;height:40px;border-radius:10px;padding:5px;margin:5px}.bardelai input[type="submit"]{background-color:#fcea01;border:1px solid #fcea01;width:250px;height:40px;border-radius:10px;padding:5px;margin:5px}.bardelai input[type="submit"]:hover{background-color:#000;border:1px solid #000;color:#fcea01}</style>
 <body>
 <script>document.title="Statistiques";</script>
 <div class="wrapper">
@@ -18,35 +19,24 @@ $c=$_GET['c'];
 <div class="col-sm-2"><button type="submit"><img src="img/icons/search.png" width="20" height="20" alt=""></button></div>
 </div>
 </form>
+<form action="importdata.php">
+<div class="row mb-3" style="display:flex;justify-content:space-between">
+<div class="bardelai col-5">
+<input type="date" name="datedebut">
+<input type="date" name="datefin">
+<input type="submit" value="Import/Export">
+</div>
+</div>
+</form>
 <div class="row">
 <div class="col-xl col-xxl">
 <h5 class="h3 mb-3">Statistiques</h5>
-<div class="w-100">
-<div class="col-sm">
-<div class="card">
-<div class="card-header">
-<h5 class="card-title mb-0">Statistiques</h5>
-</div>
-<div class="align-self-center chart chart-lg p-2">
-<canvas id="myChart2"></canvas>
-</div>
-</div>
-<div class="card">
-<div class="card-header">
-<h5 class="card-title mb-0">Marche Benificaire</h5>
-</div>
-<div class="align-self-center chart chart-lg p-2">
-<canvas id="myChart3"></canvas>
-</div>
-</div>
-</div>
-</div>
 <div class="row">
 <div class="w-100 col-sm">
 <div class="col-sm">
 <div class="card">
 <div class="card-header">
-<h5 class="card-title mb-0">Statistiques</h5>
+<h5 class="card-title mb-0">Statistiques du Stocks</h5>
 </div>
 <div class="chart chart-sm p-2">
 <canvas id="myChart"></canvas>
@@ -55,13 +45,27 @@ $c=$_GET['c'];
 </div>
 </div>
 </div>
+<div class="w-100">
+<div class="col-sm">
+<div class="card">
+<div class="card-header">
+<h5 class="card-title mb-0">Statistiques du Commandes</h5>
+</div>
+<div class="align-self-center chart chart-lg p-2">
+<canvas id="myChart2"></canvas>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="col-xl-4 col-xxl-7">
 <h5 class="card-title mb-4">Produits Similaire</h5>
 <?php $sql="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 4";
-                                       $result = $cnx->query($sql);
-                                       while ($row = $result->fetch_assoc()) {
-                            ?>
+      $result = $cnx->query($sql);
+           while ($row = $result->fetch_assoc()) {
+?>
 <div class="card flex-fill w-100">
 <div class="card-body py-3">
 <span style="position:absolute;top:5px;left:5px"><?php echo $row['Ref']?></span>
@@ -70,6 +74,7 @@ $c=$_GET['c'];
 </div>
 <?php } ?>
 </div>
+
 </div>
 </div>
 </main>
@@ -77,9 +82,9 @@ $c=$_GET['c'];
 </div>
 <?php include 'script.php';?>
 <?php 
-    $ref=empty($c)? " ":"  WHERE `Ref`='$c' ";
+      $ref=empty($c)? " ":"  WHERE `Ref`='$c' ";
       $sql1="SELECT SUM(`quantite`),SUM(`quantitevendu`) FROM `produits` $ref ";
-    //   echo $sql1;
+       
       $result1 = $cnx->query($sql1);
       if ($row1 = $result1->fetch_assoc()) { 
           $qnt=$row1["SUM(`quantite`)"];
@@ -103,60 +108,9 @@ $c=$_GET['c'];
             $prixb[$i]=number_format($row2["prixb"], 2, '.', '');
         }
     }
-
     ?>
 <script>/*<![CDATA[*/const ctx=document.getElementById("myChart").getContext("2d");const myChart=new Chart(ctx,{type:"doughnut",data:{labels:["En stock","Vendu"],datasets:[{data:[<?php echo $qnt ;?>,<?php echo $qntvendu ;?>],backgroundColor:["#FDEB02","#495057"],borderColor:["#FDEB02","#495057"],borderWidth:1}]},options:{animation:{animateScale:true}}});/*]]>*/</script>
 <script>/*<![CDATA[*/const ctx2=document.getElementById("myChart2").getContext("2d");const myChart2=new Chart(ctx2,{type:"bar",data:{labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],datasets:[{label:"nombre des commandes",data:[<?php echo $nbr[1];?>,<?php echo $nbr[2];?>,<?php echo $nbr[3];?>,<?php echo $nbr[4];?>,<?php echo $nbr[5];?>,<?php echo $nbr[6];?>,<?php echo $nbr[7];?>,<?php echo $nbr[8];?>,<?php echo $nbr[9];?>,<?php echo $nbr[10];?>,<?php echo $nbr[11];?>,<?php echo $nbr[12];?>],backgroundColor:["#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02"]}]},options:{scales:{y:{beginAtZero:true}}}});/*]]>*/</script>
-<script>/*<![CDATA[*/const ctx3=document.getElementById("myChart3").getContext("2d");const myChart3=new Chart(ctx3,{type:"bar",data:{labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-            ,datasets:[
-                {
-                label:"Somme 1"
-                ,data:[<?php echo $prixa[1];?>
-                ,<?php echo $prixa[2];?>
-                ,<?php echo $prixa[3];?>
-                ,<?php echo $prixa[4];?>
-                ,<?php echo $prixa[5];?>
-                ,<?php echo $prixa[6];?>
-                ,<?php echo $prixa[7];?>
-                ,<?php echo $prixa[8];?>
-                ,<?php echo $prixa[9];?>
-                ,<?php echo $prixa[10];?>
-                ,<?php echo $prixa[11];?>
-                ,<?php echo $prixa[12];?>]
-                ,backgroundColor:["#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02","#FDEB02"]
-            },
-            {
-                label:"Somme 1"
-                ,data:[<?php echo $prixb[1]-$prixa[1];?>
-                ,<?php echo $prixb[2]-$prixa[2];?>
-                ,<?php echo $prixb[3]-$prixa[3];?>
-                ,<?php echo $prixb[4]-$prixa[4];?>
-                ,<?php echo $prixb[5]-$prixa[5];?>
-                ,<?php echo $prixb[6]-$prixa[6];?>
-                ,<?php echo $prixb[7]-$prixa[7];?>
-                ,<?php echo $prixb[8]-$prixa[8];?>
-                ,<?php echo $prixb[9]-$prixa[9];?>
-                ,<?php echo $prixb[10]-$prixa[10];?>
-                ,<?php echo $prixb[11]-$prixa[11];?>
-                ,<?php echo $prixb[12]-$prixa[12];?>]
-                ,backgroundColor:["#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02","#978d02"]
-            },
-            {
-                label:"Somme 1"
-                ,data:[<?php echo $prixb[1];?>
-                ,<?php echo $prixb[2];?>
-                ,<?php echo $prixb[3];?>
-                ,<?php echo $prixb[4];?>
-                ,<?php echo $prixb[5];?>
-                ,<?php echo $prixb[6];?>
-                ,<?php echo $prixb[7];?>
-                ,<?php echo $prixb[8];?>
-                ,<?php echo $prixb[9];?>
-                ,<?php echo $prixb[10];?>
-                ,<?php echo $prixb[11];?>
-                ,<?php echo $prixb[12];?>]
-                ,backgroundColor:["#000","#000","#000","#000","#000","#000","#000","#000","#000","#000","#000","#000"]
-            }
-                ]},options:{indexAxis: 'y',}});/*]]>*/</script>
+
 </body>
 </html>

@@ -58,6 +58,11 @@
 <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Les Demandes de Recurutement </span>
 </a>
 </li>
+<li class="sidebar-item" onclick="active()">
+<a class="sidebar-link" href="History.php">
+<i class="align-middle" data-feather="book-open"></i> <span class="align-middle">History des Operations</span>
+</a>
+</li>
 <?php } ?>
 <li class="sidebar-item" onclick="active()">
 <a class="sidebar-link" href="deconnecter.php">

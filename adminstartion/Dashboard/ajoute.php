@@ -29,8 +29,9 @@ $sql="INSERT INTO `produits`( `Ref`,`titre`,`categorie`, `prixa`,`prix`,`remis`,
 if ($cnx->query($sql) === TRUE) { 
     $Reffuser=$_SESSION["Reffuser"];
     $action='Ajouter un article';
-    $sqluser="INSERT INTO `history`( `Reffuser`, `Action`, `Product`) VALUES ('','','')";
-    echo '<script>alert("le bien a ete ajoute avec succès")</script>';
+    $sqluser="INSERT INTO `history`( `Reffuser`, `Action`, `Product`) VALUES ('$Reffuser','$action','$Ref')";
+    $cnx->query($sqluser);
+    echo '<script>alert("le produit a ete ajoute avec succès")</script>';
     echo '<script>window.location.href = "Produits.php";</script>';
   } else {
       echo'<script>alert("Erreur : vérifier les informations")</script>';  

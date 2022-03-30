@@ -18,7 +18,7 @@ Nouvelles commandes
 </div>
 <div class="list-group">
 <?php 
-									$sql1="SELECT *,DATEDIFF(SYSDATE(),`dateCmd`) as per FROM `commandes` ORDER BY `dateCmd` DESC LIMIT 9";
+									$sql1="SELECT *,DATEDIFF(SYSDATE(),`dateCmd`) as per FROM `commandes` WHERE `statusCmd`='En cours' ORDER BY `dateCmd` DESC LIMIT 6";
 									$result1 = $cnx->query($sql1);
                                     while ($row1 = $result1->fetch_assoc()) {
 										$refclient=$row1['ReffClient'];

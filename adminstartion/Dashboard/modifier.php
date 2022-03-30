@@ -1,5 +1,7 @@
 <?php
 include 'db-conn.php';
+session_start();
+
 $txtimg1=" ";$txtimg2=" ";$txtimg3=" ";$txtimg4=" ";$txtimg5=" ";$txtimg6=" ";
 
 $Ref=$_POST['Ref'];
@@ -55,17 +57,17 @@ $sql="UPDATE `produits` SET `titre`='$titre',`categorie`='$categorie',`prixa`='$
 
           //echo $sql;
         if ($cnx->query($sql) === TRUE) { 
+            $Reffuser=$_SESSION["Reffuser"];
+            $action='Modifier un article';
+            $sqluser="INSERT INTO `history`( `Reffuser`, `Action`, `Product`) VALUES ('$Reffuser','$action','$Ref')";
+            $cnx->query($sqluser);
+            echo '<script>alert("le produit a ete modifier avec succès")</script>';
+            echo '<script>window.location.href = "Produits.php";</script>';
+        }else{
+            echo '<script>alert("Erreur : vérifier les informations")</script>';
             echo '<script>
                 window.location=history.go(-1);
                 </script>';
-        }else{
-            echo 'Error';
-                echo '<br><button onclick="Rto1()">Retour À La Page precedante</button>
-                <script>
-                        function Rto1(){
-                            window.location=history.go(-1);
-                        }
-                </script>'; 
        }
 
 

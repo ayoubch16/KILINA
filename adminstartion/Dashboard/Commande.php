@@ -14,13 +14,9 @@
 <div class="barRech">
 <input type="text" id="myInput"><span><img src="img/icons/search.png" width="20" height="20" alt=""></span>
 </div>
-<form action="importdata.php">
-<div class="row mb-3" style="display:flex;justify-content:space-between">
-<div class="bardelai col-5">
-<input type="date" name="datedebut">
-<input type="date" name="datefin">
-<input type="submit" value="Import/Export">
-</div>
+<form action="">
+<div class="row mb-3" style="display:flex;justify-content:end">
+
 <div class="barfilter col-4">
 <span class="statusL mx-2"><a href="Commande.php?c=1">Livrée</a></span>
 <span class="statusA mx-2"><a href="Commande.php?c=2">Annuler</a></span>
