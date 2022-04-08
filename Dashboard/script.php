@@ -1,0 +1,2 @@
+<script src="js/app.js"></script>
+<script>/*<![CDATA[*/document.addEventListener("DOMContentLoaded",function(){var a=new Date(Date.now()-5*24*60*60*1000);var b=a.getUTCFullYear()+"-"+(a.getUTCMonth()+1)+"-"+a.getUTCDate();document.getElementById("datetimepicker-dashboard").flatpickr({inline:true,prevArrow:'<span title="Previous month">&laquo;</span>',nextArrow:'<span title="Next month">&raquo;</span>',defaultDate:b})});/*]]>*/</script>

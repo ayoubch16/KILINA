@@ -29,6 +29,6 @@ Nous accompagnons nos clients dans leurs choix de mode et dans l'élaboration de
 </div>
 </div>
 <div class="footer-footer text-center">
-<p style="text-align:center">powered by <a target="blanck" href="https://www.tradeline-solutions.com/TradeLS/">Trade Line Solution</a> </p>
+<p style="text-align:center">powered by <a target="blanck" href="https://www.tradeline-solutions.com/">Trade Line Solution</a> </p>
 </div>
 </footer>

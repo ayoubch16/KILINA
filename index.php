@@ -36,6 +36,9 @@ $t=$_GET['t'];
                             ?>
 <div class="carousel-item active">
 <div class="row px-5">
+<div class="imgGrande col-sm">
+<img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
+</div>
 <div class="detailproduit col-sm">
 <h1>NEW</h1>
 <h2><?php echo $rowc['titre'];?></h2>
@@ -61,9 +64,7 @@ $t=$_GET['t'];
 <a class="btnDetail" href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
 </div>
 </div>
-<div class="imgGrande col-sm">
-<img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
-</div>
+
 </div>
 </div>
 <?php } ?>
@@ -238,7 +239,7 @@ $t=$_GET['t'];
 <span class="solde">-<?php echo $row['remis'];?>%</span>
 <?php } ?>
 <div class="image bg-white">
-<a href="product-details.php?id=<?php echo $row['id'];?>"><img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>" alt="" /></a>
+<a href="product-details.php?id=<?php echo $row['id'];?>"><img src="<?php echo 'data:image/webp;base64,' . base64_encode($row['img1']); ?>" alt="" /></a>
 </div>
 </div>
 <div class="titre text-left">
