@@ -7,6 +7,29 @@ if ($row = $result->fetch_assoc()) {
 }
 ?>
 <style>.colorImg{border-radius:50%;overflow:hidden}.colorImg img{width:30px;height:30px}.colorImg img:hover{transform:scale(1.1);transition:1s}.shopnow{background-color:#e1d106;color:#000;text-decoration:none;padding:10px;margin:auto;text-align:center;font-size:1rem;border:0;border-radius:4px;width:200px}.shopnow:hover{background-color:#000;color:#e1d106}.fa{color:red;font-size:30px}</style>
+<style>
+    #divgrandImg{
+        margin: 0;
+        /* cursor: none; */
+        width: 480px;
+        height: 618px;
+        position: relative;
+        
+    }
+    #loupe{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        position: absolute;
+        background-size:  cover;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        filter: brightness(1.3);
+        display: none;
+        z-index: 10;
+    }
+</style>
 <?php 
 $titreProd=$row['titre'];
     echo "   <script>
@@ -31,7 +54,9 @@ $titreProd=$row['titre'];
 <img onclick="change5()" class="choiximage" id="img5" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img5']); ?>" width="91" height="119" alt="">
 <?php } ?>
 </div>
-<div class="col">
+<div id="divgrandImg" class="col"  onmouseover="afficherloupe()" onmouseout="fermerloupe()">
+<!-- <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>" id="loupe" /> -->
+<div id="loupe" style="background-image: url(<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>);"></div>
 <img id="grandImg" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>" width="489" height="618" alt="">
 </div>
 </div>
@@ -107,5 +132,47 @@ Partir De La Date De Livraison.</p>
 </div>
 </div>
 </div>
-<script>function change1(){document.getElementById("grandImg").src=document.getElementById("img1").src}function change2(){document.getElementById("grandImg").src=document.getElementById("img2").src}function change3(){document.getElementById("grandImg").src=document.getElementById("img3").src}function change4(){document.getElementById("grandImg").src=document.getElementById("img4").src}function change5(){document.getElementById("grandImg").src=document.getElementById("img5").src};</script>
+<script>
+function change1(){
+    document.getElementById("grandImg").src=document.getElementById("img1").src;
+    document.getElementById('loupe').style.backgroundImage="url('"+document.getElementById('img1').src+"')";
+}
+function change2(){
+    document.getElementById("grandImg").src=document.getElementById("img2").src;
+    document.getElementById('loupe').style.backgroundImage="url('"+document.getElementById('img2').src+"')";
+}
+function change3(){
+    document.getElementById("grandImg").src=document.getElementById("img3").src;
+    document.getElementById('loupe').style.backgroundImage="url('"+document.getElementById('img3').src+"')";
+}
+function change4(){
+    document.getElementById("grandImg").src=document.getElementById("img4").src;
+    document.getElementById('loupe').style.backgroundImage="url('"+document.getElementById('img4').src+"')";
+}
+function change5(){
+    document.getElementById("grandImg").src=document.getElementById("img5").src;
+        document.getElementById('loupe').style.backgroundImage="url('"+document.getElementById('img5').src+"')";
+    };</script>
+<script>
+    zoom=1.5;
+    document.getElementById('divgrandImg').onmousemove=function(){
+        loupe=document.getElementById('loupe');
+        var bounding =  document.getElementById('divgrandImg').getBoundingClientRect();
+        loupe.style.left=(event.clientX - bounding.left)+"px";
+        loupe.style.top=(event.clientY - bounding.top)+"px";
+        loupe.style.backgroundSize=(498*zoom)+"px";
+        loupe.style.backgroundPosition=
+         (-loupe.offsetLeft*zoom)+"px "
+        +(-loupe.offsetTop*zoom)+"px";
+
+    }
+    function afficherloupe() {
+        document.getElementById('loupe').style.display='block';
+    }
+    function fermerloupe(){
+        document.getElementById('loupe').style.display='none';
+    }
+
+
+</script>
 </body>
