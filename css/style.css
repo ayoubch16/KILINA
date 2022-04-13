@@ -476,5 +476,8 @@ p a:hover {
     .sousgroup .group ul li{
         font-size: 1.8vw;
     }
+    #loupe {
+        display: none;
+    }
 
 }
