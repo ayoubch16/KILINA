@@ -12,8 +12,9 @@
 <div class="container-fluid p-0">
 <h1 class="h3 mb-3"><strong>Ajouter Produits</strong></h1>
 <div class="row">
-<div class="col barRech">
-<input class="" type="text" name="Ref" placeholder="Ref" required  value="<?php echo $row['Ref'];?>" />
+<div class="col barRech row">
+<input class="col" type="text" name="Ref" placeholder="Ref" required  value="" />
+<input class="col" type="text" name="Ref" placeholder="Ref" required  value="" />
 </div>
 <div class="col-4 row" style="display:flex;justify-content:end;align-items:center;margin-bottom:20px">
 <div class="col"><input class="btnE" type="submit" value="Enregistrer" /></div>
@@ -88,7 +89,8 @@
 <option class="vetement" value="SALOPETTE">SALOPETTE</option>
 </optgroup>
 </select>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script type="text/javascript" src="js/jquery.js"></script>
 <script>$(document).ready(function(){$(".chaussure").click(function(){$("#Taillechaussure").show();$("#Taillevetement").hide();$("#Taillesac").hide();$("#Tailleaccessoires").hide()});$(".vetement").click(function(){$("#Taillechaussure").hide();$("#Taillevetement").show();$("#Taillesac").hide();$("#Tailleaccessoires").hide()});$(".sac").click(function(){$("#Taillechaussure").hide();$("#Taillevetement").hide();$("#Taillesac").show();$("#Tailleaccessoires").hide()});$(".accessoires").click(function(){$("#Taillechaussure").hide();$("#Taillevetement").hide();$("#Taillesac").hide();$("#Tailleaccessoires").show()})});</script>
 </div>
 <div class="col-sm">

@@ -104,10 +104,6 @@ $t=$_GET['t'];
                             ?>
                         <div class="carousel-item active">
                             <div class="row px-5">
-                                <div class="imgGrande col-sm">
-                                    <img class="img-fluid"
-                                        src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
-                                </div>
                                 <div class="detailproduit col-sm">
                                     <h1>NEW</h1>
                                     <h2><?php echo $rowc['titre'];?></h2>
@@ -116,26 +112,16 @@ $t=$_GET['t'];
                                             <h6 style="color:gray">Prix</h6>
                                             <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
                                         </div>
-                                        <div class="mx-4">
-                                            <h6 style="color:gray">Coleur</h6>
-                                            <?php 
-                                                $categorie=$rowc['categorie'];
-                                                $sql1="SELECT * FROM `produits` WHERE `categorie`='$categorie' ORDER BY `date` DESC LIMIT 3";
-                                                $result1 =$cnx->query($sql1);
-                                                while($row1=$result1->fetch_assoc()){
-                                                $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
-                                            ?>
-                                            <a class="colorImg"
-                                                href="product-details.php?id=<?php echo $row1['id']; ?>"><img
-                                                    src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>"
-                                                    alt=""></a>
-                                            <?php } ?>
-                                        </div>
+
                                     </div>
                                     <div class="m-4">
                                         <a class="btnDetail"
                                             href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
                                     </div>
+                                </div>
+                                <div class="imgGrande col-sm">
+                                    <img class="img-fluid"
+                                        src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
                                 </div>
 
                             </div>

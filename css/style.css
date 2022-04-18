@@ -416,34 +416,46 @@ p a:hover {
 }
 
 /* mobile version */
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 700px) {
    
     .logo img {
         width: 100px;
         height: 40px;
     }
+    .menu ul li , .menu ul li a{
+        font-size: 10px !important;
+        margin: 0 !important;
+        padding: 5px !important;
+    }
     .reclamation {
-        display: none;
+        /* display: none; */
     }
       .divleft img {
         width: 15px;
         height: 15px;
       }
-      .newcollection .menu {
+      /* .newcollection .menu {
         justify-content: center;
+      } */
+      .detailproduit ,.imgGrande {
+          width: 50% !important;
       }
       .detailproduit h1 {
-        font-size: 3rem;
+        font-size: 20px;
       }
       .detailproduit h2 {
-        font-size: 1rem;
+        font-size: 15px;
+      }
+      .detailproduit h6 {
+        font-size: 10px;
       }
  
       .btnDetail {
-        font-size: 1rem;
+        height: 20px !important;
+        font-size: 10px !important;
       }
       #carouselExampleIndicators {
-        min-height: 550px;
+        height: 300px !important;
       }
       .meilleurvendu .parent1 {
         height: 300px;
