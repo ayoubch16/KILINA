@@ -7,73 +7,73 @@ $t=$_GET['t'];
 
 <body>
     <style>
-    #pro2,
-    #pro3 {
-        display: none
-    }
+            #pro2,
+            #pro3 {
+                display: none
+            }
 
-    .carousel-indicators li {
-        background-color: #EDCA51 !important
-    }
+            .carousel-indicators li {
+                background-color: #EDCA51 !important
+            }
 
-    #carouselExampleIndicators {
-        height: 500px;
-        overflow: hidden
-    }
+            #carouselExampleIndicators {
+                height: 500px;
+                overflow: hidden
+            }
 
-    .imgGrande {
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center
-    }
+            .imgGrande {
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center
+            }
 
-    .colorImg {
-        border-radius: 50%;
-        overflow: hidden
-    }
+            .colorImg {
+                border-radius: 50%;
+                overflow: hidden
+            }
 
-    .colorImg img {
-        width: 30px;
-        height: 30px
-    }
+            .colorImg img {
+                width: 30px;
+                height: 30px
+            }
 
-    .colorImg img:hover {
-        transform: scale(1.1);
-        transition: 1s
-    }
+            .colorImg img:hover {
+                transform: scale(1.1);
+                transition: 1s
+            }
 
-    .favor .fa {
-        color: red
-    }
+            .favor .fa {
+                color: red
+            }
 
-    .btnDetail {
-        width: auto;
-        height: 40px;
-        color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #e1d106;
-        text-align: center;
-        font-size: 1rem
-    }
+            .btnDetail {
+                width: auto;
+                height: 40px;
+                color: #000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #e1d106;
+                text-align: center;
+                font-size: 1rem
+            }
 
-    .btnDetail:hover {
-        text-decoration: none;
-        background-color: #000;
-        color: #e1d106
-    }
+            .btnDetail:hover {
+                text-decoration: none;
+                background-color: #000;
+                color: #e1d106
+            }
 
-    .btnBoutique {
-        border: 0;
-        background: transparent
-    }
+            .btnBoutique {
+                border: 0;
+                background: transparent
+            }
 
-    .btnBoutique:hover {
-        border: 0;
-        background: transparent
-    }
+            .btnBoutique:hover {
+                border: 0;
+                background: transparent
+            }
     </style>
     <?php include 'navbar.php';?>
     <div id="page">
@@ -135,9 +135,8 @@ $t=$_GET['t'];
                         <!-- Swiper -->
                     <div class="swiper mySwiper">
                     <div class="swiper-wrapper">
-
+                        <?php ?>
                         <div class="swiper-slide"><img src="image/back1.png" class="img-fluid"  /></div>
-
                         <div class="swiper-slide"><img src="image/back2.png" class="img-fluid"  /></div>
                         <div class="swiper-slide"><img src="image/back3.png" class="img-fluid"  /></div>
                     </div>
@@ -372,8 +371,7 @@ $t=$_GET['t'];
                             <?php } ?>
                         </div>
                         <div class="col text-center">
-                            <?php  $cate=$row['categorie'];
-                             $sqlcolor="SELECT * FROM `produits` WHERE `categorie`='$cate'  ORDER BY `date` DESC LIMIT 3";
+                            <?php  $Ref=$row['Ref']; $sqlcolor="SELECT * FROM `produits` p  WHERE  LOCATE('".substr($Ref,0,5)."', p.Ref ) AND `Ref`<>'".$Ref."'   ORDER BY `date` DESC LIMIT 3";
                              $resultcolor = $cnx->query($sqlcolor);
                               while ($rowcolor = $resultcolor->fetch_assoc()) {
                              ?>
