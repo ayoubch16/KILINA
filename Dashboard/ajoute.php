@@ -25,7 +25,7 @@ $imgData5 = addslashes(file_get_contents($_FILES['img5']['tmp_name']));
 
 $sql="INSERT INTO `produits`( `Ref`,`titre`,`categorie`, `prixa`,`prix`,`remis`, `genre`,`quantite`,`date`, `description`, `taille`, `img1`, `img2`, `img3`, `img4`, `img5`)
          VALUES ('$Ref','$titre','$categorie','$prixa','$prix','$remis','$genre','$quantite',DATE_FORMAT(SYSDATE(), '%Y-%m-%d- %H-%i-%s') ,'$description','$taille','$imgData1','$imgData2','$imgData3','$imgData4','$imgData5')"; 
-          // echo $sql;
+           //echo $sql;
 if ($cnx->query($sql) === TRUE) { 
     $Reffuser=$_SESSION["Reffuser"];
     $action='Ajouter un article';

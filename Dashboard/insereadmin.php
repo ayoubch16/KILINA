@@ -17,7 +17,7 @@
         echo '
         <script>
                
-                    window.location=history.go(-1);
+                    window.location=history.go(-2);
                 
         </script>';
      } else {

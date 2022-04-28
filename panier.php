@@ -3,12 +3,7 @@
 <body>
 <script>document.title="Panier ";</script>
 <style>p{margin:0!important}.btnP{width:327px;height:48px;color:#000;display:flex;justify-content:center;align-items:center;background-color:#e1d106;text-align:center;font-size:20px;border:0}.btnP:hover{text-decoration:none;background-color:#000;color:#e1d106}.btnP:hover>img{filter:invert(85%) sepia(18%) saturate(7468%) hue-rotate(11deg) brightness(106%) contrast(95%)}.btnP1{width:auto;height:48px;color:#000;padding:5px;display:flex;justify-content:center;align-items:center;background-color:#e1d106;text-align:center;font-size:20px}.btnP1:hover{text-decoration:none;background-color:#000;color:#e1d106}.panier{text-align:center}.panier h1{font-size:42px;font-weight:bold}.flex-container{display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-content:center;-ms-flex-line-pack:center;align-content:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}.flex-item:nth-child(1){-webkit-order:0;-ms-flex-order:0;order:0;-webkit-flex:0 1 auto;-ms-flex:0 1 auto;flex:0 1 auto;-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto}.flex-item:nth-child(2){-webkit-order:0;-ms-flex-order:0;order:0;-webkit-flex:0 1 auto;-ms-flex:0 1 auto;flex:0 1 auto;-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto}.flex-item:nth-child(3){-webkit-order:0;-ms-flex-order:0;order:0;-webkit-flex:0 1 auto;-ms-flex:0 1 auto;flex:0 1 auto;-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto}.flex-item:nth-child(4){-webkit-order:0;-ms-flex-order:0;order:0;-webkit-flex:0 1 auto;-ms-flex:0 1 auto;flex:0 1 auto;-webkit-align-self:auto;-ms-flex-item-align:auto;align-self:auto}</style>
-<?php $sqlcpt="SELECT count(*) FROM `panier` WHERE `etat`='V'";
-    $resultcpt = $cnx->query($sqlcpt);
-    $count;
-    while ($rowcpt = $resultcpt->fetch_assoc()) {
-        $count=$rowcpt['count(*)']; }
-    ?>
+<?php $sqlcpt="SELECT count(*) FROM `panier` WHERE `etat`='V'";$resultcpt=$cnx->query($sqlcpt);$count;while($rowcpt=$resultcpt->fetch_assoc()){$count=$rowcpt['count(*)'];} ?>
 <div id="page">
 <?php 
         if($_GET['c']=='1'){?>
@@ -41,19 +36,7 @@
 <div class="listeproduct">
 <div class="row">
 <div class="col bg-white rounded p-4 my-1 mx-2">
-<?php 
-                                $refClient=$_SESSION["Reff"];
-                                $sql="SELECT  * FROM `panier` WHERE `RefClient`='$refClient' AND `etat`='V' ORDER BY `date` DESC";
-                                $result = $cnx->query($sql);
-                                $cpt=0;
-                                
-                                while ($row = $result->fetch_assoc()) {
-                                $refProd=$row['RefProd'];
-                                $sql1="SELECT * FROM `produits` WHERE `Ref`='$refProd' ";
-                                $result1 = $cnx->query($sql1);
-                                    while ($row1 = $result1->fetch_assoc()) {
-                                                $cpt++;
-                            ?>
+<?php $refClient=$_SESSION["Reff"];$sql="SELECT  * FROM `panier` WHERE `RefClient`='$refClient' AND `etat`='V' ORDER BY `date` DESC";$result=$cnx->query($sql);$cpt=0;while($row=$result->fetch_assoc()){$refProd=$row['RefProd'];$sql1="SELECT * FROM `produits` WHERE `Ref`='$refProd' ";$result1=$cnx->query($sql1);while($row1=$result1->fetch_assoc()){$cpt++;  ?>
 <div class="row">
 <div class="col-sm">
 <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>" width="200" height="300" alt="">
@@ -66,9 +49,7 @@
 <div class="row my-3">
 <div class="col">
 <p style="font-size:20px">Taille :</p>
-<?php 
-                                            $taille = explode("-", $row1['taille']);
-                                            for ($x = 0; $x <= count($taille)-2; $x++) {?>
+<?php $taille=explode("-",$row1['taille']);for($x=0;$x<=count($taille)-2;$x++){?>
 <input type="radio" required name="taille<?php echo $cpt;?>" value="<?php echo $taille[$x];?>"><span class="mx-1"><?php echo $taille[$x];?></span>
 <?php } ?>
 </div>
@@ -180,8 +161,8 @@
 </div>
 <div class="my-3">
 <p style="font-size:20px">Prix :</p>
-<input  type="text" name="prixachate<?php echo $cpt;?>" value="<?php echo $row1['prixa'];?>" id="">
-<input  type="text" name="prixvente<?php echo $cpt;?>" value="<?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?>" id="">
+<input style="display:none;" type="text" name="prixachate<?php echo $cpt;?>" value="<?php echo $row1['prixa'];?>" id="">
+<input style="display:none;" type="text" name="prixvente<?php echo $cpt;?>" value="<?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?>" id="">
 <h5 id="prix<?php echo $cpt;?>" class="prixproduit" style="font-size:1rem;width:auto">
 <?php echo $row1['prix']-$row1['prix']*($row1['remis']/100);?>DH</h5>
 </div>

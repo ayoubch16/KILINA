@@ -90,95 +90,79 @@ $t=$_GET['t'];
                         <li><a href="information.php?c=1">Recrutement</a></li>
                     </ul>
                 </div>
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <?php 
-                                $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 1";
-                                $resultc = $cnx->query($sqlc);
-                                while ($rowc = $resultc->fetch_assoc()) {
-                            ?>
-                        <div class="carousel-item active">
-                            <div class="row px-5">
-                                <div class="detailproduit col-sm">
-                                    <h1>NEW</h1>
-                                    <h2><?php echo $rowc['titre'];?></h2>
-                                    <div class="row ml-1">
-                                        <div class="mx-4">
-                                            <h6 style="color:gray">Prix</h6>
-                                            <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
-                                        </div>
+                <div class="p-2">
+                    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+                    <style>
+                        .swiper {
+                            width: 100%;
+                            height: 100%
+                        }
 
-                                    </div>
-                                    <div class="m-4">
-                                        <a class="btnDetail"
-                                            href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
-                                    </div>
-                                </div>
-                                <div class="imgGrande col-sm">
-                                    <img class="img-fluid"
-                                        src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
-                                </div>
+                        .swiper-slide {
+                            text-align: center;
+                            font-size: 18px;
+                            background: #fff;
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: -webkit-flex;
+                            display: flex;
+                            -webkit-box-pack: center;
+                            -ms-flex-pack: center;
+                            -webkit-justify-content: center;
+                            justify-content: center;
+                            -webkit-box-align: center;
+                            -ms-flex-align: center;
+                            -webkit-align-items: center;
+                            align-items: center
+                        }
 
-                            </div>
+                        .swiper-slide img {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover
+                        }
+
+                        .swiper-pagination-progressbar-fill {
+                            background: #e1d106 !important
+                        }
+
+                        .swiper-button-prev,
+                        .swiper-button-next {
+                            color: #e1d106
+                        }
+                    </style>
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="image/back1.png" class="img-fluid" /></div>
+                            <div class="swiper-slide"><img src="image/back2.png" class="img-fluid" /></div>
+                            <div class="swiper-slide"><img src="image/back3.png" class="img-fluid" /></div>
+                            <div class="swiper-slide"><img src="image/backClient2.jpg" class="img-fluid" /></div>
                         </div>
-                        <?php } ?>
-                        <?php 
-                                $sqlc="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 1,3";
-                                $resultc = $cnx->query($sqlc);
-                                while ($rowc = $resultc->fetch_assoc()) {
-                            ?>
-                        <div class="carousel-item">
-                            <div class="row px-5">
-                                <div class="detailproduit col-sm">
-                                    <h1>NEW</h1>
-                                    <h2><?php echo $rowc['titre'];?></h2>
-                                    <div class="row ml-1">
-                                        <div class="mx-4">
-                                            <h6 style="color:gray">Prix</h6>
-                                            <h6 style="color:#000"><?php echo $rowc['prix'];?> DH</h6>
-                                        </div>
-                                        <div class="mx-4">
-                                            <h6 style="color:gray">Coleur</h6>
-                                            <?php 
-                                                $categorie=$rowc['categorie'];
-                                                $sql1="SELECT * FROM `produits` WHERE `categorie`='$categorie' ORDER BY `date` DESC LIMIT 3";
-                                                $result1 =$cnx->query($sql1);
-                                                while($row1=$result1->fetch_assoc()){
-                                                $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
-                                            ?>
-                                            <a class="colorImg"
-                                                href="product-details.php?id=<?php echo $row1['id']; ?>"><img
-                                                    src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>"
-                                                    alt=""></a>
-                                            <?php } ?>
-                                        </div>
-                                    </div>
-                                    <div class="m-4">
-                                        <a class="btnDetail"
-                                            href="product-details.php?id=<?php echo $rowc['id']; ?>">Plus de Détails</a>
-                                    </div>
-                                </div>
-                                <div class="imgGrande col-sm">
-                                    <img class="img-fluid"
-                                        src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowc['img1']); ?>" />
-                                </div>
-                            </div>
-                        </div>
-                        <?php } ?>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span
-                            style="filter:invert(30%) sepia(74%) saturate(809%) hue-rotate(356deg) brightness(200%) contrast(80%)"
-                            class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+                    <script>
+                    var swiper = new Swiper(".mySwiper", {
+                        autoplay: {
+                            delay: 5000
+                        },
+                        pagination: {
+                            el: ".swiper-pagination",
+                            type: "progressbar"
+                        },
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev"
+                        }
+                    });
+                    </script>
                 </div>
             </div>
+        </div>
+        <div class="container">
             <h3 class="my-3 title">Nos Produits</h3>
             <div class="text-right">
                 <a class="btnRech" onclick="filter()">
@@ -186,179 +170,45 @@ $t=$_GET['t'];
                 </a>
             </div>
             <div class="categories mb-3 row" style="justify-content:space-around">
-                <div id="cat1" onclick="cat('1')" class="col text-center p-3 px-4 cat">
-                    <button>
-                        <img src="image/icone/sac-a-main.png" width="80" height="80" alt=""><br>
-                        <span class="text-center">Sacs</span>
+                <div  class="col text-center p-3  cat">
+                    <button >
+                        <img src="image/icone/sac-a-main.png" width="60" height="60" alt=""><br>
+                        <span class="text-center" style="font-size: 10px;">Sacs</span>
                     </button>
                 </div>
-                <div id="cat2" onclick="cat('2')" class="col text-center p-3 px-4 cat">
-                    <button>
-                        <img src="image/icone/bottes-femme.png" width="80" height="80" alt=""><br>
-                        <span class="text-center">Chaussures</span>
-                    </button>
+                <div  class="col text-center p-3  cat">
+                    <a href="index.php?c=Chaussures" >
+                        <img src="image/icone/bottes-femme.png" width="60" height="60" alt=""><br>
+                        <span class="text-center" style="font-size: 10px;">Chaussures</span>
+                    </a>
                 </div>
-                <div id="cat3" onclick="cat('3')" class="col text-center p-3 px-4 cat">
-                    <button>
-                        <img src="image/icone/3081851.png" width="80" height="80" alt=""><br>
-                        <span class="text-center">Vetements</span>
-                    </button>
+                <div  class="col text-center p-3  cat">
+                    <a href="index.php?c=Vetements" >
+                        <img src="image/icone/3081851.png" width="60" height="60" alt=""><br>
+                        <span class="text-center" style="font-size: 10px;">Vetements</span>
+                    </a>
                 </div>
-                <div id="cat4" onclick="cat('4')" class="col text-center p-3 px-4 cat">
+                <div  class="col text-center p-3  cat">
                     <button>
-                        <img src="image/icone/jewelry.png" width="80" height="80" alt=""><br>
-                        <span class="text-center">Accessoires</span>
+                        <a href="index.php?c=Accessoires" >
+                            <img src="image/icone/jewelry.png" width="60" height="60" alt=""><br>
+                            <span class="text-center" style="font-size: 10px;">Accessoires</span>
+                        </a>
                     </button>
-                </div>
-                <div class="sousgroup container rounded">
-                    <div class="group">
-                        <ul id="group1">
-                            <li><a href="index.php?c=Cartables">Cartables</a></li>
-                            <li><a href="index.php?c=Sacs à Dos">Sacs à Dos</a></li>
-                            <li><a href="index.php?c=Portefeuilles">Portefeuilles</a></li>
-                            <li><a href="index.php?c=Sacs à main">Sacs à main</a></li>
-                            <li><a href="index.php?c=Sacs de soirée">Sacs de soirée</a></li>
-                            <li><a href="index.php?c=Pochettes">Pochettes</a></li>
-                        </ul>
-                        <ul id="group2">
-                            <li><a href="index.php?c=Baskets">Baskets</a></li>
-                            <li><a href="index.php?c=Escarpins">Escarpins</a></li>
-                            <li><a href="index.php?c=Mocassins">Mocassins</a></li>
-                            <li><a href="index.php?c=Sandales">Sandales</a></li>
-                            <li><a href="index.php?c=Ballerines">Ballerines</a></li>
-                            <li><a href="index.php?c=Espadrilles">Espadrilles</a></li>
-                            <li><a href="index.php?c=Bottines">Bottines</a></li>
-                            <li><a href="index.php?c=Pantoufles">Pantoufles</a></li>
-                            <li><a href="index.php?c=Sabots">Sabots</a></li>
-                        </ul>
-                        <ul id="group3">
-                            <li><a href="index.php?c=T-Shirts">T-Shirts</a></li>
-                            <li><a href="index.php?c=Monteaux">Monteaux</a></li>
-                            <li><a href="index.php?c=Vestes">Vestes</a></li>
-                            <li><a href="index.php?c=Robes">Robes</a></li>
-                            <li><a href="index.php?c=Chemise">Chemise</a></li>
-                            <li><a href="index.php?c=Tops">Tops</a></li>
-                            <li><a href="index.php?c=Débardeurs">Débardeurs</a></li>
-                            <li><a href="index.php?c=Costumes">Costumes</a></li>
-                            <li><a href="index.php?c=Tricot">Tricot</a></li>
-                            <li><a href="index.php?c=Sweat">Sweat</a></li>
-                            <li><a href="index.php?c=Bodys">Bodys</a></li>
-                            <li><a href="index.php?c=Ensembles 2 piéces">Ensembles 2 piéces</a></li>
-                            <li><a href="index.php?c=Ensembles 3 piéces">Ensembles 3 piéces</a></li>
-                            <li><a href="index.php?c=Combinaisons">Combinaisons</a></li>
-                            <li><a href="index.php?c=Jupes">Jupes</a></li>
-                            <li><a href="index.php?c=Shorts">Shorts</a></li>
-                            <li><a href="index.php?c=Pantalons">Pantalons</a></li>
-                            <li><a href="index.php?c=Jeans">Jeans</a></li>
-                            <li><a href="index.php?c=Leggings">Leggings</a></li>
-                            <li><a href="index.php?c=Collants sport">Collants sport</a></li>
-                            <li><a href="index.php?c=Maillots de Bain">Maillots de Bain</a></li>
-                            <li><a href="index.php?c=Cap">Cap</a></li>
-                            <li><a href="index.php?c=Borkinis">Borkinis</a></li>
-                            <li><a href="index.php?c=Survettes">Survettes</a></li>
-                            <li><a href="index.php?c=Capuchon">Capuchon</a></li>
-                            <li><a href="index.php?c=CALECON">CALECON</a></li>
-                            <li><a href="index.php?c=DOUDOUNE">DOUDOUNE</a></li>
-                            <li><a href="index.php?c=DJELLABA">DJELLABA</a></li>
-                            <li><a href="index.php?c=Jaket">Jaket</a></li>
-                            <li><a href="index.php?c=SALOPETTE">SALOPETTE</a></li>
-                        </ul>
-                        <ul id="group4">
-                            <li><a href="index.php?c=Ceintures"></a>Ceintures</li>
-                            <li><a href="index.php?c=Echarpes"></a>Echarpes</li>
-                            <li><a href="index.php?c=Portes clés"></a>Portes clés</li>
-                            <li><a href="index.php?c=Casquettes"></a>Casquettes</li>
-                            <li><a href="index.php?c=Chapeaux"></a>Chapeaux</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
-            <script>
-            function cat(a) {
-                if (a == "1") {
-                    document.getElementById("cat1").classList.remove("cat");
-                    document.getElementById("cat1").classList.add("activecat");
-                    document.getElementById("cat2").classList.remove("activecat");
-                    document.getElementById("cat3").classList.remove("activecat");
-                    document.getElementById("cat4").classList.remove("activecat");
-                    document.getElementById("cat2").classList.add("cat");
-                    document.getElementById("cat3").classList.add("cat");
-                    document.getElementById("cat4").classList.add("cat");
-                    document.getElementById("group1").style.display = "flex";
-                    document.getElementById("group2").style.display = "none";
-                    document.getElementById("group3").style.display = "none";
-                    document.getElementById("group4").style.display = "none"
-                }
-                if (a == "2") {
-                    document.getElementById("cat2").classList.remove("cat");
-                    document.getElementById("cat2").classList.add("activecat");
-                    document.getElementById("cat1").classList.remove("activecat");
-                    document.getElementById("cat3").classList.remove("activecat");
-                    document.getElementById("cat4").classList.remove("activecat");
-                    document.getElementById("cat1").classList.add("cat");
-                    document.getElementById("cat3").classList.add("cat");
-                    document.getElementById("cat4").classList.add("cat");
-                    document.getElementById("group1").style.display = "none";
-                    document.getElementById("group2").style.display = "flex";
-                    document.getElementById("group3").style.display = "none";
-                    document.getElementById("group4").style.display = "none"
-                }
-                if (a == "3") {
-                    document.getElementById("cat3").classList.remove("cat");
-                    document.getElementById("cat3").classList.add("activecat");
-                    document.getElementById("cat1").classList.remove("activecat");
-                    document.getElementById("cat2").classList.remove("activecat");
-                    document.getElementById("cat4").classList.remove("activecat");
-                    document.getElementById("cat1").classList.add("cat");
-                    document.getElementById("cat2").classList.add("cat");
-                    document.getElementById("cat4").classList.add("cat");
-                    document.getElementById("group1").style.display = "none";
-                    document.getElementById("group2").style.display = "none";
-                    document.getElementById("group3").style.display = "flex";
-                    document.getElementById("group4").style.display = "none"
-                }
-                if (a == "4") {
-                    document.getElementById("cat4").classList.remove("cat");
-                    document.getElementById("cat4").classList.add("activecat");
-                    document.getElementById("cat1").classList.remove("activecat");
-                    document.getElementById("cat2").classList.remove("activecat");
-                    document.getElementById("cat3").classList.remove("activecat");
-                    document.getElementById("cat1").classList.add("cat");
-                    document.getElementById("cat2").classList.add("cat");
-                    document.getElementById("cat3").classList.add("cat");
-                    document.getElementById("group1").style.display = "none";
-                    document.getElementById("group2").style.display = "none";
-                    document.getElementById("group3").style.display = "none";
-                    document.getElementById("group4").style.display = "flex"
-                }
-            }
-            </script>
+
+        </div>
+
+
             <div class="listeproduit mt-4 row animate__animated animate__fadeIn">
                 <?php 
-            // $cat=$_GET['c'];
-            $c=$_GET['c'];
-            $p=$_GET['p']; 
-            $t=$_GET['t'];
-            // $cat=empty($cat)? " ":"   WHERE `categorie`='$cat' ";
-            $c=empty($c)? " ":"    `categorie`='$c' AND ";
-            $p=empty($p)? " ":"    `prix`< $p AND ";
-            $t=empty($t)? " ":"    `taille`='$t' AND ";
-            $sql="SELECT * FROM `produits`  WHERE  $c   $p  $t  etatdel='ND' ORDER BY `date` DESC";
-            $result = $cnx->query($sql);
-            while ($row = $result->fetch_assoc()) {
-                    $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
-                    $date = date_create($row['date']);
-                    $date1=date_format($date, 'Y-m-d');
-                    $date2 = date("Y-m-d");
-                    $diff = abs(strtotime( date("Y-m-d")) - strtotime($date1));
-                    $years = floor($diff / (365*60*60*24));
-                    $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-                    $delai = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                $c=$_GET['c'];$p=$_GET['p'];$t=$_GET['t'];$c=empty($c)?" ":"    `categorie`='$c' AND ";$p=empty($p)?" ":"    `prix`< $p AND ";$t=empty($t)?" ":"    `taille`='$t' AND ";$sql="SELECT * FROM `produits`  WHERE  $c   $p  $t  etatdel='ND' ORDER BY `date` DESC";$result=$cnx->query($sql);while($row=$result->fetch_assoc()){$nvprix=$row['prix']-$row['prix']*($row['remis']/100);$date=date_create($row['date']);$date1=date_format($date,'Y-m-d');$date2=date("Y-m-d");$diff=abs(strtotime(date("Y-m-d"))-strtotime($date1));$years=floor($diff/(365*60*60*24));$months=floor(($diff-$years*365*60*60*24)/(30*60*60*24));$delai=floor(($diff-$years*365*60*60*24-$months*30*60*60*24)/(60*60*24));
                 ?>
                 <div class="cardproduit m-3 mt-5">
                     <div>
                         <?php if($delai<7){ ?>
-                        <span class="nouveau">Nouveautés</span>
+                        <span class="nouveau">New</span>
                         <?php } ?>
                         <?php  if($row['remis']!= 0){?>
                         <span class="solde">-<?php echo $row['remis'];?>%</span>
@@ -382,11 +232,7 @@ $t=$_GET['t'];
                             <?php } ?>
                         </div>
                         <div class="col text-center">
-                            <?php  $cate=$row['categorie'];
-                             $sqlcolor="SELECT * FROM `produits` WHERE `categorie`='$cate'  ORDER BY `date` DESC LIMIT 3";
-                             $resultcolor = $cnx->query($sqlcolor);
-                              while ($rowcolor = $resultcolor->fetch_assoc()) {
-                             ?>
+                            <?php  $Ref=$row['Ref']; $sqlcolor="SELECT * FROM `produits` p  WHERE  LOCATE('".substr($Ref,0,5)."', p.Ref ) AND `Ref`<>'".$Ref."'    ORDER BY `date` DESC LIMIT 3";$resultcolor=$cnx->query($sqlcolor);while($rowcolor=$resultcolor->fetch_assoc()){  ?>
                             <a class="colorImg" href="roduct-details.php?id=<?php echo $rowcolor['id'];?>">
                                 <img style="border-radius:50%;box-shadow:2px 5px 13px -3px rgba(0,0,0,0.66)"
                                     src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowcolor['img1']); ?>"
@@ -395,12 +241,7 @@ $t=$_GET['t'];
                         </div>
                         <?php  if($_SESSION["Reff"] != null) { ?>
                         <div class="favor">
-                            <?php 
-                            $reff=$row['Ref'];
-                            $sqlF="SELECT * FROM `favor` WHERE `RefProd` ='$reff'";
-                            $result1 = $cnx->query($sqlF);
-                            if ($row1 = $result1->fetch_assoc()) {
-                        ?>
+                            <?php $reff=$row['Ref'];$sqlF="SELECT * FROM `favor` WHERE `RefProd` ='$reff'";$result1=$cnx->query($sqlF);if($row1=$result1->fetch_assoc()){ ?>
                             <a class="lienfav p-1"
                                 href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>">
                                 <i style="font-size:1.5rem" class="fa fa-heart" aria-hidden="true"></i></a>
@@ -492,13 +333,7 @@ $t=$_GET['t'];
                 }
                 </style>
                 <div class="parent1">
-                    <?php
-                    $sql2="SELECT * FROM `produits` WHERE `meilleurV`='MV' ORDER BY `date` DESC LIMIT 7";
-                    $result2 = $cnx->query($sql2);
-                    $cpt=0;
-                    while ($row2 = $result2->fetch_assoc()) {
-                        $cpt++;
-                    ?>
+                    <?php $sql2="SELECT * FROM `produits` WHERE `meilleurV`='MV' ORDER BY `date` DESC LIMIT 7";$result2=$cnx->query($sql2);$cpt=0;while($row2=$result2->fetch_assoc()){$cpt++; ?>
                     <div class="divp<?php echo $cpt;?>"> <a
                             href="product-details.php?id=<?php echo $row2['id']; ?>"><img
                                 src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row2['img1']); ?>"
@@ -508,14 +343,7 @@ $t=$_GET['t'];
                         <h1>Best</h1>
                         <img style="filter:brightness(0%)" src="image/logo.png" width="150" height="60" alt="">
                         <h6>
-                            <?php 
-                        include 'dbconnect.php';
-                        $sql="SELECT * FROM `module` WHERE id=1";
-                        $result = $cnx->query($sql);
-                        if ($row = $result->fetch_assoc()) {
-                            echo $row['textMV'];
-                        }
-                    ?>
+                            <?php include'dbconnect.php';$sql="SELECT * FROM `module` WHERE id=1";$result=$cnx->query($sql);if($row=$result->fetch_assoc()){echo $row['textMV'];}?>
                         </h6>
                         <h6>- <?php echo date("Y"); ?> -</h6>
                     </div>
@@ -525,12 +353,7 @@ $t=$_GET['t'];
                 <img src="image/logo.png" alt="">
                 <h3>Trouvez Votre Magasin</h3>
                 <div class="row">
-                    <?php $sql="SELECT * FROM `boutiques1` ";
-                   $result = $cnx->query($sql);
-                   $cpt=0;
-                   while ($row = $result->fetch_assoc()) {
-                       $cpt++;
-                ?>
+                    <?php $sql="SELECT * FROM `boutiques1` ";$result=$cnx->query($sql);$cpt=0;while($row=$result->fetch_assoc()){$cpt++; ?>
                     <div class="col">
                         <div>
                             <button
@@ -588,15 +411,15 @@ $t=$_GET['t'];
                 </div>
             </div>
             <script>
-            function ville(e, c, b, d, a) {
-                document.getElementById("villeboutique").innerHTML = e;
-                document.getElementById("adresse").innerHTML = c;
-                document.getElementById("tele").innerHTML = b;
-                document.getElementById("lien").href = d;
-                document.getElementById("imageville2").src = document.getElementById(a).src
+            function ville(h, j, f, i, g) {
+                document.getElementById("villeboutique").innerHTML = h;
+                document.getElementById("adresse").innerHTML = j;
+                document.getElementById("tele").innerHTML = f;
+                document.getElementById("lien").href = i;
+                document.getElementById("imageville2").src = document.getElementById(g).src
             }
             </script>
-        </div>
+        
     </div>
     <?php include 'footer.php';?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"

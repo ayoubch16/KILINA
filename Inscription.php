@@ -35,7 +35,7 @@
 </div>
 <div class="flex-item my-2 row">
 <input class="btnP rounded" type="submit" value="Inscrire" />
-<input class="btnP1 rounded" type="reset" value="Inscrire" />
+<input class="btnP1 rounded" type="reset" value="Annuler" />
 </div>
 </div>
 </form>

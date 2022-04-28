@@ -58,7 +58,7 @@
 <?php }else{?>
 <a href="updateUser.php?a=2&c=<?php echo $row['iduser'];?>">Desactiver</a>
 <?php }  ?>
-<?php }  ?>
+<?php }else{ echo $row['etatCompte']; }  ?>
 </td>
 
 <td>

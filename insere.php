@@ -10,16 +10,14 @@
     $mdp=md5($mdp);
     $ville=$_GET['ville'];
     $adresse=$_GET['adresse'];
-    $adresse = str_replace("'", "\'", $adresse);
+    $adresse = str_replace("'", " ", $adresse);
     $sql="INSERT INTO `clients`(`Reff`,`nom`, `prenom`, `tele`, `email`, `ville`, `passe`,`Adresse`) VALUES ('$Reff','$nom','$prenom','$tele','$email','$ville','$mdp','$adresse')";
-    
+    echo $sql;
     if ($cnx->query($sql) === TRUE) {
-        echo 'vous avez creer votre compte avec succes <br> pour activer votre compte';
-        echo '<button onclick="Rto1()">Retour À La Page De Connexion</button>
+        echo '
         <script>
-                function Rto1(){
-                    window.location=history.go(-1);
-                }
+                    window.location=history.go(-2);
+                
         </script>';
      } else {
       echo 'erreur:vérifier votre email';

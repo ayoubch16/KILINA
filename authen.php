@@ -1,26 +1,25 @@
 <?php 
     include 'dbconnect.php';
-    session_start();
     
     $email=$_POST['email'];
     $mdp=md5($_POST['mdp']);
     
-
     $sql="SELECT * FROM `clients` WHERE `email`='$email' and `passe`='$mdp' ";
      $result = $cnx->query($sql);
     if ($row = $result->fetch_assoc()) {
-        $_SESSION["id"]='12';
-        $_SESSION["Reff"]=$row['Reff'];
-        $_SESSION["nom"]=$row['nom'];
-        $_SESSION["prenom"]=$row['prenom'];
-        $_SESSION["tele"]=$row['tele'];
-        $_SESSION["email"]=$row['email'];
-        $_SESSION["ville"]=$row['ville'];
-        $_SESSION["Adresse"]=$row['Adresse'];
+        session_start();
+        $_SESSION['id']='12';
+        $_SESSION['Reff']=$row['Reff'];
+        $_SESSION['nom']=$row['nom'];
+        $_SESSION['prenom']=$row['prenom'];
+        $_SESSION['tele']=$row['tele'];
+        $_SESSION['email']=$row['email'];
+        $_SESSION['ville']=$row['ville'];
+        $_SESSION['Adresse']=$row['Adresse'];
 
         echo '<script>
                     window.location=history.go(-2);
-        </script>';
+              </script>';
 
     }else{
         echo 'Error';
