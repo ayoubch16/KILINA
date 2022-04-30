@@ -7,64 +7,9 @@ $t=$_GET['t'];
 
 <body>
     <style>
-    #pro2,
-    #pro3 {
-        display: none
-    }
-
-    .carousel-indicators li {
-        background-color: #EDCA51 !important
-    }
-
-    #carouselExampleIndicators {
-        height: 500px;
-        overflow: hidden
-    }
-
-    .imgGrande {
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center
-    }
-
-    .colorImg {
-        border-radius: 50%;
-        overflow: hidden
-    }
-
-    .colorImg img {
-        width: 30px;
-        height: 30px
-    }
-
-    .colorImg img:hover {
-        transform: scale(1.1);
-        transition: 1s
-    }
-
     .favor .fa {
         color: red
     }
-
-    .btnDetail {
-        width: auto;
-        height: 40px;
-        color: #000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #e1d106;
-        text-align: center;
-        font-size: 1rem
-    }
-
-    .btnDetail:hover {
-        text-decoration: none;
-        background-color: #000;
-        color: #e1d106
-    }
-
     .btnBoutique {
         border: 0;
         background: transparent
@@ -73,6 +18,11 @@ $t=$_GET['t'];
     .btnBoutique:hover {
         border: 0;
         background: transparent
+    }
+    .choixcolor{
+        width: 15px;
+        height: 15px;
+        background-color: #e1d106;
     }
     </style>
     <?php include 'navbar.php';?>
@@ -170,44 +120,50 @@ $t=$_GET['t'];
                 </a>
             </div>
             <div class="categories mb-3 row" style="justify-content:space-around">
-                <div  class="col text-center p-3  cat">
+                <div  class="col text-center p-3  <?php if($_GET['c']=='Sacs'){echo ' activecat ';}else{echo ' cat ';}?>">
                     <button >
-                        <img src="image/icone/sac-a-main.png" width="60" height="60" alt=""><br>
-                        <span class="text-center" style="font-size: 10px;">Sacs</span>
+                        <a href="index.php?c=Sacs">
+                            <img src="image/icone/sac-a-main.png" width="60" height="60" alt=""><br>
+                            <span class="text-center" style="font-size: 10px;">Sacs</span>
+                        </a>
                     </button>
                 </div>
-                <div  class="col text-center p-3  cat">
-                    <a href="index.php?c=Chaussures" >
-                        <img src="image/icone/bottes-femme.png" width="60" height="60" alt=""><br>
-                        <span class="text-center" style="font-size: 10px;">Chaussures</span>
-                    </a>
+                <div  class="col text-center p-3  <?php if($_GET['c']=='Chaussures'){echo ' activecat ';}else{echo ' cat ';}?>">
+                    <button>
+                        <a href="index.php?c=Chaussures" >
+                            <img src="image/icone/bottes-femme.png" width="60" height="60" alt=""><br>
+                            <span class="text-center" style="font-size: 10px;">Chaussures</span>
+                        </a>
+                    </button>
                 </div>
-                <div  class="col text-center p-3  cat">
-                    <a href="index.php?c=Vetements" >
-                        <img src="image/icone/3081851.png" width="60" height="60" alt=""><br>
-                        <span class="text-center" style="font-size: 10px;">Vetements</span>
-                    </a>
+                <div  class="col text-center p-3  <?php if($_GET['c']=='Vetements'){echo ' activecat ';}else{echo ' cat ';}?>">
+                    <button>
+                        <a href="index.php?c=Vetements" >
+                            <img src="image/icone/3081851.png" width="60" height="60" alt=""><br>
+                            <span class="text-center" style="font-size: 10px;">Vetements</span>
+                        </a>
+                    </button>
                 </div>
-                <div  class="col text-center p-3  cat">
+                <div  class="col text-center p-3  <?php if($_GET['c']=='Accessoires'){echo ' activecat ';}else{echo ' cat ';}?>">
                     <button>
                         <a href="index.php?c=Accessoires" >
                             <img src="image/icone/jewelry.png" width="60" height="60" alt=""><br>
                             <span class="text-center" style="font-size: 10px;">Accessoires</span>
                         </a>
                     </button>
+                    
                 </div>
             </div>
 
         </div>
 
-
-            <div class="listeproduit mt-4 row animate__animated animate__fadeIn">
+            <div class="listeproduit mt-4 px-3 row animate__animated animate__fadeIn">
                 <?php 
                 $c=$_GET['c'];$p=$_GET['p'];$t=$_GET['t'];$c=empty($c)?" ":"    `categorie`='$c' AND ";$p=empty($p)?" ":"    `prix`< $p AND ";$t=empty($t)?" ":"    `taille`='$t' AND ";$sql="SELECT * FROM `produits`  WHERE  $c   $p  $t  etatdel='ND' ORDER BY `date` DESC";$result=$cnx->query($sql);while($row=$result->fetch_assoc()){$nvprix=$row['prix']-$row['prix']*($row['remis']/100);$date=date_create($row['date']);$date1=date_format($date,'Y-m-d');$date2=date("Y-m-d");$diff=abs(strtotime(date("Y-m-d"))-strtotime($date1));$years=floor($diff/(365*60*60*24));$months=floor(($diff-$years*365*60*60*24)/(30*60*60*24));$delai=floor(($diff-$years*365*60*60*24-$months*30*60*60*24)/(60*60*24));
                 ?>
-                <div class="cardproduit m-3 mt-5">
+                <div class="cardproduit m-2">
                     <div>
-                        <?php if($delai<7){ ?>
+                        <?php if($delai<15){ ?>
                         <span class="nouveau">New</span>
                         <?php } ?>
                         <?php  if($row['remis']!= 0){?>
@@ -222,8 +178,8 @@ $t=$_GET['t'];
                     <div class="titre text-left">
                         <?php echo strtoupper($row['titre']);?>
                     </div>
-                    <div class="info row mx-1">
-                        <div class="col text-left row">
+                    <div class="info  mx-1">
+                        <div class="col divprix text-left row">
                             <?php  if($row['remis']!= 0){?>
                             <h6 class="mr-2"><del><?php echo $row['prix']; ?> DH</del></h6>
                             <h6 class="nvprix mx-2"><?php echo $nvprix?> DH</h6>
@@ -232,12 +188,7 @@ $t=$_GET['t'];
                             <?php } ?>
                         </div>
                         <div class="col text-center">
-                            <?php  $Ref=$row['Ref']; $sqlcolor="SELECT * FROM `produits` p  WHERE  LOCATE('".substr($Ref,0,5)."', p.Ref ) AND `Ref`<>'".$Ref."'    ORDER BY `date` DESC LIMIT 3";$resultcolor=$cnx->query($sqlcolor);while($rowcolor=$resultcolor->fetch_assoc()){  ?>
-                            <a class="colorImg" href="roduct-details.php?id=<?php echo $rowcolor['id'];?>">
-                                <img style="border-radius:50%;box-shadow:2px 5px 13px -3px rgba(0,0,0,0.66)"
-                                    src="<?php echo 'data:image/jpeg;base64,' . base64_encode($rowcolor['img1']); ?>"
-                                    alt=""></a>
-                            <?php } ?>
+                                <span class="choixcolor"></span>
                         </div>
                         <?php  if($_SESSION["Reff"] != null) { ?>
                         <div class="favor">
@@ -256,103 +207,109 @@ $t=$_GET['t'];
                 </div>
                 <?php }  ?>
             </div>
-            <h3 class="my-3 mb-5 title">Meilleur vendu</h3>
+
+        <div class="container">
+            <h3 class="my-3 mb-5 title">Meilleurs ventes</h3>
             <div class="meilleurvendu animate__animated animate__fadeIn">
                 <style>
-                .parent1 {
-                    display: grid;
-                    grid-template-columns: repeat(5, 1fr);
-                    grid-template-rows: repeat(2, 1fr);
-                    grid-column-gap: 0;
-                    grid-row-gap: 0;
-                    height: 500px;
-                    background-color: #fff
-                }
+                    .parent1 {
+                        display: grid;
+                        grid-template-columns: repeat(5, 1fr);
+                        grid-template-rows: repeat(2, 1fr);
+                        grid-column-gap: 0;
+                        grid-row-gap: 0;
+                        height: 500px;
+                        background-color: #fff;
+                        box-shadow: 0px 0px 26px 9px rgba(0,0,0,0.34);
+                        padding: 1rem;
+                    }
 
-                .parent1 img {
-                    width: 100%;
-                    height: 100%
-                }
+                    .parent1 img {
+                        width: 100%;
+                        height: 100%
+                    }
 
-                .parent1 div {
-                    overflow: hidden
-                }
+                    .parent1 div {
+                        overflow: hidden
+                    }
 
-                .divp1 {
-                    grid-area: 1 / 1 / 3 / 2;
-                    border: 1px solid #fdfdfd;
-                    background-color: #fff
-                }
-
-                .divp2 {
-                    grid-area: 1 / 2 / 2 / 3;
-                    border: 1px solid #fdfdfd;
-                    background-color: #fff
-                }
-
-                .divp3 {
-                    grid-area: 2 / 2 / 3 / 3;
-                    border: 1px solid #fdfdfd;
-                    background-color: #fff
-                }
-
-                .divp4 {
-                    grid-area: 2 / 3 / 3 / 4;
-                    border: 1px solid #fdfdfd;
-                    background-color: #fff
-                }
-
-                .divp5 {
-                    grid-area: 1 / 4 / 2 / 5;
-                    border: 1px solid #fdfdfd;
-                    background-color: #fff
-                }
-
-                .divp6 {
-                    grid-area: 2 / 4 / 3 / 5;
-                    border: 1px solid #fdfdfd;
-                    background-color: #fff
-                }
-
-                .divp7 {
-                    grid-area: 1 / 5 / 3 / 6;
-                    border: 1px solid #fdfdfd;
-                    background-color: #fff
-                }
-
-                .divp8 {
-                    grid-area: 1 / 3 / 2 / 4;
-                    background-color: #fcea01;
-                    position: relative;
-                    transform: scale(1.2);
-                    display: grid;
-                    padding: 10px;
-                    border-radius: 50%;
-                    align-items: flex-end;
-                    border: 1px solid #fcea01
-                }
+                    .divp1 { grid-area: 1 / 1 / 2 / 2; background-color: #fff; }
+                    .divp2 { grid-area: 1 / 2 / 2 / 3; background-color: #fff; }
+                    .divp3 { grid-area: 1 / 3 / 2 / 4; background-color: #fff; }
+                    .divp4 { grid-area: 1 / 4 / 2 / 5; background-color: #fff; }
+                    .divp5 { grid-area: 1 / 5 / 2 / 6; background-color: #fff; }
+                    .divp6 { grid-area: 2 / 1 / 3 / 2; background-color: #fff; }
+                    .divp7 { grid-area: 2 / 2 / 3 / 3; background-color: #fff; }
+                    .divp8 { grid-area: 2 / 3 / 3 / 4; background-color: #fff; }
+                    .divp9 { grid-area: 2 / 4 / 3 / 5; background-color: #fff; }
+                    .divp10 { grid-area: 2 / 5 / 3 / 6; background-color: #fff; } 
                 </style>
                 <div class="parent1">
-                    <?php $sql2="SELECT * FROM `produits` WHERE `meilleurV`='MV' ORDER BY `date` DESC LIMIT 7";$result2=$cnx->query($sql2);$cpt=0;while($row2=$result2->fetch_assoc()){$cpt++; ?>
+                    <?php $sql2="SELECT * FROM `produits` WHERE `meilleurV`='MV' ORDER BY `date` DESC LIMIT 10";$result2=$cnx->query($sql2);$cpt=0;while($row2=$result2->fetch_assoc()){$cpt++; ?>
                     <div class="divp<?php echo $cpt;?>"> <a
                             href="product-details.php?id=<?php echo $row2['id']; ?>"><img
                                 src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row2['img1']); ?>"
                                 alt=""></a> </div>
                     <?php } ?>
-                    <div class="divp8 text-center">
-                        <h1>Best</h1>
-                        <img style="filter:brightness(0%)" src="image/logo.png" width="150" height="60" alt="">
-                        <h6>
-                            <?php include'dbconnect.php';$sql="SELECT * FROM `module` WHERE id=1";$result=$cnx->query($sql);if($row=$result->fetch_assoc()){echo $row['textMV'];}?>
-                        </h6>
-                        <h6>- <?php echo date("Y"); ?> -</h6>
-                    </div>
+ 
                 </div>
             </div>
-            <div class="notreboutique mt-5 text-center animate__animated animate__fadeIn">
+        </div>
+
+        <div class="notreboutique mt-5 text-center animate__animated animate__fadeIn">   
+            <img src="image/logo.png" alt="">
+            <h3>Trouvez Votre Magasin</h3>        
+            <div class="swiper  mt-3 mySwiper1 swiper-initialized swiper-horizontal swiper-pointer-events">
+                <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-2960px, 0px, 0px);" id="swiper-wrapper-ce8320fae91df37a" aria-live="polite">
+
+                
+                <?php $sql="SELECT * FROM `boutiques1` ";$result=$cnx->query($sql);$cpt=0;while($row=$result->fetch_assoc()){$cpt++; ?>
+                    <div class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 216.667px; margin-right: 30px;" role="group" aria-label="1 / 9">
+                        <div class="text-center">
+                            <button
+                                onclick="ville('<?php echo $row['ville'];?>','<?php echo $row['adresse'];?>','<?php echo $row['tele'];?>','<?php echo $row['localisation'];?>','image<?php echo $cpt;?>')"
+                                type="button" class="btnBoutique" data-toggle="modal" data-target="#exampleModal1">
+                                <img id="image<?php echo $cpt;?>" class="ville"
+                                    src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['image']); ?>"
+                                    alt="">
+                                    <div class="m-3 divlocal" style="display: flex;justify-content: center;"><img class="local" src="image/maps-and-flags.png" alt=""></div>
+                                    <h4><?php echo $row['ville'];?></h4><br>
+                            </button>
+                        </div>
+                        
+                    </div>
+                <?php } ?>
+
+                </div>
+                <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-ce8320fae91df37a"></div>
+                <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-ce8320fae91df37a"></div>
+                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+        </div>
+        <script>
+
+            var swiper1 = new Swiper(".mySwiper1", {
+                slidesPerView: 2,
+                spaceBetween: 15,
+                slidesPerGroup: 2,
+                loop: true,
+                loopFillGroupWithBlank: true,
+
+                navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                },
+            });
+    
+        </script>
+
+
+
+            <!-- <div class="notreboutique mt-5 text-center animate__animated animate__fadeIn">
                 <img src="image/logo.png" alt="">
                 <h3>Trouvez Votre Magasin</h3>
                 <div class="row">
+                    <?php for($x;$x<3;$x++){?>
                     <?php $sql="SELECT * FROM `boutiques1` ";$result=$cnx->query($sql);$cpt=0;while($row=$result->fetch_assoc()){$cpt++; ?>
                     <div class="col">
                         <div>
@@ -367,9 +324,9 @@ $t=$_GET['t'];
                         <div class="m-3"><img class="local" src="image/maps-and-flags.png" alt=""></div>
                         <h4><?php echo $row['ville'];?></h4>
                     </div>
-                    <?php } ?>
+                    <?php } } ?>
                 </div>
-            </div>
+            </div> -->
             <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">

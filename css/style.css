@@ -183,10 +183,15 @@
     }
 
     .categories .activecat {
-        background-color: #393d45
+        background-color: #393d45 !important;
+        color: #fff;
+    }
+    .categories .activecat button{
+        border: none;
+        background-color: #393d45;
     }
 
-    .categories .activecat button {
+    .categories .activecat button a span{
         color: #fff !important;
         text-decoration: none;
         border: 0;
@@ -197,8 +202,26 @@
     .categories .activecat button img {
         filter: brightness(0) invert(1)
     }
+    .categories  .activecat1 {
+        background-color: #393d45
+    }
 
-    .categories .cat {
+    .categories  .activecat1 button {
+        color: #fff !important;
+        text-decoration: none;
+        border: 0;
+        outline: 0;
+        background-color: transparent
+    }
+    .categories  .activecat1 button  span {
+        color: #fff !important;
+    }
+
+    .categories  .activecat1 button img {
+        filter: brightness(0) invert(1)   
+     }
+
+    .categories  .activecat {
         background-color: #fff
     }
 
@@ -209,7 +232,7 @@
         outline: 0;
         background-color: transparent
     }
-    .categories .cat button a span {
+    .categories .cat button  span {
         color: #393d45 !important;
     }
 
@@ -219,15 +242,17 @@
 
     .categories .cat:hover {
         background-color: #393d45;
+        color: #fff;
         cursor: pointer
     }
 
-    .categories .cat:hover>button img {
+    .categories .cat:hover>button img ,.categories .cat:hover>button a  {
         filter: brightness(0) invert(1)
     }
 
-    .categories .cat:hover>button span {
-        color: #fff
+    .categories .cat:hover>button a  {
+        color: #fff !important;
+        text-decoration: none;
     }
 
     .sousgroup .group ul {
@@ -266,7 +291,7 @@
 
     .listeproduit .cardproduit {
         width: 346px;
-        height: 470px !important;
+        height: auto !important;
         text-align: center;
         position: relative
     }
@@ -539,6 +564,9 @@
         .notreboutique img {
             width: 150px;
         }
+        .notreboutique h3 {
+            font-size: 20px;
+        }
 
         .notreboutique .ville {
             width: 50px;
@@ -570,6 +598,7 @@
             height: 300px !important
         }
 
+
         .listeproduit .cardproduit .image img {
             width: 150px;
             height: 200px !important;
@@ -578,6 +607,12 @@
         .listeproduit .cardproduit .info img {
             width: 15px !important;
             height: 15px !important;
+        }
+         .cardproduit .titre {
+            font-size: 12px !important;
+        }
+        .divprix h6{
+            font-size: 12px;
         }
 
         .listeproduit .cardproduit .nouveau {
@@ -595,7 +630,19 @@
             width: 100px !important;
         }
 
-        .info h6 {
-            font-size: 15px !important;
+        .info h6 , .cardproduit .titre{
+            font-size: 12px !important;
         }
+         .swiper-button-next::after, .swiper-button-prev::after{
+            font-size: 20px !important;
+        }
+        footer h3{
+            font-size: 20px !important;
+        }
+        footer p {
+            font-size: 12px;
+        }
+        footer .section4 {
+            text-align: left;
+          }
     }
