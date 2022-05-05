@@ -495,7 +495,12 @@
         right: 10%;
         z-index: 99
     }
-    
+    .choixcolor{
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: inline-block;
+    }
 
     @media screen and (max-width:700px) {
         .logo img {
@@ -644,5 +649,9 @@
         }
         footer .section4 {
             text-align: left;
-          }
+        }
+        .choixcolor{
+            height: 15px;
+            width: 15px;
+        }
     }

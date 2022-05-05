@@ -17,7 +17,6 @@
         echo '
         <script>
                     window.location=history.go(-2);
-                
         </script>';
      } else {
       echo 'erreur:vérifier votre email';
@@ -27,8 +26,5 @@
                   window.location=history.go(-1);
               }
       </script>';
-       
      }
-
-
 ?>

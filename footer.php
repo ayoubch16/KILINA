@@ -1,31 +1,37 @@
 <style>.footer-footer a:hover{color:#fff}</style>
+<?php
+include 'db-conn.php'; 
+$sqlfooter="SELECT * FROM `footer` WHERE `id`=1";
+$resultfooter = $cnx->query($sqlfooter);
+if ($rowf = $resultfooter->fetch_assoc()) {
+}?>
 <footer class="animate__animated animate__fadeInUpBig">
 <div class="container">
 <div class="row">
-<div style="display:grid" class="section1 col-md-6">
+<div style="display:grid" class="section1 col-md">
 <h3>Kilina Collection</h3>
-<p>
-KILINA est une marque Marocaine de prêt-à-porter. <br>
-Nos vêtements ne sont pas limités à un certain âge,
-taille ou gamme de prix. La mode est pour tout le monde.<br>
-KILINA la marque Marocaine la plus conviviale où les clients
-peuvent obtenir des collections de style et de tendance. <br>
-Nous accompagnons nos clients dans leurs choix de mode et dans l'élaboration de leur propre style
+<p style="text-align: justify;">
+    <?php 
+     echo str_replace(".",".<br>",$rowf['description']);
+    // echo $rowf['description'];
+     ?>
 </p>
 </div>
-<div style="display:grid" class="section4 col-md-6">
-<h4>NOUS CONTACTER</h4>
+<div style="display:grid" class="section4 col-md-4">
+<h4 class="p-3 text-left">NOUS CONTACTER</h4>
 
-<div class="p-3 text-center">
-<a target="blanc" href="mailto: kilina.maroc@gmail.com"><img src="image/emailb.png" alt=""></a>
-<a target="blanc" href="https://vm.tiktok.com/ZMLChb4ta/"><img style="filter: invert(100%) sepia(0%) saturate(1373%) hue-rotate(210deg) brightness(114%) contrast(100%);" src="image/tiktokb.png" alt=""></a>
-<a target="blanc" href="https://www.facebook.com/Kilina.ma.officiel"><img src="image/facebookb.png" alt=""></a>
-<a target="blanc" href="https://www.instagram.com/kilina.officiel/"><img src="image/instagramb.png" alt=""></a>
-<a target="blanc" href="https://mobile.twitter.com/kilinaofficiel/"><img style="filter: invert(100%) sepia(0%) saturate(1373%) hue-rotate(210deg) brightness(114%) contrast(100%);" src="image/twitterb.png" alt=""></a>
-<a target="blanc" href="https://wa.me/0664937499"><img src="image/whatsappb.png" alt=""></a>
+<div class="p-3 text-left">
+<a target="blanc" href="<?php echo $rowf['facebooklien']; ?>"><img style="filter: invert(100%) sepia(0%) saturate(1373%) hue-rotate(210deg) brightness(114%) contrast(100%);" src="image/tiktokb.png" alt=""></a>
+<a target="blanc" href="<?php echo $rowf['tiktoklien']; ?>"><img src="image/facebookb.png" alt=""></a>
+<a target="blanc" href="<?php echo $rowf['instagramlien']; ?>"><img src="image/instagramb.png" alt=""></a>
+<a target="blanc" href="<?php echo $rowf['twiterlien']; ?>"><img style="filter: invert(100%) sepia(0%) saturate(1373%) hue-rotate(210deg) brightness(114%) contrast(100%);" src="image/twitterb.png" alt=""></a>
+<a target="blanc" href="https://wa.me/<?php echo $rowf['whatsappnum']; ?>"><img src="image/whatsappb.png" alt=""></a>
 </div>
-<div class="p-3 text-center">
-<h6>Fix Rabat : 05 30 02 44 53</h6>
+<div class="p-3 text-left">
+<!-- <h6>Tele : 05 30 02 44 53</h6> -->
+<h6>Tele  : <?php echo $rowf['tele']; ?></h6>
+<h6>Email : <?php echo $rowf['email']; ?></h6>
+
 
 </div>
 </div>

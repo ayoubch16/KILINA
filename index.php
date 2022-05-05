@@ -20,9 +20,17 @@ $t=$_GET['t'];
         background: transparent
     }
     .choixcolor{
-        width: 15px;
-        height: 15px;
-        background-color: #e1d106;
+        height: 25px;
+        width: 25px;
+        /* background-color: #e1d106; */
+        border-radius: 50%;
+        display: inline-block;
+    }
+    @media screen and (max-width:700px) {
+        .choixcolor{
+            height: 15px;
+            width: 15px;
+        }
     }
     </style>
     <?php include 'navbar.php';?>
@@ -187,8 +195,10 @@ $t=$_GET['t'];
                             <h6 class="mr-2"><?php echo $row['prix']; ?> DH</h6>
                             <?php } ?>
                         </div>
-                        <div class="col text-center">
-                                <span class="choixcolor"></span>
+                        <div class="col text-right">
+                                <span class="choixcolor" style="background-color: <?php echo $row['couleur1'];?>;"></span>
+                                <span class="choixcolor" style="background-color: #e1d106;"></span>
+                                
                         </div>
                         <?php  if($_SESSION["Reff"] != null) { ?>
                         <div class="favor">
@@ -264,7 +274,7 @@ $t=$_GET['t'];
 
                 
                 <?php $sql="SELECT * FROM `boutiques1` ";$result=$cnx->query($sql);$cpt=0;while($row=$result->fetch_assoc()){$cpt++; ?>
-                    <div class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 216.667px; margin-right: 30px;" role="group" aria-label="1 / 9">
+                    <div class="swiper-slide swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 216.667px; margin-right: 30px;background: transparent;" role="group" aria-label="1 / 9">
                         <div class="text-center">
                             <button
                                 onclick="ville('<?php echo $row['ville'];?>','<?php echo $row['adresse'];?>','<?php echo $row['tele'];?>','<?php echo $row['localisation'];?>','image<?php echo $cpt;?>')"

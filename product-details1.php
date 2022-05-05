@@ -68,14 +68,7 @@ if ($row = $result->fetch_assoc()) {
                 display: none;
                 z-index: 10;
             }
-            .choixcolor{
-                height: 25px;
-                width: 25px;
-                border-radius: 50%;
-                display: inline-block;
-            }
-            
-            @media only screen and (max-width: 700px) {
+            @media only screen and (max-width: 768px) {
                 #divgrandImg {
                 height: 410px;
                 display: flex;
@@ -90,10 +83,6 @@ if ($row = $result->fetch_assoc()) {
                 .product-details .choiximage {
                 width: 60px;
                 height: 80px;
-                }
-                .choixcolor{
-                    height: 15px;
-                    width: 15px;
                 }
             }
         </style>
@@ -152,34 +141,36 @@ $titreProd=$row['titre'];
                                 name="refclient">
                         </p>
                         <div class="row">
-                              <div class="col">
-                                  <p>Taille :</p>
-                              </div>
-                              <div class="col text-right">
-                                  <p style="margin-bottom:0!important;display:flex;justify-content:end;align-items:center;">
-                                      <?php 
-                                              $taille = explode("-", $row['taille']);
-                                              for ($x = 0; $x <= count($taille)-2; $x++) {
-                                                  echo ' '.$taille[$x].' ';
-                                              }?>
-                                  </p>
-                              </div>
+                            <div class="ml-2">
+                                <p>Taille</p>
+                                <p
+                                    style="margin-bottom:0!important;display:flex;justify-content:center;align-items:center">
+                                    <?php 
+                                            $taille = explode("-", $row['taille']);
+                                            for ($x = 0; $x <= count($taille)-2; $x++) {
+                                                echo ' '.$taille[$x].' ';
+                                            }?>
+                                </p>
+                            </div>
+                            <div style="margin-left:100px!important" class="mx-4">
+
+                                 <p></p>
+                                <?php 
+                                        $Ref=$row['Ref'];
+                                        $sql1="SELECT * FROM `produits` p  WHERE  LOCATE('".substr($Ref,0,5)."', p.Ref ) AND `Ref`<>'".$Ref."'   ORDER BY `date` DESC ";
+                                        $result1 =$cnx->query($sql1);
+                                        while($row1=$result1->fetch_assoc()){
+                                         $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
+                                    ?>
+                                <a class="colorImg" href="product-details.php?id=<?php echo $row1['id']; ?>"><img
+                                        src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>"
+                                        alt=""></a>
+                                <?php } ?>
+                            </div>
                         </div>
-                        <div class="row">
-                              <div class="col">
-                                  <p>Coleur :</p>
-                              </div>
-                              <div class="col text-right">
-                                   <span class="choixcolor" style="background-color: gray;"></span>           
-                                   <span class="choixcolor" style="background-color: green;"></span>           
-                                   <span class="choixcolor" style="background-color: red;"></span>           
-                              </div>
-                        </div>
-                        <div class="row">
-                              <div class="col">
-                                  <p>Prix :</p>
-                              </div>
-                              <div class="col row text-right">
+                        <div>
+                            <p>Prix :</p>
+                            <div class="row">
                                 <?php  if($row['remis']!= 0){?>
                                 <h3 class="mx-2" style="color:gray"><del><?php echo $row['prix']; ?> DH</del></h3>
                                 <h3 class="mx-2" style="color:red"><?php echo $nvprix?> DH</h3>
@@ -188,7 +179,6 @@ $titreProd=$row['titre'];
                                 <?php } ?>
                             </div>
                         </div>
-   
                         <div class="my-4">
                             <input type="submit" onclick="confirm('Voulez-vous ajouter ce produit au panier ?')"
                                 class="shopnow" value="SHOP NOW" name="" id="">
@@ -223,51 +213,51 @@ $titreProd=$row['titre'];
         </div>
     </div>
     <script>
-        function change1() {
-            document.getElementById("grandImg").src = document.getElementById("img1").src;
-            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img1').src + "')";
-        }
+    function change1() {
+        document.getElementById("grandImg").src = document.getElementById("img1").src;
+        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img1').src + "')";
+    }
 
-        function change2() {
-            document.getElementById("grandImg").src = document.getElementById("img2").src;
-            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img2').src + "')";
-        }
+    function change2() {
+        document.getElementById("grandImg").src = document.getElementById("img2").src;
+        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img2').src + "')";
+    }
 
-        function change3() {
-            document.getElementById("grandImg").src = document.getElementById("img3").src;
-            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img3').src + "')";
-        }
+    function change3() {
+        document.getElementById("grandImg").src = document.getElementById("img3").src;
+        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img3').src + "')";
+    }
 
-        function change4() {
-            document.getElementById("grandImg").src = document.getElementById("img4").src;
-            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img4').src + "')";
-        }
+    function change4() {
+        document.getElementById("grandImg").src = document.getElementById("img4").src;
+        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img4').src + "')";
+    }
 
-        function change5() {
-            document.getElementById("grandImg").src = document.getElementById("img5").src;
-            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img5').src + "')";
-        };
+    function change5() {
+        document.getElementById("grandImg").src = document.getElementById("img5").src;
+        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img5').src + "')";
+    };
     </script>
     <script>
-        zoom = 1.5;
-        document.getElementById('divgrandImg').onmousemove = function() {
-            loupe = document.getElementById('loupe');
-            var bounding = document.getElementById('divgrandImg').getBoundingClientRect();
-            loupe.style.left = (event.clientX - bounding.left - 100) + "px";
-            loupe.style.top = (event.clientY - bounding.top - 100) + "px";
-            loupe.style.backgroundSize = (498 * zoom) + "px";
-            loupe.style.backgroundPosition =
-                (-loupe.offsetLeft * zoom) + "px " +
-                (-loupe.offsetTop * zoom) + "px";
+    zoom = 1.5;
+    document.getElementById('divgrandImg').onmousemove = function() {
+        loupe = document.getElementById('loupe');
+        var bounding = document.getElementById('divgrandImg').getBoundingClientRect();
+        loupe.style.left = (event.clientX - bounding.left - 100) + "px";
+        loupe.style.top = (event.clientY - bounding.top - 100) + "px";
+        loupe.style.backgroundSize = (498 * zoom) + "px";
+        loupe.style.backgroundPosition =
+            (-loupe.offsetLeft * zoom) + "px " +
+            (-loupe.offsetTop * zoom) + "px";
 
-        }
+    }
 
-        function afficherloupe() {
-            document.getElementById('loupe').style.display = 'block';
-        }
+    function afficherloupe() {
+        document.getElementById('loupe').style.display = 'block';
+    }
 
-        function fermerloupe() {
-            document.getElementById('loupe').style.display = 'none';
-        }
+    function fermerloupe() {
+        document.getElementById('loupe').style.display = 'none';
+    }
     </script>
 </body>
