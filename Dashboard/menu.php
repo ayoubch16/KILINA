@@ -43,6 +43,11 @@
 <i class="align-middle" data-feather="activity"></i> <span class="align-middle">Gestion des Modules </span>
 </a>
 </li>
+<li class="sidebar-item" onclick="active()">
+<a class="sidebar-link" href="Gestionfooter.php">
+<i class="align-middle" data-feather="activity"></i> <span class="align-middle">Gestion de Footer </span>
+</a>
+</li>
 <?php } 
 if($_SESSION["etatuser"]=='admin' ){
 ?>

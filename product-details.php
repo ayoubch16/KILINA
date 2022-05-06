@@ -74,6 +74,12 @@ if ($row = $result->fetch_assoc()) {
                 border-radius: 50%;
                 display: inline-block;
             }
+            .choixcolor:hover{
+                transform: scale(1.1);
+                transition: 1s;
+                cursor: pointer;
+            }
+            
             
             @media only screen and (max-width: 700px) {
                 #divgrandImg {
@@ -170,7 +176,9 @@ $titreProd=$row['titre'];
                                   <p>Coleur :</p>
                               </div>
                               <div class="col text-right">
-                                   <span class="choixcolor" style="background-color: gray;"></span>           
+                                  
+                                   <span onclick="changeColor1()" class="choixcolor" style="background-color: <?php echo $row['couleur1']?>;"></span>     
+                                   <img id="Imgcouleur1" style="width:15px;height:15px;display:none" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['Imgcouleur1']); ?>" alt="">      
                                    <span class="choixcolor" style="background-color: green;"></span>           
                                    <span class="choixcolor" style="background-color: red;"></span>           
                               </div>
@@ -246,7 +254,11 @@ $titreProd=$row['titre'];
         function change5() {
             document.getElementById("grandImg").src = document.getElementById("img5").src;
             document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img5').src + "')";
-        };
+        }
+        function changeColor1(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur1").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur1').src + "')";
+        }
     </script>
     <script>
         zoom = 1.5;
