@@ -1,4 +1,5 @@
-<?php include 'header.php';?>
+<?php include'header.php';$id=$_GET['id'];$sql="SELECT * FROM `produits` WHERE `id`='$id'";$result=$cnx->query($sql);if($row=$result->fetch_assoc()){}
+?>
 
 <body>
     <style>
@@ -162,7 +163,7 @@
     #inputImg2,
     #inputImg3,
     #inputImg4,
-    #inputImg5,#inputImg6,#inputImg7,#inputImg8,#inputImg9,#inputImg10,#inputImg11,#inputImg12,#inputImg13,#inputImg14,#inputImg15 {
+    #inputImg5 {
         display: none
     }
 
@@ -175,19 +176,6 @@
     }
 
     .inputfile1:hover {
-        cursor: pointer;
-        border: 2px dashed #7456e7
-    }
-    .inputfile2 {
-        height: 30px;
-        width: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px dashed #9d9d9d
-    }
-
-    .inputfile2:hover {
         cursor: pointer;
         border: 2px dashed #7456e7
     }
@@ -215,24 +203,26 @@
     } /*]]>*/
     </script>
     <script>
-    document.title = "Ajouter Produits";
+    document.title = "Modifier Produits";
     </script>
     <div class="wrapper">
         <?php include 'menu.php';?>
         <div class="main">
             <?php include 'Top.php';?>
-            <form action="ajoute.php" method="POST" enctype="multipart/form-data">
+            <form action="modifier.php" method="POST" enctype="multipart/form-data">
                 <main class="content">
                     <div class="container-fluid p-0">
-                        <h1 class="h3 mb-3"><strong>Ajouter Produits</strong></h1>
+                        <h1 class="h3 mb-3"><strong>Modifier Produits</strong></h1>
                         <div class="row">
                             <div class="col barRech">
-                                <input class="" type="text" name="Ref" placeholder="Ref" 
+                                <input class="" type="text" name="Ref" placeholder="Ref" readonly
                                     value="<?php echo $row['Ref'];?>" />
                             </div>
                             <div class="col-4 row"
                                 style="display:flex;justify-content:end;align-items:center;margin-bottom:20px">
-                                <div class="col"><input class="btnE" type="submit" value="Enregistrer" /></div>
+                                <div class="col"><input class="btnE" type="submit"
+                                        onclick="confirm('Voulez-vous confirmer les modifications!')"
+                                        value="Modifier" /></div>
                                 <div class="col"><input class="btnA" type="reset" value="Annuler" /></div>
                             </div>
                         </div>
@@ -244,280 +234,224 @@
                                             <div class="row mb-3">
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Catégorie :</h5>
-                                                    <select name="categorie" id="categorie" >
+                                                    <select name="categorie" id="categorie" required>
                                                         <optgroup label="Sac">
-                                                            <option class="sac" value="Cartables">Cartables</option>
-                                                            <option class="sac" value="Sacs à Dos">Sacs à Dos</option>
-                                                            <option class="sac" value="Portefeuilles">Portefeuilles
-                                                            </option>
-                                                            <option class="sac" value="Sacs à main">Sacs à main</option>
-                                                            <option class="sac" value="Sacs de soirée ">Sacs de soirée
-                                                            </option>
-                                                            <option class="sac" value="Pochettes">Pochettes</option>
+                                                            <option class="sac"
+                                                                <?php if($row['categorie'] =='Cartables'){ echo 'selected';} ?>
+                                                                value="Cartables">Cartables</option>
+                                                            <option class="sac"
+                                                                <?php if($row['categorie'] =='Sacs à Dos'){ echo 'selected';} ?>
+                                                                value="Sacs à Dos">Sacs à Dos</option>
+                                                            <option class="sac"
+                                                                <?php if($row['categorie'] =='Portefeuilles'){ echo 'selected';} ?>
+                                                                value="Portefeuilles">Portefeuilles</option>
+                                                            <option class="sac"
+                                                                <?php if($row['categorie'] =='Sacs à main'){ echo 'selected';} ?>
+                                                                value="Sacs à main">Sacs à main</option>
+                                                            <option class="sac"
+                                                                <?php if($row['categorie'] =='Sacs à main'){ echo 'selected';} ?>
+                                                                value="Sacs de soirée">Sacs de soirée </option>
+                                                            <option class="sac"
+                                                                <?php if($row['categorie'] =='Pochettes'){ echo 'selected';} ?>
+                                                                value="Pochettes">Pochettes</option>
                                                         </optgroup>
                                                         <optgroup label="chaussure">
-                                                            <option class="chaussure" value="Baskets">Baskets</option>
-                                                            <option class="chaussure" value="Escarpins">Escarpins
-                                                            </option>
-                                                            <option class="chaussure" value="Mocassins">Mocassins
-                                                            </option>
-                                                            <option class="chaussure" value="Sandales">Sandales</option>
-                                                            <option class="chaussure" value="Ballerines">Ballerines
-                                                            </option>
-                                                            <option class="chaussure" value="Espadrilles">Espadrilles
-                                                            </option>
-                                                            <option class="chaussure" value="Bottines">Bottines</option>
-                                                            <option class="chaussure" value="Pantoufles">Pantoufles
-                                                            </option>
-                                                            <option class="chaussure" value="Sabots">Sabots</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Baskets'){ echo 'selected';} ?>
+                                                                value="Baskets">Baskets</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Escarpins'){ echo 'selected';} ?>
+                                                                value="Escarpins">Escarpins</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Mocassins'){ echo 'selected';} ?>
+                                                                value="Mocassins">Mocassins</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Sandales'){ echo 'selected';} ?>
+                                                                value="Sandales">Sandales</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Ballerines'){ echo 'selected';} ?>
+                                                                value="Ballerines">Ballerines</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Espadrilles'){ echo 'selected';} ?>
+                                                                value="Espadrilles">Espadrilles</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Bottines'){ echo 'selected';} ?>
+                                                                value="Bottines">Bottines</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Pantoufles'){ echo 'selected';} ?>
+                                                                value="Pantoufles">Pantoufles</option>
+                                                            <option class="chaussure"
+                                                                <?php if($row['categorie'] =='Sabots'){ echo 'selected';} ?>
+                                                                value="Sabots">Sabots</option>
                                                         </optgroup>
                                                         <optgroup label="accessoires">
-                                                            <option class="accessoires" value="Ceintures">Ceintures
-                                                            </option>
-                                                            <option class="accessoires" value="Echarpes">Echarpes
-                                                            </option>
-                                                            <option class="accessoires" value="Portes clés ">Portes clés
-                                                            </option>
-                                                            <option class="accessoires" value="Casquettes">Casquettes
-                                                            </option>
-                                                            <option class="accessoires" value="Chapeaux">Chapeaux
-                                                            </option>
+                                                            <option class="accessoires"
+                                                                <?php if($row['categorie'] =='Ceintures'){ echo 'selected';} ?>
+                                                                value="Ceintures">Ceintures</option>
+                                                            <option class="accessoires"
+                                                                <?php if($row['categorie'] =='Echarpes'){ echo 'selected';} ?>
+                                                                value="Echarpes">Echarpes</option>
+                                                            <option class="accessoires"
+                                                                <?php if($row['categorie'] =='Portes clés'){ echo 'selected';} ?>
+                                                                value="Portes clés">Portes clés </option>
+                                                            <option class="accessoires"
+                                                                <?php if($row['categorie'] =='Casquettes'){ echo 'selected';} ?>
+                                                                value="Casquettes">Casquettes</option>
+                                                            <option class="accessoires"
+                                                                <?php if($row['categorie'] =='Chapeaux'){ echo 'selected';} ?>
+                                                                value="Chapeaux">Chapeaux</option>
                                                         </optgroup>
                                                         <optgroup label="vetement">
-                                                            <option class="vetement" value="T-Shirts">T-Shirts</option>
-                                                            <option class="vetement" value="Monteaux">Monteaux</option>
-                                                            <option class="vetement" value="Vestes">Vestes</option>
-                                                            <option class="vetement" value="Robes">Robes</option>
-                                                            <option class="vetement" value="Chemise">Chemise</option>
-                                                            <option class="vetement" value="Tops">Tops</option>
-                                                            <option class="vetement" value="Débardeurs">Débardeurs
-                                                            </option>
-                                                            <option class="vetement" value="Costumes">Costumes</option>
-                                                            <option class="vetement" value="Tricot">Tricot</option>
-                                                            <option class="vetement" value="Sweat">Sweat</option>
-                                                            <option class="vetement" value="Bodys">Bodys</option>
-                                                            <option class="vetement" value="Ensembles 2 piéces ">
-                                                                Ensembles 2 piéces </option>
-                                                            <option class="vetement" value="Ensembles 3 piéces ">
-                                                                Ensembles 3 piéces </option>
-                                                            <option class="vetement" value="Combinaisons">Combinaisons
-                                                            </option>
-                                                            <option class="vetement" value="Jupes">Jupes</option>
-                                                            <option class="vetement" value="Shorts">Shorts</option>
-                                                            <option class="vetement" value="Pantalons">Pantalons
-                                                            </option>
-                                                            <option class="vetement" value="Jeans">Jeans</option>
-                                                            <option class="vetement" value="Leggings">Leggings</option>
-                                                            <option class="vetement" value="Collants sport">Collants
-                                                                sport</option>
-                                                            <option class="vetement" value="Maillots de Bain">Maillots
-                                                                de Bain</option>
-                                                            <option class="vetement" value="Cap">Cap</option>
-                                                            <option class="vetement" value="Borkinis">Borkinis</option>
-                                                            <option class="vetement" value="Survettes">Survettes
-                                                            </option>
-                                                            <option class="vetement" value="Capuchon">Capuchon</option>
-                                                            <option class="vetement" value="CALECON">CALECON</option>
-                                                            <option class="vetement" value="DOUDOUNE">DOUDOUNE</option>
-                                                            <option class="vetement" value="DJELLABA">DJELLABA</option>
-                                                            <option class="vetement" value="Jaket">Jaket</option>
-                                                            <option class="vetement" value="SALOPETTE">SALOPETTE
-                                                            </option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='T-Shirts'){ echo 'selected';} ?>
+                                                                value="T-Shirts">T-Shirts</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Monteaux'){ echo 'selected';} ?>
+                                                                value="Monteaux">Monteaux</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Vestes'){ echo 'selected';} ?>
+                                                                value="Vestes">Vestes</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Robes'){ echo 'selected';} ?>
+                                                                value="Robes">Robes</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Chemise'){ echo 'selected';} ?>
+                                                                value="Chemise">Chemise</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Tops'){ echo 'selected';} ?>
+                                                                value="Tops">Tops</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Débardeurs'){ echo 'selected';} ?>
+                                                                value="Débardeurs">Débardeurs</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Costumes'){ echo 'selected';} ?>
+                                                                value="Costumes">Costumes</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Tricot'){ echo 'selected';} ?>
+                                                                value="Tricot">Tricot</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Sweat'){ echo 'selected';} ?>
+                                                                value="Sweat">Sweat</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Bodys'){ echo 'selected';} ?>
+                                                                value="Bodys">Bodys</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Ensembles 2 piéces'){ echo 'selected';} ?>
+                                                                value="Ensembles 2 piéces">Ensembles 2 piéces </option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Ensembles 3 piéces'){ echo 'selected';} ?>
+                                                                value="Ensembles 3 piéces">Ensembles 3 piéces </option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Combinaisons'){ echo 'selected';} ?>
+                                                                value="Combinaisons">Combinaisons</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Jupes'){ echo 'selected';} ?>
+                                                                value="Jupes">Jupes</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Shorts'){ echo 'selected';} ?>
+                                                                value="Shorts">Shorts</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Pantalons'){ echo 'selected';} ?>
+                                                                value="Pantalons">Pantalons</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Jeans'){ echo 'selected';} ?>
+                                                                value="Jeans">Jeans</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Leggings'){ echo 'selected';} ?>
+                                                                value="Leggings">Leggings</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Collants sport'){ echo 'selected';} ?>
+                                                                value="Collants sport">Collants sport</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Maillots de Bain'){ echo 'selected';} ?>
+                                                                value="Maillots de Bain">Maillots de Bain</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Cap'){ echo 'selected';} ?>
+                                                                value="Cap">Cap</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Borkinis'){ echo 'selected';} ?>
+                                                                value="Borkinis">Borkinis</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Survettes'){ echo 'selected';} ?>
+                                                                value="Survettes">Survettes</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Capuchon'){ echo 'selected';} ?>
+                                                                value="Capuchon">Capuchon</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='CALECON'){ echo 'selected';} ?>
+                                                                value="CALECON">CALECON</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='DOUDOUNE'){ echo 'selected';} ?>
+                                                                value="DOUDOUNE">DOUDOUNE</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='DJELLABA'){ echo 'selected';} ?>
+                                                                value="DJELLABA">DJELLABA</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='Jaket'){ echo 'selected';} ?>
+                                                                value="Jaket">Jaket</option>
+                                                            <option class="vetement"
+                                                                <?php if($row['categorie'] =='SALOPETTE'){ echo 'selected';} ?>
+                                                                value="SALOPETTE">SALOPETTE</option>
                                                         </optgroup>
                                                     </select>
                                                     <script
                                                         src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
                                                     </script>
                                                     <script>
-                                                    $(document).ready(function() {
+                                                  
+
+                                                        $(document).ready(function() {
                                                         $(".chaussure").click(function() {
                                                             $("#Taillechaussure").show();
                                                             $("#Taillevetement").hide();
                                                             $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").hide()
+                                                            $("#Tailleaccessoires").hide();
                                                         });
                                                         $(".vetement").click(function() {
                                                             $("#Taillechaussure").hide();
                                                             $("#Taillevetement").show();
                                                             $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").hide()
+                                                            $("#Tailleaccessoires").hide();
                                                         });
                                                         $(".sac").click(function() {
                                                             $("#Taillechaussure").hide();
                                                             $("#Taillevetement").hide();
                                                             $("#Taillesac").show();
-                                                            $("#Tailleaccessoires").hide()
+                                                            $("#Tailleaccessoires").hide();
                                                         });
                                                         $(".accessoires").click(function() {
                                                             $("#Taillechaussure").hide();
                                                             $("#Taillevetement").hide();
                                                             $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").show()
+                                                            $("#Tailleaccessoires").show();
                                                         })
-                                                    });
+                                                        });
                                                     </script>
                                                 </div>
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Prix d'achat :</h5>
-                                                    <input type="text" name="prixa" id=""  />
+                                                    <input type="text" name="prixa" id=""
+                                                        value="<?php echo $row['prixa'];?>" required />
                                                 </div>
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Prix de Vente:</h5>
-                                                    <input type="text" name="prix" id=""  />
+                                                    <input type="text" name="prix" id=""
+                                                        value="<?php echo $row['prix'];?>" required />
                                                 </div>
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Remis :</h5>
-                                                    <input type="text" name="remis" id="" value='0'  />
+                                                    <input type="text" name="remis" id=""
+                                                        value="<?php echo $row['remis'];?>" required />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Titre :</h5>
-                                                    <input type="text" name="titre" >
+                                                    <input type="text" name="titre" value="<?php echo $row['titre'];?>"
+                                                        required>
                                                     <h5 class="m-2">Description :</h5>
-                                                    <textarea class="txtinput" name="description" id="" 
-                                                        rows="10"></textarea>
-                                                    <h5 class="m-2">Couleurs :</h5>
-                                                <div class="row">
-                                                    
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur1" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile6(event)"
-                                                                        accept="image/*" name="imgColor1" id="inputImg6">
-                                                            <label class="mb-2 inputfile2" for="inputImg6">
-                                                            <img src="img/icons/upload.png" id="output6" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur2" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile7(event)"
-                                                                        accept="image/*" name="imgColor2" id="inputImg7">
-                                                            <label class="mb-2 inputfile2" for="inputImg7">
-                                                            <img src="img/icons/upload.png" id="output7" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur3" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile8(event)"
-                                                                        accept="image/*" name="imgColor3" id="inputImg8">
-                                                            <label class="mb-2 inputfile2" for="inputImg8">
-                                                            <img src="img/icons/upload.png" id="output8" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur4" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile9(event)"
-                                                                        accept="image/*" name="imgColor4" id="inputImg9">
-                                                            <label class="mb-2 inputfile2" for="inputImg9">
-                                                            <img src="img/icons/upload.png" id="output9" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur5" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile10(event)"
-                                                                        accept="image/*" name="imgColor5" id="inputImg10">
-                                                            <label class="mb-2 inputfile2" for="inputImg10">
-                                                            <img src="img/icons/upload.png" id="output10" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur6" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile11(event)"
-                                                                        accept="image/*" name="imgColor6" id="inputImg11">
-                                                            <label class="mb-2 inputfile2" for="inputImg11">
-                                                            <img src="img/icons/upload.png" id="output11" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur7" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile12(event)"
-                                                                        accept="image/*" name="imgColor7" id="inputImg12">
-                                                            <label class="mb-2 inputfile2" for="inputImg12">
-                                                            <img src="img/icons/upload.png" id="output12" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur8" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile13(event)"
-                                                                        accept="image/*" name="imgColor8" id="inputImg13">
-                                                            <label class="mb-2 inputfile2" for="inputImg13">
-                                                            <img src="img/icons/upload.png" id="output13" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur9" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile14(event)"
-                                                                        accept="image/*" name="imgColor9" id="inputImg14">
-                                                            <label class="mb-2 inputfile2" for="inputImg14">
-                                                            <img src="img/icons/upload.png" id="output14" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" value="#f2f2f2" name="couleur10" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile15(event)"
-                                                                        accept="image/*" name="imgColor10" id="inputImg15">
-                                                            <label class="mb-2 inputfile2" for="inputImg15">
-                                                            <img src="img/icons/upload.png" id="output15" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                    
-                                                    <!-- <input type="color" value="#f2f2f2" name="couleur2" ><input type="file" name="imgColor2" ><br>
-                                                    <input type="color" name="couleur3" ><input type="file" name="imgColor3" ><br>
-                                                    <input type="color" name="couleur4" ><input type="file" name="imgColor4" ><br>
-                                                    <input type="color" name="couleur5" ><input type="file" name="imgColor5" ><br> -->
-
+                                                    <textarea class="txtinput" name="description" id="" required
+                                                        rows="10"><?php echo $row['description'];?></textarea>
                                                     <div class="row">
                                                         <div id="Taillechaussure" class="col-sm">
                                                             <h5 class="m-2">Ajouter Pointure</h5>
@@ -685,15 +619,22 @@
                                                         <div class="col-sm">
                                                             <h5 class="m-2">Genre :</h5>
                                                             <select name="genre" id="">
-                                                                <option value="Femme">Femme</option>
-                                                                <option value="Homme" disabled>Homme</option>
-                                                                <option value="Enfant" disabled>Enfant</option>
+                                                                <option
+                                                                    <?php if($row['genre'] =='Femme'){ echo 'selected';} ?>
+                                                                    value="Femme">Femme</option>
+                                                                <option
+                                                                    <?php if($row['genre'] =='Homme'){ echo 'selected';} ?>
+                                                                    value="Homme" disabled>Homme</option>
+                                                                <option
+                                                                    <?php if($row['genre'] =='Enfant'){ echo 'selected';}?>
+                                                                    value="Enfant" disabled>Enfant</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-sm">
                                                             <h5 class="m-2">Quantite :</h5>
-                                                            <input class="text-center" type="text" name="quantite"
-                                                                value='0'  />
+                                                            <input class="text-center" type="text"
+                                                                value="<?php echo $row['quantite'];?>" required
+                                                                name="quantite" />
                                                         </div>
                                                         <div class="col-sm">
                                                             <h5 class="m-2">Date :</h5>
@@ -704,38 +645,38 @@
                                                     <h5 class="m-2">Image de produit :</h5>
                                                     <div class="row">
                                                         <div class="col-sm">
-                                                            <input type="file" onchange="loadFile1(event)" name="img1"
-                                                                 id="inputImg1">
+                                                            <input type="file" onchange="loadFile1(event)"
+                                                                accept="image/*" name="img1" id="inputImg1">
                                                             <label class="inputfile" for="inputImg1"
                                                                 style="min-height:200px">
-                                                                <img src="img/icons/upload.png" id="output1" width="55"
-                                                                    height="50" alt="">
+                                                                <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>"
+                                                                    id="output1" width="200" height="250" alt="">
                                                             </label>
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <input type="file" onchange="loadFile2(event)"
-                                                                accept="image/*" name="img2"  id="inputImg2">
+                                                                accept="image/*" name="img2" id="inputImg2">
                                                             <label class="mb-2 inputfile1" for="inputImg2">
-                                                                <img src="img/icons/upload.png" id="output2" width="35"
-                                                                    height="30" alt="">
+                                                                <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img2']); ?>"
+                                                                    id="output2" width="35" height="30" alt="">
                                                             </label>
                                                             <input type="file" onchange="loadFile3(event)"
                                                                 accept="image/*" name="img3" id="inputImg3">
                                                             <label class="mb-2 inputfile1" for="inputImg3">
-                                                                <img src="img/icons/upload.png" id="output3" width="35"
-                                                                    height="30" alt="">
+                                                                <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img3']); ?>"
+                                                                    id="output3" width="35" height="30" alt="">
                                                             </label>
                                                             <input type="file" onchange="loadFile4(event)"
                                                                 accept="image/*" name="img4" id="inputImg4">
                                                             <label class="mb-2 inputfile1" for="inputImg4">
-                                                                <img src="img/icons/upload.png" id="output4" width="35"
-                                                                    height="30" alt="">
+                                                                <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img4']); ?>"
+                                                                    id="output4" width="35" height="30" alt="">
                                                             </label>
                                                             <input type="file" onchange="loadFile5(event)"
                                                                 accept="image/*" name="img5" id="inputImg5">
                                                             <label class="inputfile1" for="inputImg5">
-                                                                <img src="img/icons/upload.png" id="output5" width="35"
-                                                                    height="30" alt="">
+                                                                <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img5']); ?>"
+                                                                    id="output5" width="35" height="30" alt="">
                                                             </label>
                                                         </div>
                                                     </div>
@@ -779,66 +720,6 @@
     };
     var loadFile5 = function(a) {
         var b = document.getElementById("output5");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile6 = function(a) {
-        var b = document.getElementById("output6");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile7 = function(a) {
-        var b = document.getElementById("output7");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile8 = function(a) {
-        var b = document.getElementById("output8");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile9 = function(a) {
-        var b = document.getElementById("output9");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile10 = function(a) {
-        var b = document.getElementById("output10");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile11 = function(a) {
-        var b = document.getElementById("output11");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };    
-    var loadFile12 = function(a) {
-        var b = document.getElementById("output12");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };    
-    var loadFile13 = function(a) {
-        var b = document.getElementById("output13");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };    
-    var loadFile14 = function(a) {
-        var b = document.getElementById("output14");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };    
-    var loadFile15 = function(a) {
-        var b = document.getElementById("output15");
         b.style.width = "100%";
         b.style.height = "100%";
         b.src = URL.createObjectURL(a.target.files[0])

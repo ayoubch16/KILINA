@@ -45,8 +45,12 @@ $imgColor10 = addslashes(file_get_contents($_FILES['imgColor10']['tmp_name']));
 
 
 
-$sql="INSERT INTO `produits`( `Ref`,`titre`,`categorie`, `prixa`,`prix`,`remis`, `genre`,`quantite`,`date`, `description`, `taille`, `img1`, `img2`, `img3`, `img4`, `img5`,`couleur1`,`Imgcouleur1`)
-         VALUES ('$Ref','$titre','$categorie','$prixa','$prix','$remis','$genre','$quantite',DATE_FORMAT(SYSDATE(), '%Y-%m-%d- %H-%i-%s') ,'$description','$taille','$imgData1','$imgData2','$imgData3','$imgData4','$imgData5','$couleur1','$imgColor1')"; 
+$sql="INSERT INTO `produits`( `Ref`,`titre`,`categorie`, `prixa`,`prix`,`remis`, `genre`,`quantite`,`date`, `description`, `taille`, `img1`, `img2`, `img3`, `img4`, `img5`
+   ,`couleur1`,`Imgcouleur1`,`couleur2`,`Imgcouleur2`,`couleur3`,`Imgcouleur3`,`couleur4`,`Imgcouleur4`,`couleur5`,`Imgcouleur5`
+   ,`couleur6`,`Imgcouleur6`,`couleur7`,`Imgcouleur7`,`couleur8`,`Imgcouleur8`,`couleur9`,`Imgcouleur9`,`couleur10`,`Imgcouleur10`)
+         VALUES ('$Ref','$titre','$categorie','$prixa','$prix','$remis','$genre','$quantite',DATE_FORMAT(SYSDATE(), '%Y-%m-%d- %H-%i-%s') ,'$description','$taille','$imgData1','$imgData2','$imgData3','$imgData4','$imgData5'
+         ,'$couleur1','$Imgcouleur1','$couleur2','$Imgcouleur2','$couleur3','$Imgcouleur3','$couleur4','$Imgcouleur4','$couleur5','$Imgcouleur5'
+   ,'$couleur6','$Imgcouleur6','$couleur7','$Imgcouleur7','$couleur8','$Imgcouleur8','$couleur9','$Imgcouleur9','$couleur10','$Imgcouleur10')"; 
            //echo $sql;
 if ($cnx->query($sql) === TRUE) { 
     $Reffuser=$_SESSION["Reffuser"];

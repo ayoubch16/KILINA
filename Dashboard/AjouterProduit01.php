@@ -162,7 +162,7 @@
     #inputImg2,
     #inputImg3,
     #inputImg4,
-    #inputImg5,#inputImg6,#inputImg7,#inputImg8,#inputImg9,#inputImg10,#inputImg11,#inputImg12,#inputImg13,#inputImg14,#inputImg15 {
+    #inputImg5 {
         display: none
     }
 
@@ -175,19 +175,6 @@
     }
 
     .inputfile1:hover {
-        cursor: pointer;
-        border: 2px dashed #7456e7
-    }
-    .inputfile2 {
-        height: 30px;
-        width: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 2px dashed #9d9d9d
-    }
-
-    .inputfile2:hover {
         cursor: pointer;
         border: 2px dashed #7456e7
     }
@@ -227,7 +214,7 @@
                         <h1 class="h3 mb-3"><strong>Ajouter Produits</strong></h1>
                         <div class="row">
                             <div class="col barRech">
-                                <input class="" type="text" name="Ref" placeholder="Ref" 
+                                <input class="" type="text" name="Ref" placeholder="Ref" required
                                     value="<?php echo $row['Ref'];?>" />
                             </div>
                             <div class="col-4 row"
@@ -244,7 +231,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Catégorie :</h5>
-                                                    <select name="categorie" id="categorie" >
+                                                    <select name="categorie" id="categorie" required>
                                                         <optgroup label="Sac">
                                                             <option class="sac" value="Cartables">Cartables</option>
                                                             <option class="sac" value="Sacs à Dos">Sacs à Dos</option>
@@ -359,165 +346,24 @@
                                                 </div>
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Prix d'achat :</h5>
-                                                    <input type="text" name="prixa" id=""  />
+                                                    <input type="text" name="prixa" id="" required />
                                                 </div>
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Prix de Vente:</h5>
-                                                    <input type="text" name="prix" id=""  />
+                                                    <input type="text" name="prix" id="" required />
                                                 </div>
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Remis :</h5>
-                                                    <input type="text" name="remis" id="" value='0'  />
+                                                    <input type="text" name="remis" id="" value='0' required />
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm">
                                                     <h5 class="m-2">Titre :</h5>
-                                                    <input type="text" name="titre" >
+                                                    <input type="text" name="titre" required>
                                                     <h5 class="m-2">Description :</h5>
-                                                    <textarea class="txtinput" name="description" id="" 
+                                                    <textarea class="txtinput" name="description" id="" required
                                                         rows="10"></textarea>
-                                                    <h5 class="m-2">Couleurs :</h5>
-                                                <div class="row">
-                                                    
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur1" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile6(event)"
-                                                                        accept="image/*" name="imgColor1" id="inputImg6">
-                                                            <label class="mb-2 inputfile2" for="inputImg6">
-                                                            <img src="img/icons/upload.png" id="output6" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur2" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile7(event)"
-                                                                        accept="image/*" name="imgColor2" id="inputImg7">
-                                                            <label class="mb-2 inputfile2" for="inputImg7">
-                                                            <img src="img/icons/upload.png" id="output7" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur3" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile8(event)"
-                                                                        accept="image/*" name="imgColor3" id="inputImg8">
-                                                            <label class="mb-2 inputfile2" for="inputImg8">
-                                                            <img src="img/icons/upload.png" id="output8" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur4" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile9(event)"
-                                                                        accept="image/*" name="imgColor4" id="inputImg9">
-                                                            <label class="mb-2 inputfile2" for="inputImg9">
-                                                            <img src="img/icons/upload.png" id="output9" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur5" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile10(event)"
-                                                                        accept="image/*" name="imgColor5" id="inputImg10">
-                                                            <label class="mb-2 inputfile2" for="inputImg10">
-                                                            <img src="img/icons/upload.png" id="output10" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur6" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile11(event)"
-                                                                        accept="image/*" name="imgColor6" id="inputImg11">
-                                                            <label class="mb-2 inputfile2" for="inputImg11">
-                                                            <img src="img/icons/upload.png" id="output11" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur7" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile12(event)"
-                                                                        accept="image/*" name="imgColor7" id="inputImg12">
-                                                            <label class="mb-2 inputfile2" for="inputImg12">
-                                                            <img src="img/icons/upload.png" id="output12" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur8" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile13(event)"
-                                                                        accept="image/*" name="imgColor8" id="inputImg13">
-                                                            <label class="mb-2 inputfile2" for="inputImg13">
-                                                            <img src="img/icons/upload.png" id="output13" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur9" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile14(event)"
-                                                                        accept="image/*" name="imgColor9" id="inputImg14">
-                                                            <label class="mb-2 inputfile2" for="inputImg14">
-                                                            <img src="img/icons/upload.png" id="output14" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row col border border-dark m-1 p-1">
-                                                        <div class="col-sm">
-                                                            <input type="color" name="couleur10" style="width: 30px;height: 30px;">
-                                                        </div>
-                                                        <div class="col-sm">
-                                                            <input type="file" onchange="loadFile15(event)"
-                                                                        accept="image/*" name="imgColor10" id="inputImg15">
-                                                            <label class="mb-2 inputfile2" for="inputImg15">
-                                                            <img src="img/icons/upload.png" id="output15" width="20" height="15" alt="">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                    
-                                                    <!-- <input type="color" name="couleur2" ><input type="file" name="imgColor2" ><br>
-                                                    <input type="color" name="couleur3" ><input type="file" name="imgColor3" ><br>
-                                                    <input type="color" name="couleur4" ><input type="file" name="imgColor4" ><br>
-                                                    <input type="color" name="couleur5" ><input type="file" name="imgColor5" ><br> -->
-
                                                     <div class="row">
                                                         <div id="Taillechaussure" class="col-sm">
                                                             <h5 class="m-2">Ajouter Pointure</h5>
@@ -693,7 +539,7 @@
                                                         <div class="col-sm">
                                                             <h5 class="m-2">Quantite :</h5>
                                                             <input class="text-center" type="text" name="quantite"
-                                                                value='0'  />
+                                                                value='0' required />
                                                         </div>
                                                         <div class="col-sm">
                                                             <h5 class="m-2">Date :</h5>
@@ -705,7 +551,7 @@
                                                     <div class="row">
                                                         <div class="col-sm">
                                                             <input type="file" onchange="loadFile1(event)" name="img1"
-                                                                 id="inputImg1">
+                                                                required id="inputImg1">
                                                             <label class="inputfile" for="inputImg1"
                                                                 style="min-height:200px">
                                                                 <img src="img/icons/upload.png" id="output1" width="55"
@@ -714,7 +560,7 @@
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <input type="file" onchange="loadFile2(event)"
-                                                                accept="image/*" name="img2"  id="inputImg2">
+                                                                accept="image/*" name="img2" required id="inputImg2">
                                                             <label class="mb-2 inputfile1" for="inputImg2">
                                                                 <img src="img/icons/upload.png" id="output2" width="35"
                                                                     height="30" alt="">
@@ -779,66 +625,6 @@
     };
     var loadFile5 = function(a) {
         var b = document.getElementById("output5");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile6 = function(a) {
-        var b = document.getElementById("output6");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile7 = function(a) {
-        var b = document.getElementById("output7");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile8 = function(a) {
-        var b = document.getElementById("output8");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile9 = function(a) {
-        var b = document.getElementById("output9");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile10 = function(a) {
-        var b = document.getElementById("output10");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };
-    var loadFile11 = function(a) {
-        var b = document.getElementById("output11");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };    
-    var loadFile12 = function(a) {
-        var b = document.getElementById("output12");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };    
-    var loadFile13 = function(a) {
-        var b = document.getElementById("output13");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };    
-    var loadFile14 = function(a) {
-        var b = document.getElementById("output14");
-        b.style.width = "100%";
-        b.style.height = "100%";
-        b.src = URL.createObjectURL(a.target.files[0])
-    };    
-    var loadFile15 = function(a) {
-        var b = document.getElementById("output15");
         b.style.width = "100%";
         b.style.height = "100%";
         b.src = URL.createObjectURL(a.target.files[0])
