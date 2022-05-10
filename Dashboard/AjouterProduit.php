@@ -243,6 +243,7 @@
                                         <div class="card-body">
                                             <div class="row mb-3">
                                                 <div class="col-sm">
+                                                    <input id="group" type="text" name="group" style="display: none ;"/>
                                                     <h5 class="m-2">Catégorie :</h5>
                                                     <select name="categorie" id="categorie" >
                                                         <optgroup label="Sac">
@@ -334,25 +335,29 @@
                                                             $("#Taillechaussure").show();
                                                             $("#Taillevetement").hide();
                                                             $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").hide()
+                                                            $("#Tailleaccessoires").hide();
+                                                            $("#group").val('2');
                                                         });
                                                         $(".vetement").click(function() {
                                                             $("#Taillechaussure").hide();
                                                             $("#Taillevetement").show();
                                                             $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").hide()
+                                                            $("#Tailleaccessoires").hide();
+                                                            $("#group").val('4');
                                                         });
                                                         $(".sac").click(function() {
                                                             $("#Taillechaussure").hide();
                                                             $("#Taillevetement").hide();
                                                             $("#Taillesac").show();
-                                                            $("#Tailleaccessoires").hide()
+                                                            $("#Tailleaccessoires").hide();
+                                                            $("#group").val('1');
                                                         });
                                                         $(".accessoires").click(function() {
                                                             $("#Taillechaussure").hide();
                                                             $("#Taillevetement").hide();
                                                             $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").show()
+                                                            $("#Tailleaccessoires").show();
+                                                            $("#group").val('3');
                                                         })
                                                     });
                                                     </script>

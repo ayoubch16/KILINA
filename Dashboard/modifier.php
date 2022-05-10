@@ -2,7 +2,10 @@
 include 'db-conn.php';
 session_start();
 
-$txtimg1=" ";$txtimg2=" ";$txtimg3=" ";$txtimg4=" ";$txtimg5=" ";$txtimg6=" ";
+$txtimg1=" ";$txtimg2=" ";$txtimg3=" ";$txtimg4=" ";$txtimg5=" ";$txtimg6=" ";$txtimgcolor1=" ";$txtimgcolor2=" ";$txtimgcolor3=" ";$txtimgcolor4=" ";$txtimgcolor5=" ";$txtimgcolor6=" ";
+$txtimgcolor7=" ";$txtimgcolor8=" ";$txtimgcolor9=" ";$txtimgcolor10=" ";
+
+$group=$_POST['group'];
 
 $Ref=$_POST['Ref'];
 
@@ -84,7 +87,7 @@ if( $imgColor10 != null ){  $txtimgcolor10=" `Imgcouleur10`='$imgColor10' , ";}
 
 
 
-$sql="UPDATE `produits` SET `titre`='$titre',`categorie`='$categorie',`prixa`='$prixa',`prix`='$prix',`remis`='$remis',
+$sql="UPDATE `produits` SET  `group`='$group' , `titre`='$titre',`categorie`='$categorie',`prixa`='$prixa',`prix`='$prix',`remis`='$remis',
 `genre`='$genre',`quantite`='$quantite',`description`='$description',".$txtimg1."  ".$txtimg2."  ".$txtimg3."  ".$txtimg4."  ".$txtimg5." 
 `couleur1`='$couleur1', `couleur2`='$couleur2' , `couleur3`='$couleur3' , `couleur4`='$couleur4' , `couleur5`='$couleur5' , `couleur6`='$couleur6' ,
 `couleur7`='$couleur7' , `couleur8`='$couleur8' , `couleur9`='$couleur9' , `couleur10`='$couleur10' , 

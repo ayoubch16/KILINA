@@ -2,6 +2,7 @@
 $c=$_GET['c'];
 $p=$_GET['p'];
 $t=$_GET['t'];
+$g=$_GET['g'];
 ?>
 <?php include 'header.php';?>
 
@@ -92,10 +93,18 @@ $t=$_GET['t'];
                     </style>
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="image/back1.png" class="img-fluid" /></div>
-                            <div class="swiper-slide"><img src="image/back2.png" class="img-fluid" /></div>
+                            <?php $sqlcover="SELECT * FROM `module` ";
+                             $resultcover = $cnx->query($sqlcover);
+                             if ($rowcover = $resultcover->fetch_assoc()) {}
+                             for ($x = 1; $x < 4; $x++) {?>
+                                 
+                            <div class="swiper-slide"><img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img'.$x]); ?>" class="img-fluid" /></div>
+                                
+
+                            <?php } ?>
+                            <!-- <div class="swiper-slide"><img src="image/back2.png" class="img-fluid" /></div>
                             <div class="swiper-slide"><img src="image/back3.png" class="img-fluid" /></div>
-                            <div class="swiper-slide"><img src="image/backClient2.jpg" class="img-fluid" /></div>
+                            <div class="swiper-slide"><img src="image/backClient2.jpg" class="img-fluid" /></div> -->
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
@@ -128,33 +137,33 @@ $t=$_GET['t'];
                 </a>
             </div>
             <div class="categories mb-3 row" style="justify-content:space-around">
-                <div  class="col text-center p-3  <?php if($_GET['c']=='Sacs'){echo ' activecat ';}else{echo ' cat ';}?>">
+                <div  class="col text-center p-3  <?php if($_GET['g']=='1'){echo ' activecat ';}else{echo ' cat ';}?>">
                     <button >
-                        <a href="index.php?c=Sacs">
+                        <a href="index.php?g=1">
                             <img src="image/icone/sac-a-main.png" width="60" height="60" alt=""><br>
                             <span class="text-center" style="font-size: 10px;">Sacs</span>
                         </a>
                     </button>
                 </div>
-                <div  class="col text-center p-3  <?php if($_GET['c']=='Chaussures'){echo ' activecat ';}else{echo ' cat ';}?>">
+                <div  class="col text-center p-3  <?php if($_GET['g']=='2'){echo ' activecat ';}else{echo ' cat ';}?>">
                     <button>
-                        <a href="index.php?c=Chaussures" >
+                        <a href="index.php?g=2" >
                             <img src="image/icone/bottes-femme.png" width="60" height="60" alt=""><br>
                             <span class="text-center" style="font-size: 10px;">Chaussures</span>
                         </a>
                     </button>
                 </div>
-                <div  class="col text-center p-3  <?php if($_GET['c']=='Vetements'){echo ' activecat ';}else{echo ' cat ';}?>">
+                <div  class="col text-center p-3  <?php if($_GET['g']=='4'){echo ' activecat ';}else{echo ' cat ';}?>">
                     <button>
-                        <a href="index.php?c=Vetements" >
+                        <a href="index.php?g=4" >
                             <img src="image/icone/3081851.png" width="60" height="60" alt=""><br>
                             <span class="text-center" style="font-size: 10px;">Vetements</span>
                         </a>
                     </button>
                 </div>
-                <div  class="col text-center p-3  <?php if($_GET['c']=='Accessoires'){echo ' activecat ';}else{echo ' cat ';}?>">
+                <div  class="col text-center p-3  <?php if($_GET['g']=='3'){echo ' activecat ';}else{echo ' cat ';}?>">
                     <button>
-                        <a href="index.php?c=Accessoires" >
+                        <a href="index.php?g=3" >
                             <img src="image/icone/jewelry.png" width="60" height="60" alt=""><br>
                             <span class="text-center" style="font-size: 10px;">Accessoires</span>
                         </a>
@@ -167,7 +176,7 @@ $t=$_GET['t'];
 
             <div class="listeproduit mt-4 px-3 row animate__animated animate__fadeIn">
                 <?php 
-                $c=$_GET['c'];$p=$_GET['p'];$t=$_GET['t'];$c=empty($c)?" ":"    `categorie`='$c' AND ";$p=empty($p)?" ":"    `prix`< $p AND ";$t=empty($t)?" ":"    `taille`='$t' AND ";$sql="SELECT * FROM `produits`  WHERE  $c   $p  $t  etatdel='ND' ORDER BY `date` DESC";$result=$cnx->query($sql);while($row=$result->fetch_assoc()){$nvprix=$row['prix']-$row['prix']*($row['remis']/100);$date=date_create($row['date']);$date1=date_format($date,'Y-m-d');$date2=date("Y-m-d");$diff=abs(strtotime(date("Y-m-d"))-strtotime($date1));$years=floor($diff/(365*60*60*24));$months=floor(($diff-$years*365*60*60*24)/(30*60*60*24));$delai=floor(($diff-$years*365*60*60*24-$months*30*60*60*24)/(60*60*24));
+                $c=$_GET['c'];$p=$_GET['p'];$t=$_GET['t'];$g=empty($g)?" ":"    `group`='$g' AND ";$c=empty($c)?" ":"    `categorie`='$c' AND ";$p=empty($p)?" ":"    `prix`< $p AND ";$t=empty($t)?" ":"    `taille`='$t' AND ";$sql="SELECT * FROM `produits`  WHERE  $c   $p  $t $g  etatdel='ND' ORDER BY `date` DESC";$result=$cnx->query($sql);while($row=$result->fetch_assoc()){$nvprix=$row['prix']-$row['prix']*($row['remis']/100);$date=date_create($row['date']);$date1=date_format($date,'Y-m-d');$date2=date("Y-m-d");$diff=abs(strtotime(date("Y-m-d"))-strtotime($date1));$years=floor($diff/(365*60*60*24));$months=floor(($diff-$years*365*60*60*24)/(30*60*60*24));$delai=floor(($diff-$years*365*60*60*24-$months*30*60*60*24)/(60*60*24));
                 ?>
                 <div class="cardproduit m-2">
                     <div>
@@ -196,8 +205,14 @@ $t=$_GET['t'];
                             <?php } ?>
                         </div>
                         <div class="col text-right">
-                                <span class="choixcolor" style="background-color: <?php echo $row['couleur1'];?>;"></span>
-                                <span class="choixcolor" style="background-color: #e1d106;"></span>
+                       
+                            <?php $size=3; for ($x = 1; $x <= 3; $x++) {
+                                $txtcolor='couleur'.$x; 
+                                if($row[$txtcolor] == '#f2f2f2'){
+                                    $size++;
+                                } else{?>
+                                <span class="choixcolor" style="background-color: <?php echo $row[$txtcolor];?>;"></span>
+                            <?php } } ?>
                                 
                         </div>
                         <?php  if($_SESSION["Reff"] != null) { ?>

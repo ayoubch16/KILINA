@@ -61,7 +61,7 @@ $c=$_GET['c'];
 
 </div>
 <div class="col-xl-4 col-xxl-7">
-<h5 class="card-title mb-4">Produits Similaire</h5>
+<!-- <h5 class="card-title mb-4">Produits Similaire</h5>
 <?php $sql="SELECT * FROM `produits` ORDER BY `date` DESC LIMIT 4";
       $result = $cnx->query($sql);
            while ($row = $result->fetch_assoc()) {
@@ -73,7 +73,7 @@ $c=$_GET['c'];
 </div>
 </div>
 <?php } ?>
-</div>
+</div> -->
 
 </div>
 </div>

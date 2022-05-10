@@ -208,14 +208,14 @@ $sql="SELECT * FROM `commandes` $txt  ORDER BY `dateCmd` DESC ";$result=$cnx->qu
                                                                     <?php 
                                                                     $nom=$row1['nom'].''.$row1['prenom'];
                                                                     $tele=$row1['tele'];
-                                                                    $Adresse=$row1['Adresse'] ;
+                                                                    // $Adresse=$row1['Adresse'] ;
                                                                     $ReffCmd=$row['ReffCmd'] ;
                                                                     $PrixCmd=$row['prixCmd'];
                                                                     $VilleCmd=$row['villeCmd'] ;
                                                                     
                                                                     ?>
                                                                     
-                                                                    onclick='afficher("<?php echo $nom ?>","<?php echo $tele ?>","<?php echo $Adresse ?>","<?php echo $ReffCmd ?>","<?php echo $PrixCmd ?>","<?php echo $VilleCmd ?>")'
+                                                                    onclick='afficher("<?php echo $nom ?>","<?php echo $tele ?>","<?php echo $ReffCmd ?>","<?php echo $PrixCmd ?>","<?php echo $VilleCmd ?>")'
                                                                     src="img/icons/edit.png" width="20" height="20"
                                                                     alt=""></td>
                                                                     
@@ -280,12 +280,12 @@ $sql="SELECT * FROM `commandes` $txt  ORDER BY `dateCmd` DESC ";$result=$cnx->qu
                         <input id="tele" type="text" class="text-center" readonly value="">
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col">
                         <h5>Adresse</h5>
                         <input id="adresse" type="text" class="text-center" readonly value="">
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col">
                         <h5>Reff Cmd</h5>
@@ -321,13 +321,13 @@ $sql="SELECT * FROM `commandes` $txt  ORDER BY `dateCmd` DESC ";$result=$cnx->qu
     function btn(a){
         
     }
-    function afficher(d, a, e, f, c, g) {
+    function afficher(d, a, f, c, g) {
         document.getElementById("info").style.display = "block";
         document.getElementById("wrapper").style.filter =
             "grayscale(49%) sepia(27%) blur(4px) brightness(47%) saturate(71%)";
         document.getElementById("nom").value = d;
         document.getElementById("tele").value = a;
-        document.getElementById("adresse").value = e;
+        // document.getElementById("adresse").value = e;
         document.getElementById("ref").value = f;
         document.getElementById("prix").value = c;
         document.getElementById("ville").value = g

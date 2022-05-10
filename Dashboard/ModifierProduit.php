@@ -244,6 +244,7 @@ include 'header.php';$id=$_GET['id'];$sql="SELECT * FROM `produits` WHERE `id`='
                                         <div class="card-body">
                                             <div class="row mb-3">
                                                 <div class="col-sm">
+                                                <input id="group" type="text" name="group" value="<?php echo $row['group'];?>" style="display: none ;"/>
                                                     <h5 class="m-2">Catégorie :</h5>
                                                     <select name="categorie" id="categorie" required>
                                                         <optgroup label="Sac">
@@ -410,30 +411,34 @@ include 'header.php';$id=$_GET['id'];$sql="SELECT * FROM `produits` WHERE `id`='
                                                     </script>
                                                     <script>
                                                         $(document).ready(function() {
-                                                        $(".chaussure").click(function() {
-                                                            $("#Taillechaussure").show();
-                                                            $("#Taillevetement").hide();
-                                                            $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").hide()
-                                                        });
-                                                        $(".vetement").click(function() {
-                                                            $("#Taillechaussure").hide();
-                                                            $("#Taillevetement").show();
-                                                            $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").hide()
-                                                        });
-                                                        $(".sac").click(function() {
-                                                            $("#Taillechaussure").hide();
-                                                            $("#Taillevetement").hide();
-                                                            $("#Taillesac").show();
-                                                            $("#Tailleaccessoires").hide()
-                                                        });
-                                                        $(".accessoires").click(function() {
-                                                            $("#Taillechaussure").hide();
-                                                            $("#Taillevetement").hide();
-                                                            $("#Taillesac").hide();
-                                                            $("#Tailleaccessoires").show()
-                                                        })
+                                                                 $(".chaussure").click(function() {
+                                                                    $("#Taillechaussure").show();
+                                                                    $("#Taillevetement").hide();
+                                                                    $("#Taillesac").hide();
+                                                                    $("#Tailleaccessoires").hide();
+                                                                    $("#group").val('2');
+                                                                    });
+                                                                 $(".vetement").click(function() {
+                                                                        $("#Taillechaussure").hide();
+                                                                        $("#Taillevetement").show();
+                                                                        $("#Taillesac").hide();
+                                                                        $("#Tailleaccessoires").hide();
+                                                                        $("#group").val('4');
+                                                                    });
+                                                                 $(".sac").click(function() {
+                                                                        $("#Taillechaussure").hide();
+                                                                        $("#Taillevetement").hide();
+                                                                        $("#Taillesac").show();
+                                                                        $("#Tailleaccessoires").hide();
+                                                                        $("#group").val('1');
+                                                                    });
+                                                                 $(".accessoires").click(function() {
+                                                                        $("#Taillechaussure").hide();
+                                                                        $("#Taillevetement").hide();
+                                                                        $("#Taillesac").hide();
+                                                                        $("#Tailleaccessoires").show();
+                                                                        $("#group").val('3');
+                                                                    })
                                                         });
                                                            
                                                    

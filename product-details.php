@@ -176,11 +176,12 @@ $titreProd=$row['titre'];
                                   <p>Coleur :</p>
                               </div>
                               <div class="col text-right">
-                                  
-                                   <span onclick="changeColor1()" class="choixcolor" style="background-color: <?php echo $row['couleur1']?>;"></span>     
-                                   <img id="Imgcouleur1" style="width:15px;height:15px;display:none" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['Imgcouleur1']); ?>" alt="">      
-                                   <span class="choixcolor" style="background-color: green;"></span>           
-                                   <span class="choixcolor" style="background-color: red;"></span>           
+                                  <?php for ($x = 1; $x <= 10; $x++) {
+                                          if( $row['couleur'.$x]!='#f2f2f2'){?>
+                                          <span onclick="<?php echo 'changeColor'.$x.'()';?>" class="choixcolor" style="background-color: <?php echo $row['couleur'.$x]?>;"></span> 
+                                          <img id="Imgcouleur<?php echo $x?>" style="width:15px;height:15px;display:none" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['Imgcouleur'.$x]); ?>" alt="">   
+                                  <?php } } ?>
+
                               </div>
                         </div>
                         <div class="row">
@@ -258,6 +259,42 @@ $titreProd=$row['titre'];
         function changeColor1(){
             document.getElementById("grandImg").src = document.getElementById("Imgcouleur1").src;
             document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur1').src + "')";
+        }
+        function changeColor2(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur2").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur2').src + "')";
+        }
+        function changeColor3(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur3").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur3').src + "')";
+        }
+        function changeColor4(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur4").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur4').src + "')";
+        }
+        function changeColor5(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur5").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur5').src + "')";
+        }
+        function changeColor6(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur6").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur6').src + "')";
+        }
+        function changeColor7(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur7").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur7').src + "')";
+        }
+        function changeColor8(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur8").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur8').src + "')";
+        }
+        function changeColor9(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur9").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur9').src + "')";
+        }
+        function changeColor10(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur10").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur10').src + "')";
         }
     </script>
     <script>
