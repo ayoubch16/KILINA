@@ -9,7 +9,7 @@ session_start();
         $sql="INSERT INTO `panier`(`RefClient`, `RefProd`, `date`) VALUES ('$refclient','$ref',SYSDATE())";
     if ($cnx->query($sql) == TRUE) { 
         echo '<script>
-            window.location=history.go(-1);
+            window.location=history.go(-2);
             </script>';
     }else{
         echo 'Error';

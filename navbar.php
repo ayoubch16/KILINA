@@ -1,137 +1,137 @@
 <style>
-.cat select {
-    border: 1px solid grey;
-    width: 100%;
-    height: 50px;
-    text-align: center
-}
-
-#filterbar {
-    display: none;
-    position: absolute;
-    top: 50px;
-    margin-left: 50px;
-    z-index: 99;
-    background: #fff;
-    box-shadow: -1px -1px 14px 1px rgba(0, 0, 0, 0.31);
-    width: 350px
-}
-
-#fermer:hover {
-    cursor: pointer
-}
-
-.cat input[type="radio"] {
-    background-color: #000
-}
-
-#prix1 {
-    border: 0;
-    width: 40px
-}
-
-input[type="radio"].taille {
-    display: none
-}
-
-input[type="radio"].taille+label {
-    color: gray
-}
-
-input[type="radio"].taille+label:hover {
-    color: #000;
-    cursor: pointer
-}
-
-input[type="radio"].taille1+label {
-    background-color: #fff
-}
-
-input[type="radio"].taille1:checked+label {
-    color: #000
-}
-
-input[type="radio"].taille2:checked+label {
-    color: #000
-}
-
-input[type="radio"].taille3:checked+label {
-    color: #000
-}
-
-input[type="radio"].taille4:checked+label {
-    color: #000
-}
-
-input[type="radio"].taille5:checked+label {
-    color: #000
-}
-
-.parent {
-    position: fixed;
-    top: 230px;
-    left: 0;
-    display: grid;
-}
-
-.parent img {
-    filter: brightness(0%)
-}
-
-.parent img:hover {
-    filter: brightness(100%)
-}
-
-.div1 p {
-    transform: rotate(-90deg)
-}
-
-.div2 {
-    grid-area: 2 / 1 / 3 / 2;
-    text-align: center
-}
-
-.div3 {
-    grid-area: 3 / 1 / 4 / 2;
-    text-align: center
-}
-
-.div4 {
-    grid-area: 4 / 1 / 5 / 2;
-    text-align: center
-}
-
-.div5 {
-    grid-area: 5 / 1 / 6 / 2;
-    text-align: center
-}
-
-.compte:hover {
-    text-decoration: none;
-    color: #000
-}
-
-.btnfilter {
-    width: 150px;
-    border-radius: 10px;
-    border: 1px solid #393d45;
-    color: #fff;
-    font-size: 2rem;
-    padding: 5px;
-    text-align: center;
-    background-color: #393d45
-}
-
-.btnfilter:hover {
-    color: #393d45;
-    background-color: #fff
-}
-
-@media screen and (max-width: 580px) {
-    .parent {
-        display: none;
+    .cat select {
+        border: 1px solid grey;
+        width: 100%;
+        height: 50px;
+        text-align: center
     }
-}
+
+    #filterbar {
+        display: none;
+        position: absolute;
+        top: 50px;
+        margin-left: 50px;
+        z-index: 99;
+        background: #fff;
+        box-shadow: -1px -1px 14px 1px rgba(0, 0, 0, 0.31);
+        width: 350px
+    }
+
+    #fermer:hover {
+        cursor: pointer
+    }
+
+    .cat input[type="radio"] {
+        background-color: #000
+    }
+
+    #prix1 {
+        border: 0;
+        width: 40px
+    }
+
+    input[type="radio"].taille {
+        display: none
+    }
+
+    input[type="radio"].taille+label {
+        color: gray
+    }
+
+    input[type="radio"].taille+label:hover {
+        color: #000;
+        cursor: pointer
+    }
+
+    input[type="radio"].taille1+label {
+        background-color: #fff
+    }
+
+    input[type="radio"].taille1:checked+label {
+        color: #000
+    }
+
+    input[type="radio"].taille2:checked+label {
+        color: #000
+    }
+
+    input[type="radio"].taille3:checked+label {
+        color: #000
+    }
+
+    input[type="radio"].taille4:checked+label {
+        color: #000
+    }
+
+    input[type="radio"].taille5:checked+label {
+        color: #000
+    }
+
+    .parent {
+        position: fixed;
+        top: 230px;
+        left: 0;
+        display: grid;
+    }
+
+    .parent img {
+        filter: brightness(0%)
+    }
+
+    .parent img:hover {
+        filter: brightness(100%)
+    }
+
+    .div1 p {
+        transform: rotate(-90deg)
+    }
+
+    .div2 {
+        grid-area: 2 / 1 / 3 / 2;
+        text-align: center
+    }
+
+    .div3 {
+        grid-area: 3 / 1 / 4 / 2;
+        text-align: center
+    }
+
+    .div4 {
+        grid-area: 4 / 1 / 5 / 2;
+        text-align: center
+    }
+
+    .div5 {
+        grid-area: 5 / 1 / 6 / 2;
+        text-align: center
+    }
+
+    .compte:hover {
+        text-decoration: none;
+        color: #000
+    }
+
+    .btnfilter {
+        width: 150px;
+        border-radius: 10px;
+        border: 1px solid #393d45;
+        color: #fff;
+        font-size: 2rem;
+        padding: 5px;
+        text-align: center;
+        background-color: #393d45
+    }
+
+    .btnfilter:hover {
+        color: #393d45;
+        background-color: #fff
+    }
+
+    @media screen and (max-width: 580px) {
+        .parent {
+            display: none;
+        }
+    }
 </style>
 <div class="reduction animate__animated animate__fadeInDownBig">
     <?php 
@@ -140,20 +140,24 @@ input[type="radio"].taille5:checked+label {
             $result = $cnx->query($sql);
             if ($row = $result->fetch_assoc()) {
             }
-        ?>
+            $sqlfooter="SELECT * FROM `footer` WHERE `id`=1";
+            $resultfooter = $cnx->query($sqlfooter);
+            if ($rowf = $resultfooter->fetch_assoc()) {
+            }?>
+        
     <p><?php echo $row['textTop'];?></p>
 </div>
 <div class="parent animate__animated animate__fadeInLeftBig">
     <div class="div1 mb-4 pb-3">
         <p>Follow us on</p>
     </div>
-    <div class="div2 mb-2"> <a target="blank" href="https://www.instagram.com/kilina.officiel/"><img class=""
+    <div class="div2 mb-2"> <a target="blank" href="<?php echo $rowf['instagramlien']; ?>"><img class=""
                 src="image/instagram.png" width="20" height="20" alt="" /></a></div>
-    <div class="div3 mb-2"> <a target="blank" href="https://www.facebook.com/Kilina.ma.officiel"><img class=""
+    <div class="div3 mb-2"> <a target="blank" href="<?php echo $rowf['facebooklien']; ?>"><img class=""
                 src="image/facebook.png" width="15" height="20" alt="" /></a> </div>
-    <div class="div4 mb-2"><a target="blank" href="https://twitter.com/home"><img class="" src="image/twitter.png"
+    <div class="div4 mb-2"><a target="blank" href="<?php echo $rowf['twiterlien']; ?>"><img class="" src="image/twitter.png"
                 width="20" height="20" alt="" /></a></div>
-    <div class="div5 mb-2"> <a target="blank" href="https://www.tiktok.com/@kilina.officiel"><img class=""
+    <div class="div5 mb-2"> <a target="blank" href="<?php echo $rowf['tiktoklien']; ?>"><img class=""
                 src="image/tik-tok.png" width="16" height="20" alt="" /></a> </div>
 </div>
 <div class="container">
@@ -281,23 +285,99 @@ input[type="radio"].taille5:checked+label {
     </form>
 </div>
 <script>
-function filter() {
-    document.getElementById("filterbar").style.display = "block";
-    document.getElementById("page").style.filter = "blur(5px) grayscale(5%) "
-}
+    function filter() {
+        document.getElementById("filterbar").style.display = "block";
+        document.getElementById("page").style.filter = "blur(5px) grayscale(5%) "
+    }
 
-function fermer() {
-    document.getElementById("filterbar").style.display = "none";
-    document.getElementById("page").style.filter = "blur(0) grayscale(0)"
-}
+    function fermer() {
+        document.getElementById("filterbar").style.display = "none";
+        document.getElementById("page").style.filter = "blur(0) grayscale(0)"
+    }
 </script>
 <script>
-$("#myInput").on("change", function() {
-    $("#prix").text($(this).val());
-    $("#prix1").val($(this).val())
-});
-$("#prix1").on("change", function() {
-    $("#prix").text($(this).val());
-    $("#myInput").val($(this).val())
-});
+    $("#myInput").on("change", function() {
+        $("#prix").text($(this).val());
+        $("#prix1").val($(this).val())
+    });
+    $("#prix1").on("change", function() {
+        $("#prix").text($(this).val());
+        $("#myInput").val($(this).val())
+    });
 </script>
+<style>
+    .ListeCmd{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 460px;
+        min-height: 100%;
+        max-height: auto;
+        background-color: #000;
+        z-index: 100;
+        box-shadow: 0px 0px 23px -2px #000000;
+    }
+    .ImgProd{
+        width: 100px;
+        height:150px
+    }
+    .detaileCmd > p{
+        font-size: 15px;
+        margin-bottom: 0 !important;
+    }
+    ol li {
+        list-style: none;
+    }
+
+    
+    @media screen and (max-width:700px){
+        .ListeCmd{
+            left: 5%;
+            right: 5%;
+            margin: auto;
+            width: 95%;
+            height: 100%;
+        }
+    }
+</style>
+<div class="ListeCmd bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class=" row">
+                        <h5 class="card-title text-left col-sm p-1">Votre panier () </h5><h5 class="col-sm-3 p-1 text-right">X</h5>
+                </div>
+                <ol>
+                    <li >
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="image/prod.jpg" class="ImgProd" alt="...">
+                            </div>
+                            <div class="col-sm detaileCmd">
+                                <h4>PANTALON DROIT UNI</h4>
+                                <h6 style="color:red;">199.00 Dhs </h6>
+                                <!-- <p>Taille : S</p> -->
+                                <span>Taille : S</span>
+                                <p>Quantité: 1</p>
+
+                            </div>
+                        </div>
+                        <hr>
+                    </li>
+                </ol>
+        
+                
+            </div>
+        </div>
+    </div>
+    <div style="position: absolute ; bottom: 0px;">
+        <div class="row">
+            <div class="col"> <h5 class="text-left">Sous-total :</h5> </div>
+            <div class="col"> <h5 class="text-right">428,00 DHS</h5> </div>
+        </div>
+        <p class="text-center" >Toutes vos informations sont en sécurité et protégées</p>
+
+    </div>
+
+
+</div>
