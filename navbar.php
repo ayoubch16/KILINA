@@ -381,7 +381,7 @@
                                 <img src="image/prod.jpg" class="ImgProd" alt="...">
                             </div>
                             <div class="col-sm detaileCmd">
-                                <h4><?php echo '->'.$_SESSION['titre1'];?></h4>
+                                <h4 class="titre"><?php echo '->'.$_SESSION['titre1'];?></h4>
                                 <h6  style="color:red;"><span class="prixproduit"><?php echo $p=$p+10;?></span></h6>
                                 <p>Taille :   <span class="taille">S</span></p>
                                 <p >Quantité: <span class="qnt"><?php echo $x+1;?></span></p>
@@ -414,12 +414,13 @@
 
 </div>
 <script>
-
     let listeprix = document.getElementsByClassName("prixproduit");
     let listqnt = document.getElementsByClassName("qnt");
     var somme = 0;
     for (i = 0; i < listeprix.length; i++) {
         somme = somme + parseFloat(listeprix[i].innerHTML) * listqnt[i].innerHTML;
+        document.getElementsByClassName("titre")[i].innerHTML = 'cookie n'+i+' '+document.cookie;
+
     }
     document.getElementById("prixprod").innerHTML = somme.toFixed(2);
 
@@ -457,4 +458,4 @@
         document.getElementById("prixtotale").innerHTML = prixtotale.toFixed(2);
         document.getElementById("inputprix").value = prixtotale.toFixed(2)
     }; /*]]>*/
-    </script> -->
+</script> -->

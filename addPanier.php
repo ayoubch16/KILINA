@@ -1,6 +1,20 @@
 <?php 
+include 'dbconnect.php';
 session_start();
 $_SESSION['titre1']='Ajouter un produit';
+
+$sql="SELECT * FROM `produits` WHERE id=5 ";
+$result = $cnx->query($sql);
+if ($row = $result->fetch_assoc()) {
+          echo '<script>
+                  document.cookie = "id='.$row['id'].'";
+                  alert(document.cookie);
+            </script>';
+}
+// echo '<script>
+//           document.cookie = "titre1=Ajouter un produit";
+//           alert(document.cookie);
+//     </script>';
 // $_SESSION['panier'] = array();
 // $_SESSION['panier']['id'] = array();
 // $_SESSION['panier']['titre'] = array();
