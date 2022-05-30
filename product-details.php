@@ -149,7 +149,8 @@ $titreProd=$row['titre'];
                     </div>
                 </div>
                 <div class="productInfo col" style="display:grid;justify-content:center;align-items:center">
-                    <form action="ajouterPannier.php">
+                    <!-- <form action="ajouterPannier.php"> -->
+                    <!-- <form action=""> -->
                         <h3 style="font-weight:bold"><?php echo $row['titre'];?></h3>
                         <p><?php echo $row['description'];?>
                             <br> 
@@ -165,9 +166,10 @@ $titreProd=$row['titre'];
                                   <p style="margin-bottom:0!important;display:flex;justify-content:end;align-items:center;">
                                       <?php 
                                               $taille = explode("-", $row['taille']);
-                                              for ($x = 0; $x <= count($taille)-2; $x++) {
-                                                  echo ' '.$taille[$x].' ';
-                                              }?>
+                                              for ($x = 0; $x <= count($taille)-2; $x++) {?>
+                                                  <!-- echo ' '.$taille[$x].' '; -->
+                                                  <input name="taille" type="radio"  value="<?php echo $taille[$x];?>"><?php echo ' '.$taille[$x].' ';?>
+                                             <?php   } ?>
                                   </p>
                               </div>
                         </div>
@@ -186,12 +188,31 @@ $titreProd=$row['titre'];
                         </div>
                         <div class="row">
                               <div class="col">
+                                  <p>Quantite :</p>
+                              </div>
+                              <div class="col text-right">
+                                                <select id="quantite">
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col">
                                   <p>Prix :</p>
                               </div>
                               <div class="col row text-right">
                                 <?php  if($row['remis']!= 0){?>
-                                <h3 class="mx-2" style="color:gray"><del><?php echo $row['prix']; ?> DH</del></h3>
-                                <h3 class="mx-2" style="color:red"><?php echo $nvprix?> DH</h3>
+                                <!-- <h3 class="mx-2" style="color:gray"><del><?php echo $row['prix']; ?> DH</del></h3> -->
+                                <h3 class="mx-2" style="color:red"><?php echo $row['prix'] - ($row['prix']*$row['remix'])?> DH</h3>
                                 <?php }else{?>
                                 <h3 class="mx-2"><?php echo $row['prix']; ?> DH</h3>
                                 <?php } ?>
@@ -199,15 +220,15 @@ $titreProd=$row['titre'];
                         </div>
    
                         <div class="my-4">
-                            <input type="submit" onclick="confirm('Voulez-vous ajouter ce produit au panier ?')"
-                                class="shopnow" value="SHOP NOW" name="" id="">
+                                <button onclick="shop(<?php echo $row['id'];?>,<?php echo $row['prix'];?>)" class="shopnow"  >SHOP NOW</button>
+                                <!-- <button  class="shopnow"  >SHOP NOW</button> -->
                             <?php 
                                 $reff=$row['Ref'];
                                 $sqlF="SELECT * FROM `favor` WHERE `RefProd` ='$reff'";
                                 $resultF = $cnx->query($sqlF);      
                                 if ($rowF = $resultF->fetch_assoc()) {
                             ?>
-                            <a class="lienfav p-1"
+                            <a  class="lienfav p-1"
                                 href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>">
                                 <i class="fa fa-heart" aria-hidden="true"></i></a>
                             <?php }else{ ?>
@@ -216,6 +237,52 @@ $titreProd=$row['titre'];
                                 <i class="fa fa-heart-o" aria-hidden="true"></i></a>
                             <?php } ?>
                         </div>
+                        <script>
+                            function shop(id,prix){
+                                var qnt=document.getElementById('quantite').value;
+                                var taille=document.querySelector('input[name="taille"]:checked').value;
+                                txt=document.cookie+",id"+id+"="+id+",prix"+id+"="+prix+",qnt"+id+"="+qnt+",taille"+id+"="+taille;
+                                document.cookie=txt;
+                                // alert(txt);
+                                // ajouterPanier(id,2,20,"S");
+                                // ajouterPanier(id+2,4,40,"L");
+                                // ajouterPanier(id+4,6,60,"M");
+                                
+                                console.log(Liste);
+                                console.log(txt);
+                                console.log(document.cookie);
+                
+
+
+                            }
+                            
+                            //  document.cookie='id:0';
+                             
+                            // function shop(a){
+                            //     let b;
+                            //     ajouterPanier(a,2,'20',"L");
+                            //     var txtid="id"+a+":"+a;
+                            //     var taille = document.getElementsByName('taille');
+                            //             for(i = 0; i < taille.length; i++) {
+                            //                 if(taille[i].checked)
+                            //                 var txttaille="taille"+a+":"+taille[i].value;
+                            //             }
+                            //     var txtquantite="quantite"+a+":"+document.getElementById('quantite').value;
+                            //     var txt=txtid+","+txttaille+","+txtquantite;
+                            //     console.log(txt);
+                            //     alert(txt);
+                            //     // document.cookie=document.cookie+","+txt;
+                            //     // alert(document.cookie);
+                            //     // var obj = { email: 'jdoe@example.com', username: 'jdoe' };
+                            //     // $.cookie("MyTestCookie", $.param(obj), { expires: 10 });
+                            //     // var email = Request.Cookies["MyTestCookie"]["email"];
+                            //     // var username = Request.Cookies["MyTestCookie"]["username"];
+                            //     // alert(email+" / "+username);
+                                
+                            // }
+
+
+                        </script>
                         <div class="p-3" style="background-color:#f5f7fb">
                             <img class="mx-2" src="image/icone/livraison.png" width="15" height="10" alt=""><span
                                 name="" style="font-weight:bold">livraison</span>
@@ -226,7 +293,7 @@ $titreProd=$row['titre'];
                             <p class="ml-5" style="font-size:12px">Notre Garantie Retour Ou Echange Dans 30 Jours A
                                 Partir De La Date De Livraison.</p>
                         </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
             </div>
         </div>

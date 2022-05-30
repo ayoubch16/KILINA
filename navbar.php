@@ -316,6 +316,7 @@
         background-color: #000;
         z-index: 100;
         box-shadow: 0px 0px 23px -2px #000000;
+        /* display: none; */
     }
     .ImgProd{
         /* width: 100px; */
@@ -325,7 +326,7 @@
         font-size: 15px;
         margin-bottom: 0 !important;
     }
-    ol li {
+    .ListeCmd .divListeCmd  li {
         list-style: none;
     }
     .lien a{
@@ -360,44 +361,36 @@
         }
     }
 </style>
-<div class="ListeCmd bg-light">
-    <?php ?>
+<script>
+            // get the string
+            // from localStorage
+            const str = localStorage.getItem("panier");
+            // convert string to valid object
+            const parsedObj = JSON.parse(str);
+            console.log(parsedObj);
+            // display the object
+            let text;
+            for (let i = 0; i < parsedObj.length; i++) {
+                text += parsedObj[i].id + "<br>";
+            } 
+            
+            document.getElementById("message").innerHTML = text;
+</script>
+<div class="ListeCmd bg-light" >
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class=" row">
                         <h5 class="card-title text-left col-sm p-1">Votre panier () </h5>
                         <button onclick="fermerPanier()" type="button" class="btn-close p-2" aria-label="Close">X</button>
-                        <!-- <h5 class="col-sm-3 p-1 text-right">X</h5> -->
                 </div>
-                <ol>
-                    <?php 
-                    $p=10;
-                        for($x=0;$x<5;$x++){
-                             ?>
-                    <li >
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <img src="image/prod.jpg" class="ImgProd" alt="...">
-                            </div>
-                            <div class="col-sm detaileCmd">
-                                <h4 class="titre"><?php echo '->'.$_SESSION['titre1'];?></h4>
-                                <h6  style="color:red;"><span class="prixproduit"><?php echo $p=$p+10;?></span></h6>
-                                <p>Taille :   <span class="taille">S</span></p>
-                                <p >Quantité: <span class="qnt"><?php echo $x+1;?></span></p>
-
-                            </div>
-                        </div>
-                        <div class="text-center lien">
-                            <a href="">Modifier</a>
-                            <a href="">Supression</a>
-                        </div>
-                        <hr>
-                    </li>
-                    <?php } ?>
-                </ol>
-        
                 
+                <ol class="divListeCmd">
+                    <p id="message"></p>                            
+                </ol>
+                
+
             </div>
         </div>
     </div>
@@ -408,54 +401,90 @@
             <div class="col"> <h5 class="text-left">Sous-total :</h5> </div>
             <div class="col"> <h5 id="prixprod" class="text-right">428,00 DHS</h5> </div>
         </div>
-        <p class="text-center" >Toutes vos informations sont en sécurité et protégées</p>
     </div>
 
 
 </div>
+
 <script>
     let listeprix = document.getElementsByClassName("prixproduit");
     let listqnt = document.getElementsByClassName("qnt");
     var somme = 0;
     for (i = 0; i < listeprix.length; i++) {
         somme = somme + parseFloat(listeprix[i].innerHTML) * listqnt[i].innerHTML;
-        document.getElementsByClassName("titre")[i].innerHTML = 'cookie n'+i+' '+document.cookie;
+        document.getElementsByClassName("titre")[i].innerHTML =document.cookie;
 
     }
     document.getElementById("prixprod").innerHTML = somme.toFixed(2);
 
+    // function fermerPanier() {
+    //     document.getElementsByClassName("ListeCmd")[0].style.display = "none";
+    //     document.getElementsByClassName("ListeCmd")[0].style.transform = "translateX(-100%)";
+    //     document.getElementsByClassName("ListeCmd")[0].style.transition = "all 2s";
+    // }
+</script>
+<script>
     function fermerPanier() {
         document.getElementsByClassName("ListeCmd")[0].style.display = "none";
         document.getElementsByClassName("ListeCmd")[0].style.transform = "translateX(-100%)";
         document.getElementsByClassName("ListeCmd")[0].style.transition = "all 2s";
     }
-</script>
-<!-- <script>
-    /*<![CDATA[*/
-    let listeprix = document.getElementsByClassName("prixproduit");
-    let listqnt = document.getElementsByClassName("qnt");
-    var somme = 0;
-    for (i = 0; i < listeprix.length; i++) {
-        somme = somme + parseFloat(listeprix[i].innerHTML) * listqnt[i].value
+    // ArrayList  ListeProd=new ArrayList ();
+    let Liste=[{
+        id:0,
+        qnt:0,
+        prix:0,
+        taille:""
     }
-    document.getElementById("prixprod").innerHTML = somme.toFixed(2);
-    var prixlivr = parseFloat(document.getElementById("prixlivr").innerHTML);
-    var prixprod = parseFloat(document.getElementById("prixprod").innerHTML);
-    prixtotale = prixprod + prixlivr;
-    document.getElementById("prixtotale").innerHTML = prixtotale.toFixed(2);
-    document.getElementById("inputprix").value = prixtotale.toFixed(2);
+    ];
+    
+                               
 
-    function claculer() {
-        let listqnt = document.getElementsByClassName("qnt");
-        var a = 0;
-        for (i = 0; i < listeprix.length; i++) {
-            a = a + parseFloat(listeprix[i].innerHTML) * listqnt[i].value
+    
+    function afficherPanier() {
+        document.getElementsByClassName("ListeCmd")[0].style.display = "block";
+        document.getElementsByClassName("ListeCmd")[0].style.transform = "translateX(0%)";
+        document.getElementsByClassName("ListeCmd")[0].style.transition = "all 2s";
+          // from localStorage
+          const str = localStorage.getItem("panier");
+            // convert string to valid object
+            const parsedObj = JSON.parse(str);
+            console.log(parsedObj);
+            // display the object
+            // document.getElementById("message").innerHTML = parsedObj.id;
+        let html="";
+        if(Liste.Lenght==1){
+            html+="<li><h5>Votre panier est vide</h5></li>";
+        }else{
+        for(let i=0;i<Liste.length;i++){
+            html+="<li>";
+            html+="<div class='row'>";
+            html+="<div class='col-sm-4'>";
+            html+="<img src='image/prod.jpg' class='ImgProd' alt='...'>";
+            html+="</div>";
+            html+="<div class='col-sm detaileCmd'>";
+            html+="<h4 class='titre'>"+parsedObj.id+"</h4>";
+            html+="<h6  style='color:red;'><span class='prixproduit'>"+parsedObj.prix+"</span></h6>";
+            html+="<p>Taille :   <span class='taille'>"+parsedObj.taille+"</span></p>";
+            html+="<p >Quantité: <span class='qnt'>"+parsedObj.quantite+"</span></p>";
+            html+="</div>";
+            html+="</div>";
+            html+="<div class='text-center lien'>";
+            html+="<a href=''>Modifier</a>";
+            html+="<a href=''>Supression</a>";
+            html+="</div>";
+            html+="<hr>";
+            html+="</li>";
         }
-        document.getElementById("prixprod").innerHTML = a.toFixed(2);
-        var c = parseFloat(document.getElementById("prixlivr").innerHTML);
-        var b = parseFloat(document.getElementById("prixprod").innerHTML);
-        prixtotale = b + c;
-        document.getElementById("prixtotale").innerHTML = prixtotale.toFixed(2);
-        document.getElementById("inputprix").value = prixtotale.toFixed(2)
-    }; /*]]>*/
-</script> -->
+
+        }
+        document.getElementsByClassName("divListeCmd")[0].innerHTML=html;
+    }
+
+    // ajouterPanier(2,2,20,"L");
+    // document.cookie=Liste;
+
+    // console.log(Liste);
+    // console.log(document.cookie);
+
+</script>

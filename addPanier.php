@@ -1,66 +1,129 @@
 <?php 
 include 'dbconnect.php';
 session_start();
-$_SESSION['titre1']='Ajouter un produit';
-
-$sql="SELECT * FROM `produits` WHERE id=5 ";
-$result = $cnx->query($sql);
-if ($row = $result->fetch_assoc()) {
-          echo '<script>
-                  document.cookie = "id='.$row['id'].'";
-                  alert(document.cookie);
-            </script>';
-}
-// echo '<script>
-//           document.cookie = "titre1=Ajouter un produit";
-//           alert(document.cookie);
-//     </script>';
-// $_SESSION['panier'] = array();
-// $_SESSION['panier']['id'] = array();
-// $_SESSION['panier']['titre'] = array();
-// $_SESSION['panier']['prix'] = array();
-// $_SESSION['panier']['quantite'] = array();
-// $_SESSION['panier']['image'] = array();
-// $_SESSION['panier']['total'] = 0;
-
-
-class Panier {
-    public $id;public $titre;public $prix;public $quantite;public $image;public $total;
-
-    function set_id($id) { $this->id = $id; } function get_id() { return $this->id; }
-
-    function set_titre($titre) { $this->titre = $titre; } function get_titre() { return $this->titre; }
-
-    function set_prix($prix) { $this->prix = $prix; } function get_prix() { return $this->prix; }
-
-    function set_quantite($quantite) { $this->quantite = $quantite; } function get_quantite() { return $this->quantite; }
-
-    function set_image($image) { $this->image = $image; } function get_image() { return $this->image; }
-
-    function set_total($total) { $this->total = $total; } function get_total() { return $this->total; }
-  
-
-  }
-  $panier1=new Panier();
-    $panier1->set_id(1);
-    $panier1->set_titre("Titre 1");
-    $panier1->set_prix(10);
-    $panier1->set_quantite(1);
-    $panier1->set_image("image1.jpg");
-    $panier1->set_total(10);
-    // array_push($_SESSION['panier']['id'],$panier1->get_id());
-    // array_push($_SESSION['panier']['titre'],$panier1->get_titre());
-    // array_push($_SESSION['panier']['prix'],$panier1->get_prix());
-    // array_push($_SESSION['panier']['quantite'],$panier1->get_quantite());
-    // array_push($_SESSION['panier']['image'],$panier1->get_image());
-    // array_push($_SESSION['panier']['total'],$panier1->get_total());
+require_once('Product.class.php');
+// $_SESSION['Prod'] = new Product($id,$qnt,$taille);
+    $id=29;
+    $qnt=$_GET['quantite'];
+    $taille=$_GET['taille'];
+    $id=$_GET['ref'];
+    $_SESSION['Prod'] = new Product($id,$qnt,$taille);
+    echo $qnt.' '.$taille.' '.$id;
 
     
-  
-
-
-
-
-
-
 ?>
+   
+   
+   
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/css/bootstrap.min.css" integrity="sha512-oc9+XSs1H243/FRN9Rw62Fn8EtxjEYWHXRvjS43YtueEewbS6ObfXcJNyohjHqVKFPoXXUxwc+q1K7Dee6vv9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    .ListeCmd{
+        position: absolute;
+        top: 1%;
+        right: 0;
+        width: 460px;
+        min-height: 100%;
+        max-height: auto;
+        background-color: #000;
+        z-index: 100;
+        box-shadow: 0px 0px 23px -2px #000000;
+        background-color: #fff;
+    }
+    .ImgProd{
+        /* width: 100px; */
+        height:100px
+    }
+    .detaileCmd > p{
+        font-size: 15px;
+        margin-bottom: 0 !important;
+    }
+    .ListeCmd .divListeCmd  li {
+        list-style: none;
+    }
+    .lien a{
+        text-decoration: none;
+        color:  #bfbfbf;
+    }
+    .lien a:hover{
+        text-decoration: underline;
+        color:  #bfbfbf;
+    }
+    .btn-close{
+        border: none;
+        background: transparent;
+        color: #000;
+        size: 15px;
+        border-radius: 50%;
+       
+    }
+    .btn-close:hover{
+        color: red;
+        size: 15px;
+
+    }
+
+
+    
+    @media screen and (max-width:700px){
+        .ListeCmd{
+           
+            width: 100%;
+            height: 100%;
+        }
+    }
+</style>
+<div class="ListeCmd bg-light">
+    <?php 
+   
+        echo 'Bonjour ' . $_SESSION['Prod']->getId();
+    ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class=" row">
+                        <h5 class="card-title text-left col-sm p-1">Votre panier () </h5>
+                        <button onclick="fermerPanier()" type="button" class="btn-close p-2" aria-label="Close">X</button>
+                </div>
+                
+                <ol class="divListeCmd">
+                <li>
+                <div class='row'>
+                <div class='col-sm-4'>
+                <img src='image/prod.jpg' class='ImgProd' alt='...'>
+                </div>
+                <div class='col-sm detaileCmd'>
+                <h4 class='titre'>Titre</h4>
+                <h6  style='color:red;'><span class='prixproduit'>200</span>DH</h6>
+                <p>Taille :   <span class='taille'>M</span></p>
+                <p >Quantité: <span class='qnt'>2</span></p>
+                </div>
+                </div>
+                <div class='text-center lien'>
+                <a href=''>Modifier</a>
+                <a href=''>Supression</a>
+                </div>
+                <hr>
+                </li>
+                </ol>
+                
+                
+
+            </div>
+        </div>
+    </div>
+    
+    <div class=" p-2" >
+    <hr>
+        <div class="row">
+            <div class="col"> <h5 class="text-left">Sous-total :</h5> </div>
+            <div class="col"> <h5 id="prixprod" class="text-right">428,00 DHS</h5> </div>
+        </div>
+    </div>
+
+
+</div>

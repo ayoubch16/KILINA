@@ -6,6 +6,8 @@ $result = $cnx->query($sql);
 if ($row = $result->fetch_assoc()) {
 }
 ?>
+
+
         <style>
             .colorImg {
                 border-radius: 50%;
@@ -68,7 +70,20 @@ if ($row = $result->fetch_assoc()) {
                 display: none;
                 z-index: 10;
             }
-            @media only screen and (max-width: 768px) {
+            .choixcolor{
+                height: 25px;
+                width: 25px;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            .choixcolor:hover{
+                transform: scale(1.1);
+                transition: 1s;
+                cursor: pointer;
+            }
+            
+            
+            @media only screen and (max-width: 700px) {
                 #divgrandImg {
                 height: 410px;
                 display: flex;
@@ -83,6 +98,10 @@ if ($row = $result->fetch_assoc()) {
                 .product-details .choiximage {
                 width: 60px;
                 height: 80px;
+                }
+                .choixcolor{
+                    height: 15px;
+                    width: 15px;
                 }
             }
         </style>
@@ -132,63 +151,86 @@ $titreProd=$row['titre'];
                     </div>
                 </div>
                 <div class="productInfo col" style="display:grid;justify-content:center;align-items:center">
-                    <form action="ajouterPannier.php">
+                    <!-- <form action="addPanier.php"> -->
+                    <form action="">
                         <h3 style="font-weight:bold"><?php echo $row['titre'];?></h3>
                         <p><?php echo $row['description'];?>
                             <br> 
-                            <input style="border:0;display:none;" type="text" readonly value="<?php echo $row['Ref'];?>" name="ref">
-                            <input style="display:none" type="text" readonly value="<?php echo $_SESSION["Reff"];?>"
-                                name="refclient">
+                            <input style="border:0;display:none;" type="text" id="id" required value="<?php echo $row['id'];?>" name="id">
+                            <!-- <input style="display:none" type="text" readonly value="<?php echo $_SESSION["Reff"];?>"
+                                name="refclient"> -->
                         </p>
                         <div class="row">
-                            <div class="ml-2">
-                                <p>Taille</p>
-                                <p
-                                    style="margin-bottom:0!important;display:flex;justify-content:center;align-items:center">
-                                    <?php 
-                                            $taille = explode("-", $row['taille']);
-                                            for ($x = 0; $x <= count($taille)-2; $x++) {
-                                                echo ' '.$taille[$x].' ';
-                                            }?>
-                                </p>
-                            </div>
-                            <div style="margin-left:100px!important" class="mx-4">
+                              <div class="col">
+                                  <p>Taille :</p>
+                              </div>
+                              <div class="col text-right">
+                                  <p style="margin-bottom:0!important;display:flex;justify-content:end;align-items:center;">
+                                      <?php 
+                                              $taille = explode("-", $row['taille']);
+                                              for ($x = 0; $x <= count($taille)-2; $x++) {?>
+                                                  <!-- echo ' '.$taille[$x].' '; -->
+                                                  <input required name="taille" type="radio"  value="<?php echo $taille[$x];?>"><?php echo ' '.$taille[$x].' ';?>
+                                             <?php   } ?>
+                                  </p>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col">
+                                  <p>Coleur :</p>
+                              </div>
+                              <div class="col text-right">
+                                  <?php for ($x = 1; $x <= 10; $x++) {
+                                          if( $row['couleur'.$x]!='#f2f2f2'){?>
+                                          <span onclick="<?php echo 'changeColor'.$x.'()';?>" class="choixcolor" style="background-color: <?php echo $row['couleur'.$x]?>;"></span> 
+                                          <img id="Imgcouleur<?php echo $x?>" style="width:15px;height:15px;display:none" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['Imgcouleur'.$x]); ?>" alt="">   
+                                  <?php } } ?>
 
-                                 <p></p>
-                                <?php 
-                                        $Ref=$row['Ref'];
-                                        $sql1="SELECT * FROM `produits` p  WHERE  LOCATE('".substr($Ref,0,5)."', p.Ref ) AND `Ref`<>'".$Ref."'   ORDER BY `date` DESC ";
-                                        $result1 =$cnx->query($sql1);
-                                        while($row1=$result1->fetch_assoc()){
-                                         $nvprix=$row['prix']-$row['prix']*($row['remis']/100);
-                                    ?>
-                                <a class="colorImg" href="product-details.php?id=<?php echo $row1['id']; ?>"><img
-                                        src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row1['img1']); ?>"
-                                        alt=""></a>
-                                <?php } ?>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col">
+                                  <p>Quantite :</p>
+                              </div>
+                              <div class="col text-right">
+                                                <select name="quantite" id="quantite" required>
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                              </div>
+                        </div>
+                        <div class="row">
+                              <div class="col">
+                                  <p>Prix :</p>
+                              </div>
+                              <div class="col row text-right">
+                                  <?php 
+                                  $nvprix=$row['prix']-$row['prix']*($row['remis']/100)
+                                  ?>
+                                <input type="text" required id="prix" style="display: none;" value="<?php echo $nvprix;?>">
+                                <h3 class="mx-2" style="color:red"><?php echo $nvprix;?> DH</h3>
+                                
                             </div>
                         </div>
-                        <div>
-                            <p>Prix :</p>
-                            <div class="row">
-                                <?php  if($row['remis']!= 0){?>
-                                <h3 class="mx-2" style="color:gray"><del><?php echo $row['prix']; ?> DH</del></h3>
-                                <h3 class="mx-2" style="color:red"><?php echo $nvprix?> DH</h3>
-                                <?php }else{?>
-                                <h3 class="mx-2"><?php echo $row['prix']; ?> DH</h3>
-                                <?php } ?>
-                            </div>
-                        </div>
+   
                         <div class="my-4">
-                            <input type="submit" onclick="confirm('Voulez-vous ajouter ce produit au panier ?')"
-                                class="shopnow" value="SHOP NOW" name="" id="">
+                                <!-- <button onclick="shop(<?php echo $row['id'];?>,<?php echo $row['prix'];?>)" class="shopnow"  >SHOP NOW</button> -->
+                                <button  class="shopnow" name="shop" onclick="addPanier()"  >SHOP NOW</button>
                             <?php 
                                 $reff=$row['Ref'];
                                 $sqlF="SELECT * FROM `favor` WHERE `RefProd` ='$reff'";
                                 $resultF = $cnx->query($sqlF);      
                                 if ($rowF = $resultF->fetch_assoc()) {
                             ?>
-                            <a class="lienfav p-1"
+                            <a  class="lienfav p-1"
                                 href="deletfavor.php?ref=<?php echo $row['Ref'] ;?>&refclient=<?php echo  $_SESSION["Reff"] ;?>">
                                 <i class="fa fa-heart" aria-hidden="true"></i></a>
                             <?php }else{ ?>
@@ -197,6 +239,7 @@ $titreProd=$row['titre'];
                                 <i class="fa fa-heart-o" aria-hidden="true"></i></a>
                             <?php } ?>
                         </div>
+   
                         <div class="p-3" style="background-color:#f5f7fb">
                             <img class="mx-2" src="image/icone/livraison.png" width="15" height="10" alt=""><span
                                 name="" style="font-weight:bold">livraison</span>
@@ -213,51 +256,128 @@ $titreProd=$row['titre'];
         </div>
     </div>
     <script>
-    function change1() {
-        document.getElementById("grandImg").src = document.getElementById("img1").src;
-        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img1').src + "')";
-    }
+        function addPanier() {  
+            let id=document.getElementById('id').value;
+            let quantite=document.getElementById('quantite').value;
+            // let taille=document.getElementsByClassName('taille').value;
+            let taille=document.querySelector('input[name="taille"]:checked').value;
+            let prix=document.getElementById('prix').value;
+            let obj;
+            // create an object
+            const arr = {
+                id:id,
+                quantite:quantite,
+                taille:taille,
+                prix:prix
+            };
+            if(localStorage.getItem('panier') === null){
+                 obj=[{
+                        id:0,
+                        quantite:0,
+                        taille:'0',
+                        prix:0
+                    }];
+            }else{
+                 const str1 = localStorage.getItem("panier");
+                 obj = JSON.parse(str1);
+            }
 
-    function change2() {
-        document.getElementById("grandImg").src = document.getElementById("img2").src;
-        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img2').src + "')";
-    }
+            obj.push(arr);
+            // convert object to JSON string
+            const jsonObj = JSON.stringify(obj);
+            // save to localStorage
+            localStorage.setItem("panier", jsonObj);
+            // alert('id='+id+' quantite='+quantite+' taille='+taille);
+            afficherPanier();
 
-    function change3() {
-        document.getElementById("grandImg").src = document.getElementById("img3").src;
-        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img3').src + "')";
-    }
-
-    function change4() {
-        document.getElementById("grandImg").src = document.getElementById("img4").src;
-        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img4').src + "')";
-    }
-
-    function change5() {
-        document.getElementById("grandImg").src = document.getElementById("img5").src;
-        document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img5').src + "')";
-    };
+        }
     </script>
     <script>
-    zoom = 1.5;
-    document.getElementById('divgrandImg').onmousemove = function() {
-        loupe = document.getElementById('loupe');
-        var bounding = document.getElementById('divgrandImg').getBoundingClientRect();
-        loupe.style.left = (event.clientX - bounding.left - 100) + "px";
-        loupe.style.top = (event.clientY - bounding.top - 100) + "px";
-        loupe.style.backgroundSize = (498 * zoom) + "px";
-        loupe.style.backgroundPosition =
-            (-loupe.offsetLeft * zoom) + "px " +
-            (-loupe.offsetTop * zoom) + "px";
+        function change1() {
+            document.getElementById("grandImg").src = document.getElementById("img1").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img1').src + "')";
+        }
 
-    }
+        function change2() {
+            document.getElementById("grandImg").src = document.getElementById("img2").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img2').src + "')";
+        }
 
-    function afficherloupe() {
-        document.getElementById('loupe').style.display = 'block';
-    }
+        function change3() {
+            document.getElementById("grandImg").src = document.getElementById("img3").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img3').src + "')";
+        }
 
-    function fermerloupe() {
-        document.getElementById('loupe').style.display = 'none';
-    }
+        function change4() {
+            document.getElementById("grandImg").src = document.getElementById("img4").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img4').src + "')";
+        }
+
+        function change5() {
+            document.getElementById("grandImg").src = document.getElementById("img5").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('img5').src + "')";
+        }
+        function changeColor1(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur1").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur1').src + "')";
+        }
+        function changeColor2(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur2").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur2').src + "')";
+        }
+        function changeColor3(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur3").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur3').src + "')";
+        }
+        function changeColor4(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur4").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur4').src + "')";
+        }
+        function changeColor5(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur5").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur5').src + "')";
+        }
+        function changeColor6(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur6").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur6').src + "')";
+        }
+        function changeColor7(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur7").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur7').src + "')";
+        }
+        function changeColor8(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur8").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur8').src + "')";
+        }
+        function changeColor9(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur9").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur9').src + "')";
+        }
+        function changeColor10(){
+            document.getElementById("grandImg").src = document.getElementById("Imgcouleur10").src;
+            document.getElementById('loupe').style.backgroundImage = "url('" + document.getElementById('Imgcouleur10').src + "')";
+        }
+    </script>
+    <script>
+        zoom = 1.5;
+        document.getElementById('divgrandImg').onmousemove = function() {
+            loupe = document.getElementById('loupe');
+            var bounding = document.getElementById('divgrandImg').getBoundingClientRect();
+            loupe.style.left = (event.clientX - bounding.left - 100) + "px";
+            loupe.style.top = (event.clientY - bounding.top - 100) + "px";
+            loupe.style.backgroundSize = (498 * zoom) + "px";
+            loupe.style.backgroundPosition =
+                (-loupe.offsetLeft * zoom) + "px " +
+                (-loupe.offsetTop * zoom) + "px";
+
+        }
+
+        function afficherloupe() {
+            document.getElementById('loupe').style.display = 'block';
+        }
+
+        function fermerloupe() {
+            document.getElementById('loupe').style.display = 'none';
+        }
     </script>
 </body>
