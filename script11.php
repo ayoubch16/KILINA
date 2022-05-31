@@ -15,7 +15,7 @@
             for(let i=0;i < parsedObj.lenght;i++){
                 text +=i+'-->'+parsedObj[i].id+'<br>';
             } 
-        document.getElementById("message").innerHTML = text;
+        document.getElementById("message").innerHTML = str;
     //         console.log(parsedObj);
     //         // display the object
     //         document.getElementById("message").innerHTML = parsedObj.id;

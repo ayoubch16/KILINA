@@ -195,6 +195,7 @@
             <?php } else {?>
             <a class="compte" href="connexion.php"><img src="image/icone/utilisateur.png" width="20" height="20"
                     alt="">Compte</a>
+            <button onclick="test()"><img src="image/panier.png" /></button>
             <?php } ?>
         </div>
     </div>
@@ -316,7 +317,7 @@
         background-color: #000;
         z-index: 100;
         box-shadow: 0px 0px 23px -2px #000000;
-        /* display: none; */
+        display: none;
     }
     .ImgProd{
         /* width: 100px; */
@@ -362,19 +363,54 @@
     }
 </style>
 <script>
-            // get the string
-            // from localStorage
-            const str = localStorage.getItem("panier");
-            // convert string to valid object
-            const parsedObj = JSON.parse(str);
-            console.log(parsedObj);
-            // display the object
-            let text;
-            for (let i = 0; i < parsedObj.length; i++) {
-                text += parsedObj[i].id + "<br>";
-            } 
+    
             
-            document.getElementById("message").innerHTML = text;
+            
+            function test(){
+                document.getElementsByClassName("ListeCmd")[0].style.display = "block";
+                document.getElementsByClassName("ListeCmd")[0].style.transform = "translateX(0%)";
+                // document.getElementsByClassName("ListeCmd")[0].style.transition = "all 2s";
+                const str = localStorage.getItem("panier2");
+                const parsedObj = JSON.parse(str);
+                let textPanier="";
+                
+                for(let i = 1; i < parsedObj.length; i++){
+                    textPanier += `
+                    <li>     
+                            <div class="col m-2 p-2">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="`+parsedObj[i].image+`" class="ImgProd">
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title txttitre text-left">Mister Fusion</h5>
+                                            </div>
+                                            <div class="col">
+                                                <h5 class="card-title txtprix text-right">Prix :  `+parsedObj[i].prix+` DH</h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p class="card-text txttaille text-left">Taille : `+parsedObj[i].taille+`</p>
+                                            </div>
+                                            <div class="col">
+                                                <p class="card-text txtquantite text-right">Quantité : `+parsedObj[i].quantite+`</p>
+                                            </div>
+                                        </div>
+                                        <div class="row lien">
+                                            <a class="mx-2" href="#" >Modifier</a>
+                                            <a class="mx-2" href="#" >Suppression</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </li>
+                    `;
+                }
+                document.getElementsByClassName('divListeCmd')[0].innerHTML = textPanier;
+            }
 </script>
 <div class="ListeCmd bg-light" >
     
@@ -383,11 +419,18 @@
             <div class="col-md-12">
                 <div class=" row">
                         <h5 class="card-title text-left col-sm p-1">Votre panier () </h5>
-                        <button onclick="fermerPanier()" type="button" class="btn-close p-2" aria-label="Close">X</button>
+                        <!-- <button onclick="fermerPanier()" type="button" class="btn-close p-2" aria-label="Close">X</button> -->
+                        <button class="btn btn-danger btn-close" onclick="fermerPanier()">X</button>
                 </div>
+                <!-- <button onclick="test()">test</button><br> -->
+              
                 
                 <ol class="divListeCmd">
-                    <p id="message"></p>                            
+                    <li>     
+                            <div class="col">
+                              <h1>Panier Vide</h1>
+                            </div>
+                    </li>
                 </ol>
                 
 
@@ -406,85 +449,17 @@
 
 </div>
 
-<script>
-    let listeprix = document.getElementsByClassName("prixproduit");
-    let listqnt = document.getElementsByClassName("qnt");
-    var somme = 0;
-    for (i = 0; i < listeprix.length; i++) {
-        somme = somme + parseFloat(listeprix[i].innerHTML) * listqnt[i].innerHTML;
-        document.getElementsByClassName("titre")[i].innerHTML =document.cookie;
 
-    }
-    document.getElementById("prixprod").innerHTML = somme.toFixed(2);
-
-    // function fermerPanier() {
-    //     document.getElementsByClassName("ListeCmd")[0].style.display = "none";
-    //     document.getElementsByClassName("ListeCmd")[0].style.transform = "translateX(-100%)";
-    //     document.getElementsByClassName("ListeCmd")[0].style.transition = "all 2s";
-    // }
-</script>
 <script>
     function fermerPanier() {
         document.getElementsByClassName("ListeCmd")[0].style.display = "none";
         document.getElementsByClassName("ListeCmd")[0].style.transform = "translateX(-100%)";
         document.getElementsByClassName("ListeCmd")[0].style.transition = "all 2s";
     }
-    // ArrayList  ListeProd=new ArrayList ();
-    let Liste=[{
-        id:0,
-        qnt:0,
-        prix:0,
-        taille:""
-    }
-    ];
-    
+
                                
 
     
-    function afficherPanier() {
-        document.getElementsByClassName("ListeCmd")[0].style.display = "block";
-        document.getElementsByClassName("ListeCmd")[0].style.transform = "translateX(0%)";
-        document.getElementsByClassName("ListeCmd")[0].style.transition = "all 2s";
-          // from localStorage
-          const str = localStorage.getItem("panier");
-            // convert string to valid object
-            const parsedObj = JSON.parse(str);
-            console.log(parsedObj);
-            // display the object
-            // document.getElementById("message").innerHTML = parsedObj.id;
-        let html="";
-        if(Liste.Lenght==1){
-            html+="<li><h5>Votre panier est vide</h5></li>";
-        }else{
-        for(let i=0;i<Liste.length;i++){
-            html+="<li>";
-            html+="<div class='row'>";
-            html+="<div class='col-sm-4'>";
-            html+="<img src='image/prod.jpg' class='ImgProd' alt='...'>";
-            html+="</div>";
-            html+="<div class='col-sm detaileCmd'>";
-            html+="<h4 class='titre'>"+parsedObj.id+"</h4>";
-            html+="<h6  style='color:red;'><span class='prixproduit'>"+parsedObj.prix+"</span></h6>";
-            html+="<p>Taille :   <span class='taille'>"+parsedObj.taille+"</span></p>";
-            html+="<p >Quantité: <span class='qnt'>"+parsedObj.quantite+"</span></p>";
-            html+="</div>";
-            html+="</div>";
-            html+="<div class='text-center lien'>";
-            html+="<a href=''>Modifier</a>";
-            html+="<a href=''>Supression</a>";
-            html+="</div>";
-            html+="<hr>";
-            html+="</li>";
-        }
-
-        }
-        document.getElementsByClassName("divListeCmd")[0].innerHTML=html;
-    }
-
-    // ajouterPanier(2,2,20,"L");
-    // document.cookie=Liste;
-
-    // console.log(Liste);
-    // console.log(document.cookie);
+ 
 
 </script>

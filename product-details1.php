@@ -123,7 +123,7 @@ $titreProd=$row['titre'];
                             <div id="loupe"
                                 style="background-image: url(<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>);">
                             </div>
-                            <img id="grandImg" class="border border-dark"
+                            <img id="grandImg imgProd" class="border border-dark"
                                 src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>" width="489"
                                 height="618" alt="">
                         </div>
@@ -241,7 +241,7 @@ $titreProd=$row['titre'];
                         </div>
    
                         <div class="p-3" style="background-color:#f5f7fb">
-                            <img class="mx-2" src="image/icone/livraison.png" width="15" height="10" alt=""><span
+                            <img class="mx-2 " src="image/icone/livraison.png" width="15" height="10" alt=""><span
                                 name="" style="font-weight:bold">livraison</span>
                             <p class="ml-5" style="font-size:12px">Les frais de livraison sont calculés une fois la
                                 commande finalisée. Délai de réception = Délai de processus + Délai de livraison</p>
@@ -262,23 +262,27 @@ $titreProd=$row['titre'];
             // let taille=document.getElementsByClassName('taille').value;
             let taille=document.querySelector('input[name="taille"]:checked').value;
             let prix=document.getElementById('prix').value;
+            let image=document.getElementById('imgProd').src;
             let obj;
+           
             // create an object
             const arr = {
                 id:id,
                 quantite:quantite,
                 taille:taille,
-                prix:prix
+                prix:prix,
+                image:image
             };
-            if(localStorage.getItem('panier') === null){
+            if(localStorage.getItem('panier2') === null){
                  obj=[{
                         id:0,
                         quantite:0,
                         taille:'0',
-                        prix:0
+                        prix:0,
+                        image:''
                     }];
             }else{
-                 const str1 = localStorage.getItem("panier");
+                 const str1 = localStorage.getItem("panier2");
                  obj = JSON.parse(str1);
             }
 
@@ -286,9 +290,9 @@ $titreProd=$row['titre'];
             // convert object to JSON string
             const jsonObj = JSON.stringify(obj);
             // save to localStorage
-            localStorage.setItem("panier", jsonObj);
+            localStorage.setItem("panier2", jsonObj);
             // alert('id='+id+' quantite='+quantite+' taille='+taille);
-            afficherPanier();
+            
 
         }
     </script>
