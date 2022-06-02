@@ -6,6 +6,8 @@ $result = $cnx->query($sql);
 if ($row = $result->fetch_assoc()) {
 }
 ?>
+
+
         <style>
             .colorImg {
                 border-radius: 50%;
@@ -121,12 +123,12 @@ $titreProd=$row['titre'];
                             <div id="loupe"
                                 style="background-image: url(<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>);">
                             </div>
-                            <img id="grandImg" class="border border-dark"
+                            <img id="grandImg " class="border border-dark"
                                 src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>" width="489"
                                 height="618" alt="">
                         </div>
                         <div class="col" style="display:flex;justify-content: center;align-items: center;">
-                             <img onclick="change1()" class="choiximage border border-dark m-1" id="img1"
+                             <img onclick="change1()" class="choiximage border border-dark m-1 imgProd" id="img1"
                                 src="<?php echo 'data:image/jpeg;base64,' . base64_encode($row['img1']); ?>" width="91"
                                 height="119" alt="">
                             <img onclick="change2()" class="choiximage border border-dark m-1" id="img2"
@@ -149,26 +151,59 @@ $titreProd=$row['titre'];
                     </div>
                 </div>
                 <div class="productInfo col" style="display:grid;justify-content:center;align-items:center">
-                    <!-- <form action="ajouterPannier.php"> -->
-                    <!-- <form action=""> -->
-                        <h3 style="font-weight:bold"><?php echo $row['titre'];?></h3>
+                    <!-- <form action="addPanier.php"> -->
+                    <form action="">
+                        <h3 id="titre" style="font-weight:bold"><?php echo $row['titre'];?></h3>
                         <p><?php echo $row['description'];?>
                             <br> 
-                            <input style="border:0;display:none;" type="text" readonly value="<?php echo $row['Ref'];?>" name="ref">
-                            <input style="display:none" type="text" readonly value="<?php echo $_SESSION["Reff"];?>"
-                                name="refclient">
+                            <input style="border:0;display:none;" type="text" id="id" required value="<?php echo $row['id'];?>" name="id">
+                            <!-- <input style="display:none" type="text" readonly value="<?php echo $_SESSION["Reff"];?>"
+                                name="refclient"> -->
                         </p>
                         <div class="row">
                               <div class="col">
                                   <p>Taille :</p>
                               </div>
+                              <style>
+                                     input[type="radio"].tailleA {
+                                            display: none
+                                        }
+                                      input[type="radio"].tailleA+label {
+                                                text-align: center;
+                                                color: gray;
+                                                width: 30px;
+                                                height: 20px
+                                            }
+                                            input[type="radio"].tailleA+label:hover {
+                                                background-color: #e1d106;
+                                                cursor: pointer;
+                                                color: #000
+                                            }
+                                            input[type="radio"]#tailleA1:checked+label,
+                                    input[type="radio"]#tailleA2:checked+label,
+                                    input[type="radio"]#tailleA3:checked+label,
+                                    input[type="radio"]#tailleA4:checked+label,
+                                    input[type="radio"]#tailleA5:checked+label,
+                                    input[type="radio"]#tailleA6:checked+label,
+                                    input[type="radio"]#tailleA7:checked+label,
+                                    input[type="radio"]#tailleA8:checked+label,
+                                    input[type="radio"]#tailleA9:checked+label,
+                                    input[type="radio"]#tailleA10:checked+label{
+                                        color: #000;
+                                            background-color: #e1d106;
+                                            border-radius: 3px
+                                    }
+                              </style>
                               <div class="col text-right">
                                   <p style="margin-bottom:0!important;display:flex;justify-content:end;align-items:center;">
                                       <?php 
                                               $taille = explode("-", $row['taille']);
                                               for ($x = 0; $x <= count($taille)-2; $x++) {?>
-                                                  <!-- echo ' '.$taille[$x].' '; -->
-                                                  <input name="taille" type="radio"  value="<?php echo $taille[$x];?>"><?php echo ' '.$taille[$x].' ';?>
+                                                  
+                                                  <input type="radio" name="taille" value="<?php echo $taille[$x];?>"
+                                                                class="tailleA" id="tailleA<?php echo $x+1?>">
+                                                            <label for="tailleA<?php echo $x+1?>"><?php echo $taille[$x];?></label>
+                                                  <!-- <input required name="taille" type="radio"  value="<?php echo $taille[$x];?>"><?php echo ' '.$taille[$x].' ';?> -->
                                              <?php   } ?>
                                   </p>
                               </div>
@@ -191,7 +226,7 @@ $titreProd=$row['titre'];
                                   <p>Quantite :</p>
                               </div>
                               <div class="col text-right">
-                                                <select id="quantite">
+                                                <select name="quantite" id="quantite" required>
                                                     <option value="1" selected>1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -210,18 +245,18 @@ $titreProd=$row['titre'];
                                   <p>Prix :</p>
                               </div>
                               <div class="col row text-right">
-                                <?php  if($row['remis']!= 0){?>
-                                <!-- <h3 class="mx-2" style="color:gray"><del><?php echo $row['prix']; ?> DH</del></h3> -->
-                                <h3 class="mx-2" style="color:red"><?php echo $row['prix'] - ($row['prix']*$row['remix'])?> DH</h3>
-                                <?php }else{?>
-                                <h3 class="mx-2"><?php echo $row['prix']; ?> DH</h3>
-                                <?php } ?>
+                                  <?php 
+                                  $nvprix=$row['prix']-$row['prix']*($row['remis']/100)
+                                  ?>
+                                <input type="text" required id="prix" style="display: none;" value="<?php echo $nvprix;?>">
+                                <h3 class="mx-2" style="color:red"><?php echo $nvprix;?> DH</h3>
+                                
                             </div>
                         </div>
    
                         <div class="my-4">
-                                <button onclick="shop(<?php echo $row['id'];?>,<?php echo $row['prix'];?>)" class="shopnow"  >SHOP NOW</button>
-                                <!-- <button  class="shopnow"  >SHOP NOW</button> -->
+                                <!-- <button onclick="shop(<?php echo $row['id'];?>,<?php echo $row['prix'];?>)" class="shopnow"  >SHOP NOW</button> -->
+                                <button  class="shopnow" onclick="addPanier()"  >SHOP NOW</button>
                             <?php 
                                 $reff=$row['Ref'];
                                 $sqlF="SELECT * FROM `favor` WHERE `RefProd` ='$reff'";
@@ -237,54 +272,9 @@ $titreProd=$row['titre'];
                                 <i class="fa fa-heart-o" aria-hidden="true"></i></a>
                             <?php } ?>
                         </div>
-                        <script>
-                            function shop(id,prix){
-                                var qnt=document.getElementById('quantite').value;
-                                var taille=document.querySelector('input[name="taille"]:checked').value;
-                                txt=document.cookie+",id"+id+"="+id+",prix"+id+"="+prix+",qnt"+id+"="+qnt+",taille"+id+"="+taille;
-                                document.cookie=txt;
-                                // alert(txt);
-                                // ajouterPanier(id,2,20,"S");
-                                // ajouterPanier(id+2,4,40,"L");
-                                // ajouterPanier(id+4,6,60,"M");
-                                
-                                console.log(Liste);
-                                console.log(txt);
-                                console.log(document.cookie);
-                
-
-
-                            }
-                            
-                            //  document.cookie='id:0';
-                             
-                            // function shop(a){
-                            //     let b;
-                            //     ajouterPanier(a,2,'20',"L");
-                            //     var txtid="id"+a+":"+a;
-                            //     var taille = document.getElementsByName('taille');
-                            //             for(i = 0; i < taille.length; i++) {
-                            //                 if(taille[i].checked)
-                            //                 var txttaille="taille"+a+":"+taille[i].value;
-                            //             }
-                            //     var txtquantite="quantite"+a+":"+document.getElementById('quantite').value;
-                            //     var txt=txtid+","+txttaille+","+txtquantite;
-                            //     console.log(txt);
-                            //     alert(txt);
-                            //     // document.cookie=document.cookie+","+txt;
-                            //     // alert(document.cookie);
-                            //     // var obj = { email: 'jdoe@example.com', username: 'jdoe' };
-                            //     // $.cookie("MyTestCookie", $.param(obj), { expires: 10 });
-                            //     // var email = Request.Cookies["MyTestCookie"]["email"];
-                            //     // var username = Request.Cookies["MyTestCookie"]["username"];
-                            //     // alert(email+" / "+username);
-                                
-                            // }
-
-
-                        </script>
+   
                         <div class="p-3" style="background-color:#f5f7fb">
-                            <img class="mx-2" src="image/icone/livraison.png" width="15" height="10" alt=""><span
+                            <img class="mx-2 " src="image/icone/livraison.png" width="15" height="10" alt=""><span
                                 name="" style="font-weight:bold">livraison</span>
                             <p class="ml-5" style="font-size:12px">Les frais de livraison sont calculés une fois la
                                 commande finalisée. Délai de réception = Délai de processus + Délai de livraison</p>
@@ -293,11 +283,56 @@ $titreProd=$row['titre'];
                             <p class="ml-5" style="font-size:12px">Notre Garantie Retour Ou Echange Dans 30 Jours A
                                 Partir De La Date De Livraison.</p>
                         </div>
-                    <!-- </form> -->
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function addPanier() {  
+            let id=document.getElementById('id').value;
+            let titre=document.getElementById('titre').innerHTML;
+            let quantite=document.getElementById('quantite').value;
+            // let taille=document.getElementsByClassName('taille').value;
+            let taille=document.querySelector('input[name="taille"]:checked').value;
+            let prix=document.getElementById('prix').value;
+            let image=document.getElementsByClassName('imgProd')[0].src;
+            // alert("-->"+image);
+            let obj;
+           
+            // create an object
+            const arr = {
+                id:id,
+                titre:titre,
+                quantite:quantite,
+                taille:taille,
+                prix:prix,
+                image:image
+            };
+            if(localStorage.getItem('panier2') === null){
+                 obj=[{
+                        id:0,
+                        titre:'',
+                        quantite:0,
+                        taille:'0',
+                        prix:0,
+                        image:''
+                    }];
+            }else{
+                 const str1 = localStorage.getItem("panier2");
+                 obj = JSON.parse(str1);
+            }
+
+            obj.push(arr);
+            // convert object to JSON string
+            const jsonObj = JSON.stringify(obj);
+            // save to localStorage
+            localStorage.setItem("panier2", jsonObj);
+            // alert('id='+id+' quantite='+quantite+' taille='+taille);
+            
+
+        }
+    </script>
     <script>
         function change1() {
             document.getElementById("grandImg").src = document.getElementById("img1").src;

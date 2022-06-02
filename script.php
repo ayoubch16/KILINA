@@ -75,6 +75,8 @@
 
         function Remove(){
             localStorage.removeItem('object');
+            localStorage.removeItem('panier');
+            localStorage.removeItem('panier2');
             // const str1 = localStorage.getItem("object");
             // const obj = JSON.parse(str1);
             // var lenghtObj=obj.length;
@@ -91,6 +93,7 @@
         function Fermer(){
            localStorage.removeItem('object');
            localStorage.removeItem('panier');
+           localStorage.removeItem('panier2');
         }
 
 </script>

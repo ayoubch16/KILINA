@@ -162,12 +162,13 @@
 </div>
 <div class="container">
     <div class="navbar row">
-        <div class="animate__animated animate__jackInTheBox col text-left"><a onclick="filter()"><img src="image/bar.png" width="40"
+            <!--  href="#categories"-->
+        <div class="animate__animated animate__jackInTheBox col text-left"><a onclick="filter()" ><img src="image/bar.png" width="40"
                     height="40" /></a></div>
         <div class="logo animate__animated animate__jackInTheBox col text-center"><a href="index.php"><img src="image/logo.png" /></a>
         </div>
         <div class="divleft animate__animated animate__jackInTheBox col text-right">
-            <?php if($_SESSION["Reff"] != null) { ?>
+            <!-- <?php if($_SESSION["Reff"] != null) { ?>
             <a href="favor.php"><img src="image/like.png" />
                 <?php $sql1="SELECT count(*) FROM `favor` WHERE `etat`='V' ";
                       $result1 = $cnx->query($sql1);
@@ -195,8 +196,9 @@
             <?php } else {?>
             <a class="compte" href="connexion.php"><img src="image/icone/utilisateur.png" width="20" height="20"
                     alt="">Compte</a>
-            <button onclick="test()"><img src="image/panier.png" /></button>
-            <?php } ?>
+            <?php } ?> -->
+            <button style="border: none;background: transparent;" onclick="test()"><img src="image/panier.png" /><span class="badge"> </span></button>
+
         </div>
     </div>
 </div>
@@ -385,7 +387,7 @@
                                     <div class="col">
                                         <div class="row">
                                             <div class="col">
-                                                <h5 class="card-title txttitre text-left">Mister Fusion</h5>
+                                                <h5 class="card-title txttitre text-left">`+parsedObj[i].titre+`</h5>
                                             </div>
                                             <div class="col">
                                                 <h5 class="card-title txtprix text-right">Prix :  `+parsedObj[i].prix+` DH</h5>
@@ -400,8 +402,7 @@
                                             </div>
                                         </div>
                                         <div class="row lien">
-                                            <a class="mx-2" href="#" >Modifier</a>
-                                            <a class="mx-2" href="#" >Suppression</a>
+                                        <button style="background: transparent;border: none;color:  #bfbfbf;" onclick="RemoveProd(`+parsedObj[i].id+`)">Suppression</button>
                                         </div>
                                     </div>
                                 </div>
@@ -410,25 +411,41 @@
                     `;
                 }
                 document.getElementsByClassName('divListeCmd')[0].innerHTML = textPanier;
+                prixtotale();
             }
+            function RemoveProd(id){
+                // let txt='vous voulez supprimer ce produit de id:'+id+' ?';
+                const str2 = localStorage.getItem("panier2");
+                const parsedObj = JSON.parse(str2);
+                if(confirm('vous voulez supprimer ce produit de id:'+id+' ?')){
+                    for(let i = 1; i < parsedObj.length; i++){
+                        if(parsedObj[i].id == id ){
+                            parsedObj.splice(i,1);
+                            localStorage.setItem("panier2",JSON.stringify(parsedObj));
+                            alert('produit supprimé');
+                            window.location.reload();
+                        }
+                    }
+                }
+            }
+            
 </script>
 <div class="ListeCmd bg-light" >
     
-    <div class="container">
+    <div class="container" >
         <div class="row">
             <div class="col-md-12">
                 <div class=" row">
-                        <h5 class="card-title text-left col-sm p-1">Votre panier () </h5>
-                        <!-- <button onclick="fermerPanier()" type="button" class="btn-close p-2" aria-label="Close">X</button> -->
-                        <button class="btn btn-danger btn-close" onclick="fermerPanier()">X</button>
-                </div>
-                <!-- <button onclick="test()">test</button><br> -->
-              
-                
+                    <div class="col"><h5 class="card-title text-center col-sm p-1">Votre panier () </h5></div>
+                    <div class="col">  <button type="button" onclick="fermerPanier()" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>              
                 <ol class="divListeCmd">
                     <li>     
                             <div class="col">
-                              <h1>Panier Vide</h1>
+                                <h1>Panier Vide</h1>
                             </div>
                     </li>
                 </ol>
@@ -442,9 +459,27 @@
     <hr>
         <div class="row">
             <div class="col"> <h5 class="text-left">Sous-total :</h5> </div>
-            <div class="col"> <h5 id="prixprod" class="text-right">428,00 DHS</h5> </div>
+            <div class="col"> <h5 id="prixprod" class="text-right">000,00 DHS</h5> </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col"> <h5 class="text-left">Livraison :</h5> </div>
+            <?php 
+            $sqllivr="SELECT * FROM `module` WHERE id=1 ";
+            $resultlivr = $cnx->query($sqllivr);
+            if ($rowlivr = $resultlivr->fetch_assoc()) {
+            }
+            ?>
+            <div class="col"> <h5 id="livraison" class="text-right"><?php echo $rowlivr['prixLivraison']; ?> DHS</h5> </div>
+        </div>
+        <div class="row">
+            <div class="col"> <h5 class="text-left">Total :</h5> </div>
+            <div class="col"> <h5 id="prixtotal" class="text-right">000,00 DHS</h5> </div>
+        </div>
+        <div class="row my-4">
+            <div class="col col-sm text-center"> <a href="information.php?c=3" class="btn btn-outline-dark ">PASSER COMMANDE</a> </div>
+            <div class="col col-sm text-center"> <a href="index.php" class="btn btn-outline-dark ">CONTINUER VOS ACHATS</a> </div>
+        </div>
+        </div>
 
 
 </div>
@@ -455,6 +490,18 @@
         document.getElementsByClassName("ListeCmd")[0].style.display = "none";
         document.getElementsByClassName("ListeCmd")[0].style.transform = "translateX(-100%)";
         document.getElementsByClassName("ListeCmd")[0].style.transition = "all 2s";
+    }
+
+    function prixtotale(){
+        let prixtotale = 0;
+        const str = localStorage.getItem("panier2");
+        const parsedObj = JSON.parse(str);
+        for(let i = 1; i < parsedObj.length; i++){
+            prixtotale += parsedObj[i].prix * parsedObj[i].quantite;
+        }
+        let livraison=parseInt(document.getElementById('livraison').innerHTML);
+        document.getElementById("prixprod").innerHTML = prixtotale+" DHS";
+        document.getElementById("prixtotal").innerHTML = (prixtotale+livraison)+" DHS";
     }
 
                                

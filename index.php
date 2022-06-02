@@ -136,7 +136,7 @@ $g=$_GET['g'];
                     <img src="image/filtericone.png" width="80" height="80" alt="">
                 </a>
             </div>
-            <div class="categories mb-3 row" style="justify-content:space-around">
+            <div id="categories" class="categories mb-3 row" style="justify-content:space-around">
                 <div  class="col text-center p-3  <?php if($_GET['g']=='1'){echo ' activecat ';}else{echo ' cat ';}?>">
                     <button >
                         <a href="index.php?g=1">
